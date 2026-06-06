@@ -20,7 +20,7 @@ Run these (adjust the time window to the user's request — default to what they
 5. **Reflog** (captures checkouts/resets/rebases not visible in log):
    `git reflog -30`
 6. **Recently modified files** (work-in-progress not yet committed):
-   `find . -type f -not -path './.git/*' -mmin -<minutes>`
+   `find . -type f -not -path './.git/*' -mmin -<minutes>` — substitute a real number of minutes for `<minutes>` (e.g. `-mmin -120` for the last 2 hours).
 7. **Uncommitted changes**: `git status --short` and `git diff --stat`
 8. **GitHub activity** via the GitHub MCP tools (load with ToolSearch if needed):
    - `mcp__github__list_pull_requests` (state: all, sort: updated)

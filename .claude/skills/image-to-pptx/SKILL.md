@@ -24,7 +24,7 @@ If anything is illegible or ambiguous (a cropped word, an unreadable hex), note 
 The deck is built with [`python-pptx`](https://python-pptx.readthedocs.io/). It is often **not installed** — install into the active environment before building:
 
 ```bash
-python3 -c "import pptx" 2>/dev/null || pip install python-pptx
+python3 -c "import pptx" 2>/dev/null || python3 -m pip install python-pptx
 ```
 
 ## 3. Build the deck
@@ -34,7 +34,7 @@ Write a Python script that constructs the presentation. Guidelines that make out
 - **Slide size**: default to 16:9 (`prs.slide_width = Inches(13.333)`, `prs.slide_height = Inches(7.5)`). Use 4:3 only if the image is clearly that ratio.
 - **Start from a blank layout** (`prs.slide_layouts[6]`) and place your own text boxes/shapes so positions match the image, rather than fighting the built-in placeholders.
 - **Positioning**: convert the image's relative layout into `Inches(...)` for `left/top/width/height`. Eyeball proportions from the image (e.g. title in top ~20%, body below).
-- **Colors**: set fills and font colors with `RGBColor(0xRR, 0xGG, 0xBB)` using the hex values you estimated. Match the background fill of the slide.
+- **Colors**: set fills and font colors with the hex values you estimated, e.g. `RGBColor.from_string("1F4E79")` (or concrete bytes, `RGBColor(0x1F, 0x4E, 0x79)`). Match the background fill of the slide.
 - **Fonts**: set `font.name`, `font.size` (`Pt(...)`), `font.bold`, and `font.color`. Mirror the hierarchy you observed (large title, smaller body).
 - **Bullets / nesting**: use paragraphs with `paragraph.level` for indentation.
 - **Tables/charts**: recreate tables with `add_table`; for charts, recreate as a native chart if data is readable, otherwise approximate with shapes and label it.
