@@ -76,5 +76,5 @@ graph LD
 ## Notes & limits
 
 - One store per repo, at the root, committed to git — that's what makes it shared, persistent memory for every agent working on the repo.
-- This skill is invoked on demand. To make every session *automatically* aware of the store, add a pointer in `CLAUDE.md` ("Read `KNOWLEDGE.md` for project memory; use the graphify skill to update it") or a SessionStart hook — offer this rather than assuming it.
+- This skill is invoked on demand. To make every session *automatically* aware of the store, a repo can add a pointer in `CLAUDE.md` ("Read `KNOWLEDGE.md` for project memory; use the graphify skill to update it") and/or a `SessionStart` hook that injects the store. This repo already ships both; in a repo that doesn't, offer to add them rather than assuming.
 - Never write secrets, tokens, or personal data into the store; it's committed and shared.
