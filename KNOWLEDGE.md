@@ -18,6 +18,7 @@ primarily as a home for reusable **Claude Code skills** under `.claude/skills/`.
 - 2026-06-06 — Added first two skills (`image-to-pptx`, `task-history-review`) via PR #1, which was merged to `main`.
 - 2026-06-06 — Skills are versioned in-repo (project scope) so all agents share them, rather than relying on ephemeral user-scope installs in the remote container.
 - 2026-06-07 — Added `graphify` skill: durable project memory stored in root `KNOWLEDGE.md`, organized as light entity/relationship graph + notes.
+- 2026-06-07 — Every session auto-loads this store: a `SessionStart` hook in `.claude/settings.json` cats `KNOWLEDGE.md` into context, and `CLAUDE.md` points agents here. No need to ask agents to read it.
 
 ## Conventions
 - One skill per directory under `.claude/skills/`; keep `description` trigger-rich so the skill is matched on the right requests.
