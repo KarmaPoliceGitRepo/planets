@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "test -f KNOWLEDGE.md && { echo '# Project memory (graphify store) — auto-loaded from KNOWLEDGE.md. Use the graphify skill (/graphify) to update it.'; echo; sed -n '1,400p' KNOWLEDGE.md; } || true",
+            "statusMessage": "Loading graphify project memory"
+          }
+        ]
+      }
+    ]
+  }
+}
