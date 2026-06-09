@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- 00-general-error-measurement (1 doc, full)
 - 000000-read-papers-with-notes (1 doc, full)
 - 00000-how2research (2 docs, full)
 - contact-study-using-us-waves (9 docs: 8 full, 1 partial thesis)
@@ -44,7 +45,6 @@
 - 00-general-hardware-design-stuff
 - 00-general-mechanical-and-materials
 - 00-general-heat-transfer
-- 00-general-error-measurement
 - 00-general-electronics
 - 00-general-engineering-books
 
