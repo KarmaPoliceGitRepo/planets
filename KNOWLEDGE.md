@@ -20,6 +20,7 @@ primarily as a home for reusable **Claude Code skills** under `.claude/skills/`.
 - 2026-06-07 — Added `graphify` skill: durable project memory stored in root `KNOWLEDGE.md`, organized as light entity/relationship graph + notes.
 - 2026-06-07 — Every session auto-loads this store: a `SessionStart` hook in `.claude/settings.json` cats `KNOWLEDGE.md` into context, and `CLAUDE.md` points agents here. No need to ask agents to read it.
 - 2026-06-09 — Implemented the *UML for Java Programmers* (R. C. Martin) end-to-end **SMC remote-service case study** as a learning artifact. It lives in the sibling repo **`KarmaPoliceGitRepo/coding`** at `uml-for-java-programmers/` (not in this repo), branch `claude/uml-java-programmers-eqyyq1`. JDK 21 + Maven + JUnit 5; 15 tests pass incl. a real-socket end-to-end client/server compile. Reconstruction (book PDF + O'Reilly TOC are network-blocked from the remote container), faithful to the book's described architecture.
+- 2026-06-09 — Read the full *UML for Java Programmers* PDF (supplied via Google Drive MCP; 247pp extracted with PyMuPDF) and built a **consolidated object catalog + knowledge graph** at `coding/uml-for-java-programmers/docs/book-object-graph.md`. ~140 objects extracted across ch.1-6/10/11/12, deduped & merged (same-named objects consolidated, aliases noted), sorted alphanumerically; plus Mermaid **direct-link** classDiagrams per worked example and an **inferred-link** graph (principle exemplars, GoF/PoEAA pattern families, SMC generating its own `ServerController`, the three reusable layers). Gotcha surfaced: the book's `SocketServer`(interface)/`SocketService`(class) names are **inverted** vs our case-study reconstruction.
 
 ## Conventions
 - One skill per directory under `.claude/skills/`; keep `description` trigger-rich so the skill is matched on the right requests.
@@ -34,6 +35,8 @@ primarily as a home for reusable **Claude Code skills** under `.claude/skills/`.
 - **agents** —read→ **KNOWLEDGE.md** : for context before non-trivial tasks.
 - **coding repo** —hosts→ **SMC remote-service case study** (`uml-for-java-programmers/`) : UML-for-Java-Programmers learning project.
 - **SMC case study** —layered as→ **socketserver** (reusable `SocketServer`/`SocketService`) + **smc compiler** (`fsm` model, `SmcParser`, `JavaCodeGenerator`, `Compiler`) + **smc.remote** (serializable message protocol, `SMCRemoteServer`/`SMCRemoteService`/`SMCRemoteClient`).
+- **book-object-graph.md** (in coding repo) —catalogs→ **~140 objects from the UML-for-Java-Programmers book** : alphanumeric, consolidated, with direct + inferred Mermaid link graphs.
+- **Google Drive MCP** —supplied→ **the book PDF** : oversized tool results auto-save to disk; decode base64 → PDF, extract text with PyMuPDF (pypdf's `cryptography` rust binding is broken in this container).
 
 ## Glossary
 - **Skill** — a `SKILL.md` under `.claude/skills/` that Claude Code can invoke (e.g. `/graphify`).
