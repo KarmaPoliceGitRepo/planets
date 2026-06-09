@@ -12,3 +12,5 @@
 **Discussed in:**
 - [Hilbert Transform notes (Coffee Morning)](../notes/signal-processing/hilbert-transform-notes-coffee-morning.md) — instantaneous phase and its relationship to wrapped DFT phase
 - [CW Ultrasonic Phase Velocity Formula](../notes/signal-processing/cw-ultrasonic-phase-velocity-formula.md) — phase unwrapping applied to extract continuous-wave phase velocity
+- [Ting & Sachse 1978 — Dispersion](../notes/microstructure/ting-sachse-dispersion-1978.md) — phase unwrapping of broadband through-transmission spectra to obtain continuous phase velocity vs. frequency
+- [Peters & Petit 2003 — Broadband](../notes/microstructure/peters-petit-broadband-2003.md) — broadband phase-velocity measurement using unwrapped FFT phase spectra

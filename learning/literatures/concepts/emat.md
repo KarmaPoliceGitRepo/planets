@@ -6,7 +6,7 @@
 
 **Key relations:**
 - [lorentz-force-emat](lorentz-force-emat.md) — primary generation mechanism
-- [magnetostrictive-mechanism](magnetostrictive-mechanism.md) — additional mechanism in ferromagnetics
+- magnetostrictive mechanism — additional contribution in ferromagnetic materials (no separate page yet)
 - [meander-line-coil](meander-line-coil.md) — typical coil geometry for SH wave generation
 - [skin-depth](skin-depth.md) — governs eddy-current penetration depth and EMAT sensitivity
 - [beam-directivity-emat](beam-directivity-emat.md) — controlled by coil periodicity and geometry
