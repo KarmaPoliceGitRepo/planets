@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- matlab-and-labview (2 LabVIEW books, both partial)
 - programming (15 files: 8 partial book notes, 7 unreadable epub/zip)
 - standards (14 files: 10 full, 3 partial, 1 duplicate)
 - modeling-of-acoustic-waves (5 docs, all full)
@@ -12,9 +13,9 @@
 - wear-measurement (6 files, 5 notes, 1 duplicate)
 
 ## in flight
+- focusing-ultrasonic-waves
 - grinding
 - maths
-- matlab-and-labview
 - personal-communications
 - microstructure
 - 00-general-acoustics
@@ -23,7 +24,6 @@
 - signal-processing
 
 ## queued
-- focusing-ultrasonic-waves
 - laser-induced
 - lubrication-film
 - effect-of-temperature

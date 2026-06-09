@@ -1,0 +1,33 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+Virtual Instrument (VI)	VI, sub-VI	LabVIEW program unit consisting of a Front Panel (GUI) and Block Diagram (code); can be nested as sub-VIs	labview-dsp-digital-communications
+G language	graphical programming, dataflow	LabVIEW's underlying dataflow programming paradigm in which data flows through wires connecting graphical function nodes	data-acquisition-using-labview
+Subsampling	bandpass sampling, undersampling	Intentionally sampling a bandpass signal below the Nyquist rate for the carrier frequency, exploiting aliasing to translate the signal to a lower IF while preserving information	labview-dsp-digital-communications
+Nyquist sampling theorem	Nyquist rate, sampling theorem	Requirement that sample rate be at least twice the highest frequency in the signal to avoid aliasing	labview-dsp-digital-communications
+Fast Fourier Transform (FFT)	FFT, split-radix FFT	Efficient algorithm for the DFT requiring (N/2)log2(N) multiplications vs. N^2 for the DFT	labview-dsp-digital-communications
+Discrete Fourier Transform (DFT)	DFT	Finite, discrete sampling of the continuous Fourier transform evaluating frequency content at N equally spaced bins	labview-dsp-digital-communications
+Spectral leakage	leakage	Energy from a frequency component not at a DFT bin center spreading into neighboring bins due to non-orthogonality	labview-dsp-digital-communications
+Windowing	window function, sampling window	Multiplying the time-domain signal by a taper (Hann, Hamming, Blackman-Harris, etc.) to reduce spectral leakage at the cost of main-lobe width	labview-dsp-digital-communications
+Scalloping loss	amplitude error	Attenuation of a spectral component whose frequency falls between two DFT bin centers, caused by the shape of the implicit rectangular window	labview-dsp-digital-communications
+FIR filter	finite impulse response filter	Digital filter with a finite number of coefficients; symmetric versions have linear phase, making them preferred in digital communications	labview-dsp-digital-communications
+IIR filter	infinite impulse response filter	Recursive digital filter with feedback; computationally efficient but introduces non-linear phase distortion	labview-dsp-digital-communications
+Multirate signal processing	upsampling, downsampling, resampling	Processing signals at multiple sample rates within the same system, using interpolation and decimation filters	labview-dsp-digital-communications
+Polyphase filter	polyphase decomposition	Efficient filter bank implementation obtained by decomposing a prototype filter into parallel branches operating at the lower rate	labview-dsp-digital-communications
+DAQ Assistant	express VI, auto code generation	LabVIEW express VI that guides the user through a wizard to configure NI-DAQmx tasks and automatically generates the underlying VI code	data-acquisition-using-labview
+NI-DAQmx	DAQmx, NI DAQ	National Instruments driver library providing functions for configuring, starting, reading, and clearing data acquisition tasks with NI hardware	data-acquisition-using-labview
+SCPI	Standard Commands for Programmable Instruments	IEEE 488.2-based standardized ASCII command language for remote control of test and measurement instruments	data-acquisition-using-labview
+GPIB	General Purpose Interface Bus, IEEE 488, HP-IB	Parallel digital bus standard originally developed by HP in the 1960s, still widely used in test and measurement for high-speed instrument control	data-acquisition-using-labview
+VISA	Virtual Instrument Software Architecture	Instrument I/O API layer abstracting serial, GPIB, USB, Ethernet, etc. connections under a common interface in LabVIEW	data-acquisition-using-labview
+NI MAX	NI Measurement & Automation Explorer	NI utility for discovering, configuring, and testing connected hardware and drivers; provides SCPI command console for direct instrument queries	data-acquisition-using-labview
+TDMS file	Technical Data Management Streaming	NI binary file format for storing time-stamped measurement data; importable directly into Excel	data-acquisition-using-labview
+Error cluster	error wire	LabVIEW cluster containing Status (Boolean), Code (integer), and Source (string) fields passed between functions to propagate and enforce error handling	data-acquisition-using-labview
+Highlight Execution	execution highlighting	LabVIEW debugging mode that slows VI execution and displays animated data values on wires as they are computed	data-acquisition-using-labview
+Breakpoint	set breakpoint	LabVIEW debugging tool that pauses execution at a selected wire or function, enabling step-through inspection	data-acquisition-using-labview
+State Machine	LabVIEW state machine architecture	Design pattern using a while loop + case structure driven by a shift register holding the current state; recommended for production-ready DAQ applications	data-acquisition-using-labview
+Event Manager	event-driven programming	LabVIEW architecture pattern where a loop waits for external user or hardware events before executing associated code blocks	data-acquisition-using-labview
+Arduino / LINX	Arduino Uno, ATmega328, LINX firmware	Open-source microcontroller platform supported in LabVIEW via the LINX toolkit and VI Package Manager for low-cost DAQ and embedded control	data-acquisition-using-labview
+Conventional digital receiver	heterodyne receiver	Receiver that mixes RF down to an IF using an analog LO before ADC sampling; requires dedicated RF downconverter hardware	labview-dsp-digital-communications
+Subsampling receiver	all-digital receiver	Receiver that samples the RF signal directly at a reduced rate exploiting bandpass sampling; eliminates the analog LO/mixer at the cost of SNR degradation	labview-dsp-digital-communications
+QAM	Quadrature Amplitude Modulation, 16-QAM	Digital modulation scheme encoding data in both amplitude and phase of a carrier; 16-QAM encodes 4 bits per symbol	labview-dsp-digital-communications
+Bit-error rate (BER)	BER, bit error ratio	Ratio of incorrectly received bits to total transmitted bits; key performance metric for digital communication systems	labview-dsp-digital-communications
+Error vector magnitude (EVM)	EVM	Measure of modulation quality comparing the actual transmitted symbol vector to the ideal reference vector	labview-dsp-digital-communications
+PXI	PCI eXtensions for Instrumentation	Modular instrument platform from NI based on CompactPCI; used for high-performance RF measurement (e.g., PXI-5660 RF signal analyzer)	labview-dsp-digital-communications
