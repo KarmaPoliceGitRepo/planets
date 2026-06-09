@@ -1,6 +1,8 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- 000000-read-papers-with-notes (1 doc, full)
+- 00000-how2research (2 docs, full)
 - contact-study-using-us-waves (9 docs: 8 full, 1 partial thesis)
 - signal-processing (83 files -> 35 notes: 23 full, 10 partial, 4 unreadable, 30 dups/chapters)
 - design-engineering (2 files: 1 partial, 1 unreadable 61MB scan)
@@ -37,8 +39,6 @@
 ## queued (none — all dispatched)
 ### moved to in flight:
 - adhesive-layer
-- 000000-read-papers-with-notes
-- 00000-how2research
 - 99-other-relevant-papers
 - 000-electronics-instructions
 - 00-general-hardware-design-stuff
