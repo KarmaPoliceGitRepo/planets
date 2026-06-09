@@ -1,7 +1,7 @@
 # Interfacial Stiffness
 **Aliases:** contact stiffness; unit contact stiffness; K; spring stiffness; K-P calibration; specific stiffness; interfacial compliance
 
-**Definition:** Interfacial stiffness K (units: Pa/m or GPa/mm) is the incremental ratio of contact pressure to interfacial closure displacement per unit area at a partially-contacting interface. It is the key parameter linking ultrasonic reflection to contact mechanics: the spring interface model gives R = |1 − 2iz₁K/ω| / |1 + 2iz₁K/ω|, where z₁ is acoustic impedance and ω is angular frequency. K increases with contact pressure following an approximately linear (for elastic) or non-linear relationship, calibrated empirically using a known-geometry specimen. K is related to real contact area and can be measured non-destructively from multi-frequency or broadband reflection data.
+**Definition:** Interfacial stiffness K (units: Pa/m or GPa/mm) is the incremental ratio of contact pressure to interfacial closure displacement per unit area at a partially-contacting interface. It is the key parameter linking ultrasonic reflection to contact mechanics: the spring interface model gives |R| = (ωZ/2K)/√(1 + (ωZ/2K)²), where Z = z₁ is acoustic impedance and ω is angular frequency (per Baik & Thompson 1984, for identical media on both sides). Equivalently, R = iωZ/(2K + iωZ). K increases with contact pressure following an approximately linear (for elastic) or non-linear relationship, calibrated empirically using a known-geometry specimen. K is related to real contact area and can be measured non-destructively from multi-frequency or broadband reflection data.
 
 **Key relations:**
 - [spring-interface-model](spring-interface-model.md)
