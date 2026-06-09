@@ -1,12 +1,14 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- method-resonance (5 files, 4 full + 1 preview-only stub)
 - _root (Findings.xlsx)
 - temperature-measurement-probes (2 docs)
 - speed-of-sound (1 doc)
 - wear-measurement (6 files, 5 notes, 1 duplicate)
 
 ## in flight
+- microstructure
 - 00-general-acoustics
 - transducers-and-piezoelectricity
 - range-measurement
@@ -14,11 +16,9 @@
 - surface-acoustic-wave
 - signal-processing
 - programming
-- method-resonance
 - modeling-of-acoustic-waves
 
 ## queued
-- microstructure
 - personal-communications
 - maths
 - matlab-and-labview
