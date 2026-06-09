@@ -1,0 +1,40 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+transfer function H(s)	frequency response	Rational polynomial in Laplace variable s describing filter output/input ratio; roots of numerator are zeros, roots of denominator are poles.	chapter8-analogue-filters
+pole	complex pole	Root of the transfer function denominator; each pole contributes –20 dB/decade rolloff and 90° phase shift beyond the corner frequency.	chapter8-analogue-filters
+zero	transmission zero	Root of the transfer function numerator; each zero contributes +20 dB/decade and +90° phase shift.	chapter8-analogue-filters
+cutoff frequency F0	corner frequency, –3 dB frequency	Frequency at which the filter response is 3 dB below the passband level (or at the passband ripple edge for Chebyshev).	chapter8-analogue-filters
+Q factor	quality factor, Q	Ratio of resonant frequency to bandwidth; controls passband peaking (Q > 0.707 causes peaking in a 2-pole section).	chapter8-analogue-filters
+damping ratio	alpha, α	α = 1/Q; determines how quickly transients decay and the shape of the filter rolloff.	chapter8-analogue-filters
+group delay	envelope delay	Negative derivative of phase with respect to frequency (–dφ/dω); constant group delay implies linear phase and undistorted pulse transmission.	chapter8-analogue-filters
+Butterworth filter	maximally flat filter	All-pole filter with no passband or stopband ripple; pole locations equally spaced on the unit circle in the s-plane.	chapter8-analogue-filters
+Chebyshev filter	Tschebyscheff filter	All-pole filter with equiripple passband and monotonic stopband; poles on an ellipse derived from the Butterworth circle; sharper rolloff than Butterworth of same order.	chapter8-analogue-filters
+Bessel filter	Thomson filter	All-pole filter optimised for maximally flat group delay (linear phase) in the passband; best transient response, worst amplitude discrimination.	chapter8-analogue-filters
+elliptic filter	Cauer filter	Filter with ripple in both passband and stopband; finite-frequency zeros (from numerator) give the fastest possible transition from passband to stopband for a given order.	chapter8-analogue-filters
+inverse Chebyshev filter		Filter with monotonic passband and equiripple stopband; derived by frequency-inverting a Chebyshev response.	chapter8-analogue-filters
+linear phase equiripple filter		Filter approximation extending linear phase into the stopband by allowing phase ripple; intermediate between Bessel and Chebyshev in amplitude vs. time domain trade-off.	chapter8-analogue-filters
+transitional filter	Gaussian filter	Compromise between Gaussian (Bessel-like) and Chebyshev responses; nearly linear phase in passband with steeper stopband rolloff than Bessel beyond a breakpoint.	chapter8-analogue-filters
+all-pass filter	phase equaliser	Filter with unity gain at all frequencies; provides controlled phase shift (0° to 360°) to equalise group delay of another filter without affecting amplitude.	chapter8-analogue-filters
+passband ripple	Amax	Peak-to-peak variation of the filter amplitude response within the passband, expressed in dB.	chapter8-analogue-filters
+stopband attenuation	Amin	Minimum signal attenuation guaranteed within the stopband, expressed in dB.	chapter8-analogue-filters
+filter order	number of poles	Degree of the transfer function denominator; equals the number of reactive elements (poles); each order adds –20 dB/decade of rolloff rate.	chapter8-analogue-filters
+low-pass prototype	normalised filter	Normalised low-pass filter (cutoff at 1 rad/s, 1 Ω impedance) used as the starting point for designing any filter type via frequency transformations.	chapter8-analogue-filters
+frequency transformation	LP to HP, LP to BP, LP to notch	Mathematical substitution applied to the low-pass prototype transfer function to obtain high-pass, band-pass, or band-reject responses.	chapter8-analogue-filters
+Geffe algorithm		Algorithm for converting low-pass prototype complex pole pairs into equivalent band-pass filter sections with correct Q and resonant frequencies.	chapter8-analogue-filters
+Sallen-Key topology	VCVS filter	Two-pole active filter using op amp as voltage-controlled voltage source (amplifier); noninverting, low component spread, highest usable frequency for a given op amp.	chapter8-analogue-filters
+Multiple Feedback topology	MFB filter, Rauch filter	Two-pole active filter using op amp as integrator; inverting; higher component spread; limited to moderate Q by op-amp gain-bandwidth product.	chapter8-analogue-filters
+state variable filter		Active filter using multiple op amps in an integrator loop; simultaneous low-pass, band-pass, and high-pass outputs; good tuning flexibility.	chapter8-analogue-filters
+biquad filter		Two-integrator loop active filter topology providing adjustable Q and F0 with low component sensitivity.	chapter8-analogue-filters
+General Impedance Converter	GIC	Two op-amp circuit whose input impedance Z = Z1·Z3·Z5 / (Z2·Z4); used to synthesise active inductors and FDNR elements.	chapter8-analogue-filters
+FDNR	Frequency Dependent Negative Resistor, D element	Impedance element with Z proportional to 1/s²; synthesised from GIC with two capacitors; enables passive LC filter realisation without physical inductors.	chapter8-analogue-filters
+active inductor		Inductor simulated using a GIC with one capacitor and resistors; avoids physical inductor parasitics.	chapter8-analogue-filters
+Twin-T notch filter		Passive RC bridge circuit that produces a notch (null) at a specific frequency; used as the feedback network of an active notch filter.	chapter8-analogue-filters
+Bainter notch filter		Active notch filter topology with high Q and independently adjustable notch depth; uses two op amps.	chapter8-analogue-filters
+Boctor notch filter		Single op-amp notch filter topology offering low component count; separate low-pass and high-pass notch variants.	chapter8-analogue-filters
+Dual Amplifier Band-Pass	DABP	Active band-pass topology using two op amps; allows independent tuning of Q and F0.	chapter8-analogue-filters
+s-plane	complex frequency plane	Complex plane with real axis σ (Neper frequency) and imaginary axis jω (angular frequency); pole and zero locations on this plane determine filter stability and frequency response character.	chapter8-analogue-filters
+impulse response		Output of a filter to a unit impulse input; bandwidth of impulse response is inversely proportional to filter bandwidth; characterises filter speed.	chapter8-analogue-filters
+step response		Integral of the impulse response; characterised by rise time, overshoot, and ringing; useful for assessing envelope distortion in modulated signal systems.	chapter8-analogue-filters
+passband	pass band	Frequency range over which the filter transmits signals with acceptable attenuation (within Amax).	chapter8-analogue-filters
+stopband	stop band	Frequency range over which the filter attenuates signals by at least Amin.	chapter8-analogue-filters
+band-pass filter		Filter passing a band of frequencies between lower and upper cutoff frequencies FL and FH; resonant frequency F0 is the geometric mean of FL and FH.	chapter8-analogue-filters
+notch filter	band-reject filter	Filter that attenuates a narrow band of frequencies; Q determines the notch width; standard, low-pass, and high-pass notch variants exist depending on relative pole and zero frequencies.	chapter8-analogue-filters
