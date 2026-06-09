@@ -1,7 +1,7 @@
 # Dispersion Curves
 **Aliases:** dispersion curves; phase velocity dispersion; group velocity; Lamb waves; Rayleigh waves; guided waves; angular wave number; elastic wave propagation; dispersion relation
 
-**Definition:** Dispersion curves plot phase velocity (or wavenumber) against frequency for guided wave modes propagating in bounded structures (plates, cylinders, rods). For Lamb waves in a plate, symmetric (S₀, S₁, …) and antisymmetric (A₀, A₁, …) modes each have a distinct dispersion curve; at low frequency-thickness products (f·d < ~1 MHz·mm), S₀ approaches a rod wave speed and A₀ is strongly dispersive. Rayleigh waves propagate along a free surface at ≈0.92 c_T, essentially non-dispersive. Group velocity is d(ω/k)/d(1/k) = dω/dk and governs energy transport; for a dispersive mode it differs from phase velocity. Phase unwrapping is needed to extract continuous phase velocity from measured phase spectra.
+**Definition:** Dispersion curves plot phase velocity (or wavenumber) against frequency for guided wave modes propagating in bounded structures (plates, cylinders, rods). For Lamb waves in a plate, symmetric (S₀, S₁, …) and antisymmetric (A₀, A₁, …) modes each have a distinct dispersion curve; at low frequency-thickness products (f·d < ~1 MHz·mm), S₀ approaches a rod wave speed and A₀ is strongly dispersive. Rayleigh waves propagate along a free surface at ≈0.92 c_T, essentially non-dispersive. Group velocity is dω/dk and governs energy transport; for a dispersive mode it differs from phase velocity. Phase unwrapping is needed to extract continuous phase velocity from measured phase spectra.
 
 **Key relations:**
 - related: [phase-unwrapping](phase-unwrapping.md)
