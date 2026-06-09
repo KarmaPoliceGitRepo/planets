@@ -1,6 +1,6 @@
 # Manifest — Drive file inventory and read status
 
-Merged from per-folder `_manifest.tsv` sidecars.
+Merged from per-folder `_manifest.tsv` sidecars (header-aware; folder sidecar formats vary slightly).
 
 ## 00-general-acoustics
 
@@ -296,6 +296,181 @@ Merged from per-folder `_manifest.tsv` sidecars.
 | 1977 - Ultrasonic attenuation effects associated with the physical modeling of adhesive bo | read | [ultrasonic-attenuation-adhesive-bond-modeling-meyer-1977](notes/adhesive-layer/ultrasonic-attenuation-adhesive-bond-modeling-meyer-1977.md) |
 | Acoustic Wave Propagation in an Adhesive Bond Model with Degrading Interfacial Layers - (1 | read | [acoustic-wave-propagation-adhesive-bond-degrading-interfacial-anastasi-1992](notes/adhesive-layer/acoustic-wave-propagation-adhesive-bond-degrading-interfacial-anastasi-1992.md) |
 | Assessment of piezoelectric sensor adhesive bonding - (2015) Wandowski.pdf | read | [piezoelectric-sensor-adhesive-bonding-assessment-wandowski-2015](notes/adhesive-layer/piezoelectric-sensor-adhesive-bonding-assessment-wandowski-2015.md) |
+
+## airborne-ultrasonics
+
+| title | status | note |
+|---|---|---|
+| 1-3 Piezocomposite Transducers for Airborne Ultrasound | read | [1-3-composites-air-transducers](notes/airborne-ultrasonics/1-3-composites-air-transducers.md) |
+| Absolute Sensitivity Limits of Various Ultrasonic Transducers | read | [absolute-sensitivity-limits-ultrasonic-transducers](notes/airborne-ultrasonics/absolute-sensitivity-limits-ultrasonic-transducers.md) |
+| Robust Acoustic Ranging with COTS Hardware Using Spread Spectrum | read | [acoustic-ranging-cots-spread-spectrum](notes/airborne-ultrasonics/acoustic-ranging-cots-spread-spectrum.md) |
+| Advances in Non-Contact Air-Coupled Transducers | read | [advances-noncontact-air-coupled-transducers](notes/airborne-ultrasonics/advances-noncontact-air-coupled-transducers.md) |
+| Air-Coupled Ultrasonic Metrology of Material Surfaces Using 1-3 Composites | read | [air-coupled-metrology-material-surfaces](notes/airborne-ultrasonics/air-coupled-metrology-material-surfaces.md) |
+| Air-Coupled Ultrasonic NDE: Experiments in the Frequency Range 750 kHz–2 MHz | read | [air-coupled-nde-750khz-2mhz](notes/airborne-ultrasonics/air-coupled-nde-750khz-2mhz.md) |
+| Air Temperature Fluctuations in Occupied Rooms | read | [air-temperature-fluctuations-rooms](notes/airborne-ultrasonics/air-temperature-fluctuations-rooms.md) |
+| Air-Coupled and Resonant Pulse-Echo Ultrasonic Technique | read | [alvarez-arenas-2019-resonant-pulse-echo-acu](notes/airborne-ultrasonics/alvarez-arenas-2019-resonant-pulse-echo-acu.md) |
+| Amplitude-Modulated Phase-Inverted (AMPI) Signal for TOF Measurement | read | [ampi-tof-measurement](notes/airborne-ultrasonics/ampi-tof-measurement.md) |
+| A Method for the Design of Ultrasonic Devices for Scanning Acoustic Microscopy Using Impul | read | [arakawa-2018-sam-impulsive-signal-design](notes/airborne-ultrasonics/arakawa-2018-sam-impulsive-signal-design.md) |
+| A Preliminary Investigation on the Application of Air-Coupled Ultrasound to Evaluate Surfa | read | [arunachalam-2011-grinding-wheel-acu](notes/airborne-ultrasonics/arunachalam-2011-grinding-wheel-acu.md) |
+| Atmospheric Absorption of Sound: Update | read | [bass-1990-atmospheric-absorption-update](notes/airborne-ultrasonics/bass-1990-atmospheric-absorption-update.md) |
+| Atmospheric Absorption of Sound: Further Developments | read | [bass-1995-atmospheric-absorption-further](notes/airborne-ultrasonics/bass-1995-atmospheric-absorption-further.md) |
+| Beam Profile Measurements and Simulations for Ultrasonic Transducers in Air | partial | [beam-profile-measurements-simulations-air](notes/airborne-ultrasonics/beam-profile-measurements-simulations-air.md) |
+| BeepBeep: A High Accuracy Acoustic Ranging System Using COTS Mobile Devices | partial | [beepbeep-cots-acoustic-ranging](notes/airborne-ultrasonics/beepbeep-cots-acoustic-ranging.md) |
+| Absorption of Ultrasonic Waves in Air at High Frequencies (10–20 MHz) | read | [bond-1992-absorption-air-high-freq](notes/airborne-ultrasonics/bond-1992-absorption-air-high-freq.md) |
+| Scattering of Sound at Rough Surfaces (Chapter 9, Ocean Acoustics) | partial | [brekhovskikh-2003-scattering-rough-surfaces](notes/airborne-ultrasonics/brekhovskikh-2003-scattering-rough-surfaces.md) |
+| On the Attenuation of Sound by Turbulence | read | [brown-1976-attenuation-turbulence](notes/airborne-ultrasonics/brown-1976-attenuation-turbulence.md) |
+| Polymer-Based Capacitive Micromachined Ultrasonic Transducer for Surface Roughness Measure | read | [bui-2015-polymer-cmut-roughness](notes/airborne-ultrasonics/bui-2015-polymer-cmut-roughness.md) |
+| Capacitive vs Piezoelectric Air-Coupled Transducers for Resonant NDE | read | [capacitive-piezoelectric-air-coupled-nde](notes/airborne-ultrasonics/capacitive-piezoelectric-air-coupled-nde.md) |
+| Contactless Energy Transfer Through Air by Means of Ultrasound | read | [contactless-energy-transfer-ultrasound](notes/airborne-ultrasonics/contactless-energy-transfer-ultrasound.md) |
+| The Variation of the Specific Heat Ratio and the Speed of Sound in Air with Temperature, P | read | [cramer-1993-speed-sound-air](notes/airborne-ultrasonics/cramer-1993-speed-sound-air.md) |
+| Applications of Airborne Ultrasound in Human–Computer Interaction | read | [dahl-2014-airborne-ultrasound-hci](notes/airborne-ultrasonics/dahl-2014-airborne-ultrasound-hci.md) |
+| On Wide Frequency Range Airborne Ultrasonic Transducers | read | [epure-2012-wide-frequency-emfit-transducers](notes/airborne-ultrasonics/epure-2012-wide-frequency-emfit-transducers.md) |
+| Atmospheric Absorption of Sound: Theoretical Predictions | read | [evans-1972-atmospheric-absorption-theoretical](notes/airborne-ultrasonics/evans-1972-atmospheric-absorption-theoretical.md) |
+| Air Turbulence and Sensation of Draught | partial | [fanger-1988-draught-turbulence](notes/airborne-ultrasonics/fanger-1988-draught-turbulence.md) |
+| Fingertip Bimodal Sensor for Robotic Non-Contact Material Recognition | read | [fingertip-noncontact-material-recognition](notes/airborne-ultrasonics/fingertip-noncontact-material-recognition.md) |
+| Measurement of Distance and Medium Velocity Using Frequency-Modulated Sound/Ultrasound | read | [fmcw-distance-medium-velocity](notes/airborne-ultrasonics/fmcw-distance-medium-velocity.md) |
+| Passive Focusing Techniques for Piezoelectric Air-Coupled Ultrasonic Transducers | read | [gomez-2016-passive-focusing-acu](notes/airborne-ultrasonics/gomez-2016-passive-focusing-acu.md) |
+| Cylindrical and Quasi-Cylindrical Focalization of Air-Coupled Single Element and Linear Ar | read | [gomez-2017-cylindrical-focused-acu](notes/airborne-ultrasonics/gomez-2017-cylindrical-focused-acu.md) |
+| Air-Coupled and Water Immersion Sectorized Array Transducers for Industrial and Medical En | read | [gomez-2017-sectorized-array-endoscopy](notes/airborne-ultrasonics/gomez-2017-sectorized-array-endoscopy.md) |
+| Measurements of Surface Texture Using Ultrasound | read | [gunarathne-2000-surface-texture-ultrasound](notes/airborne-ultrasonics/gunarathne-2000-surface-texture-ultrasound.md) |
+| Absorption of Sound in Air versus Humidity and Temperature | read | [harris-1966-absorption-humidity-temperature](notes/airborne-ultrasonics/harris-1966-absorption-humidity-temperature.md) |
+| Effects of Humidity on the Velocity of Sound in Air | read | [harris-1971-humidity-velocity-sound](notes/airborne-ultrasonics/harris-1971-humidity-velocity-sound.md) |
+| Angular Dependence of Ultrasonic Echo from Surface with Minute Roughness | read | [hasegawa-2007-angular-echo-roughness](notes/airborne-ultrasonics/hasegawa-2007-angular-echo-roughness.md) |
+| High-Accuracy Acoustic Relative Humidity Sensor | read | [high-accuracy-acoustic-relative-humidity](notes/airborne-ultrasonics/high-accuracy-acoustic-relative-humidity.md) |
+| Ultrasound Attenuation Dependence on Air Temperature in Closed Chambers | read | [jakevicius-2008-attenuation-closed-chambers](notes/airborne-ultrasonics/jakevicius-2008-attenuation-closed-chambers.md) |
+| Detection of Ultrasound Pressure Distribution for Remote Measurement of Haptic Surface Rou | read | [kamigaki-2015-haptic-roughness-ultrasound](notes/airborne-ultrasonics/kamigaki-2015-haptic-roughness-ultrasound.md) |
+| Contact and Non-Contact Ultrasonic Measurement in the Food Industry: A Review | partial | [khairi-2016-ultrasonic-food-industry-review](notes/airborne-ultrasonics/khairi-2016-ultrasonic-food-industry-review.md) |
+| Noncontact Measurement of Humidity and Temperature Using Airborne Ultrasound | read | [kon-2010-humidity-temperature-ultrasound](notes/airborne-ultrasonics/kon-2010-humidity-temperature-ultrasound.md) |
+| Angular Dependence of Ultrasonic Echo in Frequency Domain for Measurement of Surface Rough | read | [kudo-2006-angular-echo-frequency-domain](notes/airborne-ultrasonics/kudo-2006-angular-echo-frequency-domain.md) |
+| Angular Dependence for Imaging Micro-Order Surface Roughness (Conference) | read | [kudo-2006-angular-echo-imaging-conference](notes/airborne-ultrasonics/kudo-2006-angular-echo-imaging-conference.md) |
+| Measurement of Angular Dependence of Ultrasonic Echo for Estimation of Surface Roughness | read | [kudo-2007-angular-echo-roughness-jjap](notes/airborne-ultrasonics/kudo-2007-angular-echo-roughness-jjap.md) |
+| Lateral Displacement Measurement Using Air-Coupled Ultrasound Transducers | read | [lateral-displacement-measurement-air-coupled](notes/airborne-ultrasonics/lateral-displacement-measurement-air-coupled.md) |
+| Ultrasonic Roughness Measurement Based on Scattering Attenuation | read | [lian-2019-roughness-scattering-attenuation](notes/airborne-ultrasonics/lian-2019-roughness-scattering-attenuation.md) |
+| Literature: Probes and Accuracies Comparison Spreadsheet | read | [lit-probes-and-accuracies](notes/airborne-ultrasonics/lit-probes-and-accuracies.md) |
+| Long-Range Ultrasonic Range Sensor with High-Power Transducer Array | read | [long-range-ultrasonic-sensor-high-power-array](notes/airborne-ultrasonics/long-range-ultrasonic-sensor-high-power-array.md) |
+| Characterization of the Interface Roughness of Coatings Based on Ultrasonic Reflection Coe | read | [ma-2017-coating-interface-roughness-urcas](notes/airborne-ultrasonics/ma-2017-coating-interface-roughness-urcas.md) |
+| Shadowing by Randomly Rough Surfaces | read | [mccoy-1989-shadowing-rough-surfaces](notes/airborne-ultrasonics/mccoy-1989-shadowing-rough-surfaces.md) |
+| Speed of Sound in Air as a Function of Frequency and Humidity | read | [morfey-1980-speed-sound-frequency-humidity](notes/airborne-ultrasonics/morfey-1980-speed-sound-frequency-humidity.md) |
+| High-Accuracy Measurement of Small Movement of an Object Behind Cloth Using Airborne Ultra | read | [movement-detection-behind-cloth-ultrasound](notes/airborne-ultrasonics/movement-detection-behind-cloth-ultrasound.md) |
+| A Multi-Frequency Method for Ultrasonic Ranging | read | [multi-frequency-ultrasonic-ranging](notes/airborne-ultrasonics/multi-frequency-ultrasonic-ranging.md) |
+| A Multifrequency AM-Based Ultrasonic System for Accuracy Distance Measurement | read | [multifrequency-am-ultrasonic-ranging](notes/airborne-ultrasonics/multifrequency-am-ultrasonic-ranging.md) |
+| NDE Applications of Air-Coupled Ultrasonic Transducers | partial | [nde-applications-air-coupled-transducers](notes/airborne-ultrasonics/nde-applications-air-coupled-transducers.md) |
+| A Summation Formula for Use in Determining the Reflection from Irregular Bodies | read | [neubauer-reflection-summation-irregular](notes/airborne-ultrasonics/neubauer-reflection-summation-irregular.md) |
+| Profiling High-Angle Surfaces Using TOF Ultrasound | read | [profiling-high-angle-surfaces-tof](notes/airborne-ultrasonics/profiling-high-angle-surfaces-tof.md) |
+| Pulse-Echo Nonlinearity of a Focused Transducer: KZK / MGB Model | read | [pulse-echo-nonlinearity-focused-transducer](notes/airborne-ultrasonics/pulse-echo-nonlinearity-focused-transducer.md) |
+| Review of Air-Coupled Ultrasonic Materials Characterization | partial | [review-air-coupled-materials-characterization](notes/airborne-ultrasonics/review-air-coupled-materials-characterization.md) |
+| Robust High-Accuracy Ultrasonic Range Measurement System | read | [saad-2011-fhss-ultrasonic-ranging](notes/airborne-ultrasonics/saad-2011-fhss-ultrasonic-ranging.md) |
+| Calculation of Volumetric Sound Field of Pulsed Air-Coupled Ultrasound Transducers Based o | partial | [sanabria-2018-volumetric-sound-field-acu](notes/airborne-ultrasonics/sanabria-2018-volumetric-sound-field-acu.md) |
+| Application of Air-Coupled Ultrasound to Noncontact Evaluation of Paper Surface Roughness | read | [saniman-2014-paper-roughness-acu](notes/airborne-ultrasonics/saniman-2014-paper-roughness-acu.md) |
+| Feasibility Study on Characterization of Non-Gaussian Rough Surface by Ultrasonic Reflecti | read | [saniman-2016-non-gaussian-feasibility](notes/airborne-ultrasonics/saniman-2016-non-gaussian-feasibility.md) |
+| Quantitative Roughness Characterization of Non-Gaussian Random Rough Surfaces by Ultrasoni | read | [saniman-2020-non-gaussian-roughness-ultrasonic](notes/airborne-ultrasonics/saniman-2020-non-gaussian-roughness-ultrasonic.md) |
+| Accurate Estimation of Airborne Ultrasonic Time-of-Flight for Overlapping Echoes | read | [sarabia-2013-overlapping-echoes-tof](notes/airborne-ultrasonics/sarabia-2013-overlapping-echoes-tof.md) |
+| Surface Roughness Measurement by Ultrasonic Sensing for In-Process Monitoring | read | [shin-1995-roughness-ultrasonic-inprocess](notes/airborne-ultrasonics/shin-1995-roughness-ultrasonic-inprocess.md) |
+| Air-Coupled Ultrasound TOF Estimation for Cargo Verification | read | [shipping-container-cargo-verification-tof](notes/airborne-ultrasonics/shipping-container-cargo-verification-tof.md) |
+| Paper Roughness Measurement Using Airborne Ultrasound | read | [stor-pellinen-1995-paper-roughness-airborne](notes/airborne-ultrasonics/stor-pellinen-1995-paper-roughness-airborne.md) |
+| Application of Air-Coupled Ultrasound to Noncontact Surface Roughness Evaluation | read | [sukmana-2005-acu-roughness-first](notes/airborne-ultrasonics/sukmana-2005-acu-roughness-first.md) |
+| Surface Roughness Characterization through the Use of Diffuse Component of Scattered Air-C | read | [sukmana-2006-diffuse-component-roughness](notes/airborne-ultrasonics/sukmana-2006-diffuse-component-roughness.md) |
+| Quantitative Characterization of Two Kinds of Surface Roughness Parameters from Air-Couple | read | [sukmana-2006-two-parameter-conference](notes/airborne-ultrasonics/sukmana-2006-two-parameter-conference.md) |
+| Quantitative Evaluation of Two Kinds of Surface Roughness Parameters Using Air-Coupled Ult | read | [sukmana-2007-two-parameter-roughness-acu](notes/airborne-ultrasonics/sukmana-2007-two-parameter-roughness-acu.md) |
+| Surface Metrology Using Reflected Ultrasonic Signals | read | [surface-metrology-reflected-ultrasonic-signals](notes/airborne-ultrasonics/surface-metrology-reflected-ultrasonic-signals.md) |
+| Surface Roughness Measurement Using an Ultrasonic Area Sensor | partial | [surface-roughness-ultrasonic-area-sensor](notes/airborne-ultrasonics/surface-roughness-ultrasonic-area-sensor.md) |
+| The Determination of Surface Topology by the Signal Processing of Ultrasonic Pulses | read | [surface-topology-signal-processing-ultrasonic](notes/airborne-ultrasonics/surface-topology-signal-processing-ultrasonic.md) |
+| Temperature-Compensated Ultrasonic Distance Sensor | read | [temperature-compensated-ultrasonic-sensor](notes/airborne-ultrasonics/temperature-compensated-ultrasonic-sensor.md) |
+| Ultrasonic Distance Measurement for Linear and Angular Robot-Arm Positioning | read | [ultrasonic-distance-measurement-linear-angular](notes/airborne-ultrasonics/ultrasonic-distance-measurement-linear-angular.md) |
+| Ultrasonic Imaging in Air Using Fan-Beam Tomography and Electrostatic Transducers | read | [ultrasonic-imaging-fan-beam-tomography](notes/airborne-ultrasonics/ultrasonic-imaging-fan-beam-tomography.md) |
+| Ultrasonic Presence Sensors for Wide-Range Industrial Use | read | [ultrasonic-presence-sensors-wide-range](notes/airborne-ultrasonics/ultrasonic-presence-sensors-wide-range.md) |
+| Ultrasonic Reflectometry in Air: Errors of Sample Positioning | partial | [ultrasonic-reflectometry-errors-sample-positioning](notes/airborne-ultrasonics/ultrasonic-reflectometry-errors-sample-positioning.md) |
+| Ultrasonic Sensors in Air | read | [ultrasonic-sensors-in-air-review](notes/airborne-ultrasonics/ultrasonic-sensors-in-air-review.md) |
+| Ultrasonic Transducers and Transducer Arrays for Applications in Air | partial | [ultrasonic-transducers-arrays-applications-air](notes/airborne-ultrasonics/ultrasonic-transducers-arrays-applications-air.md) |
+| The Use of Ultrasonics for Gauging and Proximity Sensing in Air | partial | [ultrasonics-gauging-proximity-sensing-air](notes/airborne-ultrasonics/ultrasonics-gauging-proximity-sensing-air.md) |
+| Absorption of Ultrasonic Waves in Air | read | [vladisauskas-2004-absorption-ultrasonic-air](notes/airborne-ultrasonics/vladisauskas-2004-absorption-ultrasonic-air.md) |
+| Shadowing of Randomly Rough Surfaces | read | [wagner-1967-shadowing-rough-surfaces](notes/airborne-ultrasonics/wagner-1967-shadowing-rough-surfaces.md) |
+| Wave Phase Conjugation in Air at MHz Frequencies | read | [wave-phase-conjugation-air](notes/airborne-ultrasonics/wave-phase-conjugation-air.md) |
+| Variation of the Speed of Sound in Air with Humidity and Temperature | read | [wong-1985-speed-sound-humidity-temperature](notes/airborne-ultrasonics/wong-1985-speed-sound-humidity-temperature.md) |
+
+## bore-and-liner
+
+| title | status | note |
+|---|---|---|
+| Analysis of Cylinder Bore Distortion During Engine Operation (SAE 950541) | read | [abe-suzuki-toyota-bore-distortion-operation-1995](notes/bore-and-liner/abe-suzuki-toyota-bore-distortion-operation-1995.md) |
+| Enhancing the Geometrical Performance Using Initially Conical Cylinder Liner (Alshwawra 20 | read | [alshwawra-conical-liner-bore-distortion-2020](notes/bore-and-liner/alshwawra-conical-liner-bore-distortion-2020.md) |
+| Increasing the Roundness of Deformed Cylinder Liner by Using a Non-Circular Liner Profile  | read | [alshwawra-noncircular-liner-roundness-2019](notes/bore-and-liner/alshwawra-noncircular-liner-roundness-2019.md) |
+| Piston Ring Tribology: A Literature Survey (Andersson 2002, VTT Research Notes 2178) | partial | [andersson-piston-ring-tribology-survey](notes/bore-and-liner/andersson-piston-ring-tribology-survey.md) |
+| Ultrasonic Imaging of the Piston Ring Oil Film during Operation in a Motored Engine (Avan  | read | [avan-mills-ultrasonic-imaging-ring-motored](notes/bore-and-liner/avan-mills-ultrasonic-imaging-ring-motored.md) |
+| Experimental and Numerical Investigations of a Simulated Piston Ring-Liner Contact (Avan e | read | [avan-spencer-ring-liner-contact](notes/bore-and-liner/avan-spencer-ring-liner-contact.md) |
+| A Review of Surface Texturing in Internal Combustion Engine Piston Assembly (Azmi 2020) | read | [azmi-wan-mahmood-surface-texturing-piston-review-2020](notes/bore-and-liner/azmi-wan-mahmood-surface-texturing-piston-review-2020.md) |
+| Solving Piston Secondary Motion of Internal Combustion Engines (Bai, MIT) | read | [bai-piston-secondary-motion-mit](notes/bore-and-liner/bai-piston-secondary-motion-mit.md) |
+| A Simplified Methodology for the Analysis of Cylinder Liner Bore Distortion (Barbieri et a | read | [barbieri-giacopini-ferrari-bore-distortion-simplified](notes/bore-and-liner/barbieri-giacopini-ferrari-bore-distortion-simplified.md) |
+| Distortion Inside a Piston Bore — Ring Conformability Bounds Comparison (Bardzimashvili et | read | [bardzimashvili-kelly-romelashvili-ring-conformability-bounds](notes/bore-and-liner/bardzimashvili-kelly-romelashvili-ring-conformability-bounds.md) |
+| Measurement of Bore Distortion in a Firing Engine (Bird & Gartside, SAE 2002-01-0485) | read | [bird-gartside-federal-mogul-fired-bore-distortion-2002](notes/bore-and-liner/bird-gartside-federal-mogul-fired-bore-distortion-2002.md) |
+| Ultrasonic Measurement of Wear (Birring & Kwun 1989) | read | [birring-kwun-ultrasonic-wear-measurement](notes/bore-and-liner/birring-kwun-ultrasonic-wear-measurement.md) |
+| An Object-Oriented Approach to Post-Processing of Cylinder Bore Distortion (Chen et al. SA | read | [chen-adimi-ford-bore-distortion-oo-postprocessing](notes/bore-and-liner/chen-adimi-ford-bore-distortion-oo-postprocessing.md) |
+| Analysis of the Piston Assembly, Bore Distortion and Future Developments (Chittenden & Pri | read | [chittenden-priest-piston-assembly-bore-distortion-1993](notes/bore-and-liner/chittenden-priest-piston-assembly-bore-distortion-1993.md) |
+| Cavitation Induced Starvation for Piston-Ring/Liner Tribological Conjunction (Chong et al. | read | [chong-cavitation-starvation](notes/bore-and-liner/chong-cavitation-starvation.md) |
+| Piston Secondary Motion Measurement by Laser Displacement Sensors (Dlugoš & Novotný 2018) | read | [dlugos-novotny-piston-secondary-laser-2018](notes/bore-and-liner/dlugos-novotny-piston-secondary-laser-2018.md) |
+| A Transient Tribodynamic Approach for the Calculation of Piston Slap Noise (Dolatabadi et  | read | [dolatabadi-piston-slap-noise-tribodynamics](notes/bore-and-liner/dolatabadi-piston-slap-noise-tribodynamics.md) |
+| Piston Assemblies; Background and Lubrication Analysis (Dowson 1993) | read | [dowson-piston-assemblies-lubrication-1993](notes/bore-and-liner/dowson-piston-assemblies-lubrication-1993.md) |
+| Measuring Oil Films in Automotive Engines — Presentation (Dwyer-Joyce 2011) | read | [dwyer-joyce-measuring-oil-films-presentation](notes/bore-and-liner/dwyer-joyce-measuring-oil-films-presentation.md) |
+| Ultrasound for Non-Invasive Measurement of IC Engine Piston Skirt Lubricant Films (Dwyer-J | read | [dwyer-joyce-piston-skirt-ultrasonic-2006](notes/bore-and-liner/dwyer-joyce-piston-skirt-ultrasonic-2006.md) |
+| Some New Results for the Vibrations of Circular Cylinders (Dym 1973) | read | [dym-vibrations-circular-cylinders](notes/bore-and-liner/dym-vibrations-circular-cylinders.md) |
+| Chaotic and Periodic Dynamics of a Slider-Crank Mechanism with Slider Clearance (Farahanch | read | [farahanchi-shaw-chaotic-slider-crank](notes/bore-and-liner/farahanchi-shaw-chaotic-slider-crank.md) |
+| Measurement of Cylinder Bore Deformation During Actual Operating Engines (Fujimoto et al.  | read | [fujimoto-goto-cylinder-bore-deformation-operating](notes/bore-and-liner/fujimoto-goto-cylinder-bore-deformation-operating.md) |
+| Prediction and Reduction of Cylinder Liner Bore Deformation for a Two Wheeler (Ganguly et  | read | [ganguly-mahindra-two-wheeler-bore-deformation-reduction](notes/bore-and-liner/ganguly-mahindra-two-wheeler-bore-deformation-reduction.md) |
+| CAE Simulations for Engine Block Bore Distortion (Ghasemi SAE 2012-01-1320) | read | [ghasemi-bore-distortion-cae-methodology-2012](notes/bore-and-liner/ghasemi-bore-distortion-cae-methodology-2012.md) |
+| Cylinder Head High/Low Cycle Fatigue CAE Analysis (Ghasemi SAE 2012-01-1991) | read | [ghasemi-cylinder-head-fatigue-cae](notes/bore-and-liner/ghasemi-cylinder-head-fatigue-cae.md) |
+| Bore Analysis Tool (BAT) — Lotus Engineering Internal Report (Gibbs 2001) | read | [gibbs-bore-analysis-tool-bat-2001](notes/bore-and-liner/gibbs-bore-analysis-tool-bat-2001.md) |
+| Analysis of Liner's Bore Distortion from Finite Elements Method Calculations — Masters The | read | [gode-bore-distortion-fea-thesis](notes/bore-and-liner/gode-bore-distortion-fea-thesis.md) |
+| Prediction of Temperature, Viscosity and Thickness in Oil Film Between Ring and Liner (Har | read | [harigaya-oil-film-temperature-viscosity](notes/bore-and-liner/harigaya-oil-film-temperature-viscosity.md) |
+| The Effects of Cylinder Wall Surface Roughness and Bore Distortion on Blow-by (Hennessy &  | read | [hennessy-barber-surface-roughness-bore-distortion-blowby](notes/bore-and-liner/hennessy-barber-surface-roughness-bore-distortion-blowby.md) |
+| Global Energy Consumption Due to Friction in Passenger Cars (Holmberg et al. 2012) | read | [holmberg-global-friction-energy](notes/bore-and-liner/holmberg-global-friction-energy.md) |
+| Simulation of Mild Wear in a Cam-Follower Contact with Follower Rotation (Hugnell et al. 1 | read | [hugnell-cam-follower-wear-simulation](notes/bore-and-liner/hugnell-cam-follower-wear-simulation.md) |
+| An Experimental Study on Relationship between Lubricating Oil Consumption and Cylinder Bor | read | [iijima-sakurai-oil-consumption-bore-deformation-2009](notes/bore-and-liner/iijima-sakurai-oil-consumption-bore-deformation-2009.md) |
+| The Effect of Cylinder Bore Distortion on Lube Oil Consumption and Blow-By (Kagnici & Akal | read | [kagnici-akalin-bore-distortion-oil-consumption-2014](notes/bore-and-liner/kagnici-akalin-bore-distortion-oil-consumption-2014.md) |
+| Computations of an Engine to Analyse Cylinder Distortion (Kazmierczak 2004) | read | [kazmierczak-piston-ring-liner-kiva3-fea-2004](notes/bore-and-liner/kazmierczak-piston-ring-liner-kiva3-fea-2004.md) |
+| Investigations of the Friction Losses of Different Engine Concepts (Knauder et al. 2019) | read | [knauder-engine-friction-losses](notes/bore-and-liner/knauder-engine-friction-losses.md) |
+| A New Technique for Measuring the Deformation of Cylinder Bores During Engine Operation (K | read | [koch-fahl-haas-fired-bore-measurement-1995](notes/bore-and-liner/koch-fahl-haas-fired-bore-measurement-1995.md) |
+| Investigation on Cylinder Bore Deformation under Static Condition Based on Fourier Decompo | read | [liang-wang-bore-deformation-static-fourier-2017](notes/bore-and-liner/liang-wang-bore-deformation-static-fourier-2017.md) |
+| Investigation on Cylinder Bore Deformation under Static Condition Based on Fourier Decompo | skipped-duplicate | [liang-wang-bore-deformation-static-fourier](notes/bore-and-liner/liang-wang-bore-deformation-static-fourier.md) |
+| Lubrication of a Flexible Piston Skirt Subjected to Thermo-Elastic Deformation (Littlefair | read | [littlefair-procimechepartj-2014-piston-skirt-thermoelastic](notes/bore-and-liner/littlefair-procimechepartj-2014-piston-skirt-thermoelastic.md) |
+| Transient Tribo-Dynamics of Thermo-Elastic Compliant High-Performance Piston Skirts (Littl | read | [littlefair-tribol-lett-2014-piston-skirt-transient](notes/bore-and-liner/littlefair-tribol-lett-2014-piston-skirt-transient.md) |
+| Engine Cambore Distortion Analysis From Design to Manufacturing (Liu & Winship SAE 2004-01 | read | [liu-winship-cambore-distortion-manufacturing](notes/bore-and-liner/liu-winship-cambore-distortion-manufacturing.md) |
+| Analytical and Empirical Methods for the Optimization of Cylinder Liner Bore Distortion (M | read | [maassen-koch-bore-distortion-optimization-2001](notes/bore-and-liner/maassen-koch-bore-distortion-optimization-2001.md) |
+| Effect of Design Modifications of Intra-Bore Region on Engine Block Bore Distortion (Manav | read | [manav-erpolat-ozdemir-intrabore-bore-distortion-2010](notes/bore-and-liner/manav-erpolat-ozdemir-intrabore-bore-distortion-2010.md) |
+| Effects of Piston Design Parameters on Piston Secondary Motion and Skirt-Liner Friction (M | read | [mansouri-wong-piston-design-parameters](notes/bore-and-liner/mansouri-wong-piston-design-parameters.md) |
+| Cylinder Bore Distortion: A Look at Static and Dynamic Cylinder Bore Shape Issues (Mavrigi | read | [mavrigian-bore-distortion-static-dynamic-2010](notes/bore-and-liner/mavrigian-bore-distortion-static-dynamic-2010.md) |
+| A Simplified Piston Secondary Motion Model Considering Dynamic and Static Deformation of P | read | [mcclure-tian-piston-secondary-motion-dry-model-2008](notes/bore-and-liner/mcclure-tian-piston-secondary-motion-dry-model-2008.md) |
+| Summary of Results of Development and Validation of Hot Honing System (McCormick & Meara S | read | [mccormick-hot-honing](notes/bore-and-liner/mccormick-hot-honing.md) |
+| Measuring Lubricant Films at the Piston-Cylinder Contact: An Overview (Mills et al. SAE 20 | read | [mills-avan-measuring-lubricant-films-overview](notes/bore-and-liner/mills-avan-measuring-lubricant-films-overview.md) |
+| Piezo-Electric Sensors to Monitor Lubricant Film Thickness at Piston-Cylinder Contacts in  | read | [mills-avan-piezo-sensors-fired-engine](notes/bore-and-liner/mills-avan-piezo-sensors-fired-engine.md) |
+| Ultrasound for the Non-Invasive Measurement of IC Engine Piston Skirt Lubricant Films (Mil | read | [mills-dwyer-joyce-skirt-film-2014](notes/bore-and-liner/mills-dwyer-joyce-skirt-film-2014.md) |
+| Cylinder Liner Bore Distortion Estimation During Assembly of Diesel Engine with FEA (Miraj | read | [mirajkar-kanase-chhapkhane-bore-distortion-ansys-2013](notes/bore-and-liner/mirajkar-kanase-chhapkhane-bore-distortion-ansys-2013.md) |
+| A Review of Piston Compression Ring Tribology (Mishra 2014) | read | [mishra-piston-compression-ring-tribology-review-2014](notes/bore-and-liner/mishra-piston-compression-ring-tribology-review-2014.md) |
+| Tribology of Compression Ring-to-Cylinder Contact at Reversal (Mishra et al. 2008) | read | [mishra-tribology-compression-ring-reversal](notes/bore-and-liner/mishra-tribology-compression-ring-reversal.md) |
+| Analysis of Parameters Affecting Liner Bore Distortion in DI Diesel Engines (Mohammed & Go | read | [mohammed-gokhale-liner-bore-distortion-params](notes/bore-and-liner/mohammed-gokhale-liner-bore-distortion-params.md) |
+| Surface and Tribological Characteristics of Tribofilms Formed in the Boundary Lubrication  | read | [morina-tribofilms-boundary-lubrication](notes/bore-and-liner/morina-tribofilms-boundary-lubrication.md) |
+| Effects of Lubricant Shear Thinning on Mixed Lubrication of Piston Skirt-Liner System (Nin | read | [ning-shear-thinning-piston-skirt](notes/bore-and-liner/ning-shear-thinning-piston-skirt.md) |
+| Effect of Piston Ring Geometries on Lubrication and Friction in Diesel Engine (Pachaiyappa | read | [pachaiyappan-ring-geometries-friction-2019](notes/bore-and-liner/pachaiyappan-ring-geometries-friction-2019.md) |
+| Use of Non Linear Analysis in Powertrain Design for Prediction of Cylinder Bore Distortion | read | [patwardhan-paranjpe-bore-distortion-arai-2015](notes/bore-and-liner/patwardhan-paranjpe-bore-distortion-arai-2015.md) |
+| The Effect of Cylinder Liner Operating Temperature on Frictional Loss and Engine Emissions | read | [rahmani-liner-temperature-friction](notes/bore-and-liner/rahmani-liner-temperature-friction.md) |
+| SAE J2904: Power Cylinder Friction Mechanisms (SAE Surface Vehicle Information Report) | read | [sae-j2904-power-cylinder-friction-mechanisms](notes/bore-and-liner/sae-j2904-power-cylinder-friction-mechanisms.md) |
+| Simulation of the Cylinder Bore Distortion and Effect on the Sealing Capacity of the Ringp | read | [selmani-delprete-bore-distortion-ringpack-blowby](notes/bore-and-liner/selmani-delprete-bore-distortion-ringpack-blowby.md) |
+| Engine Knock Toughness Improvement Through Water Jacket Optimization (Shih et al. SAE 2003 | read | [shih-engine-knock-water-jacket](notes/bore-and-liner/shih-engine-knock-water-jacket.md) |
+| Free Vibration of Circular Cylindrical Shells with Axially Varying Thickness (Sivadas & Ga | read | [sivadas-ganesan-variable-thickness-cylindrical-shells](notes/bore-and-liner/sivadas-ganesan-variable-thickness-cylindrical-shells.md) |
+| The Effect of Three-Dimensional Deformations of a Cylinder Liner on the Tribological Perfo | read | [soderfjall-3d-oil-control-ring-bore-distortion](notes/bore-and-liner/soderfjall-3d-oil-control-ring-bore-distortion.md) |
+| Analysis of Liner's Bore Distortion from FEM Calculations for a Metallic Gasket (Soua et a | read | [soua-touratier-polac-gasket-cylinder-distortion-1999](notes/bore-and-liner/soua-touratier-polac-gasket-cylinder-distortion-1999.md) |
+| High Strain Survivability of Piezoceramics by Optimal Bonding Adhesive Design (Sun et al.  | read | [sun-piezoceramic-strain-survivability](notes/bore-and-liner/sun-piezoceramic-strain-survivability.md) |
+| Analysis of Piston Secondary Motion (Tan & Ripin 2013) | read | [tan-ripin-piston-secondary-motion](notes/bore-and-liner/tan-ripin-piston-secondary-motion.md) |
+| Piston Ring Conformability Needs Considering Bore Distortion Harmonic Analysis (Tomanik SA | read | [tomanik-ring-conformability-criterion](notes/bore-and-liner/tomanik-ring-conformability-criterion.md) |
+| Free Vibration of Circular Cylinders of Variable Thickness (Tonin & Bies 1979) | read | [tonin-bies-variable-thickness-cylinders](notes/bore-and-liner/tonin-bies-variable-thickness-cylinders.md) |
+| Increase in Cylinder Bore Distortion Due to Head Gasket Installation and Its Treatment (Ud | read | [udagawa-ko-gasket-bore-distortion](notes/bore-and-liner/udagawa-ko-gasket-bore-distortion.md) |
+| Development of a Technique to Predict Oil Consumption with Consideration for Cylinder Defo | read | [yamada-oil-consumption-cylinder-deformation](notes/bore-and-liner/yamada-oil-consumption-cylinder-deformation.md) |
+| Distortion Optimization of Engine Cylinder Liner Using Spectrum Characterization and Param | read | [yang-li-yu-distortion-optimization-spectrum-2016](notes/bore-and-liner/yang-li-yu-distortion-optimization-spectrum-2016.md) |
+| Three-Dimensional Analysis of Tribological Performance and Heat Transfer in Piston and Cyl | read | [ye-xiaoming-3d-ring-liner-tribology-2003](notes/bore-and-liner/ye-xiaoming-3d-ring-liner-tribology-2003.md) |
+| Distortion Inside a Piston Bore — Ring Conformability Bounds Comparison (Bardzimashvili et | skipped-duplicate | [bardzimashvili-kelly-romelashvili-ring-conformability-bounds](notes/bore-and-liner/bardzimashvili-kelly-romelashvili-ring-conformability-bounds.md) |
+| Summary of Results of Development and Validation of Hot Honing System (McCormick & Meara S | skipped-duplicate | [mccormick-hot-honing](notes/bore-and-liner/mccormick-hot-honing.md) |
+| Cylinder Bore Distortion: A Look at Static and Dynamic Issues (Mavrigian 2010) — DUPLICATE | skipped-duplicate | [mavrigian-bore-distortion-static-dynamic-2010](notes/bore-and-liner/mavrigian-bore-distortion-static-dynamic-2010.md) |
+| Distortion Inside a Piston Bore — Ring Conformability Bounds Comparison (Bardzimashvili et | skipped-duplicate | [bardzimashvili-kelly-romelashvili-ring-conformability-bounds](notes/bore-and-liner/bardzimashvili-kelly-romelashvili-ring-conformability-bounds.md) |
+| Is it really the end of internal combustion engines and petroleum in transport? (Kalghatgi | skipped-out-of-scope | - |
 
 ## contact-study-using-us-waves
 
@@ -821,6 +996,146 @@ Merged from per-folder `_manifest.tsv` sidecars.
 | RSRUB(A).pdf | read | [rsrub-rubber-patch-rtd](notes/temperature-measurement-probes/rsrub-rubber-patch-rtd.md) |
 | DS_IN0017_en_co_20804.pdf | read | [wika-ds-in0017-platinum-rtd-tolerances](notes/temperature-measurement-probes/wika-ds-in0017-platinum-rtd-tolerances.md) |
 
+## transducers-and-piezoelectricity
+
+| title | status | note |
+|---|---|---|
+| High-Power Piezoelectric Transducer Design | partial | [abdullah-high-power-piezoelectric-transducer-2009](notes/transducers-and-piezoelectricity/abdullah-high-power-piezoelectric-transducer-2009.md) |
+| Broadband Air-Backed PVDF Sensor | partial | [ali-broadband-air-backed-sensor-2015](notes/transducers-and-piezoelectricity/ali-broadband-air-backed-sensor-2015.md) |
+| Enhanced KLM Model for Single-Fibre Piezocomposite | partial | [angerer-enhanced-klm-single-fibre-2020](notes/transducers-and-piezoelectricity/angerer-enhanced-klm-single-fibre-2020.md) |
+| Ultrasonic Velocity in Suspensions | partial | [anson-ultrasonic-velocity-suspensions-1993](notes/transducers-and-piezoelectricity/anson-ultrasonic-velocity-suspensions-1993.md) |
+| Electro-Optical Delay Line | partial | [arm-lambert-electro-optical-delay-line-1962](notes/transducers-and-piezoelectricity/arm-lambert-electro-optical-delay-line-1962.md) |
+| Ultra-Low Sound Speed in Porous Silicone Rubber | read | [ba-porous-silicone-ultra-low-sound-speed-2017](notes/transducers-and-piezoelectricity/ba-porous-silicone-ultra-low-sound-speed-2017.md) |
+| Water Absorption Effect on P(VDF-TrFE) Mechanical Properties | read | [bae-pvdf-tfe-water-absorption-2014](notes/transducers-and-piezoelectricity/bae-pvdf-tfe-water-absorption-2014.md) |
+| An Easily Constructed Broad Bandwidth Ultrasonic PVDF Probe | read | [bainton-hillier-silk-pvdf-probe-1981](notes/transducers-and-piezoelectricity/bainton-hillier-silk-pvdf-probe-1981.md) |
+| PVDF Sensor Classification Using d31/E1 | read | [baumgartel-pvdf-sensor-classification-2016](notes/transducers-and-piezoelectricity/baumgartel-pvdf-sensor-classification-2016.md) |
+| Theory of Elastic Waves in Fluid-Saturated Porous Solid — Low Frequency | read | [biot-porous-solid-low-frequency-1956](notes/transducers-and-piezoelectricity/biot-porous-solid-low-frequency-1956.md) |
+| Theory of Elastic Waves in Fluid-Saturated Porous Solid — High Frequency | read | [biot-porous-solid-high-frequency-1956](notes/transducers-and-piezoelectricity/biot-porous-solid-high-frequency-1956.md) |
+| CW Ultrasonic Measurement Systems | partial | [breeuwer-cw-ultrasonic-systems-2003](notes/transducers-and-piezoelectricity/breeuwer-cw-ultrasonic-systems-2003.md) |
+| PVDF Polymer Transducer Design | partial | [brown-pvdf-polymer-transducer-design-2000](notes/transducers-and-piezoelectricity/brown-pvdf-polymer-transducer-design-2000.md) |
+| PVDF Transducer Models | partial | [brown-pvdf-transducer-models-1989](notes/transducers-and-piezoelectricity/brown-pvdf-transducer-models-1989.md) |
+| Acoustic Characterisation as a Function of Temperature | partial | [cadot-acoustic-characterization-temperature-2016](notes/transducers-and-piezoelectricity/cadot-acoustic-characterization-temperature-2016.md) |
+| Polymer Acoustic Properties as a Function of Temperature | partial | [carlson-polymer-acoustic-properties-temperature-2003](notes/transducers-and-piezoelectricity/carlson-polymer-acoustic-properties-temperature-2003.md) |
+| KLM Model for Lossy Transducers | partial | [castillo-klm-lossy-transducers-2003](notes/transducers-and-piezoelectricity/castillo-klm-lossy-transducers-2003.md) |
+| Dynamic Tortuosity and Bulk Modulus in Air-Saturated Porous Media | read | [champoux-allard-dynamic-tortuosity-1991](notes/transducers-and-piezoelectricity/champoux-allard-dynamic-tortuosity-1991.md) |
+| PVDF in Industrial Applications | partial | [chen-payne-pvdf-industrial-applications-1995](notes/transducers-and-piezoelectricity/chen-payne-pvdf-industrial-applications-1995.md) |
+| Review of Air-Coupled Ultrasonic NDE | read | [chimenti-air-coupled-review-2014](notes/transducers-and-piezoelectricity/chimenti-air-coupled-review-2014.md) |
+| 1D Transducer Models | partial | [cochran-1d-transducer-models-2012](notes/transducers-and-piezoelectricity/cochran-1d-transducer-models-2012.md) |
+| Multisection Quarter-Wave Transformers | partial | [collin-multisection-quarter-wave-transformers-1955](notes/transducers-and-piezoelectricity/collin-multisection-quarter-wave-transformers-1955.md) |
+| Strathclyde Transducer Materials Database | partial | [cue-strathclyde-materials-database-2005](notes/transducers-and-piezoelectricity/cue-strathclyde-materials-database-2005.md) |
+| Fundamentals of Piezoelectricity — Appendix | partial | [dahiya-fundamentals-piezoelectricity-appendix-2013](notes/transducers-and-piezoelectricity/dahiya-fundamentals-piezoelectricity-appendix-2013.md) |
+| High-Temperature Piezoelectrics | partial | [damjanovic-high-temperature-piezoelectrics-1998](notes/transducers-and-piezoelectricity/damjanovic-high-temperature-piezoelectrics-1998.md) |
+| Design of Efficient Broadband Piezoelectric Transducers | read | [desilets-broadband-piezoelectric-transducer-design-1978](notes/transducers-and-piezoelectricity/desilets-broadband-piezoelectric-transducer-design-1978.md) |
+| Broadband Ultrasonic Spectroscopy of Liquids | partial | [eggers-kaatze-broadband-ultrasonic-liquids-1996](notes/transducers-and-piezoelectricity/eggers-kaatze-broadband-ultrasonic-liquids-1996.md) |
+| PVDF Thickness-Mode Transducer for Underwater Sensor Networks | read | [eovino-pvdf-acoustic-transducer-uwsn-2015](notes/transducers-and-piezoelectricity/eovino-pvdf-acoustic-transducer-uwsn-2015.md) |
+| Development of Piezoelectric and Electrodynamic Flexural Transducers for Air-Coupled Ultra | read | [eriksson-flexural-transducers-thesis-2016](notes/transducers-and-piezoelectricity/eriksson-flexural-transducers-thesis-2016.md) |
+| High-Frequency Air-Coupled Ultrasonic Measurements | read | [fox-high-frequency-air-measurements-1983](notes/transducers-and-piezoelectricity/fox-high-frequency-air-measurements-1983.md) |
+| Tungsten-Epoxy Composite Backings for Transducers | partial | [franco-tungsten-composite-backings-2005](notes/transducers-and-piezoelectricity/franco-tungsten-composite-backings-2005.md) |
+| Ultrasonic Intensity Gain by Composite Transducers | read | [fry-dunn-composite-transducers-1962](notes/transducers-and-piezoelectricity/fry-dunn-composite-transducers-1962.md) |
+| Low-Cost Electrical Matching Networks for Piezoelectric Transducers | partial | [garcia-rodriguez-low-cost-matching-network-2010](notes/transducers-and-piezoelectricity/garcia-rodriguez-low-cost-matching-network-2010.md) |
+| Acoustic Properties of Aqualene/ACE Reference Materials | partial | [ginzel-aqualene-ace-acoustic-properties-2015](notes/transducers-and-piezoelectricity/ginzel-aqualene-ace-acoustic-properties-2015.md) |
+| Low-Impedance and Low-Loss Customised Materials for Air-Coupled Transducers | partial | [gomez-low-impedance-matching-materials-2001](notes/transducers-and-piezoelectricity/gomez-low-impedance-matching-materials-2001.md) |
+| Acoustic Impedance Matching of Piezoelectric Transducers to the Air | read | [gomez-air-impedance-matching-2004](notes/transducers-and-piezoelectricity/gomez-air-impedance-matching-2004.md) |
+| Materials and Techniques for Optimal Mechanical Matching of Piezoceramics in Air | read | [gomez-porous-materials-air-matching-2003](notes/transducers-and-piezoelectricity/gomez-porous-materials-air-matching-2003.md) |
+| Novel Impedance Matching Materials and Strategies for Air-Coupled Piezoelectric Transducer | read | [gomez-novel-impedance-matching-materials-2013](notes/transducers-and-piezoelectricity/gomez-novel-impedance-matching-materials-2013.md) |
+| Air-Coupled Transducers Based on 1-3 Single Crystal Composites | partial | [gomez-single-crystal-1-3-composites-2012](notes/transducers-and-piezoelectricity/gomez-single-crystal-1-3-composites-2012.md) |
+| Particle-Polymer Composite Backings for Transducers | partial | [grewe-particle-polymer-backing-composites-1990](notes/transducers-and-piezoelectricity/grewe-particle-polymer-backing-composites-1990.md) |
+| Influence of Multilayer Acoustic Systems on Transfer Function of Airborne Transducers | read | [gudra-multilayer-transfer-function-2002](notes/transducers-and-piezoelectricity/gudra-multilayer-transfer-function-2002.md) |
+| Methods for Selecting Multicomponent Layers for Acoustic Impedance Matching | read | [gudra-banasiak-selecting-matching-layers-2018](notes/transducers-and-piezoelectricity/gudra-banasiak-selecting-matching-layers-2018.md) |
+| PZT Rod-Polymer Piezocomposites | partial | [gururaja-pzt-rod-polymer-composites-1985](notes/transducers-and-piezoelectricity/gururaja-pzt-rod-polymer-composites-1985.md) |
+| Micromachined 1-3 Composites for Air-Coupled Transducers | read | [haller-micromachined-1-3-composites-1994](notes/transducers-and-piezoelectricity/haller-micromachined-1-3-composites-1994.md) |
+| Ultrasonic Sensors for Process Monitoring | partial | [hauptmann-ultrasonic-sensors-process-2002](notes/transducers-and-piezoelectricity/hauptmann-ultrasonic-sensors-process-2002.md) |
+| Evaluation of 1-3 Composite Transducers for Air-Coupled Ultrasound | read | [hayward-1-3-composites-air-coupled-1996](notes/transducers-and-piezoelectricity/hayward-1-3-composites-air-coupled-1996.md) |
+| Thickness-Mode Transducer Model | partial | [hayward-thickness-mode-transducer-model-1984](notes/transducers-and-piezoelectricity/hayward-thickness-mode-transducer-model-1984.md) |
+| Complex Elastic Coefficients and Acoustic Loss | partial | [holland-complex-coefficient-losses-1967](notes/transducers-and-piezoelectricity/holland-complex-coefficient-losses-1967.md) |
+| Time Delay in Electrical Wave Propagation | partial | [howard-time-delay-electrical-waves-1962](notes/transducers-and-piezoelectricity/howard-time-delay-electrical-waves-1962.md) |
+| Design of Multiple Matching Layers for Broadband Transducers | partial | [inoue-multiple-matching-layers-1987](notes/transducers-and-piezoelectricity/inoue-multiple-matching-layers-1987.md) |
+| Microelectronics Integration on Ultrasonic Transducer | partial | [johansson-microelectronics-on-transducer-2005](notes/transducers-and-piezoelectricity/johansson-microelectronics-on-transducer-2005.md) |
+| Review of Piezoelectric Micromachined Ultrasonic Transducers and Their Applications | read | [jung-pmut-review-2017](notes/transducers-and-piezoelectricity/jung-pmut-review-2017.md) |
+| KLM-Based Design for Ultrasonic Power Transfer | partial | [kar-klm-ultrasonic-power-transfer-2020](notes/transducers-and-piezoelectricity/kar-klm-ultrasonic-power-transfer-2020.md) |
+| Broadband Omnidirectional Ultrasonic Transducer | partial | [keitmann-broadband-omni-transducer-2005](notes/transducers-and-piezoelectricity/keitmann-broadband-omni-transducer-2005.md) |
+| Air-Coupled Matching Layer Using Half-Wavelength Cavity Resonance | read | [kelly-hayward-gomez-half-wavelength-cavity-2001](notes/transducers-and-piezoelectricity/kelly-hayward-gomez-half-wavelength-cavity-2001.md) |
+| Characterisation of Integrated Matching Layer for Air-Coupled Ultrasonic Applications | read | [kelly-hayward-gomez-integrated-matching-2004](notes/transducers-and-piezoelectricity/kelly-hayward-gomez-integrated-matching-2004.md) |
+| A New Design for Air Transducers | read | [khuri-yakub-new-design-air-transducers-1988](notes/transducers-and-piezoelectricity/khuri-yakub-new-design-air-transducers-1988.md) |
+| Electrical Tuning of Piezoelectric Transducers | partial | [kim-electrical-tuning-transducer-2020](notes/transducers-and-piezoelectricity/kim-electrical-tuning-transducer-2020.md) |
+| KLM Model for Through-Transmission Mode | partial | [kim-klm-through-transmission-2019](notes/transducers-and-piezoelectricity/kim-klm-through-transmission-2019.md) |
+| Influence of Particle Resonance on Wave Propagation in a Particulate Composite | partial | [kinra-particle-resonance-composite-1982](notes/transducers-and-piezoelectricity/kinra-particle-resonance-composite-1982.md) |
+| Acoustic Loss Models | partial | [knopoff-acoustic-loss-models-1960](notes/transducers-and-piezoelectricity/knopoff-acoustic-loss-models-1960.md) |
+| Aerogel Matching Layer for Air-Coupled Ultrasonic Tactile Display | read | [korres-aerogel-matching-layer-2013](notes/transducers-and-piezoelectricity/korres-aerogel-matching-layer-2013.md) |
+| Effect of Backing and Matching on Performance of Piezoelectric Transducers | read | [kossoff-backing-matching-piezoelectric-1966](notes/transducers-and-piezoelectricity/kossoff-backing-matching-piezoelectric-1966.md) |
+| New Equivalent Circuits for Elementary Piezoelectric Transducers (KLM) | read | [krimholtz-klm-equivalent-circuits-1970](notes/transducers-and-piezoelectricity/krimholtz-klm-equivalent-circuits-1970.md) |
+| About the Transition Frequency in Biot's Theory | read | [kurzeja-steeb-biot-transition-frequency-2012](notes/transducers-and-piezoelectricity/kurzeja-steeb-biot-transition-frequency-2012.md) |
+| Review of Piezoelectric Materials for Transducers | partial | [levassort-piezoelectric-materials-review](notes/transducers-and-piezoelectricity/levassort-piezoelectric-materials-review.md) |
+| Acoustic Metamaterial Matching Layer for Broadband Transducers | read | [li-acoustic-metamaterial-matching-layer-2017](notes/transducers-and-piezoelectricity/li-acoustic-metamaterial-matching-layer-2017.md) |
+| Thickness-Mode Material Constants of a Contoured PZT Disk | partial | [lukacs-thickness-mode-material-constants-1999](notes/transducers-and-piezoelectricity/lukacs-thickness-mode-material-constants-1999.md) |
+| Solid-to-Gas Acoustic Coupling | partial | [lynnworth-solid-to-gas-matching-1965](notes/transducers-and-piezoelectricity/lynnworth-solid-to-gas-matching-1965.md) |
+| Acoustic Metamaterials — From Locally Resonant to Broadband Wave Manipulation | read | [ma-sheng-acoustic-metamaterials-review-2016](notes/transducers-and-piezoelectricity/ma-sheng-acoustic-metamaterials-review-2016.md) |
+| Equivalent Circuit Optimization for Piezoelectric Transducers | partial | [mao-equivalent-circuit-optimization-2018](notes/transducers-and-piezoelectricity/mao-equivalent-circuit-optimization-2018.md) |
+| Acoustic Properties of Polyurethane Materials | partial | [mott-polyurethane-acoustic-properties-2002](notes/transducers-and-piezoelectricity/mott-polyurethane-acoustic-properties-2002.md) |
+| Ultrasonic Transducers: Materials and Design for Sensors, Actuators and Medical Applicatio | partial | [nakamura-ultrasonic-transducers-textbook-2012](notes/transducers-and-piezoelectricity/nakamura-ultrasonic-transducers-textbook-2012.md) |
+| Acoustic Impedance of Polyurea Composites | partial | [nantasetphong-polyurea-composites-acoustic-impedance-2013](notes/transducers-and-piezoelectricity/nantasetphong-polyurea-composites-acoustic-impedance-2013.md) |
+| Mechanical Properties of Epoxy-Marble Waste Composites | read | [oral-epoxy-marble-waste-composites-2015](notes/transducers-and-piezoelectricity/oral-epoxy-marble-waste-composites-2015.md) |
+| Numerical Characterisation of Piezoceramics Using Resonance and Antiresonance | partial | [perez-numerical-characterization-piezoceramic-2016](notes/transducers-and-piezoelectricity/perez-numerical-characterization-piezoceramic-2016.md) |
+| Piezoelectric Terminology and Glossary | reference | [piezo-com-terminology-glossary](notes/transducers-and-piezoelectricity/piezo-com-terminology-glossary.md) |
+| PZT Material Selection Guide | reference | [pzt-selection-guide](notes/transducers-and-piezoelectricity/pzt-selection-guide.md) |
+| Additive Manufacture of Impedance Matching Layers for Air-Coupled Ultrasonic Transducers | read | [ramadas-additive-manufacture-matching-layers-2015](notes/transducers-and-piezoelectricity/ramadas-additive-manufacture-matching-layers-2015.md) |
+| Speed of Sound in Porous Media | read | [ramakrishnan-speed-sound-porous-1994](notes/transducers-and-piezoelectricity/ramakrishnan-speed-sound-porous-1994.md) |
+| Selective Damping and Frequency Tuning in Transducers | partial | [ramos-selective-damping-tuning-2000](notes/transducers-and-piezoelectricity/ramos-selective-damping-tuning-2000.md) |
+| Review of Acoustic Impedance Matching Techniques for Transducers | read | [rathod-impedance-matching-review-2020](notes/transducers-and-piezoelectricity/rathod-impedance-matching-review-2020.md) |
+| Broadband Coupling in Ultrasonic Transducers | partial | [reeder-broadband-coupling-1972](notes/transducers-and-piezoelectricity/reeder-broadband-coupling-1972.md) |
+| Through-Air Transmission for Ultrasonic NDE | read | [reilly-through-air-transmission-1991](notes/transducers-and-piezoelectricity/reilly-through-air-transmission-1991.md) |
+| Wedge Air-Coupled Transducer for Lamb Wave Inspection | partial | [remillieux-wedge-air-coupled-transducer-2014](notes/transducers-and-piezoelectricity/remillieux-wedge-air-coupled-transducer-2014.md) |
+| Mechanical Properties of Polyester-Fly Ash Composites | read | [rohatgi-polyester-fly-ash-composites-2009](notes/transducers-and-piezoelectricity/rohatgi-polyester-fly-ash-composites-2009.md) |
+| Genetic Algorithm for Matching Layer Design | partial | [saffar-abdullah-genetic-algorithm-matching-layers-2012](notes/transducers-and-piezoelectricity/saffar-abdullah-genetic-algorithm-matching-layers-2012.md) |
+| Transducer Models for Ultrasonic Applications | partial | [san-emeterio-ramos-transducer-models-2004](notes/transducers-and-piezoelectricity/san-emeterio-ramos-transducer-models-2004.md) |
+| Ultrasound in Porous Media | read | [sayers-porous-media-ultrasound-1982](notes/transducers-and-piezoelectricity/sayers-porous-media-ultrasound-1982.md) |
+| Transducer Backing Materials | partial | [sayers-transducer-backings-1984](notes/transducers-and-piezoelectricity/sayers-transducer-backings-1984.md) |
+| Ultrasound in Concentrated Mixtures | partial | [sayers-ultrasound-concentrated-mixtures-1980](notes/transducers-and-piezoelectricity/sayers-ultrasound-concentrated-mixtures-1980.md) |
+| Micromachined Capacitance Transducers for Air-Coupled Ultrasound | read | [schindel-micromachined-capacitance-transducers-1995](notes/transducers-and-piezoelectricity/schindel-micromachined-capacitance-transducers-1995.md) |
+| Coupling Coefficients in the Time Domain | partial | [seitchik-coupling-coefficients-time-domain-1972](notes/transducers-and-piezoelectricity/seitchik-coupling-coefficients-time-domain-1972.md) |
+| Porosity and Sound Velocity Relationship in Porous Materials | read | [sekoyan-porosity-sound-velocity-2009](notes/transducers-and-piezoelectricity/sekoyan-porosity-sound-velocity-2009.md) |
+| Approximate Material Properties in Isotropic Materials | read | [selfridge-material-properties-1985](notes/transducers-and-piezoelectricity/selfridge-material-properties-1985.md) |
+| Coupling Constant of a Bimorph Piezoelectric Actuator | partial | [sherrit-bimorph-coupling-constant-1999](notes/transducers-and-piezoelectricity/sherrit-bimorph-coupling-constant-1999.md) |
+| Characterisation of Piezoelectric Transducers | partial | [sherrit-characterization-piezoelectric-transducers-2007](notes/transducers-and-piezoelectricity/sherrit-characterization-piezoelectric-transducers-2007.md) |
+| Complete Characterisation of Motorola PZT | partial | [sherrit-complete-characterization-motorola-pzt-1997](notes/transducers-and-piezoelectricity/sherrit-complete-characterization-motorola-pzt-1997.md) |
+| Complete Matrix for 1-3 Piezocomposites | partial | [sherrit-complete-matrix-1-3-piezocomposites-1997](notes/transducers-and-piezoelectricity/sherrit-complete-matrix-1-3-piezocomposites-1997.md) |
+| Complex Material Constants of Piezoelectric Resonators | partial | [sherrit-complex-material-constants-1998](notes/transducers-and-piezoelectricity/sherrit-complex-material-constants-1998.md) |
+| Electrostrictive Ceramics Characterisation | partial | [sherrit-electrostrictive-ceramics-1998](notes/transducers-and-piezoelectricity/sherrit-electrostrictive-ceramics-1998.md) |
+| Equivalent Circuit for Thickness-Mode Piezoelectric Transducer | partial | [sherrit-equivalent-circuit-thickness-mode-1997](notes/transducers-and-piezoelectricity/sherrit-equivalent-circuit-thickness-mode-1997.md) |
+| High-Drive Characterisation of Piezoelectric Transducers | partial | [sherrit-high-drive-characterization-2001](notes/transducers-and-piezoelectricity/sherrit-high-drive-characterization-2001.md) |
+| k13 Coupling Constant Measurement | partial | [sherrit-k13-coupling-constant-1997](notes/transducers-and-piezoelectricity/sherrit-k13-coupling-constant-1997.md) |
+| Comparison of Mason and KLM Equivalent Circuit Models | read | [sherrit-mason-vs-klm-1999](notes/transducers-and-piezoelectricity/sherrit-mason-vs-klm-1999.md) |
+| Radial Mode Material Constants for Piezoelectric Discs | partial | [sherrit-radial-mode-material-constants-1991](notes/transducers-and-piezoelectricity/sherrit-radial-mode-material-constants-1991.md) |
+| Reduced Matrix Determination for Piezoelectric Constants | partial | [sherrit-reduced-matrix-determination-2011](notes/transducers-and-piezoelectricity/sherrit-reduced-matrix-determination-2011.md) |
+| Stack Impedance Analysis for Multilayer Transducers | partial | [sherrit-stack-impedance-analysis-2000](notes/transducers-and-piezoelectricity/sherrit-stack-impedance-analysis-2000.md) |
+| Innovations in Piezoelectric Materials for Ultrasound Transducers | partial | [shrout-piezoelectric-innovations-2008](notes/transducers-and-piezoelectricity/shrout-piezoelectric-innovations-2008.md) |
+| Extended Transducer Model for Broadband NDE | partial | [silk-extended-transducer-model-1983](notes/transducers-and-piezoelectricity/silk-extended-transducer-model-1983.md) |
+| Design of Ultrasonic Delay Lines | partial | [sittig-ultrasonic-delay-line-design-1968](notes/transducers-and-piezoelectricity/sittig-ultrasonic-delay-line-design-1968.md) |
+| Iterative Method for Piezoelectric Constants Determination | partial | [smits-iterative-piezoelectric-constants-1976](notes/transducers-and-piezoelectricity/smits-iterative-piezoelectric-constants-1976.md) |
+| Mechanical Four-Pole Parameters for Vibration Isolation | partial | [snowdon-mechanical-four-pole-parameters-1971](notes/transducers-and-piezoelectricity/snowdon-mechanical-four-pole-parameters-1971.md) |
+| Tailoring Sonar Transducer Response Using Matching Layers | partial | [steel-sonar-transducer-tailoring-1986](notes/transducers-and-piezoelectricity/steel-sonar-transducer-tailoring-1986.md) |
+| Ferroelectric Hysteresis Measurement | partial | [stewart-cain-ferroelectric-hysteresis-1999](notes/transducers-and-piezoelectricity/stewart-cain-ferroelectric-hysteresis-1999.md) |
+| PVDF Amplitude and Phase Imaging in Air at 2 MHz | read | [takahashi-pvdf-air-imaging-phase-2008](notes/transducers-and-piezoelectricity/takahashi-pvdf-air-imaging-phase-2008.md) |
+| P(VDF/TrFE) Air-Coupled Imaging at 2 MHz | read | [takahashi-pvdf-tfe-air-imaging-2009](notes/transducers-and-piezoelectricity/takahashi-pvdf-tfe-air-imaging-2009.md) |
+| Solution-Cast P(VDF/TrFE) Transducers for MHz Air Ultrasound | read | [takahashi-pvdf-tfe-casting-air-transducer-2012](notes/transducers-and-piezoelectricity/takahashi-pvdf-tfe-casting-air-transducer-2012.md) |
+| Resonance Frequency Stabilization in Piezoelectric Transducers | partial | [takahashi-resonance-frequency-stabilization-1974](notes/transducers-and-piezoelectricity/takahashi-resonance-frequency-stabilization-1974.md) |
+| Elastic Properties of Sn-Based Pb-Free Solders | read | [tanaka-sn-pb-free-solder-elastic-2005](notes/transducers-and-piezoelectricity/tanaka-sn-pb-free-solder-elastic-2005.md) |
+| New Approach for Air-Coupled Ultrasonic Transducers Using Corrugated PVDF Film | read | [toda-dahl-pvdf-corrugated-ranging-2007](notes/transducers-and-piezoelectricity/toda-dahl-pvdf-corrugated-ranging-2007.md) |
+| Impedance Conversion Characteristics of Vibrating Plate Matching Layer | read | [toda-impedance-conversion-matching-layer-2015](notes/transducers-and-piezoelectricity/toda-impedance-conversion-matching-layer-2015.md) |
+| A New Type of Matching Layer for Air-Coupled Ultrasonic Transducers | read | [toda-new-type-matching-layer-2002](notes/transducers-and-piezoelectricity/toda-new-type-matching-layer-2002.md) |
+| Polymer-Metal Composite Matching Layers for Air-Coupled Transducers | read | [toda-thompson-polymer-metal-matching-2012](notes/transducers-and-piezoelectricity/toda-thompson-polymer-metal-matching-2012.md) |
+| High-Frequency Air Transducer with Double Matching Layers | read | [tone-high-frequency-air-transducer-1984](notes/transducers-and-piezoelectricity/tone-high-frequency-air-transducer-1984.md) |
+| Photo-Cured Epoxy Matching Layers for Ultrasonic Transducers | partial | [troge-photocured-epoxy-matching-layer-2010](notes/transducers-and-piezoelectricity/troge-photocured-epoxy-matching-layer-2010.md) |
+| Loss Mechanisms in Piezoelectrics | partial | [uchino-loss-mechanisms-piezoelectrics-2001](notes/transducers-and-piezoelectricity/uchino-loss-mechanisms-piezoelectrics-2001.md) |
+| Optimum Transducer Design for Medical Imaging | read | [van-kervel-thijssen-optimum-transducer-design-1983](notes/transducers-and-piezoelectricity/van-kervel-thijssen-optimum-transducer-design-1983.md) |
+| Hollow Glass Microsphere Epoxy Composite as Matching Layer for Air-Coupled Transducers | read | [wu-hollow-glass-microspheres-epoxy-2016](notes/transducers-and-piezoelectricity/wu-hollow-glass-microspheres-epoxy-2016.md) |
+| Range Finding and Surface Characterisation Using High-Frequency Air Transducers | read | [yano-range-finding-air-transducers-1987](notes/transducers-and-piezoelectricity/yano-range-finding-air-transducers-1987.md) |
+| Scattering of a Plane Longitudinal Wave by a Spherical Obstacle | partial | [ying-truell-scattering-spherical-obstacle-1956](notes/transducers-and-piezoelectricity/ying-truell-scattering-spherical-obstacle-1956.md) |
+| Single-Fibre Piezocomposite Transducer | partial | [zapf-single-fibre-piezocomposite-2018](notes/transducers-and-piezoelectricity/zapf-single-fibre-piezocomposite-2018.md) |
+| Wideband and Efficient Polymer Transducers Using Multiple Active PVDF Films (SBCT) | read | [zhang-lewin-pvdf-multilayer-wideband-1993](notes/transducers-and-piezoelectricity/zhang-lewin-pvdf-multilayer-wideband-1993.md) |
+| PVDF Transducers — Performance Comparison of Single and Multilayer Structures | read | [zhang-pvdf-multilayer-comparison-1997](notes/transducers-and-piezoelectricity/zhang-pvdf-multilayer-comparison-1997.md) |
+| Enhanced Bandwidth PVDF Transducers with Switchable Barker Code Design | read | [zhang-lewin-pvdf-enhanced-bandwidth-1995](notes/transducers-and-piezoelectricity/zhang-lewin-pvdf-enhanced-bandwidth-1995.md) |
+
 ## wear-measurement
 
 | title | status | note |
@@ -833,4 +1148,4 @@ Merged from per-folder `_manifest.tsv` sidecars.
 | Ultrasonic measurement of wear.pdf | skipped-duplicate | [birring-kwun-ultrasonic-wear](notes/wear-measurement/birring-kwun-ultrasonic-wear.md) |
 
 ---
-**645 files inventoried.** Status counts: read: 324, partial: 151, skipped-duplicate: 88, unreadable: 57, collection: 13, readable: 6, -: 6
+**945 files inventoried.** Status counts: read: 526, partial: 241, skipped-duplicate: 93, unreadable: 57, collection: 13, readable: 6, -: 6, reference: 2, skipped-out-of-scope: 1

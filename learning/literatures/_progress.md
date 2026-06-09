@@ -40,11 +40,8 @@
 - speed-of-sound (1 doc)
 - wear-measurement (6 files, 5 notes, 1 duplicate)
 
-## in flight (final stragglers — notes already landing incrementally)
-- bore-and-liner (most notes committed)
-- airborne-ultrasonics (most notes committed)
-- transducers-and-piezoelectricity (most notes committed)
-- verification agent (adversarial claim-check of concepts/)
+## in flight
+(none — all agents complete 2026-06-09)
 
 ## queued (none — all dispatched)
 ### moved to in flight:
