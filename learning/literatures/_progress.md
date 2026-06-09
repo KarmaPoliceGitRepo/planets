@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- contact-study-using-us-waves (9 docs: 8 full, 1 partial thesis)
 - signal-processing (83 files -> 35 notes: 23 full, 10 partial, 4 unreadable, 30 dups/chapters)
 - design-engineering (2 files: 1 partial, 1 unreadable 61MB scan)
 - maths (48 docs -> 35 notes: 12 full, 22 partial, 2 unreadable, 3 duplicates)
@@ -26,7 +27,6 @@
 ## in flight
 - bore-and-liner
 - data-sheets
-- contact-study-using-us-waves
 - airborne-ultrasonics
 - effect-of-stress
 - effect-of-temperature
@@ -34,7 +34,8 @@
 - 00-general-acoustics
 - transducers-and-piezoelectricity
 
-## queued
+## queued (none — all dispatched)
+### moved to in flight:
 - adhesive-layer
 - 000000-read-papers-with-notes
 - 00000-how2research
