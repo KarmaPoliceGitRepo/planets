@@ -1,6 +1,8 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- grinding (6 files: 4 full, 1 partial Shaw book, 1 duplicate)
+- personal-communications (11 files: 6 full, 3 partial theses, 2 unreadable; Sheffield Dwyer-Joyce lab cluster)
 - matlab-and-labview (2 LabVIEW books, both partial)
 - programming (15 files: 8 partial book notes, 7 unreadable epub/zip)
 - standards (14 files: 10 full, 3 partial, 1 duplicate)
@@ -13,10 +15,10 @@
 - wear-measurement (6 files, 5 notes, 1 duplicate)
 
 ## in flight
+- laser-induced
+- lubrication-film
 - focusing-ultrasonic-waves
-- grinding
 - maths
-- personal-communications
 - microstructure
 - 00-general-acoustics
 - transducers-and-piezoelectricity
@@ -24,8 +26,6 @@
 - signal-processing
 
 ## queued
-- laser-induced
-- lubrication-film
 - effect-of-temperature
 - honing
 - effect-of-stress
