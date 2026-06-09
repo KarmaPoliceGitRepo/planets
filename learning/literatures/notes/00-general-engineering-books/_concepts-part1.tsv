@@ -1,0 +1,43 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+spark-ignition engine	SI engine, gasoline engine, petrol engine	Internal combustion engine where the fuel-air mixture is ignited by an electric spark plug	internal-combustion-engine-heywood
+compression-ignition engine	CI engine, diesel engine	Internal combustion engine where combustion is initiated by heat from compressing the intake air alone	internal-combustion-engine-heywood
+mean effective pressure	BMEP, IMEP, MEP	Net work per cycle divided by the swept volume; a normalised measure of engine torque independent of size	internal-combustion-engine-heywood
+volumetric efficiency	breathing efficiency	Ratio of the actual mass of air inducted per cycle to the mass that would fill the swept volume at ambient conditions	internal-combustion-engine-heywood
+brake specific fuel consumption	BSFC, fuel economy	Mass of fuel consumed per unit of brake work output; the primary metric of engine fuel efficiency	internal-combustion-engine-heywood
+equivalence ratio	phi, lambda, air-fuel ratio	Ratio of stoichiometric AFR to actual AFR (phi=1 is stoichiometric; phi<1 lean, phi>1 rich)	internal-combustion-engine-heywood
+knock	detonation, autoignition	Spontaneous ignition of the end-gas ahead of the SI engine flame front, producing pressure waves and potential engine damage	internal-combustion-engine-heywood
+turbocharging	forced induction, boost	Use of exhaust-gas-driven turbine to drive a compressor that increases intake air density above ambient	internal-combustion-engine-heywood
+NOx emissions	nitrogen oxides, Zeldovich mechanism	Thermally formed pollutants (NO, NO2) produced at high combustion temperatures via the Zeldovich chain reactions	internal-combustion-engine-heywood
+Otto cycle	constant-volume cycle	Ideal thermodynamic cycle for SI engines: isentropic compression, constant-volume heat addition, isentropic expansion, constant-volume heat rejection	internal-combustion-engine-heywood
+Neumann principle	crystal symmetry constraint	The symmetry of any physical property of a crystal cannot be lower than the symmetry of the crystal's point group	crystals-symmetries-ferraris
+tensor	rank, components	Mathematical object relating physical cause and effect vectors; rank-n tensor has 3^n components in 3D, reduced by symmetry	crystals-symmetries-ferraris
+piezoelectricity	piezoelectric effect, d-tensor	Generation of electric polarisation by applied mechanical stress in non-centrosymmetric crystals; governed by a third-rank tensor	crystals-symmetries-ferraris
+pyroelectricity	spontaneous polarisation	Temperature-dependent spontaneous electric polarisation in polar crystals; described by a first-rank (vector) tensor	crystals-symmetries-ferraris
+compliance tensor	elastic compliance, s_ijhk	Fourth-rank tensor relating strain to stress; 21 independent components for triclinic, 3 for cubic crystals	crystals-symmetries-ferraris
+crystal point group	point symmetry, crystallographic symmetry	Set of symmetry operations (rotations, reflections, inversions) that leave at least one point of the crystal fixed; 32 point groups in 3D	crystals-symmetries-ferraris
+anisotropy	directional dependence	Variation of a material property with direction; contrasts with isotropy (property same in all directions)	crystals-symmetries-ferraris
+axial vector	pseudovector	Vector whose sign depends on the handedness of the coordinate system (e.g. angular velocity); compatible with centrosymmetric point groups	crystals-symmetries-ferraris
+Ohm's law	V=IR	Linear relationship between voltage across and current through a resistor: V = IR	practical-electronics-for-inventors-scherz
+impedance	complex resistance, Z	Complex-valued generalisation of resistance for AC circuits, incorporating resistive and reactive components: Z = R + jX	practical-electronics-for-inventors-scherz
+operational amplifier	op-amp	High-gain differential voltage amplifier IC used with external feedback networks to implement analogue signal-processing functions	practical-electronics-for-inventors-scherz
+MOSFET	field-effect transistor, FET	Voltage-controlled transistor where gate voltage modulates a conducting channel; dominant in digital ICs due to very low static power	practical-electronics-for-inventors-scherz
+BJT	bipolar junction transistor, NPN, PNP	Current-controlled transistor with emitter, base, collector terminals; collector current ≈ β × base current	practical-electronics-for-inventors-scherz
+thyristor	SCR, silicon-controlled rectifier, triac	Latching semiconductor switch triggered by a gate pulse and extinguished only by reducing current below holding current	practical-electronics-for-inventors-scherz
+RC time constant	tau, charging time	Product RC giving the characteristic time for exponential charge/discharge of a capacitor through a resistor	practical-electronics-for-inventors-scherz
+Kirchhoff's laws	KVL, KCL	KVL: sum of voltages around any closed loop = 0; KCL: sum of currents at any node = 0	practical-electronics-for-inventors-scherz
+negative feedback	closed-loop control	Feeding a portion of the output back to the inverting input of an amplifier to stabilise gain and reduce distortion	practical-electronics-for-inventors-scherz
+resonance	LC resonance, resonant frequency	Frequency at which inductive and capacitive reactances cancel, giving maximum (series) or minimum (parallel) impedance	practical-electronics-for-inventors-scherz
+stress	normal stress, shear stress	Force per unit area acting on a cross-section; normal stress perpendicular, shear stress parallel to the surface	intro-mechanical-engineering-part1-clifford
+strain	deformation, elongation	Dimensionless measure of deformation: change in length divided by original length (normal strain) or angular change (shear strain)	intro-mechanical-engineering-part1-clifford
+Young's modulus	elastic modulus, E	Ratio of normal stress to normal strain in the elastic region; measure of material stiffness	intro-mechanical-engineering-part1-clifford
+second moment of area	moment of inertia of area, I	Geometric property of a cross-section governing bending stiffness; I = ∫y² dA	intro-mechanical-engineering-part1-clifford
+bending stress	flexural stress	Normal stress in a beam cross-section due to bending moment: σ = My/I	intro-mechanical-engineering-part1-clifford
+Mohr's circle	principal stress	Graphical method for finding principal stresses and maximum shear stress from a known 2D stress state	intro-mechanical-engineering-part1-clifford
+torsion	twisting, torque	Twisting of a shaft by an applied torque; shear stress τ = Tr/J, where J is the polar second moment of area	intro-mechanical-engineering-part1-clifford
+Bernoulli's equation	Bernoulli principle	Conservation of energy for ideal incompressible flow: p + ½ρv² + ρgh = constant along a streamline	intro-mechanical-engineering-part1-clifford
+Reynolds number	Re	Dimensionless ratio of inertial to viscous forces in a flow: Re = ρvL/μ; governs laminar vs. turbulent transition	intro-mechanical-engineering-part1-clifford
+first law of thermodynamics	energy conservation	Energy is conserved: change in internal energy = heat added minus work done by the system	intro-mechanical-engineering-part1-clifford
+second law of thermodynamics	entropy, Carnot efficiency	Entropy of an isolated system cannot decrease; sets an upper limit on heat engine efficiency	intro-mechanical-engineering-part1-clifford
+Carnot efficiency	ideal heat engine efficiency	Maximum possible efficiency of a heat engine: η = 1 − T_cold/T_hot	intro-mechanical-engineering-part1-clifford
+moment of inertia	mass moment of inertia, I	Measure of a body's resistance to angular acceleration: I = ∫r² dm	intro-mechanical-engineering-part1-clifford
+gear ratio	transmission ratio	Ratio of output to input angular velocity in a geared system; determines torque multiplication and speed reduction	intro-mechanical-engineering-part1-clifford
