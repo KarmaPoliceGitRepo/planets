@@ -14,6 +14,6 @@
 **Discussed in:**
 - [Kim 2008 — Mode-Converted Bolt](../notes/effect-of-stress/kim-2008-mode-converted-bolt.md) — L→T→L mode-converted echo used for bolt stress measurement without length ambiguity
 - [Xu & Ding 2014 — Bolt EMAT](../notes/effect-of-stress/xu-ding-2014-bolt-emat.md) — EMAT generation of mode-converted signal for bolt tension monitoring
-- [Mode Conversion — Grain Scattering (microstructure)](../notes/microstructure/kube-turner-2016-scattering.md) — L→T mode conversion at grain boundaries contributes to ultrasonic attenuation
+- [Mode Conversion — Grain Scattering (microstructure)](../notes/effect-of-stress/kube-turner-2016-scattering.md) — L→T mode conversion at grain boundaries contributes to ultrasonic attenuation
 - [Mode Conversion — SAW to Lamb (surface-acoustic-wave)](../notes/surface-acoustic-wave/rayleigh-wave-reflection-transmission-wedge-krylov-1985.md) — SAW to bulk wave mode conversion at a wedge
 - [Non-Contact Ultrasonic Techniques (Green)](../notes/laser-induced/non-contact-ultrasonic-techniques-green.md) — mode conversion at surfaces used to generate shear waves from laser source
