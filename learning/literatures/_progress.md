@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- laser-induced (6 docs, all full)
 - focusing-ultrasonic-waves (5 docs: 4 full, 1 partial thesis)
 - range-measurement (24 files: 15 full, 6 partial, 1 image-only; 52 concept rows)
 - grinding (6 files: 4 full, 1 partial Shaw book, 1 duplicate)
@@ -17,9 +18,9 @@
 - wear-measurement (6 files, 5 notes, 1 duplicate)
 
 ## in flight
+- effect-of-stress
 - honing
 - effect-of-temperature
-- laser-induced
 - lubrication-film
 - maths
 - microstructure
@@ -28,7 +29,6 @@
 - signal-processing
 
 ## queued
-- effect-of-stress
 - emat
 - design-engineering
 - airborne-ultrasonics
