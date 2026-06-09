@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- data-sheets (22 files: 17 full, 5 partial catalogs)
 - 99-other-relevant-papers (4 files: 3 full, 1 unreadable 60MB scan)
 - 00-general-hardware-design-stuff (1 doc, partial)
 - 00-general-heat-transfer (3 files: 1 full, 1 partial, 1 unreadable 60MB scan)
@@ -33,7 +34,6 @@
 
 ## in flight
 - bore-and-liner
-- data-sheets
 - airborne-ultrasonics
 - effect-of-stress
 - effect-of-temperature
