@@ -1,0 +1,32 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+representative fraction	RF, scale factor	Ratio of drawing length to true length, used to define drawing scale	geometric-and-engineering-drawing
+plain scale	linear scale	A one-dimensional ruler scale that reads a single unit directly	geometric-and-engineering-drawing
+diagonal scale	scale	A scale that uses diagonal lines to subdivide units into finer increments than a plain scale allows	geometric-and-engineering-drawing
+isometric projection	isometric drawing	A pictorial drawing method where all three axes are drawn at equal scales, with horizontals at 30° to the base	geometric-and-engineering-drawing
+oblique projection	cavalier projection, cabinet projection	A pictorial method where the front face is drawn true shape and receding lines are drawn at an angle (usually 45°)	geometric-and-engineering-drawing
+orthographic projection	first angle, third angle	A multiview drawing method that shows an object from multiple perpendicular directions onto flat planes	geometric-and-engineering-drawing
+first angle projection	European projection	Orthographic convention in which each view is projected onto the plane behind the object	geometric-and-engineering-drawing
+third angle projection	American projection	Orthographic convention in which each view is projected onto the plane in front of the object	geometric-and-engineering-drawing
+auxiliary view	auxiliary elevation, auxiliary plan	A supplementary orthographic view projected onto a plane inclined to the principal planes, used to show true shape of slanted faces	geometric-and-engineering-drawing
+tangency	blending, arc tangency	The condition where a line or arc meets a curve at exactly one point with no crossing, sharing the same tangent direction	geometric-and-engineering-drawing
+conic section	ellipse, parabola, hyperbola	A curve produced by the intersection of a plane with a cone; includes the circle, ellipse, parabola, and hyperbola	geometric-and-engineering-drawing
+locus	loci	The set of all points satisfying a given geometric condition; used to trace paths of mechanism linkages	geometric-and-engineering-drawing
+cycloid		The curve traced by a point on the rim of a circle rolling along a straight line	geometric-and-engineering-drawing
+involute		The curve traced by the end of a taut string unwinding from a cylinder; used for gear tooth profiles	geometric-and-engineering-drawing
+Archimedean spiral		A spiral where the distance between successive turns is constant; r = aθ	geometric-and-engineering-drawing
+helix		A three-dimensional curve advancing uniformly along a cylinder or cone; the basis for screw threads	geometric-and-engineering-drawing
+intersection of solids	interpenetration	The curve formed where two solid shapes penetrate each other; found by the cutting-plane method	geometric-and-engineering-drawing
+surface development	pattern development, unfolding	The 2-D flat shape produced by unfolding the surface of a 3-D solid; used for sheet-metal layout	geometric-and-engineering-drawing
+equivalent area		A figure of different shape but identical area constructed by geometric means (e.g., rectangle equal in area to a triangle)	geometric-and-engineering-drawing
+Pythagoras theorem	Pythagorean theorem	In a right triangle, the square of the hypotenuse equals the sum of squares of the other two sides; used geometrically to combine areas	geometric-and-engineering-drawing
+BS 308	British Standard 308	The British Standards Institution publication specifying engineering drawing practice, including projection, sectioning, dimensioning, and thread representation	geometric-and-engineering-drawing
+sectional view	section, cross-section	A drawing view showing the internal features of an object by cutting it with an imaginary plane and removing the near half	geometric-and-engineering-drawing
+screw thread	ISO metric thread, thread representation	A helical ridge on a cylindrical shaft used for fastening or power transmission; represented conventionally in engineering drawings per BS 308	geometric-and-engineering-drawing
+dimensioning	tolerancing	The annotation of drawings with size and location information, following standardised rules for completeness and clarity	geometric-and-engineering-drawing
+assembly drawing		A drawing that shows multiple parts together in their working relationship, typically with part numbers and a parts list	geometric-and-engineering-drawing
+cast iron		An iron-carbon alloy (>2% C) with high hardness and brittleness; sub-types include gray, ductile, white, and malleable cast iron	metals-handbook-vol1
+carbon steel		Steel with carbon as the primary alloying element (up to ~2%); properties depend strongly on carbon content and heat treatment	metals-handbook-vol1
+stainless steel		A steel alloy with at least 10.5% chromium, providing corrosion resistance through a passive oxide layer	metals-handbook-vol1
+tool steel		High-carbon, high-alloy steels designed for hardness, wear resistance, and toughness in cutting and forming tools	metals-handbook-vol1
+high-performance alloy	superalloy, nickel alloy	Alloys designed for service at elevated temperatures and/or extreme mechanical demands, including nickel, cobalt, and iron-based superalloys	metals-handbook-vol1
+heat treatment		Controlled heating and cooling of metals to alter microstructure and mechanical properties (e.g., annealing, quenching, tempering)	metals-handbook-vol1

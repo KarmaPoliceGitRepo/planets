@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- design-engineering (2 files: 1 partial, 1 unreadable 61MB scan)
 - maths (48 docs -> 35 notes: 12 full, 22 partial, 2 unreadable, 3 duplicates)
 - honing (3 docs: 2 full, 1 partial ASM chapter)
 - emat (1 doc, full)
@@ -22,9 +23,9 @@
 - wear-measurement (6 files, 5 notes, 1 duplicate)
 
 ## in flight
+- data-sheets
 - contact-study-using-us-waves
 - airborne-ultrasonics
-- design-engineering
 - effect-of-stress
 - effect-of-temperature
 - microstructure
@@ -33,7 +34,6 @@
 - signal-processing
 
 ## queued
-- data-sheets
 - bore-and-liner
 - adhesive-layer
 - 000000-read-papers-with-notes
