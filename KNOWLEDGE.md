@@ -50,6 +50,7 @@ primarily as a home for reusable **Claude Code skills** under `.claude/skills/`.
 ## Gotchas
 - The remote execution environment is an ephemeral container, NOT the user's machine: anything not committed/pushed is lost, and `~/.claude/skills/` here does not sync to the user's real setup.
 - No CI workflows are configured in this repo, so PR checks are limited to the Copilot reviewer.
+- The **Google Drive MCP is the only way to reach the shared Drive files**: `drive.google.com` direct-download URLs and `docs.nomagic.com` are both **outside the remote container's network allowlist**, and the user's local `/Users/...` paths do not exist in the container. Large PDFs (e.g. the 40 MB *SysML for Systems Engineering* book) **exceed `download_file_content`'s transport** (session-expires); fall back to `read_file_content` (a lossy natural-language extract with `[**Page N**]` markers). That extract's page-marker→printed-page mapping is unreliable, so cite such books by **section + printed page**, not fabricated PDF `#page=` anchors.
 
 ## Open Questions
 - What is the intended longer-term purpose of `planets` beyond hosting skills?
