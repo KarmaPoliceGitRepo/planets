@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- lubrication-film (4 docs: 3 full, 1 partial thesis)
 - laser-induced (6 docs, all full)
 - focusing-ultrasonic-waves (5 docs: 4 full, 1 partial thesis)
 - range-measurement (24 files: 15 full, 6 partial, 1 image-only; 52 concept rows)
@@ -18,10 +19,10 @@
 - wear-measurement (6 files, 5 notes, 1 duplicate)
 
 ## in flight
+- emat
 - effect-of-stress
 - honing
 - effect-of-temperature
-- lubrication-film
 - maths
 - microstructure
 - 00-general-acoustics
@@ -29,7 +30,6 @@
 - signal-processing
 
 ## queued
-- emat
 - design-engineering
 - airborne-ultrasonics
 - contact-study-using-us-waves
