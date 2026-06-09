@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- focusing-ultrasonic-waves (5 docs: 4 full, 1 partial thesis)
 - range-measurement (24 files: 15 full, 6 partial, 1 image-only; 52 concept rows)
 - grinding (6 files: 4 full, 1 partial Shaw book, 1 duplicate)
 - personal-communications (11 files: 6 full, 3 partial theses, 2 unreadable; Sheffield Dwyer-Joyce lab cluster)
@@ -16,10 +17,10 @@
 - wear-measurement (6 files, 5 notes, 1 duplicate)
 
 ## in flight
+- honing
 - effect-of-temperature
 - laser-induced
 - lubrication-film
-- focusing-ultrasonic-waves
 - maths
 - microstructure
 - 00-general-acoustics
@@ -27,7 +28,6 @@
 - signal-processing
 
 ## queued
-- honing
 - effect-of-stress
 - emat
 - design-engineering
