@@ -1,0 +1,29 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+Fourier's Law	Fourier law of conduction	Heat flux is proportional to the negative temperature gradient: q = -k·dT/dx	introduction-to-engineering-heat-transfer
+Thermal conductivity	k	Material property quantifying how readily heat flows through a substance (W/m·K)	introduction-to-engineering-heat-transfer
+Thermal resistance	R_th	Analogue of electrical resistance for heat flow: R = L/(kA) for a slab; enables resistance circuits	introduction-to-engineering-heat-transfer
+Biot number	Bi	Dimensionless ratio of convective to conductive resistance: Bi = hL/k; governs whether a body can be treated as lumped	introduction-to-engineering-heat-transfer
+Nusselt number	Nu	Dimensionless convective heat transfer coefficient: Nu = hL/k_fluid	introduction-to-engineering-heat-transfer
+Reynolds analogy	—	Relation linking skin friction coefficient to Stanton number: St·Pr^(2/3) = c_f/2	introduction-to-engineering-heat-transfer
+Prandtl number	Pr	Ratio of momentum diffusivity to thermal diffusivity: Pr = μ·c_p/k	introduction-to-engineering-heat-transfer
+Reynolds number	Re	Dimensionless ratio of inertial to viscous forces in a flow: Re = ρuL/μ	introduction-to-engineering-heat-transfer
+Stanton number	St	Dimensionless heat transfer coefficient: St = h/(ρ·u·c_p) = Nu/(Re·Pr)	introduction-to-engineering-heat-transfer
+Fin efficiency	η_fin	Ratio of actual fin heat transfer to the ideal (if entire fin were at base temperature): η = tanh(mL)/(mL)	introduction-to-engineering-heat-transfer
+Lumped-capacitance model	lumped system	Simplification assuming spatially uniform body temperature; valid when Bi < 0.1	introduction-to-engineering-heat-transfer
+NTU method	Number of Transfer Units	Heat exchanger sizing method relating effectiveness to NTU = UA/C_min	introduction-to-engineering-heat-transfer
+Log Mean Temperature Difference	LMTD	Effective driving temperature difference for heat exchanger design	introduction-to-engineering-heat-transfer
+Stefan-Boltzmann law	—	Radiated power per unit area from a blackbody: q = σT^4 (σ = 5.67×10^-8 W/m²K^4)	introduction-to-engineering-heat-transfer
+Emittance	emissivity, ε	Ratio of actual radiation emitted by a surface to that of a blackbody at the same temperature	introduction-to-engineering-heat-transfer
+Kirchhoff's Law (radiation)	—	For a body in thermal equilibrium, absorptance equals emittance: α = ε	introduction-to-engineering-heat-transfer
+View factor	shape factor, F_ij	Fraction of radiation leaving surface i that strikes surface j; depends only on geometry	introduction-to-engineering-heat-transfer
+Secant stiffness method	—	Iterative structural analysis technique using a secant (chord) modulus to handle non-linear material behaviour	burgess-beams-nonuniform-temperature-fire-1990
+Thermal curvature	k_th	Curvature induced in a beam by a non-uniform temperature gradient across the cross-section via differential thermal expansion	burgess-beams-nonuniform-temperature-fire-1990
+Ramberg-Osgood equation	—	Three-parameter equation describing non-linear stress-strain curves; used here for steel at elevated temperatures	burgess-beams-nonuniform-temperature-fire-1990
+Neutral axis (thermal)	—	Location within a heated cross-section where net internal force is zero; shifts from centroid when temperature is non-uniform	burgess-beams-nonuniform-temperature-fire-1990
+Non-uniform temperature profile	stepped temperature profile	Temperature distribution across a structural cross-section that varies with depth, idealised as discrete constant-temperature strips	burgess-beams-nonuniform-temperature-fire-1990
+Fire resistance (structural)	fire performance	Ability of a structural member to maintain load-carrying capacity under prescribed fire exposure conditions	burgess-beams-nonuniform-temperature-fire-1990
+Standard fire curve	ISO 834 fire, BS 476 fire	Standardised time-temperature relationship used in fire resistance testing of structural elements	burgess-beams-nonuniform-temperature-fire-1990
+Slim-floor beam	—	Steel beam type where the floor slab sits on the bottom flange, shielding most of the section from fire	burgess-beams-nonuniform-temperature-fire-1990
+Shelf-angle floor beam	—	Steel beam type where angles bolted to the web support the slab, significantly shielding the upper web from fire	burgess-beams-nonuniform-temperature-fire-1990
+Thermal conductivity (metallic alloys)	k (metals)	Temperature-dependent property tabulated in TPRC Vol. 1 for hundreds of metallic elements and engineering alloys	tprc-thermal-conductivity-metallic-elements-alloys-vol1
+TPRC Data Series	Thermophysical Properties Research Center data	Critically evaluated multi-volume reference compiling thermophysical property data compiled at Purdue University	tprc-thermal-conductivity-metallic-elements-alloys-vol1

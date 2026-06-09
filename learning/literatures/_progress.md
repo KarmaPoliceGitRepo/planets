@@ -1,6 +1,8 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- 00-general-hardware-design-stuff (1 doc, partial)
+- 00-general-heat-transfer (3 files: 1 full, 1 partial, 1 unreadable 60MB scan)
 - adhesive-layer (5 docs, all full)
 - 00-general-error-measurement (1 doc, full)
 - 000000-read-papers-with-notes (1 doc, full)
@@ -42,9 +44,7 @@
 ### moved to in flight:
 - 99-other-relevant-papers
 - 000-electronics-instructions
-- 00-general-hardware-design-stuff
 - 00-general-mechanical-and-materials
-- 00-general-heat-transfer
 - 00-general-electronics
 - 00-general-engineering-books
 
