@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- 00-general-electronics (84 files -> 27 notes: 17 full, 26 partial, 40 ancillary skipped)
 - 000-electronics-instructions (23 docs, all full; verify subfolder recursion in QA)
 - 00-general-acoustics (89 files -> 56 notes incl. collection notes; ~12 full, ~28 partial, ~22 unreadable djvu/scans)
 - effect-of-temperature (47 files -> 43 notes: 36 full, 5 partial, 2 ini, 2 duplicates)
@@ -46,7 +47,6 @@
 
 ## queued (none — all dispatched)
 ### moved to in flight:
-- 00-general-electronics
 
 ## then
 - merge phase (concept clustering, concepts/ pages, rewrite notes to link, GLOSSARY, INDEX, MANIFEST)
