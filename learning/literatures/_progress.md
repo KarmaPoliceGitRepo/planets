@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- 99-other-relevant-papers (4 files: 3 full, 1 unreadable 60MB scan)
 - 00-general-hardware-design-stuff (1 doc, partial)
 - 00-general-heat-transfer (3 files: 1 full, 1 partial, 1 unreadable 60MB scan)
 - adhesive-layer (5 docs, all full)
@@ -42,7 +43,6 @@
 
 ## queued (none — all dispatched)
 ### moved to in flight:
-- 99-other-relevant-papers
 - 000-electronics-instructions
 - 00-general-mechanical-and-materials
 - 00-general-electronics
