@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- maths (48 docs -> 35 notes: 12 full, 22 partial, 2 unreadable, 3 duplicates)
 - honing (3 docs: 2 full, 1 partial ASM chapter)
 - emat (1 doc, full)
 - lubrication-film (4 docs: 3 full, 1 partial thesis)
@@ -21,18 +22,17 @@
 - wear-measurement (6 files, 5 notes, 1 duplicate)
 
 ## in flight
+- contact-study-using-us-waves
 - airborne-ultrasonics
 - design-engineering
 - effect-of-stress
 - effect-of-temperature
-- maths
 - microstructure
 - 00-general-acoustics
 - transducers-and-piezoelectricity
 - signal-processing
 
 ## queued
-- contact-study-using-us-waves
 - data-sheets
 - bore-and-liner
 - adhesive-layer
