@@ -19,6 +19,7 @@ primarily as a home for reusable **Claude Code skills** under `.claude/skills/`.
 - 2026-06-06 — Skills are versioned in-repo (project scope) so all agents share them, rather than relying on ephemeral user-scope installs in the remote container.
 - 2026-06-07 — Added `graphify` skill: durable project memory stored in root `KNOWLEDGE.md`, organized as light entity/relationship graph + notes.
 - 2026-06-07 — Every session auto-loads this store: a `SessionStart` hook in `.claude/settings.json` cats `KNOWLEDGE.md` into context, and `CLAUDE.md` points agents here. No need to ask agents to read it.
+- 2026-06-09 — Implemented the *UML for Java Programmers* (R. C. Martin) end-to-end **SMC remote-service case study** as a learning artifact. It lives in the sibling repo **`KarmaPoliceGitRepo/coding`** at `uml-for-java-programmers/` (not in this repo), branch `claude/uml-java-programmers-eqyyq1`. JDK 21 + Maven + JUnit 5; 15 tests pass incl. a real-socket end-to-end client/server compile. Reconstruction (book PDF + O'Reilly TOC are network-blocked from the remote container), faithful to the book's described architecture.
 
 ## Conventions
 - One skill per directory under `.claude/skills/`; keep `description` trigger-rich so the skill is matched on the right requests.
@@ -31,6 +32,8 @@ primarily as a home for reusable **Claude Code skills** under `.claude/skills/`.
 - **image-to-pptx skill** —depends on→ **python-pptx** : builds editable .pptx from images.
 - **task-history-review skill** —reads→ **git + GitHub artifacts** : reconstructs recent activity.
 - **agents** —read→ **KNOWLEDGE.md** : for context before non-trivial tasks.
+- **coding repo** —hosts→ **SMC remote-service case study** (`uml-for-java-programmers/`) : UML-for-Java-Programmers learning project.
+- **SMC case study** —layered as→ **socketserver** (reusable `SocketServer`/`SocketService`) + **smc compiler** (`fsm` model, `SmcParser`, `JavaCodeGenerator`, `Compiler`) + **smc.remote** (serializable message protocol, `SMCRemoteServer`/`SMCRemoteService`/`SMCRemoteClient`).
 
 ## Glossary
 - **Skill** — a `SKILL.md` under `.claude/skills/` that Claude Code can invoke (e.g. `/graphify`).
