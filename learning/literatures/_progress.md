@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- effect-of-temperature (47 files -> 43 notes: 36 full, 5 partial, 2 ini, 2 duplicates)
 - 00-general-mechanical-and-materials (28 items: 14 full, 5 partial books, 3 image-only, 1 duplicate)
 - microstructure (49 files -> 46 notes: 28 full, 19 partial, 2 duplicates)
 - 00-general-engineering-books (17 files via 4 split agents: most partial, ASM scan + docx unreadable)
@@ -39,7 +40,6 @@
 ## in flight
 - bore-and-liner
 - airborne-ultrasonics
-- effect-of-temperature
 - 00-general-acoustics
 - transducers-and-piezoelectricity
 
