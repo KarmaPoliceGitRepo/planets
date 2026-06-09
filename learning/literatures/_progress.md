@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- effect-of-stress (24 files -> 21 notes: 19 full, 2 partial, 3 duplicates)
 - data-sheets (22 files: 17 full, 5 partial catalogs)
 - 99-other-relevant-papers (4 files: 3 full, 1 unreadable 60MB scan)
 - 00-general-hardware-design-stuff (1 doc, partial)
@@ -35,7 +36,6 @@
 ## in flight
 - bore-and-liner
 - airborne-ultrasonics
-- effect-of-stress
 - effect-of-temperature
 - microstructure
 - 00-general-acoustics
