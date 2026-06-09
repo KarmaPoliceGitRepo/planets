@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- signal-processing (83 files -> 35 notes: 23 full, 10 partial, 4 unreadable, 30 dups/chapters)
 - design-engineering (2 files: 1 partial, 1 unreadable 61MB scan)
 - maths (48 docs -> 35 notes: 12 full, 22 partial, 2 unreadable, 3 duplicates)
 - honing (3 docs: 2 full, 1 partial ASM chapter)
@@ -23,6 +24,7 @@
 - wear-measurement (6 files, 5 notes, 1 duplicate)
 
 ## in flight
+- bore-and-liner
 - data-sheets
 - contact-study-using-us-waves
 - airborne-ultrasonics
@@ -31,10 +33,8 @@
 - microstructure
 - 00-general-acoustics
 - transducers-and-piezoelectricity
-- signal-processing
 
 ## queued
-- bore-and-liner
 - adhesive-layer
 - 000000-read-papers-with-notes
 - 00000-how2research

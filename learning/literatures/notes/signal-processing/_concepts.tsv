@@ -1,0 +1,83 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+signal-to-noise ratio	SNR, dB	Ratio of signal power to noise power, often expressed in decibels	noise-and-snr-lecture
+white noise		Noise with flat power spectral density across all frequencies	noise-and-snr-lecture
+pink noise	1/f noise	Noise whose power spectral density is inversely proportional to frequency	noise-and-snr-lecture
+Brownian noise	red noise, 1/f² noise	Noise whose power spectral density is inversely proportional to frequency squared	noise-and-snr-lecture
+Gaussian noise		Noise whose amplitude follows a Gaussian (Normal) probability distribution	noise-and-snr-lecture
+shot noise	Poisson noise	Noise arising from discrete charge carriers, following Poisson statistics	noise-and-snr-lecture
+thermal noise	Johnson-Nyquist noise	Electrical noise due to thermal agitation of charge carriers; power = kTB	noise-and-snr-lecture
+phase noise		Random fluctuations in the phase of an oscillator signal	noise-and-snr-lecture
+flicker noise	1/f noise (low-frequency)	Low-frequency noise with 1/f power spectral density, distinct from pink noise in electronics context	noise-and-snr-lecture
+signal averaging	ensemble averaging, boxcar averaging	Technique to reduce noise by averaging repeated measurements; SNR improves as √N	noise-and-snr-lecture
+ergodic process		Stochastic process where time averages equal ensemble averages	noise-and-snr-lecture
+AIC picker	Akaike Information Criterion autopicker	Seismic phase arrival picking algorithm that finds the minimum of the AIC characteristic function	p-wave-arrival-multiscale-wavelet
+W-AIC picker		Wavelet-enhanced AIC picker combining DWT denoising with AIC autopicking for P-wave detection	p-wave-arrival-multiscale-wavelet
+P-wave arrival picking	seismic phase picking	Automated identification of the onset time of a P-wave in a seismogram	p-wave-arrival-multiscale-wavelet
+TOFD	Time-of-Flight Diffraction	Ultrasonic NDT technique using diffracted waves from defect tips to measure defect size and position	tofd-neural-network-defect
+B-scan imaging		Two-dimensional ultrasonic image formed by scanning a transducer along a line	tofd-neural-network-defect
+gated FFT	time-gated FFT	Fourier transform applied to a selected time window of a signal to isolate specific features	resonance-spectrum-fft-elastic-bodies
+Rayleigh waves		Surface acoustic waves propagating along the surface of an elastic body with elliptical particle motion	resonance-spectrum-fft-elastic-bodies
+Whispering Gallery modes		High-order resonance modes in curved elastic bodies involving waves circumscribing the surface	resonance-spectrum-fft-elastic-bodies
+AM ranging	amplitude modulation ranging	Distance measurement technique based on the phase of an amplitude-modulated ultrasonic signal	multifrequency-am-ultrasonic-ranging
+vernier principle		Technique combining two slightly different periodic scales to achieve higher resolution measurement	multifrequency-am-ultrasonic-ranging
+phase shift measurement		Determining distance from the phase difference of transmitted and received signals	multifrequency-am-ultrasonic-ranging
+delta-sigma modulation	ΔΣ modulation	Oversampled 1-bit analog-to-digital conversion technique using noise shaping	single-bit-cross-correlation-ultrasonic
+single-bit signal processing		Signal processing using 1-bit quantised (delta-sigma) signal representations with logic operations	single-bit-cross-correlation-ultrasonic
+cross-correlation		Signal processing operation that measures the similarity between two signals as a function of time lag	single-bit-cross-correlation-ultrasonic; digital-tof-ultrasonic-marioli
+Haar wavelet		The simplest orthogonal wavelet, based on step functions; first wavelet discovered	wavelets-for-kids
+Daubechies wavelets	dbN wavelets	Family of orthogonal wavelets with compact support and N vanishing moments	wavelets-for-kids; wavelet-cortical-bone-thickness
+multiresolution analysis	MRA, Mallat algorithm	Hierarchical signal decomposition using iterative filter banks into approximation and detail sub-bands	wavelets-for-kids; p-wave-arrival-multiscale-wavelet
+discrete wavelet transform	DWT	Transform decomposing a signal into wavelet coefficients at multiple scales using filter banks	wavelets-for-kids; p-wave-arrival-multiscale-wavelet; wavelet-cortical-bone-thickness
+hard thresholding		Wavelet denoising operation that sets coefficients below a threshold to zero	wavelets-for-kids
+soft thresholding		Wavelet denoising operation that shrinks coefficient magnitudes by the threshold value	wavelets-for-kids
+universal threshold	VisuShrink	Wavelet denoising threshold λ = σ√(2 log N); conservative but widely used	wavelets-for-kids
+SURE threshold	Stein's Unbiased Risk Estimate	Data-adaptive wavelet denoising threshold minimising an unbiased estimate of risk	wavelets-for-kids
+Total Variation regularization	TV regularization, ROF model	Regularisation method penalising the total variation of the solution; promotes piecewise-smooth results	tv-tikhonov-regularization-ultrasonic; image-denoising-algorithms-review
+Tikhonov regularization	L2 regularization, ridge regression	Regularisation method adding an L2 penalty on the solution or its derivative; promotes smooth solutions	tv-tikhonov-regularization-ultrasonic
+MM algorithm	Majorization-Minimization	Iterative optimisation method that minimises a sequence of surrogate upper-bound functions	tv-tikhonov-regularization-ultrasonic
+scale transform	Mellin-type transform	Transform mapping time-stretch operations to translations; used for temperature compensation of guided waves	scale-transform-temperature-compensation
+baseline signal stretch	BSS	Temperature compensation method that scales the time axis of a baseline signal to match the current signal	scale-transform-temperature-compensation; dtw-temperature-compensation
+time-of-flight	ToF, TOF	Time taken for a signal (e.g., ultrasonic pulse) to travel from transmitter to receiver	digital-tof-ultrasonic-marioli; tof-interpolation-techniques-svilainis; tof-accuracy-digitization-svilainis
+parabolic interpolation		Sub-sample peak location estimation by fitting a parabola to three samples around the correlation peak	digital-tof-ultrasonic-marioli; tof-interpolation-techniques-svilainis
+envelope detection	square-law detector	Extraction of the amplitude envelope of a bandpass signal using rectification and low-pass filtering	digital-tof-ultrasonic-marioli
+Hilbert transform		Linear operator producing the analytic signal imaginary part; rotates phase of all frequency components by 90°	tof-interpolation-techniques-svilainis; hilbert-transform-notes-coffee-morning; baseline-signal-reconstruction-temperature-compensation
+Cramér-Rao Lower Bound	CRLB	Theoretical minimum variance of any unbiased estimator, determined by the Fisher information	tof-accuracy-digitization-svilainis
+ARMA model	AutoRegressive Moving Average	Parametric signal model combining autoregressive and moving average components for system identification	compensation-filtering-pulse-echo
+inverse filter	compensation filter, deconvolution filter	Filter whose transfer function is the inverse of a system's transfer function; sharpens impulse response	compensation-filtering-pulse-echo
+Gaussian process regression	GPR	Non-parametric Bayesian regression using a Gaussian process prior over functions	gaussian-process-regression-intro
+squared exponential kernel	RBF kernel, Gaussian kernel	Covariance function for GPR: k(x,x') = σ_f² exp(−|x−x'|²/(2l²)); infinite differentiability	gaussian-process-regression-intro
+log marginal likelihood		Objective function for hyperparameter optimisation in GPR; integrates out the function values	gaussian-process-regression-intro
+error propagation		Method for computing the uncertainty in a derived quantity from uncertainties in input quantities	experimental-error-intro
+weighted mean		Best estimate from measurements of unequal precision, weighting each by 1/σ²	experimental-error-intro
+Kalman filter	Kalman-Bucy filter (continuous-time)	Optimal linear recursive estimator for state-space systems with Gaussian noise	kalman-bucy-linear-filtering
+Riccati equation		Differential or algebraic equation governing the error covariance in the Kalman filter	kalman-bucy-linear-filtering
+power spectral density	PSD	Frequency-domain description of a signal's power distribution per unit frequency	fundamentals-signal-processing-sound-vibration; noise-and-snr-lecture
+Welch method	averaged periodogram	PSD estimation using overlapping windowed segments averaged to reduce variance	fundamentals-signal-processing-sound-vibration
+Non-Local Means	NL-Means	Image denoising algorithm that computes weighted averages of pixels with similar patch neighbourhoods	image-denoising-algorithms-review
+anisotropic diffusion	Perona-Malik diffusion	PDE-based image denoising that diffuses parallel to edges but not across them	image-denoising-algorithms-review
+robust PCA	RPCA	Principal component analysis using robust estimators (M-estimators, MCD) resistant to outliers	robust-pca-temperature-damage-detection
+orthogonal distance	OD	Distance from a data point to the PCA subspace; used as a damage-sensitive feature in SHM	robust-pca-temperature-damage-detection
+Orthogonal Matching Pursuit	OMP	Iterative greedy algorithm for sparse signal representation; finds best dictionary atoms sequentially	baseline-signal-reconstruction-temperature-compensation
+instantaneous phase		Phase of the analytic signal obtained via Hilbert transform; used to track time-varying phase changes	baseline-signal-reconstruction-temperature-compensation; hilbert-transform-notes-coffee-morning
+Dynamic Time Warping	DTW	Algorithm finding the optimal non-linear alignment between two time series by dynamic programming	dtw-temperature-compensation
+Lamb waves	guided plate waves	Elastic guided waves propagating in plate-like structures; two families: symmetric (S) and antisymmetric (A) modes	scale-transform-temperature-compensation; baseline-signal-reconstruction-temperature-compensation; dtw-temperature-compensation
+elastic net penalty	ElasticNet regularization	Regularisation combining L1 (Lasso) and L2 (Ridge) penalties; promotes sparse solutions with some smoothness	guided-wave-ray-tomography-temperature
+pulse superposition method		High-precision ultrasonic velocity measurement using resonant superposition of multiple pulse echoes	pulse-superposition-method-mcskimin
+bond layer effect		Influence of the coupling layer between transducer and specimen on resonance frequency measurements	pulse-superposition-method-mcskimin; cw-ultrasonic-phase-velocity-formula
+Hilbert-Huang Transform	HHT	Empirically adaptive time-frequency analysis method combining EMD and Hilbert spectral analysis	hilbert-huang-transform-intro; hilbert-transform-notes-coffee-morning
+Empirical Mode Decomposition	EMD	Adaptive signal decomposition algorithm that extracts Intrinsic Mode Functions by iterative sifting	hilbert-huang-transform-intro; hilbert-transform-notes-coffee-morning
+Intrinsic Mode Function	IMF	Signal component from EMD satisfying: (1) one extremum between zero-crossings; (2) symmetric envelopes	hilbert-huang-transform-intro; hilbert-transform-notes-coffee-morning
+instantaneous frequency		Rate of change of instantaneous phase; physically meaningful frequency of a mono-component signal	hilbert-huang-transform-intro; hilbert-transform-notes-coffee-morning
+dispersion curves		Plot of wave velocity vs. frequency×thickness for guided wave modes	elastic-wave-anisotropic-cylindrical-plates
+angular wave number		Circumferential wavenumber for guided waves in cylindrical geometry; analogous to linear wavenumber	elastic-wave-anisotropic-cylindrical-plates
+compound resonator		Layered resonant system (transducer + bond + specimen) used for CW velocity measurements	cw-ultrasonic-phase-velocity-formula
+non-destructive testing	NDT, NDE	Inspection methods that evaluate material or structural integrity without causing damage	tofd-neural-network-defect; compensation-filtering-pulse-echo; wavelet-cortical-bone-thickness
+structural health monitoring	SHM	Continuous or periodic automated monitoring of structural integrity using permanently installed sensors	scale-transform-temperature-compensation; dtw-temperature-compensation; baseline-signal-reconstruction-temperature-compensation
+fast Fourier transform	FFT	Efficient algorithm for computing the Discrete Fourier Transform in O(N log N) operations	resonance-spectrum-fft-elastic-bodies; fundamentals-signal-processing-sound-vibration
+FIR filter	finite impulse response filter	Digital filter with a finite-duration impulse response; always stable	intro-signal-processing-orfanidis; digital-signal-processing-textbook-2017; digital-signal-image-processing-matlab-blanchet
+IIR filter	infinite impulse response filter	Digital filter with a potentially infinite-duration impulse response; can be recursive	intro-signal-processing-orfanidis; digital-signal-processing-textbook-2017
+Z-transform		Discrete-time analog of the Laplace transform; used for analysis and design of discrete-time systems	signals-systems-matlab-chaparro; intro-signal-processing-orfanidis
+Laplace transform		Transform converting differential equations into algebraic equations; used for CT systems analysis	signals-systems-matlab-chaparro
+oversampling		Sampling a signal at a rate much higher than the Nyquist rate; reduces in-band quantisation noise	intro-signal-processing-orfanidis
+noise shaping		Delta-sigma technique that shapes quantisation noise to higher frequencies out of the signal band	intro-signal-processing-orfanidis
+temperature compensation	TC	Signal processing correction for changes in guided wave signals caused by temperature variation	scale-transform-temperature-compensation; dtw-temperature-compensation; baseline-signal-reconstruction-temperature-compensation; physics-based-temperature-compensation-roy; robust-pca-temperature-damage-detection; guided-wave-ray-tomography-temperature; temperature-phase-velocity-compensation-mariani
