@@ -1,7 +1,9 @@
 # Acoustic Nonlinearity Parameter
 **Aliases:** nonlinearity parameter β; β parameter; second harmonic ratio; B/A parameter; nonlinear parameter; acoustic nonlinearity parameter β; nonlinear acoustic Mach parameter
 
-**Definition:** The acoustic nonlinearity parameter β = −(A₂/A₁²)(k L)⁻¹ × (a material-dependent factor) quantifies the rate at which a second harmonic grows as a finite-amplitude longitudinal wave propagates distance L in a material. It is dimensionless and related to second- and third-order elastic constants: β = −(C₁₁₁ + 3C₁₁)/(2C₁₁) for an isotropic solid. A higher β indicates stronger material nonlinearity. For defect or contact characterisation, the nonlinear Rayleigh wave β or contact acoustic nonlinearity is often orders of magnitude larger than the intrinsic material β, providing sensitive defect indicators.
+**Definition:** The acoustic nonlinearity parameter β = −(A₂/A₁²)(k L)⁻¹ × (a material-dependent factor) quantifies the rate at which a second harmonic grows as a finite-amplitude longitudinal wave propagates distance L in a material. It is dimensionless and related to second- and third-order elastic constants: β = −(3C₁₁ + C₁₁₁)/C₁₁ for an isotropic solid (Brugger notation; equivalent to −(3 + 3B/A + C/A) in Landau notation per Zarembo & Krasilnikov 1971).
+
+> ⚠ unverified: An earlier version of this page had a factor of 2 in the denominator (β = −(C₁₁₁ + 3C₁₁)/(2C₁₁)); this was corrected to match the standard result but no primary source is cited directly in the notes. The Zarembo (1971) note gives the Landau equivalent form; direct Brugger cross-check against a peer-reviewed primary is needed. A higher β indicates stronger material nonlinearity. For defect or contact characterisation, the nonlinear Rayleigh wave β or contact acoustic nonlinearity is often orders of magnitude larger than the intrinsic material β, providing sensitive defect indicators.
 
 **Key relations:**
 - related: [nonlinear-acoustics](nonlinear-acoustics.md)
