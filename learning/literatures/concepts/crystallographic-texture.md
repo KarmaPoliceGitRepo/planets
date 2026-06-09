@@ -10,4 +10,7 @@
 - [attenuation](attenuation.md)
 
 **Discussed in:**
-- [Grain Scattering Attenuation — grain-scattering-attenuation.md](grain-scattering-attenuation.md) — texture enters scattering models through ODF
+- [Turner — Elastic wave propagation in textured polycrystals (1999)](../notes/microstructure/turner-textured-polycrystals-1999.md) — ODF/Roe coefficients in the attenuation model
+- [Yang & Rokhlin — Backscattering in textured cubic polycrystals (2013)](../notes/microstructure/yang-rokhlin-backscattering-cubic-2013.md) — texture-dependent backscatter coefficient
+- [Stanke & Kino — Unified theory (1984)](../notes/microstructure/stanke-kino-unified-theory-1984.md) — baseline untextured theory that texture models extend
+- [Anisotropic elasticity (linear) notes](../notes/00-general-acoustics/anisotropic-elasticity-linear.md) — single-crystal anisotropy underlying texture effects

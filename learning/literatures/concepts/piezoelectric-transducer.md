@@ -5,7 +5,7 @@
 
 **Key relations:**
 - related: [acoustic-impedance](acoustic-impedance.md)
-- related: [impedance-matching-layer](impedance-matching-layer.md)
+- related: [acoustic-impedance-matching-layer](acoustic-impedance-matching-layer.md)
 - related: [klm-model](klm-model.md)
 - related: [near-field-far-field](near-field-far-field.md)
 - related: [beam-focusing](beam-focusing.md)

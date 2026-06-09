@@ -7,7 +7,7 @@
 - related: [acoustoelastic-effect](acoustoelastic-effect.md)
 - related: [shear-wave](shear-wave.md)
 - related: [acoustoelastic-coefficient](acoustoelastic-coefficient.md)
-- related: [residual-stress-measurement](residual-stress-measurement.md)
+- related: [residual-stress](residual-stress.md)
 
 **Discussed in:**
 - [Degtyar & Rokhlin 1997 — Interface Stress](../notes/effect-of-stress/degtyar-rokhlin-1997-interface-stress.md) — birefringence in anisotropic prestressed media; interface stress measurement

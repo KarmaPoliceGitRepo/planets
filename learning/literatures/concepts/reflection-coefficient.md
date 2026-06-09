@@ -7,8 +7,8 @@
 - related: [acoustic-impedance](acoustic-impedance.md)
 - related: [transfer-matrix-method](transfer-matrix-method.md)
 - related: [spring-interface-model](spring-interface-model.md)
-- related: [contact-stiffness](contact-stiffness.md)
-- related: [impedance-matching-layer](impedance-matching-layer.md)
+- related: [interfacial-stiffness](interfacial-stiffness.md)
+- related: [acoustic-impedance-matching-layer](acoustic-impedance-matching-layer.md)
 - related: [time-of-flight](time-of-flight.md)
 
 **Discussed in:**

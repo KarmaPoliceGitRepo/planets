@@ -9,7 +9,7 @@
 - related: [power-spectral-density](power-spectral-density.md)
 - related: [time-of-flight](time-of-flight.md)
 - related: [cross-correlation](cross-correlation.md)
-- related: [z-transform](z-transform.md)
+- related: [laplace-and-z-transform](laplace-and-z-transform.md)
 
 **Discussed in:**
 - [DSP Matlab (Proakis)](../notes/maths/dsp-matlab-proakis.md) — defines DFT, DTFT, and Z-transform; formal treatment of circular convolution

@@ -5,7 +5,7 @@
 
 **Key relations:**
 - related: [fast-fourier-transform](fast-fourier-transform.md)
-- related: [laplace-transform](laplace-transform.md)
+- related: [laplace-and-z-transform](laplace-and-z-transform.md)
 - related: [spectral-leakage-and-windowing](spectral-leakage-and-windowing.md)
 - related: [power-spectral-density](power-spectral-density.md)
 - related: [hilbert-transform](hilbert-transform.md)

@@ -5,10 +5,10 @@
 
 **Key relations:**
 - related: [reflection-coefficient](reflection-coefficient.md)
-- related: [impedance-matching-layer](impedance-matching-layer.md)
+- related: [acoustic-impedance-matching-layer](acoustic-impedance-matching-layer.md)
 - related: [spring-interface-model](spring-interface-model.md)
-- related: [contact-stiffness](contact-stiffness.md)
-- related: [air-coupled-ultrasonics](air-coupled-ultrasonics.md)
+- related: [interfacial-stiffness](interfacial-stiffness.md)
+- related: [air-coupled-transducer](air-coupled-transducer.md)
 
 **Discussed in:**
 - [Ultrasonic Attenuation in Adhesive Bond (Meyer 1977)](../notes/adhesive-layer/ultrasonic-attenuation-adhesive-bond-modeling-meyer-1977.md) — defines Z = ρv as the baseline reflection parameter in adhesive bond models
