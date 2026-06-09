@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- microstructure (49 files -> 46 notes: 28 full, 19 partial, 2 duplicates)
 - 00-general-engineering-books (17 files via 4 split agents: most partial, ASM scan + docx unreadable)
 - effect-of-stress (24 files -> 21 notes: 19 full, 2 partial, 3 duplicates)
 - data-sheets (22 files: 17 full, 5 partial catalogs)
@@ -38,7 +39,6 @@
 - bore-and-liner
 - airborne-ultrasonics
 - effect-of-temperature
-- microstructure
 - 00-general-acoustics
 - transducers-and-piezoelectricity
 
