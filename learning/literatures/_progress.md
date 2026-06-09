@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- surface-acoustic-wave (12 docs; one mislabeled file flagged in note)
 - method-resonance (5 files, 4 full + 1 preview-only stub)
 - _root (Findings.xlsx)
 - temperature-measurement-probes (2 docs)
@@ -8,18 +9,17 @@
 - wear-measurement (6 files, 5 notes, 1 duplicate)
 
 ## in flight
+- personal-communications
 - microstructure
 - 00-general-acoustics
 - transducers-and-piezoelectricity
 - range-measurement
 - standards
-- surface-acoustic-wave
 - signal-processing
 - programming
 - modeling-of-acoustic-waves
 
 ## queued
-- personal-communications
 - maths
 - matlab-and-labview
 - grinding

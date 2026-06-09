@@ -1,0 +1,35 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+piezoelectric effect	direct piezoelectric effect; inverse piezoelectric effect	coupling between mechanical stress/strain and electric displacement/field in certain crystals and poled ceramics	ieee-176-1987-piezoelectricity
+electromechanical coupling factor	k; kp; k31; k33; kt; k15; keff	square root of ratio of converted energy to input energy in a piezoelectric resonator	ieee-176-1987-piezoelectricity
+piezoelectric charge constant	d constant; dij	tensor relating electric displacement to mechanical stress (or strain to electric field)	ieee-176-1987-piezoelectricity
+resonance frequency	fs; series resonance	frequency at which a piezoelectric resonator's mechanical impedance is minimum (maximum admittance)	ieee-176-1987-piezoelectricity
+mechanical quality factor	Qm	dimensionless measure of mechanical losses in a resonator; reciprocal of relative 3 dB bandwidth	ieee-176-1987-piezoelectricity
+PZT	lead zirconate titanate; Pb(ZrTi)O3	most widely used piezoelectric ceramic, available in compositions tailored for soft (high d) or hard (high Q) applications	bs-en-50324-1-2002-piezoceramic-terms
+poling	poling procedure; dc poling field	alignment of ferroelectric domains in a ceramic by application of a strong DC electric field, creating remanent piezoelectric activity	bs-en-50324-1-2002-piezoceramic-terms
+Curie temperature	TC; Curie point	temperature above which a ferroelectric ceramic loses its piezoelectric activity due to phase transition	bs-en-50324-1-2002-piezoceramic-terms
+ageing (piezoceramic)	ageing rate cy	logarithmic-time-dependent drift of piezoelectric properties after poling due to domain relaxation	bs-en-50324-1-2002-piezoceramic-terms
+depolarization	loss of remanent polarization; coercive field	reduction of piezoceramic remanent polarization due to high opposing electric field, mechanical stress, or elevated temperature	bs-en-50324-1-2002-piezoceramic-terms
+figure of merit (piezoelectric)	Mij; d·g product	parameter characterising transducer power efficiency; Mij = (dij)²/sij^E for motors, M = d·g for generators	bs-en-50324-3-2002-piezoceramic-high-power
+amplitude-frequency effect	A-F effect	decrease of resonance frequency with increasing drive level in piezoceramic resonators due to nonlinear elasticity	bs-en-50324-3-2002-piezoceramic-high-power
+rolling bearing tolerance class	Normal; Class 6; Class 5; Class 4; Class 2	standardised dimensional and runout accuracy grade for rolling bearings (tighter number = tighter tolerance)	iso-492-2002-radial-bearings-tolerances
+mean bore diameter deviation	Δdmp	deviation of the average of measured bore diameters in a cross-section from the nominal bore	iso-492-2002-radial-bearings-tolerances
+radial runout (bearing)	Kea; Kia	circular radial runout of bearing ring in assembled bearing relative to the opposite ring's axis	iso-492-2002-radial-bearings-tolerances
+GPS (geometrical product specifications)	ISO/GPS	ISO system of standards for specifying and verifying geometry of mechanical parts using symbolic language on drawings	iso-492-2014-radial-bearings-tolerances
+datum	datum feature; datum system	theoretically exact reference (point, line, or plane) derived from real workpiece features, used to constrain tolerance zones	iso-5459-2011-gps-datums
+datum system	primary datum; secondary datum; tertiary datum	ordered set of datums constraining successive degrees of freedom of a part's orientation and location	iso-5459-2011-gps-datums
+association criterion	objective function; minimum zone; minimum circumscribed	mathematical rule for fitting an ideal geometry to a real surface to establish a datum	iso-5459-2011-gps-datums
+invariance class	spherical; cylindrical; planar; revolute; helical; prismatic; complex	classification of ideal surface geometry by which degrees of freedom leave it unchanged, used in datum theory	iso-5459-2011-gps-datums
+sound attenuation outdoors	A-weighted outdoor noise; environmental noise propagation	reduction in sound level from a source to a receiver outdoors due to divergence, absorption, ground, barriers, and scattering	iso-9613-2-1996-sound-attenuation-outdoors
+ground effect	Agr; ground factor G	attenuation or amplification of sound near the ground surface due to interference between direct and ground-reflected rays	iso-9613-2-1996-sound-attenuation-outdoors
+barrier attenuation	Abar; insertion loss; diffraction	reduction in sound level caused by an intervening obstacle through which sound must diffract over or around	iso-9613-2-1996-sound-attenuation-outdoors
+meteorological correction	Cmet	correction from downwind-favourable conditions to long-term average sound levels accounting for varying wind and temperature	iso-9613-2-1996-sound-attenuation-outdoors
+compressive yield strength	compressive 0.2% offset yield; yield point in compression	stress at which a material under axial compression shows a specified permanent strain (usually 0.2% offset)	astm-e9-compression-testing-metals
+buckling	elastic buckling; Euler buckling; inelastic buckling	instability failure mode of slender compression specimens that bow laterally before the material yield stress is reached	astm-e9-compression-testing-metals
+barreling	end friction effect in compression	non-uniform bulging of compression specimen ends due to friction at specimen-platen interface	astm-e9-compression-testing-metals
+tensile yield strength	0.2% offset yield; upper yield point; lower yield point	stress at which a metal in tension undergoes a specified permanent deformation; key structural design property	astm-e8-e8m-2013-tension-testing-metals
+tensile strength	ultimate tensile strength; UTS	maximum stress a metal sustains before fracture in a uniaxial tension test	astm-e8-e8m-2013-tension-testing-metals
+elongation	elongation after fracture; % elongation	permanent plastic elongation of a tensile specimen measured after fracturing and re-fitting the broken halves	astm-e8-e8m-2013-tension-testing-metals
+reduction of area	RA; %RA	percentage decrease in cross-sectional area at the fracture location of a tensile specimen	astm-e8-e8m-2013-tension-testing-metals
+oxidation stability (oil)	oil oxidation; oil degradation	resistance of a lubricant or hydraulic fluid to chemical degradation from oxygen at elevated temperature	astm-d4636-99-oxidation-stability-oils
+acid number	TAN; total acid number	mg KOH required to neutralize acids in 1 g of oil; indicator of oil oxidation and degradation	astm-d4636-99-oxidation-stability-oils
+thermoplastic pipe tolerance	outside diameter tolerance; wall thickness tolerance; out-of-roundness	dimensional limits on pipe diameter and wall thickness for thermoplastic fluid-conveyance pipes	iso-11922-1-2018-thermoplastic-pipes-tolerances
