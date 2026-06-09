@@ -1,0 +1,16 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+speed of sound in metals	velocity of sound, sound velocity	The phase velocity of an acoustic wave propagating through a metallic medium, determined by elastic moduli and mass density	alers-fleury-1963-velocity-sound-magnetic-fields
+magnetoacoustic effect	magneto-acoustic effect	The change in acoustic wave velocity (or attenuation) caused by an externally applied static magnetic field interacting with conduction electrons	alers-fleury-1963-velocity-sound-magnetic-fields
+Alpher-Rubin theory	macroscopic theory	Macroscopic electromagnetic-acoustic theory predicting ΔC ∝ H² via a Hall-current-like force on conduction electrons	alers-fleury-1963-velocity-sound-magnetic-fields
+skin depth	electromagnetic penetration depth, δ	Characteristic depth over which an electromagnetic wave decays in a conductor; δ = (c²/2πωσ)^(1/2)	alers-fleury-1963-velocity-sound-magnetic-fields
+electron mean free path	mean free path, l	Average distance an electron travels between scattering events; determines whether macroscopic theory applies (l ≪ λ required)	alers-fleury-1963-velocity-sound-magnetic-fields
+sing-around technique	Forgacs oscillator	Ultrasonic pulse-transit technique where transit time becomes the period of a feedback oscillator, enabling ppm-level velocity measurement	alers-fleury-1963-velocity-sound-magnetic-fields
+open-orbit electrons	open orbits	Electrons whose cyclotron orbits in k-space are not closed, tracing paths across Brillouin zone boundaries; associated with anomalous magnetoresistance	alers-fleury-1963-velocity-sound-magnetic-fields
+cyclotron frequency	ωc	Angular frequency of circular electron motion in a magnetic field: ωc = eH/mc	alers-fleury-1963-velocity-sound-magnetic-fields
+Fermi surface topology	Fermi surface	The constant-energy surface in momentum space separating filled from empty electron states; topology determines transport anisotropy	alers-fleury-1963-velocity-sound-magnetic-fields
+Hall current	transverse current	Current component perpendicular to both the charge carrier velocity and the applied magnetic field, arising from the Lorentz force	alers-fleury-1963-velocity-sound-magnetic-fields
+angular dependence (magnetoacoustic)	sin²θ, cos²θ	Dependence of velocity change on the angle θ between acoustic propagation direction and magnetic field: sin²θ for longitudinal, cos²θ for shear modes	alers-fleury-1963-velocity-sound-magnetic-fields
+longitudinal acoustic mode	longitudinal wave, P-wave	Acoustic mode in which particle displacement is parallel to the propagation direction	alers-fleury-1963-velocity-sound-magnetic-fields
+shear acoustic mode	transverse wave, S-wave	Acoustic mode in which particle displacement is perpendicular to the propagation direction	alers-fleury-1963-velocity-sound-magnetic-fields
+magnetoresistance anisotropy	Δρ/ρ anisotropy	Direction-dependent change in electrical resistivity under an applied magnetic field, sensitive to Fermi-surface open orbits	alers-fleury-1963-velocity-sound-magnetic-fields
+single-crystal acoustics	pure-mode propagation	Acoustic measurements in oriented single crystals where propagation along principal axes guarantees pure longitudinal or pure shear modes	alers-fleury-1963-velocity-sound-magnetic-fields

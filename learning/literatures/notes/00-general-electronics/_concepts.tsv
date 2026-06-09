@@ -1,0 +1,49 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+Transmission line	TL, t-line, coaxial line, microstrip, stripline	A two-conductor or planar structure that guides EM waves between source and load, characterized by distributed R, L, G, C parameters per unit length.	transmission-line-circuit-model
+Characteristic impedance	Z0, surge impedance	The ratio of forward voltage wave to forward current wave on a transmission line: Z0 = sqrt((R+jωL)/(G+jωC)); equals 50 Ω by convention in RF systems.	transmission-line-parameters
+Reflection coefficient	Gamma, Γ	Complex ratio of reflected-to-incident voltage wave at a discontinuity: Γ = (ZL–Z0)/(ZL+Z0); |Γ| = 0 for matched load, 1 for open/short.	transmission-line-parameters
+Standing Wave Ratio	SWR, VSWR, Voltage Standing Wave Ratio	Ratio of maximum to minimum voltage magnitude on a transmission line: SWR = (1+|Γ|)/(1–|Γ|); equals 1 for perfect match, ∞ for open/short.	transmission-line-parameters
+Return loss	RL	Power ratio (dB) of incident to reflected power: RL = –20 log|Γ| dB; higher is better (–∞ dB = perfectly matched).	transmission-line-parameters
+Smith chart	impedance chart	A polar plot of the reflection coefficient Γ, with overlaid constant-resistance and constant-reactance circles derived from the normalized impedance z = (1+Γ)/(1–Γ).	smith-chart-derivation
+Propagation constant	gamma, γ = α + jβ	Complex wave propagation factor for a transmission line or medium; α is the attenuation constant (Np/m), β is the phase constant (rad/m).	propagation-constant
+Attenuation constant	alpha, α	Real part of γ; rate of exponential decay of wave amplitude with distance. Units: Np/m or dB/m.	propagation-constant
+Phase constant	beta, β, wave number	Imaginary part of γ; spatial rate of phase change: β = 2π/λ = ω/vp. Units: rad/m.	propagation-constant
+Phase velocity	vp	Speed at which a constant-phase point moves along the line: vp = ω/β = fλ. In free space vp = c = 1/sqrt(με0).	phase-group-velocity
+Group velocity	vg	Speed at which the envelope of a wave packet (or the energy) propagates: vg = dω/dk. Equal to vp in non-dispersive media.	phase-group-velocity
+Quarter-wave transformer	λ/4 transformer	A transmission-line section of length λ/4 with characteristic impedance Z' = sqrt(Z0·ZL), used to match Z0 to a real load ZL.	quarter-wavelength-transformer
+Telegrapher's equations	transmission-line equations	Coupled PDEs describing voltage and current on a transmission line: ∂V/∂x = –RI – L∂I/∂t and ∂I/∂x = –GV – C∂V/∂t.	transmission-line-circuit-model
+Helmholtz equation	vector Helmholtz equation	Wave equation in phasor form: ∇²E + k²E = 0 where k = ω√(με); governs field distribution in waveguides and resonators.	collin-em-theory
+Microstrip	microstrip line	A planar transmission line with a conducting strip on one side of a dielectric substrate and a ground plane on the other; supports quasi-TEM mode.	collin-transmission-lines-waveguides
+Waveguide	hollow-pipe waveguide, rectangular waveguide	A hollow metallic tube that guides EM waves via TE and TM modes; does not support TEM; has a cut-off frequency below which propagation is evanescent.	collin-transmission-lines-waveguides
+TE mode	transverse electric mode	Waveguide mode with no axial electric field component (Ez = 0); magnetic field has an axial component.	collin-transmission-lines-waveguides
+TM mode	transverse magnetic mode	Waveguide mode with no axial magnetic field component (Hz = 0); electric field has an axial component.	collin-transmission-lines-waveguides
+TEM mode	transverse electromagnetic mode	Mode with no axial field components; the principal mode on two-conductor transmission lines; cannot exist in hollow-pipe waveguides.	collin-transmission-lines-waveguides
+S-parameters	scattering parameters, S-matrix	Matrix relating incident and reflected power waves at a network's ports; S11=input reflection, S21=forward transmission, etc. Measured with ports terminated in Z0.	collin-circuit-theory-waveguiding
+Turns ratio	n, N1/N2	Ratio of primary to secondary winding turns in a transformer; governs voltage ratio V1/V2 = N1/N2 and impedance ratio Z1/Z2 = (N1/N2)².	chapter5-transformers
+Impedance transformation	impedance matching, impedance referring	Changing the apparent impedance of a load through a transformer (by turns ratio²) or transmission line (by Z0 and length).	chapter5-transformers
+Smith chart rotation	clockwise rotation, WTG	Moving toward the generator on a lossless transmission line corresponds to clockwise rotation on the Smith chart at constant radius (constant |Γ|).	smith-chart-circles
+Separation of variables		Mathematical technique to solve PDEs by assuming the solution factors into functions of individual variables, converting the PDE into decoupled ODEs.	separation-of-variables
+Klein-Gordon equation		A relativistic wave equation of the form utt = a²uxx – β²u; appears in transmission-line transient analysis after removing the damping term by substitution.	solving-telegrapher-frequency-domain
+Probe compensation	scope probe compensation, x10 probe compensation	Adjustment of the compensating capacitor Cp in a ×10 scope probe so that R1·Cc = R2·Cl, giving a flat frequency response (frequency-invariant divider).	oscilloscope-probes
+Loading effect	capacitive loading, resistive loading	The change in a measured signal caused by the finite impedance of the measurement instrument; minimized with a ×10 scope probe.	oscilloscope-probes
+Skin depth	δ (delta)	Depth at which EM field amplitude decays to 1/e in a conductor: δ = sqrt(2/ωμσ); decreases with increasing frequency.	collin-em-theory
+Quality factor	Q factor, unloaded Q, loaded Q	Ratio of stored energy to energy dissipated per radian in a resonant structure; cavities achieve Q > 10⁴ vs. Q ~ 100 for lumped LC circuits.	collin-em-resonators
+Noise figure	NF, noise factor	Ratio (dB) of SNR at input to SNR at output of a device; characterizes degradation of signal quality; key spec for LNA design.	collin-solid-state-amplifiers
+Stability factor	K, Rollett factor	Unconditional stability of a 2-port requires K > 1 and |Δ| < 1; if not, specific source/load regions on the Smith chart cause oscillation.	collin-solid-state-amplifiers
+Voltage regulation	VR	Change in output voltage from no-load to full-load as a percentage of full-load voltage; measure of transformer's ability to maintain constant output voltage.	chapter5-transformers
+K-factor transformer	K-rated transformer	A transformer designed for nonlinear (harmonic) loads; K factor = Σh²(Ih/IRMS)² quantifies the extra eddy-current loss from harmonics.	chapter5-transformers
+Autotransformer		A transformer with a single winding, where part of the winding serves as both primary and secondary; more efficient but no galvanic isolation.	chapter5-transformers
+Manley-Rowe relations		Conservation-of-power relations for nonlinear reactive elements interacting at multiple frequencies; foundation of parametric amplifier theory.	collin-parametric-amplifiers
+Gunn diode	transferred-electron device	A GaAs diode that exhibits negative differential resistance via the transferred-electron effect above a threshold field (~3 kV/cm); used as microwave oscillator.	collin-oscillators-mixers
+Mixer	frequency converter	A nonlinear device converting signals at one frequency to another by multiplication with a local oscillator; produces sum and difference frequencies.	collin-oscillators-mixers
+Image frequency	image rejection	The undesired input frequency fimage = fLO – fIF that also mixes to the IF in a down-converter; must be rejected by a filter before the mixer.	collin-oscillators-mixers
+Fourier transform		Linear transform converting a time-domain signal to its frequency-domain representation; convolution in time = multiplication in frequency.	signals-systems-for-bioengineers
+Laplace transform		Generalized Fourier transform with complex frequency s = σ + jω; used for transient and stability analysis of LTI systems.	signals-systems-for-bioengineers
+Op-amp	operational amplifier	High-gain differential amplifier; used with feedback to realize precision gain, integration, differentiation, and active filter functions.	signals-systems-for-bioengineers
+Velocity of propagation	VP, velocity factor	Fraction of the speed of light at which signals travel in a transmission line: VP = vp/c; RG-58 ≈ 0.66.	transmission-lines-as-impedance-transformers
+Insertion loss	IL	Power ratio (dB) of output power to available input power; includes both reflection loss and transmission losses.	transmission-line-parameters
+Directional coupler		A 4-port passive network that samples power traveling in one direction with high isolation from the opposite direction.	collin-passive-microwave-devices
+Wilkinson divider	Wilkinson power splitter	An equal or unequal power divider using quarter-wave arms with an isolation resistor between output ports; provides isolation while maintaining losslessness.	collin-passive-microwave-devices
+Circulator		A 3-port nonreciprocal ferrite device that routes power in one direction: port 1→2→3→1; used to protect transmitters from load reflections.	collin-passive-microwave-devices
+Barkhausen criterion		Oscillation condition for a feedback amplifier: loop gain magnitude = 1 and total phase shift = 0° (or 360°) at the oscillation frequency.	collin-oscillators-mixers
+Impedance series-to-parallel conversion	Q-transformation	At a given frequency, any series R-L (or R-C) can be replaced by an equivalent parallel R-L (or R-C) with different component values but the same impedance.	impedance-transform-sp

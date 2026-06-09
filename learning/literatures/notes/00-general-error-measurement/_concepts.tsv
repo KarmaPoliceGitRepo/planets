@@ -1,0 +1,16 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+experimental error	experimental precision, measurement uncertainty	The inherent uncertainty associated with a measurement procedure, independent of any presumed true answer	introduction-to-experimental-error-cartwright
+statistical error	random error	Measurement errors that are random in size and direction, amenable to statistical averaging over repeated trials	introduction-to-experimental-error-cartwright
+systematic error	bias error	Non-random errors arising from flaws in experimental design that shift all measurements in a consistent direction	introduction-to-experimental-error-cartwright
+normal distribution	Gaussian distribution	Symmetric bell-curve probability distribution parameterised by mean and standard deviation, commonly assumed for random measurement errors	introduction-to-experimental-error-cartwright
+standard deviation	sigma, σ, RMS error	Square root of the mean squared deviation from the true value; quoted as the error on a single observation	introduction-to-experimental-error-cartwright
+standard error of the mean	SEM	Standard deviation divided by √N; the error on the mean of N repeated measurements	introduction-to-experimental-error-cartwright
+Poisson distribution	shot noise	Discrete probability distribution for count data; for N ≳ 5 approximates Gaussian with σ = √N	introduction-to-experimental-error-cartwright
+error propagation	propagation of uncertainty	Calculation of the uncertainty on a derived quantity from the uncertainties on its measured inputs	introduction-to-experimental-error-cartwright
+addition in quadrature	quadrature sum	Combining independent error contributions as the square root of the sum of squares	introduction-to-experimental-error-cartwright
+weighted mean	inverse-variance weighting	Average of measurements where each value is weighted by the reciprocal of its variance (1/σ²) to emphasise more precise results	introduction-to-experimental-error-cartwright
+method of least squares	least-squares fit, linear regression	Fitting a model to data by minimising the sum of squared residuals between observed and fitted values	introduction-to-experimental-error-cartwright
+residuals	fit residuals	Differences between observed data points and the values predicted by a fitted model	introduction-to-experimental-error-cartwright
+confidence limit	significance level	Probability threshold used to judge whether a discrepancy between measurement and prediction is statistically significant	introduction-to-experimental-error-cartwright
+variance	σ²	The mean squared deviation of a random variable from its mean; the square of the standard deviation	introduction-to-experimental-error-cartwright
+significant figures	sig figs	The number of meaningful digits in a quoted numerical value; error should be quoted to 1–2 significant figures	introduction-to-experimental-error-cartwright

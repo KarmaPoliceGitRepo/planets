@@ -1,0 +1,61 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+piezoelectric charge constant (d)	d33, d31, d15, dh	Ratio of induced charge density to applied stress (or strain per applied field), fundamental parameter for actuator/sensor sensitivity	del-piezo-material-specification-sheet
+coupling coefficient	Kp, K33, Kt, K31, K15	Square root of the fraction of mechanical energy converted to electrical energy (or vice versa) in a piezoelectric element	del-piezo-material-specification-sheet
+mechanical quality factor	Qm, Qpm, Qtm	Ratio of energy stored to energy dissipated per cycle in a resonant piezoelectric element; high Q = low loss	del-piezo-material-specification-sheet
+Curie temperature	Tc	Temperature above which a piezoelectric ceramic loses its piezoelectric properties due to phase transition	del-piezo-material-specification-sheet
+acoustic impedance	Z, Za	Product of material density and acoustic wave velocity (MRayl); governs reflection/transmission at interfaces	del-piezo-material-specification-sheet
+hard PZT	hard ceramic, high-Q PZT	PZT formulation with lower piezoelectric activity but higher mechanical Q and lower dielectric loss; suited for resonant applications	del-piezo-material-specification-sheet
+soft PZT	soft ceramic, low-Q PZT	PZT formulation with higher piezoelectric activity and dielectric constant but higher losses; suited for high-sensitivity applications	del-piezo-material-specification-sheet
+dielectric constant	relative permittivity, ε33T	Ratio of material permittivity to vacuum permittivity, indicating charge storage capacity	del-piezo-material-specification-sheet
+PIC material grades	PIC144, PIC155, PIC184, PIC255	PI Ceramic's proprietary PZT material grades used as reference materials in the transducer community	pi-piezoelectric-ceramic-products-catalog
+longitudinal wave velocity	Vl, compression wave velocity	Speed of acoustic pressure waves propagating parallel to particle displacement direction	intermediate-material-acoustic-properties
+shear wave velocity	Vs, transverse wave velocity	Speed of acoustic waves where particle displacement is perpendicular to propagation direction	intermediate-material-acoustic-properties
+elastic stiffness constant	c11, c44, cij	Tensor component relating stress to strain in an anisotropic material; c11 = longitudinal, c44 = shear	intermediate-material-acoustic-properties
+Poisson's ratio	ν, sigma	Ratio of lateral strain to axial strain under uniaxial stress	intermediate-material-acoustic-properties
+ultrasonic attenuation	longitudinal attenuation, shear attenuation	Energy loss per unit distance as an acoustic wave propagates, measured in dB/m	intermediate-material-acoustic-properties
+glass transition temperature	Tg	Temperature range over which a cured epoxy transitions from glassy/hard state to rubbery/soft state	master-bond-epoxies-glass-transition-temperature
+coefficient of thermal expansion	CTE, α	Rate of dimensional change per degree Celsius; increases 3–5× above Tg for epoxies	master-bond-epoxies-glass-transition-temperature
+Differential Scanning Calorimetry	DSC	Thermal analysis method detecting Tg from changes in heat capacity as a function of temperature	master-bond-epoxies-glass-transition-temperature
+Thermo Mechanical Analysis	TMA	Method measuring dimensional change vs. temperature to determine Tg and CTE; preferred for filled systems	master-bond-epoxies-glass-transition-temperature
+Dynamic Mechanical Analysis	DMA	Viscoelastic characterization method measuring storage/loss modulus vs. temperature; most accurate for Tg	master-bond-epoxies-glass-transition-temperature
+B-staged epoxy	B-staging, partially cured adhesive	Epoxy partially cured (arrested before crosslinking) to solid form for storage and later full cure at application site	master-bond-epoxies-glass-transition-temperature
+PVDF	polyvinylidene fluoride, piezo film	Semi-crystalline polymer with piezoelectric and pyroelectric properties, used as flexible transducer films	pvdf-student-pack-tds
+uniaxial poling	PVDF poling	Process of aligning dipole domains in PVDF by applying a strong electric field above Curie temperature	pvdf-student-pack-tds
+epoxy adhesive film	B-staged film, preform adhesive	Solid-form epoxy adhesive cut to shape and partially cured for uniform, squeeze-out-free bonding	master-bond-epoxy-film-preform-electronics
+dynamic runout	TIR, FIM, total indicator reading	Total radial displacement of a rotating shaft as measured by a dial indicator; harmful to rotary seals	kalsi-seals-shaft-deflection-runout
+extrusion gap	extrusion clearance	Radial clearance between rotating shaft and seal housing; large clearance allows seal extrusion under pressure	kalsi-seals-shaft-deflection-runout
+compression set	O-ring compression set, seal compression set	Permanent deformation of an elastomeric seal due to sustained compression; reduces sealing force over time	kalsi-seals-shaft-deflection-runout
+floating backup ring	hydraulically force-balanced backup ring	Seal arrangement that floats laterally on the shaft to isolate the seal from runout and misalignment	kalsi-seals-shaft-deflection-runout
+roundness	RONt, out-of-roundness	Deviation of a cross-sectional profile from a perfect circle; measured by the peak-to-valley departure from a reference circle	taylor-hobson-guide-to-roundness
+undulations per revolution	upr, lobing	Frequency of surface irregularities per revolution; used to characterize roundness deviations by harmonic content	taylor-hobson-guide-to-roundness
+least squares reference circle	LSCI, LSCY	Best-fit circle minimizing sum of squared deviations from measured profile; most commonly used reference for roundness	taylor-hobson-guide-to-roundness
+rolling bearing	ball bearing, roller bearing	Bearing using rolling elements (balls or rollers) between inner and outer rings to reduce friction	fundamentals-bearings
+preload (bearing)	bearing preload, bearing pre-load	Applied compressive force on bearing to eliminate internal clearance, increase stiffness, and reduce error motion	fundamentals-bearings
+L10 bearing life	bearing fatigue life	Statistical life at which 10% of a population of bearings will have failed due to fatigue	fundamentals-bearings
+contact angle	bearing contact angle	Angle between the line of action of the resultant bearing force and a plane perpendicular to the bearing axis	fundamentals-bearings
+hydrostatic bearing	externally pressurized bearing, aerostatic bearing	Non-contact bearing using external fluid pressure to support load; operates at all speeds including zero	fundamentals-bearings
+Geometric Dimensioning and Tolerancing	GD&T, GD and T	System of symbols and rules for defining and communicating engineering tolerances on drawings	asme-y14-5m-2004-dimensioning-tolerancing
+Maximum Material Condition	MMC	Condition in which a feature contains the maximum amount of material within its stated limits	asme-y14-5m-2004-dimensioning-tolerancing
+datum reference frame	DRF, three-plane datum	Three mutually perpendicular planes established from datum features to define part location/orientation	asme-y14-5m-2004-dimensioning-tolerancing
+Rule 1 (Taylor Principle)	envelope principle, ASME Rule #1	ASME rule that a feature's surface must not extend beyond a perfect-form boundary at MMC	asme-y14-5m-2004-dimensioning-tolerancing
+independency principle	ISO default form control	ISO approach in which form and size tolerances are independent; form errors may exceed size tolerance zone	differences-us-standards-krulikowski
+GPS Masterplan	ISO TR 14638, Geometrical Product Specification	ISO framework organizing dimensional metrology standards into a matrix covering the product lifecycle	differences-us-standards-krulikowski
+screw thread	Unified thread, metric thread, UNC, UNF, M-series	Helical inclined-plane mechanism providing clamping force, motion control, or power transmission	fastener-handout
+class fit	thread fit class, 1A/2A/3A	Specification of how tightly mating thread pitch diameters mesh; class 1 (loose) to class 3 (tight)	fastener-handout
+set screw	headless screw	Threaded fastener with no head, used to restrict motion of shaft-mounted components via point contact	fastener-handout
+clearance fit	running fit, loose fit, slide fit	Assembly fit where the shaft is always smaller than the hole; positive clearance before assembly	unit-3-fit-tolerances
+interference fit	force fit, press fit, shrink fit	Assembly fit where the shaft is larger than the hole; negative clearance requiring force or heat for assembly	unit-3-fit-tolerances
+hole-basis system	hole basis	Fit system where the hole lower deviation = 0 (fixed hole) and shaft size is varied to achieve desired fit	unit-3-fit-tolerances
+dynamic load rating	C, bearing load capacity	Load a bearing can theoretically carry for 1 million revolutions with 90% survival probability	nsk-rolling-bearing-catalog
+bearing internal clearance	radial clearance, C2/CN/C3/C4/C5	Radial play between inner and outer rings before mounting; decreases under interference fit and thermal expansion	nsk-rolling-bearing-catalog
+Young's modulus	E, elastic modulus, stiffness	Ratio of stress to strain in the elastic regime; measure of material stiffness	cambridge-materials-data-book
+fracture toughness	K_IC, KIC, plane strain fracture toughness	Critical stress intensity factor at which a crack propagates unstably under plane strain conditions	cambridge-materials-data-book
+Weibull modulus	m, Weibull parameter	Shape parameter of the Weibull distribution characterizing the scatter in failure strength of brittle materials	cambridge-materials-data-book
+Paris crack growth law	Paris equation, da/dN = A(ΔK)^n	Power-law relationship between fatigue crack growth rate and stress intensity factor range	cambridge-materials-data-book
+capability index	Cp, Cpk, process capability	Statistical measure of how well a manufacturing process meets specifications relative to its variation	capability-machining-systems-larsson
+surface roughness	Ra, roughness average	Average deviation of surface profile from mean line; key parameter for sealing surfaces and bearing seats	surface-grinding-nsk
+profile-rail linear guide	square rail, precision linear guide	Linear bearing system with ground ball-race tracks in a rectangular rail for high stiffness and accuracy	basics-linear-bearings-whitepaper
+ball bushing	round-rail bearing, linear ball bearing	Rolling element linear bearing riding on a cylindrical shaft; compliant and self-aligning	basics-linear-bearings-whitepaper
+effective bandwidth (DSO)	DSO bandwidth	Maximum frequency faithfully displayed by a digital oscilloscope; equals sample_rate / 2.5 for sinusoids	oscilloscope-tutorial
+box averaging	hardware averaging	Signal processing technique averaging N successive DSO samples to improve S/N ratio by √N	oscilloscope-tutorial
+Equivalent Time Sampling	ETS	DSO technique for repetitive signals shifting sample timing by picoseconds to achieve effective GHz sample rates	oscilloscope-tutorial

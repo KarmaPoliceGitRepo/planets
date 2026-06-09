@@ -1,0 +1,13 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+Electromagnetic Acoustic Transducer (EMAT)	EMAT	A non-contact ultrasonic transducer that uses eddy currents and a static magnetic field to generate ultrasound via the Lorentz force or magnetostriction mechanism.	wholly-analytical-emat-array-simulation
+Dodd–Deeds analytical solution	Deeds and Dodd solution	Closed-form integral expressions for the magnetic vector potential induced by a circular coil above a layered conductor, derived by C.V. Dodd and W.E. Deeds (1968).	wholly-analytical-emat-array-simulation
+Meander-line coil	meander coil	A planar coil whose conductors run in alternating parallel lines, used in surface-wave EMATs; pitch set to half the target wavelength for constructive interference.	wholly-analytical-emat-array-simulation
+Lorentz force mechanism	Lorentz force density	The force F = J × B acting on eddy currents J in a static magnetic field B, which launches ultrasonic waves in conducting materials.	wholly-analytical-emat-array-simulation
+Skin depth	penetration depth	The characteristic depth at which eddy-current amplitude falls to 1/e; given by δ = √(2/(ωσμ)).	wholly-analytical-emat-array-simulation
+Rayleigh wave	surface wave	An elastic wave confined near a free surface with both compressional and shear components; velocity in stainless steel ≈ 3.033 mm/µs.	wholly-analytical-emat-array-simulation
+Large-radius extrapolation	straight-wire approximation	Technique to adapt the circular-coil Dodd–Deeds solution to a straight wire by letting the coil radius → ∞, making the bent wire locally straight.	wholly-analytical-emat-array-simulation
+Beam directivity	steering angle	The angular distribution of radiated ultrasonic energy at a fixed radial distance from the EMAT centre; used to assess array performance.	wholly-analytical-emat-array-simulation
+Finite Element Method (FEM)	FEM, COMSOL, Ansoft Maxwell, Abaqus	Numerical method that solves PDEs by discretising space into elements; used here as a reference against which analytical results are validated.	wholly-analytical-emat-array-simulation
+Finite-Difference Time-Domain (FDTD)	FDTD	Numerical time-domain method for wave equations; earlier work by the same authors combined FEM or analytical EM with FDTD acoustics.	wholly-analytical-emat-array-simulation
+Non-destructive testing (NDT)	NDE, NDT	Inspection techniques (eddy current, ultrasonic, MPI, etc.) that assess material integrity without damaging the test piece.	wholly-analytical-emat-array-simulation
+Vector potential	magnetic vector potential, A	Auxiliary field A satisfying B = ∇ × A; the primary quantity solved in the Dodd–Deeds eddy-current formulation.	wholly-analytical-emat-array-simulation

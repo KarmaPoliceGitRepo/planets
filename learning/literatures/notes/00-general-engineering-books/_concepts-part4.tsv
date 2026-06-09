@@ -1,0 +1,52 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+Bolted composite joint strength	mechanically fastened composite joint	Ultimate load capacity of a fastened composite-laminate connection, governed by bearing, shearout, or net-section failure modes	afwal-tr-81-3041-vol-ii
+Bearing failure mode	bearing mode	Composite joint failure where laminate crushes around the fastener hole under compressive bearing stress	afwal-tr-81-3041-vol-ii
+Shearout failure mode	bearing-shearout mode	Joint failure by shear fracture of the laminate between the hole edge and the specimen end	afwal-tr-81-3041-vol-ii
+Net-section failure	tension-cleavage failure	Joint failure by tensile fracture of the net cross-section of the laminate at the fastener hole	afwal-tr-81-3041-vol-ii
+Bolted Joint Stress Field Model	BJSFM	Analytical stress-field procedure developed by MCAIR to predict static strength of bolted composite joints	afwal-tr-81-3041-vol-ii
+Environmental conditioning (composites)	ETW RTD RTW	Controlled moisture/temperature pre-conditioning of composite specimens to simulate service environments	afwal-tr-81-3041-vol-ii
+Manufacturing anomalies (composites)	porosity interference fit hole quality	Deviations from nominal manufacturing specification (porosity, out-of-round holes, interference fit, broken fibres) that affect joint strength	afwal-tr-81-3041-vol-ii
+Boundary layer	viscous boundary layer	Thin region near a solid surface where velocity rises from zero (no-slip) to the free-stream value due to viscous effects	intro-mechanical-engineering-part2-clifford
+Displacement thickness	delta-star	Thickness of the equivalent inviscid flow that accounts for the mass flow deficit caused by the boundary layer	intro-mechanical-engineering-part2-clifford
+Momentum thickness	theta	Thickness of the equivalent inviscid flow that accounts for the momentum deficit caused by the boundary layer	intro-mechanical-engineering-part2-clifford
+Shape factor	H	Ratio of boundary-layer displacement thickness to momentum thickness; rises sharply as flow approaches separation	intro-mechanical-engineering-part2-clifford
+Flow separation	boundary-layer separation	Detachment of the boundary layer from the surface under an adverse pressure gradient, producing reverse flow	intro-mechanical-engineering-part2-clifford
+Kármán momentum integral equation	von Kármán integral	Integral form of the boundary-layer equation relating wall shear stress to growth of momentum thickness along a surface	intro-mechanical-engineering-part2-clifford
+Yield criteria	Tresca criterion von Mises criterion	Mathematical conditions defining the onset of plastic yielding in a material under combined stress states	intro-mechanical-engineering-part2-clifford
+Euler buckling	elastic instability	Critical compressive load at which a slender column undergoes lateral deflection; Pcr = π²EI/(Le)²	intro-mechanical-engineering-part2-clifford
+Miner's rule	Palmgren-Miner rule	Linear damage accumulation rule for fatigue life under variable amplitude loading: Σ(ni/Ni) = 1 at failure	intro-mechanical-engineering-part2-clifford
+Fracture toughness	K_Ic plane-strain fracture toughness	Material property (critical stress intensity factor) characterising resistance to crack propagation	intro-mechanical-engineering-part2-clifford
+PID control	proportional-integral-derivative controller	Feedback control law combining proportional, integral, and derivative error terms to regulate a process variable	intro-mechanical-engineering-part2-clifford
+Root locus method	root locus	Graphical technique showing how closed-loop poles move in the s-plane as controller gain varies	intro-mechanical-engineering-part2-clifford
+Natural frequency	undamped natural frequency omega_n	Frequency at which an undamped system oscillates freely; ωn = √(k/m) for a simple spring-mass system	mechanical-vibrations-5th-edition-rao
+Damping ratio	critical damping ratio zeta	Ratio of actual damping to critical damping; determines whether system response is underdamped, critically damped, or overdamped	mechanical-vibrations-5th-edition-rao
+Logarithmic decrement	delta	Natural log of ratio of successive amplitudes in free vibration; δ = 2πζ/√(1−ζ²)	mechanical-vibrations-5th-edition-rao
+Magnification factor	dynamic amplification factor	Ratio of steady-state dynamic displacement amplitude to static deflection under harmonic excitation	mechanical-vibrations-5th-edition-rao
+Transmissibility	force transmissibility motion transmissibility	Ratio of transmitted force (or motion) to applied force (or base motion); key parameter in vibration isolation design	mechanical-vibrations-5th-edition-rao
+Duhamel integral	convolution integral	Integral expression for the response of a linear system to an arbitrary forcing function via impulse response function	mechanical-vibrations-5th-edition-rao
+Modal analysis	modal superposition	Method of decoupling MDOF equations of motion using mass-normalized mode shapes (eigenvectors)	mechanical-vibrations-5th-edition-rao
+Dynamic vibration absorber	tuned mass damper TMD	Auxiliary mass-spring system attached to a primary structure to suppress vibration at a target frequency	mechanical-vibrations-5th-edition-rao
+Rayleigh's method	Rayleigh quotient	Energy-based method for estimating the fundamental natural frequency of a structure by equating maximum kinetic and potential energies	mechanical-vibrations-5th-edition-rao
+Finite element method (vibration)	FEM structural dynamics	Discretisation technique that formulates mass and stiffness matrices from element shape functions for vibration analysis	mechanical-vibrations-5th-edition-rao
+Whirling of rotating shafts	critical speed shaft whirl	Self-excited lateral vibration of a rotating shaft occurring at speeds near the system's natural frequency	mechanical-vibrations-5th-edition-rao
+Power spectral density	PSD	Frequency-domain representation of the mean-square content of a random signal per unit frequency	mechanical-vibrations-5th-edition-rao
+Orthographic projection	first-angle projection third-angle projection	Standard methods of representing three-dimensional objects as multiple two-dimensional views on a drawing sheet	manual-of-engineering-drawing
+BS 8888	Technical Product Documentation TPD	British and ISO standard for defining, specifying, and graphically representing products, replacing BS 308	manual-of-engineering-drawing
+Geometrical tolerancing	GD&T geometric dimensioning and tolerancing	System of symbols and rules for specifying allowable variation in form, orientation, location, and runout of features	manual-of-engineering-drawing
+Feature control frame	tolerance frame	Rectangular box on engineering drawings containing the tolerance symbol, value, and datum references	manual-of-engineering-drawing
+Maximum material condition	MMC MMR	State of a feature at its maximum material content (smallest hole or largest shaft); allows bonus tolerance	manual-of-engineering-drawing
+Datum	datum feature datum reference frame	Theoretically exact point, line, or plane used as the reference for geometric tolerances	manual-of-engineering-drawing
+Limits and fits	ISO fit system	Standardised system specifying shaft and hole tolerances by fundamental deviation letter and grade number	manual-of-engineering-drawing
+Positional tolerancing	true position	Geometric tolerance controlling the location of a feature relative to a datum reference frame	manual-of-engineering-drawing
+Buckingham's π-theorem	Pi theorem	States that a physically complete equation in n variables with k dimensionally independent variables can be rewritten using n−k dimensionless groups	dimensional-analysis-sonin
+Dimensional homogeneity	dimensional consistency	Property of a physical equation whereby both sides and all summed terms share the same dimension, ensuring unit-invariance	dimensional-analysis-sonin
+Base quantity	fundamental quantity	Physical property defined by a comparison operation (equality) and an addition operation; measurable in its own units	dimensional-analysis-sonin
+Derived quantity	dimensionless quantity dimensional quantity	Physical quantity defined as a product of powers of base quantities; its dimension depends on the unit system chosen	dimensional-analysis-sonin
+Dimensionless group	Pi group similarity parameter	Product of physical variables combined such that the result has dimension unity; the building block of dimensional analysis	dimensional-analysis-sonin
+Similarity	physical similarity	Condition under which two physical systems obey the same dimensionless relationships, enabling scale-model testing	dimensional-analysis-sonin
+Inspectional analysis	similarity analysis	Dimensional analysis performed by normalising the governing equations rather than from variable lists alone; can reveal higher-order similarities	dimensional-analysis-sonin
+Principle of absolute significance of relative values	unit-invariance principle	Physical relationships must remain valid regardless of the choice of base units; the foundation of dimensional homogeneity	dimensional-analysis-sonin
+Derived quantity of the second kind	F=ma derived quantity	A base quantity converted to derived status by using a physical law to tie its unit to other base units (e.g. force from F=ma); does not imply the quantity physically "is" the product of the other quantities	dimensional-analysis-sonin
+Fixed-value independent quantities theorem	generalised pi theorem	Generalisation of Buckingham's theorem: if nF of the n independent variables have fixed values, with kF of them dimensionally independent, the number of free similarity parameters is (n−k) − (nF−kF)	dimensional-analysis-sonin
+Incomplete variable set error	missing variable dimensional analysis pitfall	Omission of even one relevant independent variable from the dimensional analysis invalidates the result entirely, yielding spurious conclusions	dimensional-analysis-sonin
+Superfluous variable error	over-specification dimensional analysis	Including a dependent or redundant variable (e.g. both mass m and density ρ·D³ for a sphere) adds unnecessary Pi groups and dilutes the simplification power of dimensional analysis	dimensional-analysis-sonin

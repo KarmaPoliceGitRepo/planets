@@ -1,0 +1,54 @@
+# Reading progress (working file — updated as agents complete)
+
+## done
+- 00-general-electronics (84 files -> 27 notes: 17 full, 26 partial, 40 ancillary skipped)
+- 000-electronics-instructions (23 docs, all full; verify subfolder recursion in QA)
+- 00-general-acoustics (89 files -> 56 notes incl. collection notes; ~12 full, ~28 partial, ~22 unreadable djvu/scans)
+- effect-of-temperature (47 files -> 43 notes: 36 full, 5 partial, 2 ini, 2 duplicates)
+- 00-general-mechanical-and-materials (28 items: 14 full, 5 partial books, 3 image-only, 1 duplicate)
+- microstructure (49 files -> 46 notes: 28 full, 19 partial, 2 duplicates)
+- 00-general-engineering-books (17 files via 4 split agents: most partial, ASM scan + docx unreadable)
+- effect-of-stress (24 files -> 21 notes: 19 full, 2 partial, 3 duplicates)
+- data-sheets (22 files: 17 full, 5 partial catalogs)
+- 99-other-relevant-papers (4 files: 3 full, 1 unreadable 60MB scan)
+- 00-general-hardware-design-stuff (1 doc, partial)
+- 00-general-heat-transfer (3 files: 1 full, 1 partial, 1 unreadable 60MB scan)
+- adhesive-layer (5 docs, all full)
+- 00-general-error-measurement (1 doc, full)
+- 000000-read-papers-with-notes (1 doc, full)
+- 00000-how2research (2 docs, full)
+- contact-study-using-us-waves (9 docs: 8 full, 1 partial thesis)
+- signal-processing (83 files -> 35 notes: 23 full, 10 partial, 4 unreadable, 30 dups/chapters)
+- design-engineering (2 files: 1 partial, 1 unreadable 61MB scan)
+- maths (48 docs -> 35 notes: 12 full, 22 partial, 2 unreadable, 3 duplicates)
+- honing (3 docs: 2 full, 1 partial ASM chapter)
+- emat (1 doc, full)
+- lubrication-film (4 docs: 3 full, 1 partial thesis)
+- laser-induced (6 docs, all full)
+- focusing-ultrasonic-waves (5 docs: 4 full, 1 partial thesis)
+- range-measurement (24 files: 15 full, 6 partial, 1 image-only; 52 concept rows)
+- grinding (6 files: 4 full, 1 partial Shaw book, 1 duplicate)
+- personal-communications (11 files: 6 full, 3 partial theses, 2 unreadable; Sheffield Dwyer-Joyce lab cluster)
+- matlab-and-labview (2 LabVIEW books, both partial)
+- programming (15 files: 8 partial book notes, 7 unreadable epub/zip)
+- standards (14 files: 10 full, 3 partial, 1 duplicate)
+- modeling-of-acoustic-waves (5 docs, all full)
+- surface-acoustic-wave (12 docs; one mislabeled file flagged in note)
+- method-resonance (5 files, 4 full + 1 preview-only stub)
+- _root (Findings.xlsx)
+- temperature-measurement-probes (2 docs)
+- speed-of-sound (1 doc)
+- wear-measurement (6 files, 5 notes, 1 duplicate)
+
+## in flight
+(none — all agents complete 2026-06-09)
+
+## queued (none — all dispatched)
+### moved to in flight:
+
+## done (final assembly, 2026-06-09)
+- merge phase COMPLETE: 4 domain merge agents -> 203 canonical concepts/ pages
+- GLOSSARY.md (203 concepts), INDEX.md, MANIFEST.md (645 files) generated; link-check: 0 broken
+- 4 _graphify digests; README.md front door; QA-SELFTEST.md (12 grounded Q&A)
+- graphify KNOWLEDGE.md updated and pushed
+- deep-read queue: 15 done; remaining pending rows are future iterations

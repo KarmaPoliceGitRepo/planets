@@ -1,0 +1,5 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+acoustoelastic effect	speed of sound vs stress	Dependence of ultrasonic wave velocity on applied/residual stress in a material	findings-spreadsheet
+ultrasonic attenuation	attenuation	Loss of ultrasonic wave amplitude with propagation distance, sensitive to microstructure and damage	findings-spreadsheet
+dislocation density	number of dislocations	Concentration of lattice dislocations; rises near fracture and alters acoustic parameters	findings-spreadsheet
+temperature dependence of sound speed	speed of sound vs temp	Variation of acoustic velocity with material temperature	findings-spreadsheet

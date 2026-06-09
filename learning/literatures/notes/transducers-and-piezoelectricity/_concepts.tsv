@@ -1,0 +1,37 @@
+concept	definition	key_sources
+acoustic impedance	Z = ρc (Pa·s/m = Rayl); specific acoustic impedance of a medium; mismatch drives reflections	desilets-1978; fry-dunn-1962; krimholtz-1970
+acoustic impedance matching layer (ML)	Layer inserted between transducer and medium to reduce mismatch; quarter-wave (λ/4) thickness gives maximum transmission at center frequency	desilets-1978; fry-dunn-1962; tone-1984; yano-1987
+air-coupled ultrasound	Ultrasonic measurements without liquid couplant; main challenge is PZT-to-air impedance mismatch (~33 MRayl vs 0.000429 MRayl → 90 dB loss)	chimenti-2014; reilly-1991; gomez-2004
+Biot theory	Theory of elastic wave propagation in fluid-saturated porous media; predicts two P-waves and one S-wave; transition frequency ωc = ηφ/(ρ₀κ); correction by Kurzeja-Steeb 2012	biot-1956-low; biot-1956-high; kurzeja-steeb-2012
+Chebyshev matching criterion	ML impedance selection: Z_opt = √(Z_PZT × Z_air) for single layer; geometric mean; gives widest bandwidth but lowest peak	desilets-1978; gudra-2002; gudra-banasiak-2018
+Champoux-Allard model	Dynamic tortuosity α(ω) and bulk modulus K(ω) for rigid-frame porous media; extends Biot to high-frequency rigid limit; two parameters (tortuosity α∞, viscous length Λ)	champoux-allard-1991
+cMUT (capacitive micromachined ultrasonic transducer)	Capacitive thin-membrane transducer; requires DC bias; high sensitivity; CMOS-compatible	schindel-1995; jung-2017
+coupling coefficient k²	Dimensionless measure of electromechanical conversion efficiency; k²_t (thickness mode); k²_31 (lateral mode); k²_eff from impedance	krimholtz-1970; jung-2017; sherrit-series
+corrugated PVDF transducer	PVDF film corrugated to amplify flexural motion; resonance f₀ = (1/2πR)√(Y/ρp); used for air-coupled ranging at 200 kHz	toda-dahl-2007
+DeSilets matching criterion	Binomial ML impedance: Z₁ = (Z_PZT² × Z_air)^(1/3); gives highest peak transmission at f₀ but narrowest band	desilets-1978; gudra-2002
+electrodynamic flexural transducer (EDFT)	Voice-coil driven metal cap transducer; no PZT; suited for <40 kHz air-coupled applications	eriksson-2016
+flexural (bending mode) transducer	Metal cap with PZT disc; resonance set by cap geometry: f = (λ/a)²√(D/ρh); d31 coupling; no matching layer needed	eriksson-2016; toda-dahl-2007
+genetic algorithm (GA) for ML selection	Evolutionary algorithm (roulette-wheel + crossover + mutation) applied to select ML material sequences from material database to maximise transmission coefficient T	gudra-banasiak-2018; saffar-2012
+half-wavelength cavity resonance matching	λ/2 resonator formed by SR+MF composite; SR (0.94 MRayl) + MSR (0.54 MRayl) + SF + MF (0.12 MRayl); achieves impedance gradient without needing Z_opt material	kelly-2001; kelly-2004
+hollow glass microspheres (HGM) composite	Epoxy filled with glass microspheres; ρ = 665 kg/m³, c = 2862 m/s, Z = 1.91 MRayl at 700 kHz; first ML in two-layer design	wu-2016; tone-1984; ramadas-2015
+KLM equivalent circuit	Krimholtz-Leedom-Matthaei (1970) transmission-line equivalent circuit for thickness-mode piezoelectric transducer; supersedes Mason circuit for multi-layer analysis	krimholtz-1970; sherrit-1999; cochran-2012
+locally resonant acoustic metamaterial	Structure with subwavelength resonating inclusions; negative effective ρ or K near resonance → band gap; first demonstrated Liu et al. 2000 (rubber-coated spheres)	ma-sheng-2016; kinra-1982; li-2017
+microporous polyolefin	Z = 0.24 MRayl, c = 800 m/s, ρ = 300 kg/m³; used as outer ML in air transducers; α = 3 dB/mm	yano-1987; gomez-2004
+1-3 piezocomposite	Array of PZT pillars in polymer matrix; reduced Z (3–12 MRayl) and lower Qm; improved efficiency for air-coupled applications	hayward-1996; haller-1994; gomez-2012
+pMUT (piezoelectric micromachined ultrasonic transducer)	MEMS-based bending-mode transducer; thin PZT or AlN on Si membrane; d31 coupling; applications: IVUS, rangefinder, fingerprint	jung-2017
+porous silicone rubber ML	Silicone rubber + porosity φ: cL drops from 1110 → 38.5 m/s at φ = 35%; K₀/G₀ ≈ 4000 → dramatic impedance reduction	ba-2017
+P(VDF-TrFE) copolymer	kt = 0.3, ρ = 1.89 g/cm³, c = 2400 m/s, Z ≈ 4.5 MRayl; lower Qm than PZT; used for air-coupled arrays at 2 MHz	takahashi-2009; takahashi-2012; bae-2014
+PVDF (polyvinylidene fluoride)	Flexible piezoelectric polymer; d31 = 20–30 pC/N, Z ≈ 2.7 MRayl; used for hydrophones, air transducers, wideband probes	bainton-1981; zhang-1993; zhang-1997; brown-2000
+PVDF water absorption	P(VDF-TrFE) absorbs ~5 wt% water over 4 weeks; reversible; Young's modulus +9.33%; d₁₁₀ lattice spacing increases	bae-2014
+quarter-wave matching layer	ML with thickness = λ/4 at center frequency; Z_input = Z_ML²/Z_load; for perfect matching Z_ML = √(Z₁Z₂)	desilets-1978; fry-dunn-1962; collin-1955
+reflective thin-film matching	Thin polymer film at precise air gap from transducer; impedance conversion Z_in ≈ (4/π)Z_m·Q_m; ~10 dB pressure gain	toda-2002; toda-2015
+rigid polymer foam ML	Closed-cell polymer foam with Es = 5 GPa; Z = 0.05 MRayl, v > 640 m/s, α < 100 Np/m at 1 MHz; preferred over open-cell (lower α, thicker layer, larger pore tolerance)	gomez-2013; gomez-2004
+Sekoyan additive sound speed model	c_mix = (1-φ)c_solid + φ·c_fluid; empirical additive formula for porous media	sekoyan-2009
+silica aerogel ML	Z = 0.01–0.1 MRayl; c = 120 m/s; fragile; first used by Khuri-Yakub 1988; Airloy X103L is machinable cross-linked variant	khuri-yakub-1988; korres-2013
+spring-mass matching layer	Polymer-metal bilayer: ZIN = ZM²/Z_R (equivalent to λ/4 layer of metal); enhances radiation for air-coupled PZT	toda-thompson-2012; gudra-banasiak-2018
+SBCT (Switchable Barker Code Transducer)	PVDF multilayer off-resonance wideband design; Barker-code weighted layers; –6 dB BW 7.8 MHz; coded excitation and pulse compression	zhang-lewin-1993; zhang-lewin-1995; zhang-1997
+Souquet matching criterion	Z_opt = (2·Z_PZT·Z_air²)^(1/3); quality-factor equalization criterion; intermediate between Chebyshev and DeSilets	gudra-2002; gudra-banasiak-2018
+tortuosity	Parameter α∞ ≥ 1 characterising tortuous path length through porous medium; appears in Biot and Champoux-Allard models	champoux-allard-1991; biot-1956-high; kurzeja-steeb-2012
+transfer matrix (ABCD) method	Fourpole cascade matrices for multilayer acoustic/electrical systems; equivalent to KLM for thickness-mode stacks	hayward-1984; cochran-2012; zhang-lewin-1995
+μSL (micro-stereolithography)	DLP-based additive manufacturing of matching layers from photocurable resin + glass micro-balloons; 28% porosity; v = 1865 m/s at 200 kHz	ramadas-2015
+van Dyke equivalent circuit	Parallel LCR (mechanical branch) + capacitor C₀ (static); simple model for single-resonance piezoelectric; Q_m from LCR parameters	eriksson-2016; sherrit-series

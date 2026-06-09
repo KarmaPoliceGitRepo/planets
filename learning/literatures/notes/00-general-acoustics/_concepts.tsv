@@ -1,0 +1,160 @@
+concept	doc_slug	notes
+acoustic impedance	lect-ultrasound-physics-basic	Z = ρc; determines reflection/transmission at interfaces; tabulated for tissues/materials
+acoustic impedance	kinsler-fundamentals-acoustics	fundamental acoustic quantity; specific acoustic impedance Z = p/v = ρc for plane waves
+acoustic impedance	brekhovskikh-waves-layered-media-1960	impedance matching at layered media interfaces; reflection/transmission coefficients
+acoustic impedance	auld-transmission-line	transmission line analogy; characteristic impedance Z₀ = ρv
+acoustic impedance	berger-linzer-ultrasonic-materials-characterization	measurement of impedance for materials characterization
+acoustic impedance	keler-elastic-properties-glass	impedance from pulse-echo measurements on glass/ceramics
+acoustic intensity	jacobsen-juhl-general-linear-acoustics	active and reactive intensity; complex intensity; vector intensity field
+acoustic intensity	fundamentals-acoustics-wikibooks	I = p·v; time-averaged intensity; decibels and sound pressure level
+acoustic intensity	carley-bath-acoustics-notes	I = (1/2)Re[p v*] for harmonic waves; radiation from sources
+acoustic intensity	nyu-wave-momentum	wave momentum = energy/phase_velocity; intensity = energy flux
+attenuation	krautkramer-ultrasonic-testing	diffraction, scattering, absorption losses in NDT; measurement methods
+attenuation	lect-ultrasound-physics-basic	1 dB/cm/MHz in soft tissue; frequency dependence; tissue-specific values
+attenuation	fundamentals-acoustics-wikibooks	α ∝ ω² in classical absorption; viscous and thermal contributions
+attenuation	brekhovskikh-waves-layered-media-1960	attenuation in layered media; leaky modes; evanescent waves
+attenuation	carley-turbulence-noise	α ∝ ω² for viscous fluid attenuation
+attenuation	helsinki-wave-propagation-lect-notes	α ∝ ω²(4η/3 + ζ)/ρc³ for viscous+bulk viscosity contributions
+bulk modulus	adiabatic-bulk-moduli	adiabatic vs. isothermal bulk modulus; K_ad = γK_iso; relevance to wave speed
+bulk modulus	fundamentals-acoustics-wikibooks	c = √(K/ρ) for fluids; compressibility K = 1/B
+bulk modulus	mason-1947-shear-viscosity	shear elasticity measurement via resonant crystals; analogous to bulk modulus measurement
+Christoffel equation	helsinki-wave-propagation-lect-notes	gives phase velocities and polarizations for given propagation direction in anisotropic media
+Christoffel equation	anisotropic-elasticity-linear	eigenvalue problem C_ijkl n_j n_l; slowness surface
+diffraction	lect-ultrasound-physics-basic	near field (Fresnel) vs far field (Fraunhofer) zones; D = d²/(4λ)
+diffraction	kinsler-fundamentals-acoustics	Fraunhofer diffraction patterns; circular aperture radiation
+diffraction	rayleigh-theory-of-sound	Rayleigh's classic treatment of diffraction by apertures and obstacles
+diffraction	fundamentals-acoustics-wikibooks	Huygens principle; Babinet's theorem; Fresnel zones
+elastic constants	keler-elastic-properties-glass	Young's modulus E, shear modulus G, Poisson's ratio ν from pulse-echo; glass/ceramics
+elastic constants	anisotropic-elasticity-linear	Voigt notation; 21 independent constants for triclinic; symmetry reduction
+elastic constants	helsinki-wave-propagation-lect-notes	P-wave: C_L = √[(λ+2μ)/ρ]; S-wave: C_T = √[μ/ρ]; rod: C = √[E/ρ]
+elastic constants	bedford-drumheller-elastic-wave-propagation	elastic moduli tensor; isotropic Lamé constants λ and μ
+elastic constants	muller-theory-elastic-waves	relationship between elastic constants and wave velocities
+elastic waves (P and S)	helsinki-wave-propagation-lect-notes	P-wave (longitudinal) and S-wave (shear) from Navier equation; Helmholtz decomposition
+elastic waves (P and S)	achenbach-wave-propagation-elastic	classical reference (Achenbach 1973); unreadable djvu
+elastic waves (P and S)	bedford-drumheller-elastic-wave-propagation	elastic wave equation derivation; body waves, surface waves
+elastic waves (P and S)	muller-theory-elastic-waves	wave equation derivation in elastic media; boundary conditions
+elastic waves (P and S)	brekhovskikh-waves-layered-media-1960	plane wave solutions; reflection at interfaces; slowness vectors
+elastic waves (P and S)	auld-transmission-line	transmission line model for acoustic plane waves; mode coupling
+elastic waves (P and S)	keler-elastic-properties-glass	P- and S-wave velocity measurement for material property determination
+electromechanical coupling	mason-electromechanical-transducers	Mason equivalent circuit; electromechanical coupling coefficient k_t; lumped element models
+electromechanical coupling	fundamentals-piezoelectricity-robotic	direct and converse piezoelectric effect; d-matrix; coupling coefficients
+electromechanical coupling	waanders-piezoelectric-ceramics	PZT properties; k_p, k_t, k_31; aging effects
+electromechanical coupling	nakamura-ultrasonic-transducers	PVDF, PZT, LiNbO3 coupling; composite transducers; 1-3 composites
+electromechanical coupling	lect-ultrasound-physics-basic	piezoelectric effect in PZT transducers; poling; direct and converse effects
+eikonal equation / ray theory	brekhovskikh-waves-layered-media-1960	geometric acoustics; eikonal equation; ray equations
+eikonal equation / ray theory	brekhovskikh-ocean-acoustics-1982	SOFAR channel ray theory; ray tracing in ocean with sound speed profile
+eikonal equation / ray theory	helsinki-wave-propagation-lect-notes	eikonal |∇τ|² = 1/c²; Hamilton-Jacobi analogy; WKB approximation
+eikonal equation / ray theory	fundamentals-acoustics-wikibooks	geometrical acoustics; shadow zones; caustics
+Fresnel/Fraunhofer zones	lect-ultrasound-physics-basic	near-field length D = d²/(4λ); far-field divergence sin θ = 1.22λ/d
+Fresnel/Fraunhofer zones	kinsler-fundamentals-acoustics	near/far field of transducers; lateral resolution
+Fresnel/Fraunhofer zones	carley-bath-acoustics-notes	piston radiation near/far field; Fresnel zone formula
+group velocity	brillouin-wave-propagation-group-velocity	group vs. phase velocity; precursor; anomalous dispersion (unreadable djvu)
+group velocity	fundamentals-acoustics-wikibooks	dispersive waves; wave packets; group velocity v_g = dω/dk
+group velocity	nyu-wave-momentum	quantum wave: v_g = ℏk/E; p = E·v_g/c² relativistic
+group velocity	brekhovskikh-layered-media-ii	group velocity in layered waveguides; dispersive normal modes
+Helmholtz resonator	carley-bath-acoustics-notes	f = (c/2π)√(S/VL); cavity resonator for noise control
+Helmholtz resonator	fundamentals-acoustics-wikibooks	lumped element model; quality factor; bandwidth
+Helmholtz resonator	fahy-foundations-engineering-acoustics	engineering design of resonators for noise control
+Kramers-Kronig relations	papers-collection	Mangulis 1964; Kramers-Kronig for ultrasonic attenuation/velocity dispersion
+Kramers-Kronig relations	papers-collection	second paper on KK relationship between attenuation and phase velocity
+Lamé constants	helsinki-wave-propagation-lect-notes	λ and μ relate to E, ν, and wave velocities; C_L = √[(λ+2μ)/ρ]
+Lamé constants	bedford-drumheller-elastic-wave-propagation	isotropic elastic media; Lamé parameter derivation
+lateral waves	brekhovskikh-layered-media-i-1989	lateral waves as head waves at interfaces; cylindrical spreading
+lateral waves	brekhovskikh-layered-media-ii	lateral waves from point sources in layered media; branch cut integrals
+Love waves	helsinki-wave-propagation-lect-notes	horizontally polarized shear waves in layered half-space; dispersive with cutoff
+Love waves	brekhovskikh-waves-layered-media-1960	surface waves in layered media; boundary conditions
+Lighthill acoustic analogy	carley-turbulence-noise	∂²p/∂t² − c²∇²p = ∂²T_ij/∂x_i∂x_j; T_ij Lighthill stress tensor; jet noise 8th power law
+mode conversion	helsinki-wave-propagation-lect-notes	P-to-S and S-to-P mode conversion at boundaries; Zoeppritz equations
+mode conversion	brekhovskikh-waves-layered-media-1960	reflection and transmission coefficients for layered media
+mode conversion	auld-transmission-line	acoustic transmission line model with mode coupling
+mode conversion	krautkramer-ultrasonic-testing	mode conversion in NDT; angle beam inspection
+nonlinear acoustics	nonlinear-wave-equation	nonlinear wave equation; wave steepening; shock formation; Burgers equation
+nonlinear acoustics	fundamentals-acoustics-wikibooks	nonlinear effects; harmonic distortion; shock waves
+nonlinear acoustics	helsinki-wave-propagation-lect-notes	KdV solitons; Burgers shock waves; characteristics crossing
+normal modes (waveguide)	brekhovskikh-ocean-acoustics-1982	normal mode expansion in SOFAR channel; cutoff frequencies
+normal modes (waveguide)	brekhovskikh-layered-media-ii	range-dependent waveguides; coupled modes; adiabatic approximation
+normal modes (waveguide)	kuttruff-acoustics-introduction	room modes; normal mode expansion in enclosures
+ocean acoustics	brekhovskikh-ocean-acoustics-1982	SOFAR channel; ray theory; normal modes; rough surface scattering; bubble effects
+piezoelectric effect	lect-ultrasound-physics-basic	PZT poling; direct effect (mechanical→electrical) and converse; pulse generation
+piezoelectric effect	mason-electromechanical-transducers	Mason equivalent circuit; crystal transducers; wave filters
+piezoelectric effect	waanders-piezoelectric-ceramics	PZT material properties; d_33, g_33, k_t; Curie temperature
+piezoelectric effect	fundamentals-piezoelectricity-robotic	tensor notation; constitutive equations; d, e, g, h matrices
+piezoelectric effect	good-piezo-references	reference data on piezoelectric materials; quick-reference format
+piezoelectric effect	nakamura-ultrasonic-transducers	PVDF, PZT, composite transducer design; 1-3 composites; PMN-PT
+piezoelectric effect	sensors-actuators-1981-collection	cylindrical PVDF transducers; quartz crystal microbalance; piezoelectric sensors
+PVDF/polymer transducers	nakamura-ultrasonic-transducers	PVDF film properties; hydrophone applications; flexible arrays
+PVDF/polymer transducers	sensors-actuators-1981-collection	cylindrical PVF2 electromechanical transducers (1981)
+QCM (quartz crystal microbalance)	sensors-actuators-1981-collection	coated piezoelectric crystal for chemical detection; mass sensitivity
+Rayleigh waves	helsinki-wave-propagation-lect-notes	speed ~0.92 C_T; elliptically polarized retrograde; cubic equation in (v_R/C_T)²
+Rayleigh waves	brekhovskikh-waves-layered-media-1960	surface wave solutions; characteristic equation
+Rayleigh waves	bedford-drumheller-elastic-wave-propagation	Rayleigh wave derivation; retrograde elliptical particle motion
+resonance scattering	flax-theory-resonance-scattering	resonance scattering theory (RST); elastic resonances of submerged objects; Flax 1981
+resonance scattering	acoustical-imaging-14	acoustic imaging of scatterers; resonance effects in targets
+scattering	brekhovskikh-ocean-acoustics-1982	rough surface scattering; Rayleigh parameter; coherent vs. incoherent scatter
+scattering	rayleigh-theory-of-sound	Rayleigh scattering from small obstacles; cross-sections
+scattering	acoustical-imaging-14	ultrasonic imaging via scattering; diffraction tomography
+scattering	lect-ultrasound-physics-basic	acoustic scattering in tissue; backscatter imaging; anisotropic tissue effects
+SOFAR channel	brekhovskikh-ocean-acoustics-1982	sound fixing and ranging channel; sound speed minimum at ~1000 m depth
+solitons (KdV)	helsinki-wave-propagation-lect-notes	u = A·sech²[(x−vt)/L]; speed ∝ amplitude; stable shape; KdV equation
+sound speed	lect-ultrasound-physics-basic	c = 1/√(Kρ); tables for tissues: water 1480, bone 4080, soft tissue ~1540 m/s
+sound speed	keler-elastic-properties-glass	c_L and c_T from resonance frequencies; glass/ceramic characterization
+sound speed	helsinki-wave-propagation-lect-notes	C_L = √[(λ+2μ)/ρ] for P-waves; C_T = √[μ/ρ] for S-waves
+sound speed	brekhovskikh-waves-layered-media-1960	complex sound speed; layered media sound speed profiles
+sound speed	acoustic-properties-materials-collection	AIP handbook tables; velocity in engineering materials
+sound speed	mason-1947-shear-viscosity	shear wave velocity in liquids; resonant crystal method
+surface waves (Rayleigh, Love)	helsinki-wave-propagation-lect-notes	Rayleigh: elliptically polarized; Love: horizontally polarized shear in layered system
+surface waves (Rayleigh, Love)	brekhovskikh-waves-layered-media-1960	surface wave dispersion; leaky surface waves
+surface waves (Rayleigh, Love)	krautkramer-ultrasonic-testing	surface wave NDT; Rayleigh wave excitation by angle beam transducer
+time of flight measurement	papers-collection	K. Anitha 2011 - ToF measurement using DSP for ultrasonic sensors
+time of flight measurement	krautkramer-ultrasonic-testing	A-scan, B-scan, C-scan; ToF for flaw depth determination
+time of flight measurement	lect-ultrasound-physics-basic	depth = c·t/2 (round trip); B-mode image formation
+transducer design	nakamura-ultrasonic-transducers	PZT, PVDF, LiNbO3, PMN-PT; composite 1-3; matching layers; backing
+transducer design	lect-ultrasound-physics-basic	PZT crystal + backing + matching layer + lens; phased array; probe types
+transducer design	mason-electromechanical-transducers	electromechanical equivalent circuits; resonant transducers; crystal filters
+transducer design	silk-ultrasonic-transducers	NDT transducer design (unreadable)
+transducer design	papers-collection	L. Svilainis 2013 - high voltage pulser for air-coupled piezoelectric transducers
+transmission line analogy	auld-transmission-line	acoustic plane wave as transmission line; impedance transformation
+transmission line analogy	mason-electromechanical-transducers	Mason model as transmission line circuit; lumped element representation
+turbulence	carley-turbulence-noise	Reynolds decomposition; energy cascade; Kolmogorov scales; correlation functions
+turbulence	computational-hydrodynamics-collection	Navier-Stokes + Reynolds averaging (Ch.11); subgrid models
+ultrasonic attenuation measurement	papers-collection	Zeqiri 2010 - review of acoustic property measurement methods
+ultrasonic attenuation measurement	papers-collection	Dukhin 2009 - bulk viscosity by acoustic methods
+ultrasonic attenuation measurement	wave-velocity-measurement-collection	pulse-echo and through-transmission methods; diffraction correction
+ultrasonic NDE/NDT	krautkramer-ultrasonic-testing	ultrasonic testing of industrial materials; flaw detection; sizing; calibration
+ultrasonic NDE/NDT	burrascano-ultrasonic-nde-systems	coded excitation; pulse compression; matched filtering; signal processing for NDE
+ultrasonic NDE/NDT	ultrasonic-testing-intro	NDT Resource Center guide; basic UT principles; A/B/C-scan
+ultrasonic NDE/NDT	berger-linzer-ultrasonic-materials-characterization	NBS SP-596; material property measurement by ultrasonics; elastic constants
+ultrasonic NDE/NDT	papers-collection	Dwyer-Joyce 2005 - tribological applications (journal/bearing contact)
+viscosity measurement	mason-1947-shear-viscosity	shear viscosity of liquids by resonant crystal (AT-cut quartz); Mason 1947
+viscosity measurement	papers-collection	Bradfield 1956 - torsional wave viscometer for industrial use
+viscosity measurement	papers-collection	Dukhin 2009 - bulk viscosity by acoustics
+viscosity measurement	fundamentals-acoustics-wikibooks	Stokes viscosity contribution to attenuation
+wave equation	fundamentals-acoustics-wikibooks	derivation from Newton + continuity; Helmholtz equation; d'Alembert solution
+wave equation	carley-bath-acoustics-notes	linearized Euler → ∂²p/∂t² = c²∇²p; derivation from fluid mechanics
+wave equation	helsinki-wave-propagation-lect-notes	Navier equation of motion → P-wave + S-wave equations
+wave equation	rayleigh-theory-of-sound	classical derivation; Rayleigh's foundational treatment
+wave equation	nonlinear-wave-equation	nonlinear modification; perturbation solutions
+wave equation	kentucky-vibroacoustic-design-collection	Ch.4: wave equation in context of vibro-acoustics
+wave momentum	nyu-wave-momentum	p = E/v_phase; Stokes drift (water waves); Maxwell stress tensor; quantum de Broglie
+wave velocity measurement	wave-velocity-measurement-collection	7-paper collection on pulse methods, phase comparison, sing-around
+wave velocity measurement	keler-elastic-properties-glass	resonance frequency method for glass and ceramics elastic constants
+wave velocity measurement	papers-collection	Khuri-Yakub 1977 - pulse-echo at 200 MHz; Chen Li 2006 - multilayer thickness
+waveguide acoustics	carley-bath-acoustics-notes	duct modes; cutoff frequency; Helmholtz resonator; silencers
+waveguide acoustics	kentucky-vibroacoustic-design-collection	Ch.10 - sound in ducts; plane wave modes; lined duct attenuation
+waveguide acoustics	acoustics-speech-hearing-collection	vocal tract tube model; resonant modes for vowel formants
+waveguide acoustics	brekhovskikh-ocean-acoustics-1982	ocean waveguide; SOFAR channel; mode propagation
+biomedical ultrasound	azhari-biomedical-ultrasound	Azhari textbook: US physics, imaging, Doppler, therapeutic US, elastography
+biomedical ultrasound	lect-ultrasound-physics-basic	B-mode imaging physics; clinical applications; imaging artefacts
+biomedical ultrasound	acoustical-imaging-14	acoustic imaging of biological tissue; clinical ultrasound applications
+acoustic microscopy	maev-acoustic-microscopy	scanning acoustic microscopy (SAM); V(z) curves; subsurface imaging; thin films
+phased array	lect-ultrasound-physics-basic	128-256 element arrays; electronic steering via delay-and-sum; dynamic focusing
+phased array	nakamura-ultrasonic-transducers	1-D and 2-D phased arrays; beamforming; grating lobes
+phased array	burrascano-ultrasonic-nde-systems	phased array NDE; synthetic aperture focusing
+Stokes drift	nyu-wave-momentum	Lagrangian vs. Eulerian mean velocity; net forward drift in surface water waves
+Stokes drift	brekhovskikh-ocean-acoustics-1982	drift in ocean waves; relation to wave momentum
+speech and hearing	acoustics-speech-hearing-collection	MIT 6.551J course; vocal tract acoustics; middle ear mechanics; speech perception
+vibration isolation	kentucky-vibroacoustic-design-collection	Ch.9 - isolator design; mass-spring-damper; transmissibility
+Snell's law	lect-ultrasound-physics-basic	refraction at interfaces: sin θ₁/sin θ₂ = c₁/c₂; critical angle; total internal reflection
+Snell's law	brekhovskikh-waves-layered-media-1960	Snell's law in layered media; plane wave refraction
+Snell's law	krautkramer-ultrasonic-testing	angle beam transducer: mode conversion and Snell's law
+computational fluid dynamics	computational-hydrodynamics-collection	Riemann solvers; Godunov methods; advection algorithms; hyperbolic PDEs; SPH

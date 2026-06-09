@@ -1,0 +1,110 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+555 timer IC	NE555	8-pin IC implementing three timer modes (astable, monostable, bistable) via internal comparators and flip-flop	555-timer
+astable mode	free-running mode	555 operating mode where output oscillates continuously; frequency set by R1, R2, C	555-timer
+monostable mode	one-shot mode	555 mode producing a single output pulse of duration 1.1·R·C per trigger event	555-timer
+bistable mode	SR latch mode	555 mode where output latches high or low based on set/reset inputs; used for debouncing	555-timer
+transmission line	T-line	Distributed electrical structure for guiding electromagnetic waves when line length is a significant fraction of wavelength	module1-introduction-to-transmission-lines
+Telegrapher's equations	transmission line equations	Coupled PDEs ∂V/∂z = −(R+jωL)I and ∂I/∂z = −(G+jωC)V describing voltage and current on a distributed line	module1-introduction-to-transmission-lines
+characteristic impedance	Z0	Ratio of forward voltage to forward current wave on a transmission line; Z0 = √(L/C) for lossless lines	module1-introduction-to-transmission-lines
+reflection coefficient	Γ	Ratio of reflected to incident wave amplitude at a discontinuity; Γ = (ZL−Z0)/(ZL+Z0)	module1-introduction-to-transmission-lines
+bounce diagram	lattice diagram	Time-space diagram tracking forward and reflected wave amplitudes at each reflection event	module1-introduction-to-transmission-lines
+propagation constant	γ	Complex wavenumber γ = α + jβ = √[(R+jωL)(G+jωC)]; α = attenuation, β = phase constant	module2-transmission-lines-frequency-domain
+VSWR	voltage standing wave ratio	Ratio of voltage maximum to minimum on a standing wave; VSWR = (1+|Γ|)/(1−|Γ|)	module2-transmission-lines-frequency-domain
+input impedance	Zin	Impedance seen looking into a transmission line of length l terminated in ZL; Zin = Z0·(ZL+jZ0tanβl)/(Z0+jZLtanβl)	module2-transmission-lines-frequency-domain
+quarter-wave transformer	λ/4 section, impedance inverter	Transmission line section of length λ/4 that transforms ZL to Z0²/ZL; acts as impedance inverter	module2-transmission-lines-frequency-domain
+S-parameters	scattering parameters	Network description based on traveling wave amplitudes; S_ij = b_i/a_j with all other ports matched	module3-scattering-parameters
+signal flow graph	SFG	Graphical representation of signal paths in a network used with Mason's Rule to compute gain	module3-scattering-parameters
+Mason's Rule	non-touching loop rule	Formula for computing transfer function of a signal flow graph as ratio of forward path and loop gain products	module3-scattering-parameters
+transducer gain	GT	Ratio of power delivered to load to available source power; GT = |S21|²(1−|ΓS|²)(1−|ΓL|²)/|denominator|²	module3-scattering-parameters
+Smith Chart	reflection coefficient chart	Graphical tool mapping complex impedance to reflection coefficient plane; enables transmission line and matching calculations	module4-smith-chart
+resistance circle	constant-R circle	Circle on Smith Chart representing all impedances with a given normalized resistance r; center (r/(r+1), 0)	module4-smith-chart
+admittance chart	Y-Smith Chart	Smith Chart rotated 180° to work in admittance; used for adding shunt elements	module4-smith-chart
+single-stub matching	stub tuner	Impedance matching technique using a shunt transmission line stub to cancel susceptance at a chosen point on SWR circle	module4-smith-chart
+Q factor	quality factor	Ratio of energy stored to energy dissipated per radian; Q = ω0·(energy stored)/power_dissipated	module5-review-of-resonance
+series RLC resonance		Resonant circuit with R, L, C in series; ω0 = 1/√(LC); 3dB bandwidth Δω = ω0/Q	module5-review-of-resonance
+parallel RLC resonance		Resonant circuit with R, L, C in parallel; same ω0; Q = Rp/(ω0L)	module5-review-of-resonance
+crystal resonator	quartz resonator	Piezoelectric quartz element with Q ~ 10⁵–10⁶ and ppm-level frequency stability; modeled as series LCR branch with parallel Cp	module5-review-of-resonance
+MEMS resonator		Micromachined mechanical resonator with Q > 10⁴; potential for on-chip high-Q frequency references	module5-review-of-resonance
+L-match network		Two-element reactive network transforming impedance by ratio n; Q = √(n−1)	module6-matching-networks
+insertion loss	IL	Power lost in a matching network due to finite component Q; IL = 1/(1 + Q_L/Q_c)	module6-matching-networks
+Π-match network	pi-match	Three-element matching network (shunt-series-shunt) with extra degree of freedom for Q control	module6-matching-networks
+T-match network		Three-element matching network (series-shunt-series) with extra degree of freedom for Q control	module6-matching-networks
+Y-parameters	admittance parameters	Two-port description I = Y·V; suited to shunt-shunt feedback topology analysis	module7-two-port-circuits
+Z-parameters	impedance parameters	Two-port description V = Z·I; suited to series-series feedback topology analysis	module7-two-port-circuits
+ABCD parameters	chain matrix, transmission matrix	Two-port description cascaded by matrix multiplication; useful for multi-section networks and T-lines	module7-two-port-circuits
+Rollett stability factor	K-factor	K = (1−|S11|²−|S22|²+|Δ|²)/(2|S12S21|); K > 1 and |Δ| < 1 → unconditionally stable two-port	module7-two-port-circuits
+stability circles		Circles on Smith Chart bounding source/load impedance regions that cause oscillation in a potentially unstable device	module7-two-port-circuits
+operating power gain	Gp	Ratio of power delivered to load to power input to two-port; Gp = P_L/P_in; independent of source impedance	module8-two-ports-power-gain
+available power gain	Ga	Ratio of available output power to available source power; Ga = P_avn/P_avs; independent of load impedance	module8-two-ports-power-gain
+bi-conjugate match		Simultaneous conjugate matching of input and output ports to maximize transducer gain GT	module8-two-ports-power-gain
+maximum available gain	MAG	Maximum GT achievable when K > 1; MAG = |S21/S12|·(K−√(K²−1))	module8-two-ports-power-gain
+maximum stable gain	MSG	|S21/S12|; gain limit when K = 1 (boundary of conditional stability)	module8-two-ports-power-gain
+noise figure	NF, noise factor F	F = SNR_in/SNR_out; NF = 10·log(F) dB; measures degradation of SNR through a device	module9-noise-in-communication-systems
+Friis cascade formula		F_total = F1 + (F2−1)/G1 + (F3−1)/(G1·G2) + ...; first-stage NF dominates cascade noise figure	module9-noise-in-communication-systems
+minimum detectable signal	MDS, sensitivity	MDS = −174 dBm + NF + 10log(B) + SNR_min; minimum signal power detectable above noise	module9-noise-in-communication-systems
+thermal noise	Johnson-Nyquist noise	Noise in resistors due to thermal agitation of carriers; vn² = 4kTRΔf; white noise	module10-physical-origin-electrical-noise
+shot noise		Noise due to discrete carrier crossings of a potential barrier; id² = 2qIDC·Δf; proportional to DC current	module10-physical-origin-electrical-noise
+flicker noise	1/f noise	Low-frequency noise with PSD ∝ 1/f; dominant below corner frequency; originates from trap states	module10-physical-origin-electrical-noise
+FET channel thermal noise		id² = 4kTγgds0·Δf in saturation; γ = 2/3 for long-channel; increases for short-channel devices	module10-physical-origin-electrical-noise
+noise resistance	Rn	Equivalent resistance characterizing magnitude of input-referred voltage noise of a two-port; Rn ∝ γ/gm for FETs	module11-two-port-noise-analysis
+minimum noise figure	Fmin	Lowest achievable noise figure of a two-port; Fmin = 1 + 2√(Rn·Gu); achieved at Yopt	module11-two-port-noise-analysis
+optimal source admittance	Yopt	Source admittance that minimizes noise figure to Fmin; Yopt = Gopt + jBopt	module11-two-port-noise-analysis
+noise circles		Circles on Smith Chart of constant noise figure; centered near Yopt; used for noise-gain trade-off	module11-two-port-noise-analysis
+inductive source degeneration		Adding series inductor Ls at FET source; adds real input impedance ωT·Ls without resistive noise → enables noise-lossless matching	module12-mosfet-lna-design
+cascode LNA		Common-source + common-gate stack; reduces Miller effect, improves reverse isolation S12, near-zero cascode noise contribution	module12-mosfet-lna-design
+transit frequency	fT	Frequency at which current gain = 1; fT = gm/(2π·Cgs); key figure of merit for RF transistors	module12-mosfet-lna-design
+power series nonlinearity	Volterra series (1st order)	Output approximated as so = a1·si + a2·si² + a3·si³; coefficients from Taylor expansion of device I-V	module13-distortion-analysis
+harmonic distortion	HD2, HD3	Distortion at harmonic frequencies; HD2 = a2·A/(2a1), HD3 = a3·A²/(4a1) for single-tone input	module13-distortion-analysis
+intermodulation distortion	IM2, IM3	Distortion products at beat frequencies from two-tone input; IM3 at 2ω1−ω2 grows as A³	module13-distortion-analysis
+1dB compression point	P-1dB	Input power where gain drops 1 dB below linear extrapolation; P_in,−1dB ≈ IIP3 − 9.6 dB	module14-distortion-metrics
+IIP3	input third-order intercept point	Extrapolated input power where fundamental and IM3 product powers are equal; IIP3 = √(4a1/(3|a3|))	module14-distortion-metrics
+IIP2	input second-order intercept point	Extrapolated input power where fundamental and IM2 product powers are equal; critical for direct-conversion receivers	module14-distortion-metrics
+cascade IIP3		1/IIP3_total ≈ 1/IIP3_1 + G1/IIP3_2 + ...; later high-gain stages typically dominate	module14-distortion-metrics
+desensitization	gain compression by blocker	Large out-of-band signal compresses LNA gain, reducing sensitivity for the wanted in-band signal	module14-distortion-metrics
+feedback and distortion		Negative feedback reduces b2 by (1+T)³ and reduces b3; but second-order interaction 2a2²f term can cause distortion null	module15-effect-of-feedback-on-distortion
+emitter degeneration	source degeneration	Series resistor (or inductor) at emitter/source; increases linearity and input impedance; reduces gain	module15-effect-of-feedback-on-distortion
+frequency translation	downconversion, upconversion	Shifting signal spectrum from RF to IF (or vice versa) via multiplication by LO signal	module16-introduction-receivers-mixers
+image frequency		Frequency that maps to the same IF as the desired signal; must be filtered or cancelled	module16-introduction-receivers-mixers
+superheterodyne architecture	superhet	Receiver architecture with one or more IF stages; image-reject filter before first mixer; dominant classical receiver topology	module16-introduction-receivers-mixers
+direct conversion	zero-IF, homodyne	Receiver architecture with LO = RF frequency; down-converts directly to DC; challenges: DC offset, 1/f noise, LO leakage	module16-introduction-receivers-mixers
+Hartley mixer	image-reject mixer	I/Q mixer using 90° phase shift and summation to cancel image signal; IRR limited by I/Q mismatch	module16-introduction-receivers-mixers
+image rejection ratio	IRR	Ratio of desired signal power to image signal power after mixing; IRR ≈ −10log[(δA/A)²+(δθ)²]/4	module16-introduction-receivers-mixers
+Gilbert cell	double-balanced active mixer	Cross-coupled switching quad driven by LO commutating the RF gm stage current; conversion gain = (4/π)·gm·RL	module17-current-voltage-commutating-mixers
+conversion gain	gc	Ratio of IF output amplitude to RF input amplitude for a mixer; gc = (2/π)·gm·RL (single-balanced)	module17-current-voltage-commutating-mixers
+passive MOS mixer	passive mixer, ring mixer (MOS)	Mixer using MOS switches without DC bias; low 1/f noise, high IIP3, ~4 dB conversion loss	module17-current-voltage-commutating-mixers
+N-path filter		Switched-capacitor filter using N clock phases; achieves high-Q bandpass response centered at LO frequency	module17-current-voltage-commutating-mixers
+PSS/PAC/PNoise simulation	SpectreRF simulation	Cadence SpectreRF analyses for periodic circuits: periodic steady-state, periodic AC (conversion gain), periodic noise (mixer NF)	module17-current-voltage-commutating-mixers
+FDD	frequency-division duplex	Duplex mode where TX and RX operate simultaneously on different frequencies; requires duplexer	module18-transmitters-system-level-specifications
+TDD	time-division duplex	Duplex mode where TX and RX alternate in time slots; simpler RF hardware than FDD	module18-transmitters-system-level-specifications
+PAPR	peak-to-average power ratio, PAR, crest factor	Ratio of peak to average power in a signal; high PAPR (e.g., OFDM) forces PA back-off, reducing efficiency	module18-transmitters-system-level-specifications
+EVM	error vector magnitude	Measure of I/Q modulator accuracy; EVM = |error vector|/|ideal vector|; spec typically < −30 dB	module18-transmitters-system-level-specifications
+adjacent channel power	ACP, ACPR	Power leaked into adjacent frequency channel due to PA nonlinearity; must meet transmit spectral mask	module18-transmitters-system-level-specifications
+power added efficiency	PAE	PAE = (Pout−Pin)/PDC; overall efficiency metric for power amplifiers accounting for input power consumption	module19-power-amplifiers
+optimum load resistance	Ropt	Load resistance that maximizes output power for given supply voltage; Ropt = VCC²/(2·Pout)	module19-power-amplifiers
+bond wire inductance	LE, package inductance	Parasitic series inductance (~1 nH/mm) from bond wires; limits voltage swing and efficiency in RF PAs	module19-power-amplifiers
+flip-chip packaging	bump bonding	PA packaging using solder bumps instead of bond wires; LE < 0.1 nH; required for >10 GHz designs	module19-power-amplifiers
+Class A PA		Linear PA with 360° conduction angle; max efficiency 50% with inductive load	module20-abcs-of-pas
+Class B PA		PA with 180° conduction angle using half-sinusoid current pulses; max efficiency π/4 ≈ 78.5%	module20-abcs-of-pas
+Class AB PA		PA with conduction angle between 180° and 360°; practical compromise between linearity and efficiency	module20-abcs-of-pas
+Class C PA		PA with conduction angle < 180°; efficiency → 100% as conduction angle → 0°; suitable only for constant-envelope signals	module20-abcs-of-pas
+conduction angle		Fraction of a cycle (in degrees) during which the PA transistor conducts; determines PA class	module20-abcs-of-pas
+power capacity	PC	Normalized output power Pout/(Vmax·Imax); 0.125 for both Class A and Class B; peaks at Class AB	module20-abcs-of-pas
+envelope tracking	dynamic supply modulation	Technique adjusting PA supply voltage to follow signal envelope; maintains near-peak efficiency across PAR	module20-abcs-of-pas
+polar modulation	envelope and phase modulation	PA technique separating AM (supply-modulated Class C) and PM (phase-modulated RF) paths	module20-abcs-of-pas
+Barkhausen criterion	oscillation condition	Loop gain magnitude = 1 and phase = 0° (mod 360°) at oscillation frequency; necessary for sustained oscillation	module21-sinusoidal-oscillators-feedback-analysis
+loop gain	Al, T	Product of forward gain and feedback factor in an oscillator; determines stability and oscillation amplitude	module21-sinusoidal-oscillators-feedback-analysis
+LC tank oscillator		Oscillator using inductor-capacitor resonator as frequency-selective feedback element; Q determines phase noise	module21-sinusoidal-oscillators-feedback-analysis
+Colpitts oscillator		Oscillator using capacitive voltage divider for feedback; feedback ratio 1/n = C1/(C1+C2); avoids squegging	module21-sinusoidal-oscillators-feedback-analysis
+Pierce oscillator		CE or CC version of Colpitts oscillator; standard topology for crystal oscillators in CMOS	module21-sinusoidal-oscillators-feedback-analysis
+phase noise		Random fluctuation in oscillator phase; appears as noise skirts around carrier; L(Δω) in dBc/Hz	module21-sinusoidal-oscillators-feedback-analysis
+relaxation oscillator		Oscillator using RC charge/discharge between voltage thresholds; simpler but high phase noise	module21-sinusoidal-oscillators-feedback-analysis
+ring oscillator		Odd number of inverter stages forming oscillator; period = 2·N·tpd; used in PLLs and clock generators	module21-sinusoidal-oscillators-feedback-analysis
+squegging		Parasitic low-frequency oscillation in PA/oscillator bias circuitry; prevented by CE ≤ n·CT	module21-sinusoidal-oscillators-feedback-analysis
+negative resistance oscillator	negative conductance oscillator	Oscillator analyzed by requiring active circuit negative conductance to cancel tank loss conductance G' = G	module22-negative-resistance-osc-differential-osc-vcos
+cross-coupled pair	cross-coupled differential oscillator	CMOS differential pair with drain-gate cross connections generating negative conductance Gx = −gm/2	module22-negative-resistance-osc-differential-osc-vcos
+VCO	voltage-controlled oscillator	Oscillator whose frequency is tuned by a control voltage via a varactor; key element in PLLs	module22-negative-resistance-osc-differential-osc-vcos
+PN junction varactor	varactor diode	Reverse-biased PN junction used as voltage-variable capacitor; Cj = Cj0/(1−V/ψ0)^n	module22-negative-resistance-osc-differential-osc-vcos
+MOS varactor	MOSCAP varactor	Gate capacitor varying between Cmin (depletion) and Cox (accumulation) with gate voltage; accumulation-mode preferred for high Q	module22-negative-resistance-osc-differential-osc-vcos
+switched capacitor bank	discrete tuning bank	Array of capacitors switched by MOSFET switches for coarse VCO frequency tuning; optimal W/L balances Ron and Coff	module22-negative-resistance-osc-differential-osc-vcos
+phase-locked loop	PLL	Feedback system locking VCO phase/frequency to a reference; contains VCO, divider, phase detector, loop filter	module22-negative-resistance-osc-differential-osc-vcos
+frequency synthesizer		PLL-based circuit generating precise, tunable output frequency as integer multiple of crystal reference; fout = N·fref	module22-negative-resistance-osc-differential-osc-vcos

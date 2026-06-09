@@ -1,0 +1,53 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+Coefficient of thermal expansion (CTE)	thermal expansion coefficient, α	Rate of fractional change in length per unit temperature change (K⁻¹ or °C⁻¹)	thermal-expansion-density-cgi-sgi-cast-irons
+Compacted graphite iron (CGI)	vermicular graphite iron	Cast iron with graphite in a compacted/worm-like morphology between flake (grey) and spheroidal (ductile) forms	thermal-expansion-density-cgi-sgi-cast-irons
+Spheroidal graphite iron (SGI)	ductile iron, nodular iron	Cast iron in which graphite forms as nodules/spheres due to Mg addition	thermal-expansion-density-cgi-sgi-cast-irons
+Nodularity	graphite roundness	Percentage of graphite present in spheroidal (ISO form VI) or near-spheroidal form; higher = more ductile-like behaviour	thermal-expansion-density-cgi-sgi-cast-irons
+Dilatometry	push-rod dilatometer	Measurement technique for thermal expansion using precise tracking of specimen length change vs. temperature	thermal-expansion-density-cgi-sgi-cast-irons
+Pearlite/ferrite ratio	R_P/F	Ratio of pearlite to ferrite in the matrix of a cast iron or steel; affects strength, hardness, and CTE	thermal-expansion-density-cgi-sgi-cast-irons
+Proof strength	0.2% offset yield strength, f0.2	Stress at which 0.2% permanent (plastic) strain occurs; used as yield point for non-yielding materials like aluminium	aluminium-en6082aw-t6-high-temperature-behaviour
+Ramberg-Osgood model	R-O model	Empirical stress-strain equation ε = σ/E + 0.002(σ/f₀.₂)^n used to describe the continuous yielding of metals	aluminium-en6082aw-t6-high-temperature-behaviour
+Creep	time-dependent deformation	Slow, progressive plastic deformation under sustained stress below yield, especially significant at elevated temperatures	aluminium-en6082aw-t6-high-temperature-behaviour
+Tertiary creep	accelerating creep, creep rupture	Final stage of creep in which deformation rate increases rapidly, leading to fracture	aluminium-en6082aw-t6-high-temperature-behaviour
+Dynamic strain aging	DSA, Portevin-Le Chatelier effect	Interaction between diffusing solute atoms and moving dislocations causing serrations in stress-strain curve and non-monotonic ductility variation with temperature	aluminium-en6082aw-t6-high-temperature-behaviour
+Eurocode 9	EC9	European structural standard for design of aluminium alloy structures, including fire resistance provisions and reduction factor tables	aluminium-en6082aw-t6-high-temperature-behaviour
+True stress	actual stress, Cauchy stress	Stress calculated using instantaneous (current) cross-sectional area: σ_true = F/A_current	stress-strain-diagram-plastic-range-brisbane
+True strain	logarithmic strain, natural strain	Strain calculated as integral of dL/L: ε_true = ln(L/L₀) = ln(1 + e) where e is engineering strain	stress-strain-diagram-plastic-range-brisbane
+Hollomon power law	flow stress equation	σ = Kε^n relating true stress to true strain in the plastic region; K is strength coefficient, n is strain hardening exponent	stress-strain-diagram-plastic-range-brisbane
+Photo-grid technique	grid method	Experimental method using printed grids on specimen surface to measure local strain from photographic images of deformed grid	stress-strain-diagram-plastic-range-brisbane
+Young's modulus	elastic modulus, modulus of elasticity, E	Ratio of normal stress to normal strain in the linear elastic region of the stress-strain curve (GPa)	mechanics-of-materials-gere
+Poisson's ratio	ν	Negative ratio of transverse strain to axial strain under uniaxial stress; typically 0.25–0.35 for metals	mechanics-of-materials-gere
+Mohr's circle	stress circle	Graphical method to find principal stresses, maximum shear stress, and stress on any plane from a given stress state	mechanics-of-materials-gere
+Euler buckling load	critical load, Pcr	Minimum axial compressive load at which a slender column becomes unstable: Pcr = π²EI/Le²	mechanics-of-materials-gere
+Flexure formula	bending stress formula	σ = My/I relating bending stress to moment M, distance from neutral axis y, and second moment of area I	mechanics-of-materials-gere
+Lamé equations	thick cylinder equations	Analytical solution for hoop and radial stress in thick-walled cylinders under pressure: σ_θ = A + B/r², σ_r = A − B/r²	thick-walled-cylinders
+Hoop stress	tangential stress, circumferential stress	Stress component acting circumferentially in a pressurised cylinder; largest at bore in thick-walled cylinders	thick-walled-cylinders
+Shrink fit	press fit, interference fit	Assembly method where two parts have a designed dimensional interference; contact pressure develops on assembly, creating residual compressive stress	thick-walled-cylinders
+Von Mises criterion	distortion energy criterion, J2 plasticity	Yielding occurs when the von Mises equivalent stress √[½((σ₁−σ₂)²+(σ₂−σ₃)²+(σ₃−σ₁)²)] = σ_y	advanced-mechanics-of-materials-boresi-schmidt
+Tresca criterion	maximum shear stress criterion	Yielding occurs when maximum shear stress reaches half the uniaxial yield stress: τ_max = σ_y/2	advanced-mechanics-of-materials-boresi-schmidt
+Shear centre	flexural centre	Point through which a transverse load must act to cause bending without twisting of a beam	advanced-mechanics-of-materials-boresi-schmidt
+Stress concentration factor	Kt	Ratio of peak local stress to nominal stress at a geometric discontinuity (notch, hole, fillet)	advanced-mechanics-of-materials-boresi-schmidt
+Autofrettage	pre-stressing, hydraulic autofrettage	Process of applying internal pressure beyond yield in a thick-walled cylinder to introduce beneficial compressive residual stresses at the bore, increasing fatigue life	elevated-temperature-properties-steel-vigilante
+Stress relaxation	creep at constant strain	Time-dependent reduction in stress under constant strain conditions; related to creep through elastic accommodation	elevated-temperature-properties-steel-vigilante
+Power-law creep	Norton creep law	Constitutive equation for steady-state creep: dε/dt = Aσ^n·t^m; parameters A, n, m determined empirically	elevated-temperature-properties-steel-vigilante
+Gleeble tester	thermal-mechanical simulator	Equipment for thermomechanical testing with direct electrical resistance heating and servo-hydraulic loading at high strain rates	elevated-temperature-properties-steel-vigilante
+Poynting effect	torsion-extension coupling	Phenomenon in which a twisted rod extends axially due to geometric nonlinearity; predicted by nonlinear elasticity	nonlinear-stress-strain-relation-orthwein
+Truesdell admissibility	constitutive admissibility	Seven mathematical conditions a constitutive equation must satisfy (frame indifference, causality, determinism, etc.) per Truesdell (1952)	nonlinear-stress-strain-relation-orthwein
+Lagrangian description	material description	Formulation of continuum mechanics in reference to the original (undeformed) configuration	nonlinear-stress-strain-equations-huston
+Eulerian description	spatial description	Formulation of continuum mechanics in reference to the current (deformed) configuration	nonlinear-stress-strain-equations-huston
+Lamé constants	λ and μ	Material constants relating stress to strain in linear elasticity: λ = Eν/[(1+ν)(1−2ν)], μ = G = E/[2(1+ν)]	nonlinear-stress-strain-equations-huston
+Natural frequency	ωn, fn	Frequency at which a dynamic system oscillates freely without damping; ωn = √(k/m) for SDOF	theory-of-structural-dynamics-civ4180
+Damping ratio	ζ, critical damping ratio	Ratio of actual damping to critical damping; ζ < 1 underdamped, ζ = 1 critically damped, ζ > 1 overdamped	theory-of-structural-dynamics-civ4180
+Modal analysis	normal mode analysis, eigenanalysis	Decomposition of structural response into orthogonal mode shapes and natural frequencies by solving eigenvalue problem	theory-of-structural-dynamics-civ4180
+Frequency response function	FRF, H(ω)	Complex ratio of output (response) to input (force) as a function of frequency in the frequency domain	theory-of-structural-dynamics-civ4180
+Buckingham Pi theorem	Pi theorem, dimensional analysis	Any dimensionally consistent equation with n variables and k fundamental dimensions can be expressed with n−k dimensionless groups	mit-1050-engineering-mechanics-ulm
+Cauchy stress tensor	stress tensor, σ_ij	Nine-component (3×3 symmetric) tensor relating traction force per unit area to surface normal; fully describes stress state at a point	mit-1050-engineering-mechanics-ulm
+Helmholtz free energy	ψ, strain energy density	Thermodynamic potential for elastic materials; state equations (Hooke's law) derive from σ_ij = ∂ψ/∂ε_ij	mit-1050-engineering-mechanics-ulm
+Energy release rate	G, Griffith energy release rate	Energy released per unit area of crack growth; fracture occurs when G reaches critical value G_c	mit-1050-engineering-mechanics-ulm
+Plastic hinge	plastic collapse mechanism	Localised section in a beam or frame where all fibres have yielded, allowing rotation under constant moment M_p (plastic moment)	introduction-mechanical-engineering-clifford-part2
+Stress intensity factor	K_I, K_II, K_III	Parameter describing the severity of stress field at a crack tip; fracture occurs when K_I = K_IC (fracture toughness)	introduction-mechanical-engineering-clifford-part2
+Goodman diagram	modified Goodman criterion	Fatigue failure criterion relating alternating stress amplitude to mean stress with failure line connecting endurance limit (zero mean) and UTS (zero amplitude)	introduction-mechanical-engineering-clifford-part2
+Castigliano's theorem	Castigliano's second theorem	Deflection at a point equals partial derivative of total strain energy with respect to the force at that point: δ_i = ∂U/∂F_i	roarks-formulas-stress-strain-7th-ed
+Superposition principle	superposition of solutions	For linear elastic structures, the response to combined loads equals the sum of responses to each load acting separately	roarks-formulas-stress-strain-7th-ed
+Winkler elastic foundation	Winkler model	Model of continuous support where foundation reaction is proportional to local deflection: q = kw (spring constant per unit area)	roarks-formulas-stress-strain-7th-ed
+EN 6082AW T6	6082-T6, AlSi1MgMn	Aluminium alloy: 0.2% proof stress ~288 MPa at 20°C, good weldability and extrusion; widely used in structural engineering	aluminium-en6082-stress-strain-data

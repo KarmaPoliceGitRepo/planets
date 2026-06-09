@@ -1,0 +1,44 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+honing	bore honing, cylinder honing	Controlled low-speed abrasive sizing and surface-finishing process using expandable bonded-abrasive stones that simultaneously rotate and reciprocate inside a bore	zhmud-chobany-mastering-cylinder-bore-honing
+honing	bore honing	Controlled low-speed abrasive sizing and surface-finishing process using expandable bonded-abrasive stones that simultaneously rotate and reciprocate inside a bore	asm-handbook-v16-honing
+crosshatch pattern	crosshatch lay, hatch angle	Characteristic angled groove pattern on a honed bore surface produced by the combination of rotational and reciprocating stone motion; essential for piston/bore tribology	zhmud-chobany-mastering-cylinder-bore-honing
+crosshatch pattern	crosshatch lay	Characteristic angled groove pattern on a honed bore surface produced by the combination of rotational and reciprocating stone motion	asm-handbook-v16-honing
+plateau honing	multistep honing, rough + plateau honing	Two-step honing process: rough honing for stock removal followed by plateau/finish honing to remove peaks and create a flat-topped, valley-retaining surface texture	zhmud-chobany-mastering-cylinder-bore-honing
+plateau honing		Two-step honing process creating a surface with smooth plateaus for load bearing and deep valleys for oil retention	malburg-cylinder-bore-surface-texture
+Triboconditioning	Triboconditioning®, mechanochemical surface finishing, in-manufacture running-in	Mechanochemical process using hard non-abrasive WC ledges and a synthetic process fluid to create a plateau surface, low-friction tribofilm, and compressive subsurface stresses without abrasive removal	zhmud-chobany-mastering-cylinder-bore-honing
+microhoning	superfinishing, microfinishing, short-stroke honing, microstoning	Honing variant using fine grit (320–1200), very short oscillating strokes (1–4 mm), high frequency (300–2500 cpm), and light pressure on a rotating workpiece; achieves Ra < 0.1 µm	asm-handbook-v16-honing
+Rpk	reduced peak height	ISO 13565-2 parameter quantifying the height of protruding peaks above the core roughness zone; target of finish honing	zhmud-chobany-mastering-cylinder-bore-honing
+Rpk		ISO 13565-2 parameter for protruding peak height above the core roughness zone	malburg-cylinder-bore-surface-texture
+Rvk	reduced valley depth	ISO 13565-2 parameter quantifying depth of valleys below the core roughness zone; must be ≥ 0.6 µm for adequate oil retention (per rule of thumb)	zhmud-chobany-mastering-cylinder-bore-honing
+Rvk		ISO 13565-2 parameter for valley depth below the core roughness zone; indicator of lubrication retention capacity	malburg-cylinder-bore-surface-texture
+Rk	core roughness depth	ISO 13565-2 parameter for the depth of the core (kernel) region of the bearing ratio curve; reflects working contact zone roughness	malburg-cylinder-bore-surface-texture
+Mr1	material ratio 1	ISO 13565-2 bearing ratio at which the surface transitions from peaks into the core zone	malburg-cylinder-bore-surface-texture
+Mr2	material ratio 2	ISO 13565-2 bearing ratio at which the surface transitions from the core zone into valleys	malburg-cylinder-bore-surface-texture
+Rpq	plateau RMS roughness	ISO 13565-3 probability-model parameter for the RMS roughness of the plateau portion of a plateau-honed surface	malburg-cylinder-bore-surface-texture
+Rvq	valley RMS roughness	ISO 13565-3 probability-model parameter for the RMS roughness of the valley portion of a plateau-honed surface	malburg-cylinder-bore-surface-texture
+Rmq	plateau-valley transition bearing ratio	ISO 13565-3 probability-model parameter marking the bearing ratio at the transition between plateau and valley textures	malburg-cylinder-bore-surface-texture
+Ra	roughness average	Mean absolute deviation of the surface profile from the mean line; standard primary roughness parameter	asm-handbook-v16-honing
+Ra		Mean absolute deviation of the surface profile; biased toward plateau level in plateau-honed surfaces	malburg-cylinder-bore-surface-texture
+Rz	mean peak-to-valley height	Average of peak-to-valley height across multiple sampling lengths; sensitive to deep valleys and pull-outs	asm-handbook-v16-honing
+Rz		Mean peak-to-valley roughness height; sensitive to valley depth in plateau-honed surfaces	malburg-cylinder-bore-surface-texture
+Rmr	material ratio, bearing ratio	tp; fraction of material at a given depth level of the profile	malburg-cylinder-bore-surface-texture
+bearing ratio curve	Abbott-Firestone curve	Cumulative material ratio as a function of depth; fundamental curve for Rk and plateau-hone parameterization	malburg-cylinder-bore-surface-texture
+honing stone	honing stick, abrasive stone	Bonded abrasive stick (alumina, SiC, cBN, or diamond in vitrified, resinoid, or metal bond) used in a honing tool	asm-handbook-v16-honing
+diamond abrasive	diamond honing stone	Preferred abrasive type for honing cast iron, carbide, ceramics, chrome, and glass	zhmud-chobany-mastering-cylinder-bore-honing
+diamond abrasive		Metal-bonded diamond stone used for extremely hard and brittle materials	asm-handbook-v16-honing
+cBN	cubic boron nitride, Borazon	Superabrasive preferred for honing hardened steels, Inconel, Stellite, and other tough alloys	zhmud-chobany-mastering-cylinder-bore-honing
+cBN	cubic boron nitride	Superabrasive for carbon/alloy steels; metal-bonded (grade B)	asm-handbook-v16-honing
+thermal spray bore coating	LDS, TWAS, PTWA, APS, NANOSLIDE®	Iron-base or other metallic coatings applied to aluminum engine bores to replace iron liners; require specialized multistep honing processes	zhmud-chobany-mastering-cylinder-bore-honing
+air gaging	air-to-electronic gage	In-process size control technique using pneumatic signals to measure bore diameter during or after honing	asm-handbook-v16-honing
+electrochemical honing	ECH	Hybrid process combining electrochemical dissolution with abrasive honing to improve material removal rate while retaining crosshatch texture	asm-handbook-v16-honing
+hone forming	HF	Hybrid process combining honing with simultaneous electrodeposition to salvage or build up out-of-tolerance bore surfaces	asm-handbook-v16-honing
+torque plate honing		Honing performed with the engine head bolted in place (torque plate simulating it) to pre-distort the bore so it becomes round under operating clamping loads	zhmud-chobany-mastering-cylinder-bore-honing
+hot honing		Honing performed at elevated temperature to account for thermal distortion of engine bores under operating conditions	zhmud-chobany-mastering-cylinder-bore-honing
+helical slide honing		Specialized honing kinematics producing extremely smooth plateaus to minimize friction and ring wear	zhmud-chobany-mastering-cylinder-bore-honing
+skidless profilometer		Surface measurement instrument in which only the stylus tip contacts the surface, providing true profile including waviness; preferred for plateau hone measurement	malburg-cylinder-bore-surface-texture
+skidded profilometer	shop-floor profilometer	Surface measurement instrument using a radiused skid as a datum; attenuates waviness and can introduce artefact depressions	malburg-cylinder-bore-surface-texture
+robust filtering		Profile filtering method resistant to outlier peaks/valleys; recommended over traditional Gaussian filter for plateau-honed surfaces	malburg-cylinder-bore-surface-texture
+Cpk	process capability index	Statistical measure of how well a process meets specification limits; bore honing targets have risen from Cpk 1.33 to 2.0+	zhmud-chobany-mastering-cylinder-bore-honing
+piston/bore tribology		Friction and wear interactions between piston rings and cylinder bore surface; governed by bore texture, ring pack design, and lubricant viscosity	zhmud-chobany-mastering-cylinder-bore-honing
+honing fluid	honing oil, honing coolant	Process fluid providing lubricity and cooling during honing; formulated with EP/AW additives; critical to abrasive life and surface quality	zhmud-chobany-mastering-cylinder-bore-honing
+honing fluid		Process fluid providing lubricity and chip clearance; choice affects stock removal rate and surface integrity	asm-handbook-v16-honing

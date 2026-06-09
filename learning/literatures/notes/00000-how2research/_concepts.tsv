@@ -1,0 +1,25 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+randomisation	randomization	Randomly assigning test samples or test order to prevent systematic confounding of variables	watson-2019-experimental-design-tribology
+blinding	single-blind; double-blind	Concealing test parameters or expected outcomes from the experimenter to prevent unconscious bias	watson-2019-experimental-design-tribology
+control tests	control group	Tests on identical samples with only the variable of interest changed, providing a baseline for comparison	watson-2019-experimental-design-tribology
+repeat tests	replication; repeated measurements	Running the same experiment multiple times to estimate within-group variation and detect random effects	watson-2019-experimental-design-tribology
+statistical power	study power	The probability of detecting a real effect of a given size if one exists; formally 1 − β	watson-2019-experimental-design-tribology
+p-value	significance threshold	The probability of obtaining a result at least as extreme as observed under the null hypothesis	watson-2019-experimental-design-tribology
+normalised mean difference	NMD	Difference between group means divided by the control-group mean; a proxy for effect size when SD is unavailable	watson-2019-experimental-design-tribology
+effect size	Cohen's d; Glass's delta	Standardised measure of practical significance: difference between means divided by the population standard deviation	watson-2019-experimental-design-tribology
+coefficient of variation	COV	Standard deviation expressed as a percentage of the mean; a measure of relative variability	watson-2019-experimental-design-tribology
+publication bias	positive-result bias	Tendency to publish statistically significant or positive results and suppress null or negative findings	watson-2019-experimental-design-tribology
+false positive	type I error	Claiming an effect exists when it does not; probability is controlled by the significance threshold α	watson-2019-experimental-design-tribology
+replication crisis	reproducibility crisis	Widespread failure to reproduce published scientific findings across psychology, medicine, and other fields	watson-2019-experimental-design-tribology
+pre-registration	trial registration	Registering study design and analysis plan before data collection to reduce outcome-reporting bias	watson-2019-experimental-design-tribology
+Jaccard index	Jaccard similarity	Intersection over union of two binary-rated sets; used here to measure inter-rater agreement on study criteria	watson-2019-experimental-design-tribology
+literature review	review of the literature	Systematic survey and critical evaluation of existing research relevant to a study's topic	background-chapters-hout
+research gap	gap in the literature	The area of unanswered questions or unresolved problems that a new study aims to address	background-chapters-hout
+synthesis	analytical synthesis	Integrating findings from multiple sources to form a new, coherent perspective rather than merely summarising	background-chapters-hout
+hedging	hedges	Linguistic devices (might, perhaps, possible) that reduce a writer's commitment to a claim	background-chapters-hout
+boosters	boosting	Linguistic devices (in fact, clearly, definitely) that assert the writer's certainty or confidence in a claim	background-chapters-hout
+reporting verbs	citation reporting style	Verbs used to attribute claims to prior authors (shows, showed, has shown); tense encodes epistemological stance	background-chapters-hout
+paraphrasing	summary writing	Restating source material in new words and sentence structure to avoid plagiarism while retaining meaning	background-chapters-hout
+background theory	theoretical background	The broader theoretical framework within which a study's focal theory is situated	background-chapters-hout
+focal theory		The specific theory directly under investigation in a research study	background-chapters-hout
+doctoral standards	Boote and Beile criteria	Five-category rubric (Coverage, Synthesis, Methodology, Significance, Rhetoric) for evaluating PhD literature reviews	background-chapters-hout

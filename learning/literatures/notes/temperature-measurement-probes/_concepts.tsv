@@ -1,0 +1,25 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+RTD	Resistance Temperature Detector	A temperature sensor that exploits the predictable change in electrical resistance of a metal (typically platinum) with temperature	rsrub-rubber-patch-rtd
+Pt100	Pt-100	A platinum RTD with a nominal resistance of 100 Ω at 0 °C, standardised in EN 60751	rsrub-rubber-patch-rtd
+Pt100	Pt-100	A platinum RTD with a nominal resistance of 100 Ω at 0 °C, standardised in EN 60751	wika-ds-in0017-platinum-rtd-tolerances
+Pt1000		A platinum RTD with a nominal resistance of 1000 Ω at 0 °C; preferred for 2-wire applications due to lower lead resistance error	wika-ds-in0017-platinum-rtd-tolerances
+3-wire connection		Wiring configuration that compensates lead resistance error; standard for Pt100 industrial use up to ~30 m cable	rsrub-rubber-patch-rtd
+3-wire connection		Wiring configuration that compensates lead resistance error; standard for Pt100 industrial use up to ~30 m cable	wika-ds-in0017-platinum-rtd-tolerances
+2-wire connection		Simplest RTD wiring; lead resistance adds directly to measurement error; suitable for Pt1000 or short cables	wika-ds-in0017-platinum-rtd-tolerances
+4-wire connection		Fully eliminates lead resistance error; used in laboratory and calibration applications	wika-ds-in0017-platinum-rtd-tolerances
+Class B accuracy	tolerance class B	EN 60751 tolerance class: ±(0.30 + 0.005|t|) °C; standard for most industrial Pt100/Pt1000 sensors	rsrub-rubber-patch-rtd
+Class B accuracy	tolerance class B	EN 60751 tolerance class: ±(0.30 + 0.005|t|) °C; standard for most industrial Pt100/Pt1000 sensors	wika-ds-in0017-platinum-rtd-tolerances
+Class A accuracy	tolerance class A	EN 60751 tolerance class: ±(0.15 + 0.002|t|) °C; higher precision than Class B	wika-ds-in0017-platinum-rtd-tolerances
+Class AA accuracy	tolerance class AA	EN 60751 highest standard tolerance class: ±(0.10 + 0.0017|t|) °C	wika-ds-in0017-platinum-rtd-tolerances
+EN 60751	IEC 60751; DIN EN 60751	International standard defining electrical resistance versus temperature characteristics for platinum resistance thermometers	wika-ds-in0017-platinum-rtd-tolerances
+Callendar-Van Dusen equation		Mathematical formula relating Pt100/Pt1000 resistance to temperature using constants A, B, and C	wika-ds-in0017-platinum-rtd-tolerances
+PTC	Positive Temperature Coefficient	Property of a material whose electrical resistance increases with rising temperature; applies to platinum RTDs	wika-ds-in0017-platinum-rtd-tolerances
+Thin-film measuring resistor	F-type	RTD element made by depositing a thin platinum film on a ceramic carrier; standard design for most industrial sensors	wika-ds-in0017-platinum-rtd-tolerances
+Wire-wound measuring resistor	W-type	RTD element made from a fine platinum wire; available in glass or ceramic-housed variants with wider temperature ranges	wika-ds-in0017-platinum-rtd-tolerances
+Silicone rubber patch		Flexible, self-adhesive housing for an RTD sensor enabling surface mounting on pipes and ducts	rsrub-rubber-patch-rtd
+PFA twisted wire lead		Perfluoroalkoxy (PFA) insulated lead wire used for RTD connections; resistant to chemicals and suitable for moderate temperatures	rsrub-rubber-patch-rtd
+Surface-mount temperature sensing		Method of measuring temperature on the surface of objects by adhering or clamping a sensor directly to the surface	rsrub-rubber-patch-rtd
+HVAC		Heating, Ventilation, and Air Conditioning systems; common application area for surface-mount RTDs	rsrub-rubber-patch-rtd
+Vibration resistance		Ability of a thermometer sensor to maintain specification under mechanical vibration; rated in g peak-to-peak per EN 60751	wika-ds-in0017-platinum-rtd-tolerances
+MI cable	mineral-insulated cable	Rugged cable construction using mineral insulation; used to package RTD sensors in 3 mm and 6 mm diameter forms	wika-ds-in0017-platinum-rtd-tolerances
+Dual sensor		A thermometer assembly containing two independent measuring resistors for redundancy or differential measurement	wika-ds-in0017-platinum-rtd-tolerances
