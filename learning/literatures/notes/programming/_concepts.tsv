@@ -1,0 +1,58 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+NumPy	numpy	Python library for fast n-dimensional array computation and mathematical operations	data-visualization-workshop
+pandas	pandas DataFrame	Python library providing labeled tabular data structures (DataFrame, Series) for data analysis	data-visualization-workshop
+Matplotlib	matplotlib	Python 2D plotting library that is the foundation for most Python visualization tools	data-visualization-workshop
+Bokeh	bokeh	Python interactive visualization library that targets modern web browsers for dashboards	data-visualization-workshop
+Exploratory Data Analysis	EDA	The practice of summarizing and visualizing a dataset to discover patterns before formal modeling	data-visualization-workshop
+Correlation	Pearson correlation	A statistical measure of the linear relationship between two variables, ranging from -1 to +1	data-visualization-workshop
+Data wrangling	data cleaning, data munging	The process of transforming and mapping raw data into a usable format for analysis	data-visualization-workshop
+Choropleth map		A thematic map where regions are colored in proportion to a statistical variable	data-visualization-workshop
+Supervised learning		Machine learning paradigm where models learn from labeled training data (input-output pairs)	data-science-workshop
+Unsupervised learning		Machine learning paradigm where models find structure in data without labeled outputs	data-science-workshop
+Linear regression	OLS, ordinary least squares	A statistical method that models the relationship between a continuous response and one or more predictors	data-science-workshop
+Logistic regression		A classification method that models the log-odds of a binary outcome as a linear function of features	data-science-workshop
+Random Forest		An ensemble learning method that trains multiple decision trees on bootstrap samples and averages predictions	data-science-workshop
+k-means clustering		An iterative algorithm that partitions data into k clusters by minimizing within-cluster sum of squared distances	data-science-workshop
+Feature engineering		The process of creating, transforming, or selecting input variables to improve model performance	data-science-workshop
+Confusion matrix		A table showing the counts of true positives, false positives, true negatives, and false negatives for a classifier	data-science-workshop
+scikit-learn	sklearn	Python machine learning library providing consistent APIs for preprocessing, modeling, and evaluation	data-science-workshop
+Hyperparameter tuning	model selection	The process of searching for model configuration values that are not learned from data	data-science-workshop
+Object-Oriented Programming	OOP	A programming paradigm organizing code into objects that combine state (fields) and behavior (methods)	java-workshop
+Inheritance		An OOP mechanism allowing a class to derive fields and methods from a parent class	java-workshop
+Java Module System	JPMS, Java 9 modules	A module system introduced in Java 9 that enforces encapsulation via module-info.java descriptors	java-workshop
+Exception handling	try-catch-finally	A language mechanism to detect, propagate, and recover from runtime errors without crashing	java-workshop
+Lambda expression	lambda, anonymous function	A concise way to represent a function as a value, enabling functional programming in Java	java-workshop
+Stream API	Java streams	A Java API for processing sequences of elements with map, filter, reduce operations in a functional style	java-workshop
+Generics		A Java feature allowing classes and methods to operate on parameterized types for type safety	java-workshop
+DOM manipulation	Document Object Model	Programmatically reading and modifying the tree structure of an HTML document via JavaScript	javascript-workshop
+ECMAScript	ES6, ES2015	The language specification that standardizes JavaScript, maintained by Ecma International	javascript-workshop
+Arrow function	fat arrow	A concise JavaScript function syntax using => that lexically binds the enclosing this context	javascript-workshop
+Promise	async programming	A JavaScript object representing the eventual completion or failure of an asynchronous operation	javascript-workshop
+async/await		Syntactic sugar over Promises allowing asynchronous JavaScript code to be written in a synchronous style	javascript-workshop
+Fetch API		A modern browser API for making HTTP requests that returns Promises, replacing XMLHttpRequest	javascript-workshop
+Node.js		A server-side JavaScript runtime built on Chrome's V8 engine enabling non-browser JS execution	javascript-workshop
+Duck typing		A programming concept where an object's suitability is determined by the presence of required methods/attributes rather than its type	ruby-workshop
+Metaprogramming		Writing code that generates or modifies other code at runtime, including open classes and method_missing	ruby-workshop
+Block (Ruby)	proc, lambda	An anonymous chunk of code in Ruby that can be passed to a method and executed via yield	ruby-workshop
+Mixin	Ruby module	A module included in a class to share behavior without inheritance, avoiding multiple inheritance issues	ruby-workshop
+Splat operator	*args, **kwargs	Ruby syntax for capturing a variable number of positional (*) or keyword (**) arguments into an array or hash	ruby-workshop
+FFT	Fast Fourier Transform, DFT	An efficient algorithm to compute the Discrete Fourier Transform, converting a signal from the time domain to the frequency domain	labview-dsp
+FIR filter	Finite Impulse Response	A digital filter whose impulse response settles to zero after a finite number of samples; always stable with linear phase possible	labview-dsp
+IIR filter	Infinite Impulse Response	A digital filter with feedback that can achieve sharp frequency response with fewer coefficients than FIR but introduces phase nonlinearity	labview-dsp
+Subsampling receiver	bandpass sampling	A receiver architecture that samples a bandpass signal below the Nyquist rate of the carrier, relying on aliasing to downconvert	labview-dsp
+Bit error rate	BER	The fraction of received bits in error; the primary performance metric for a digital communication system	labview-dsp
+Viterbi decoder		A dynamic programming algorithm that finds the maximum-likelihood path through a trellis, used in convolutional decoding	labview-dsp
+Polyphase filter bank	multirate	A filter decomposition technique that reduces computation in sample-rate conversion by splitting into per-phase subfilters	labview-dsp
+Virtual Instrument	VI, LabVIEW VI	The basic unit of LabVIEW code, analogous to a function, consisting of a front panel (UI) and block diagram (code)	labview-graphical-programming-cookbook
+State machine architecture		A LabVIEW design pattern using an enum-driven case structure inside a loop to sequence distinct operational states	labview-graphical-programming-cookbook
+Producer-consumer architecture		A LabVIEW pattern with separate parallel loops for data production and consumption, connected by a queue to decouple rates	labview-graphical-programming-cookbook
+Action engine	LabVIEW functional global	A LabVIEW subVI that uses an uninitialized shift register to maintain persistent state across calls, similar to a singleton object	labview-graphical-programming-cookbook
+TDMS	Technical Data Management Streaming	NI's binary file format optimized for high-speed streaming data logging with metadata support	labview-graphical-programming-cookbook
+Reentrant VI		A LabVIEW VI configured to allow multiple independent instances to execute simultaneously with separate state	labview-graphical-programming-cookbook
+VISA	Virtual Instrument Software Architecture	An industry-standard API for communicating with test instruments over GPIB, USB, Serial, and Ethernet interfaces	labview-graphical-programming-cookbook
+Pointer (C)		A variable that stores the memory address of another variable, enabling indirect access and dynamic memory manipulation	c-programming-absolute-beginner
+Dynamic memory allocation	malloc, heap allocation	Runtime allocation of memory from the heap using malloc/calloc, which must be explicitly freed to avoid memory leaks	c-programming-absolute-beginner
+Struct (C)	structure	A user-defined C data type that groups related variables of different types under a single name	c-programming-absolute-beginner
+Preprocessor directive	#include, #define	A C instruction processed before compilation, used to include headers, define constants, and conditionally compile code	c-programming-absolute-beginner
+Stack vs. heap		Two memory regions: the stack holds automatic (local) variables with LIFO lifetime; the heap holds dynamically allocated memory with explicit lifetime	c-programming-absolute-beginner
+gcc	GNU C Compiler	The GNU Compiler Collection C frontend used to compile C source files to machine code	c-programming-absolute-beginner

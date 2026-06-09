@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- programming (15 files: 8 partial book notes, 7 unreadable epub/zip)
 - standards (14 files: 10 full, 3 partial, 1 duplicate)
 - modeling-of-acoustic-waves (5 docs, all full)
 - surface-acoustic-wave (12 docs; one mislabeled file flagged in note)
@@ -11,6 +12,7 @@
 - wear-measurement (6 files, 5 notes, 1 duplicate)
 
 ## in flight
+- grinding
 - maths
 - matlab-and-labview
 - personal-communications
@@ -19,10 +21,8 @@
 - transducers-and-piezoelectricity
 - range-measurement
 - signal-processing
-- programming
 
 ## queued
-- grinding
 - focusing-ultrasonic-waves
 - laser-induced
 - lubrication-film
