@@ -1,7 +1,7 @@
 # Contact Stiffness Measurement (Ultrasonic)
 **Aliases:** contact stiffness; interfacial stiffness; K; unit contact stiffness; specific stiffness; contact pressure calibration; K-P calibration; normal stiffness; tangential stiffness; real contact area ultrasonic
 
-**Definition:** Ultrasonic measurement of contact stiffness K (Pa/m) exploits the frequency-dependent reflection coefficient at a partially-contacting interface: R(ω) = [1 − 2iZ/(ωK)]⁻¹. From measured R vs frequency, K is extracted; K is then related to normal contact load P and real contact area through Greenwood–Williamson or Bush–Gibson–Thomas statistical contact models. Contact stiffness measurements provide non-invasive in situ characterisation of bolted joints, rolling element bearings, and tribological contacts. The calibration curve K(P) enables load measurement in service from a single R measurement.
+**Definition:** Ultrasonic measurement of contact stiffness K (Pa/m) exploits the frequency-dependent reflection coefficient at a partially-contacting interface: R(ω) = iωZ/(2K + iωZ) (Baik & Thompson 1984), equivalently |R| = (ωZ/2K)/√(1 + (ωZ/2K)²). From measured R vs frequency, K is extracted; K is then related to normal contact load P and real contact area through Greenwood–Williamson or Bush–Gibson–Thomas statistical contact models. Contact stiffness measurements provide non-invasive in situ characterisation of bolted joints, rolling element bearings, and tribological contacts. The calibration curve K(P) enables load measurement in service from a single R measurement.
 
 **Key relations:**
 - related: [spring-interface-model](spring-interface-model.md)

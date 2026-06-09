@@ -40,15 +40,18 @@
 - speed-of-sound (1 doc)
 - wear-measurement (6 files, 5 notes, 1 duplicate)
 
-## in flight
-- bore-and-liner
-- airborne-ultrasonics
-- transducers-and-piezoelectricity
+## in flight (final stragglers — notes already landing incrementally)
+- bore-and-liner (most notes committed)
+- airborne-ultrasonics (most notes committed)
+- transducers-and-piezoelectricity (most notes committed)
+- verification agent (adversarial claim-check of concepts/)
 
 ## queued (none — all dispatched)
 ### moved to in flight:
 
-## then
-- merge phase (concept clustering, concepts/ pages, rewrite notes to link, GLOSSARY, INDEX, MANIFEST)
-- graphify KNOWLEDGE.md update
-- final push
+## done (final assembly, 2026-06-09)
+- merge phase COMPLETE: 4 domain merge agents -> 203 canonical concepts/ pages
+- GLOSSARY.md (203 concepts), INDEX.md, MANIFEST.md (645 files) generated; link-check: 0 broken
+- 4 _graphify digests; README.md front door; QA-SELFTEST.md (12 grounded Q&A)
+- graphify KNOWLEDGE.md updated and pushed
+- deep-read queue: 15 done; remaining pending rows are future iterations

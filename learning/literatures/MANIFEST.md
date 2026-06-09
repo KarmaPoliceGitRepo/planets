@@ -1,6 +1,6 @@
 # Manifest — Drive file inventory and read status
 
-Merged from per-folder `_manifest.tsv` sidecars. status: read | read-visual | partial | unreadable | skipped-duplicate.
+Merged from per-folder `_manifest.tsv` sidecars.
 
 ## 00-general-acoustics
 
