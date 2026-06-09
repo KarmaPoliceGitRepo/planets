@@ -14,7 +14,7 @@
 - [Stanke & Kino Unified Theory 1984](../notes/microstructure/stanke-kino-unified-theory-1984.md) — seminal self-consistent unified theory spanning all three regimes
 - [Papadakis — Scattering Metals 1965](../notes/microstructure/papadakis-scattering-metals-1965.md) — experimental validation of Rayleigh and stochastic regime formulas
 - [Papadakis — Grain Size Distribution 1964](../notes/microstructure/papadakis-grain-size-distribution-1964.md) — effect of grain size distribution on measured attenuation
-- [Kube & Turner — Attenuation Any Symmetry 2015](../notes/microstructure/kube-turner-atteneration-any-symmetry-2015.md) — generalised model for grains of any crystallographic symmetry
+- [Kube & Turner — Attenuation Any Symmetry 2015](../notes/microstructure/kube-turner-attenuation-any-symmetry-2015.md) — generalised model for grains of any crystallographic symmetry
 - [Yang & Rokhlin — Backscattering Cubic 2013](../notes/microstructure/yang-rokhlin-backscattering-cubic-2013.md) — BSC model for cubic grains
 - [Pamel — Highly Scattering PhD 2015](../notes/microstructure/pamel-highly-scattering-phd-2015.md) — wave propagation in highly scattering polycrystals beyond Born approximation
 - [Turner — Textured Polycrystals 1999](../notes/microstructure/turner-textured-polycrystals-1999.md) — scattering attenuation in textured polycrystalline aggregates
