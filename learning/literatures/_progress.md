@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- adhesive-layer (5 docs, all full)
 - 00-general-error-measurement (1 doc, full)
 - 000000-read-papers-with-notes (1 doc, full)
 - 00000-how2research (2 docs, full)
@@ -39,7 +40,6 @@
 
 ## queued (none — all dispatched)
 ### moved to in flight:
-- adhesive-layer
 - 99-other-relevant-papers
 - 000-electronics-instructions
 - 00-general-hardware-design-stuff
