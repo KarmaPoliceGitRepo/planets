@@ -1,6 +1,8 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- standards (14 files: 10 full, 3 partial, 1 duplicate)
+- modeling-of-acoustic-waves (5 docs, all full)
 - surface-acoustic-wave (12 docs; one mislabeled file flagged in note)
 - method-resonance (5 files, 4 full + 1 preview-only stub)
 - _root (Findings.xlsx)
@@ -9,19 +11,17 @@
 - wear-measurement (6 files, 5 notes, 1 duplicate)
 
 ## in flight
+- maths
+- matlab-and-labview
 - personal-communications
 - microstructure
 - 00-general-acoustics
 - transducers-and-piezoelectricity
 - range-measurement
-- standards
 - signal-processing
 - programming
-- modeling-of-acoustic-waves
 
 ## queued
-- maths
-- matlab-and-labview
 - grinding
 - focusing-ultrasonic-waves
 - laser-induced
