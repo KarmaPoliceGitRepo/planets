@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- 00-general-mechanical-and-materials (28 items: 14 full, 5 partial books, 3 image-only, 1 duplicate)
 - microstructure (49 files -> 46 notes: 28 full, 19 partial, 2 duplicates)
 - 00-general-engineering-books (17 files via 4 split agents: most partial, ASM scan + docx unreadable)
 - effect-of-stress (24 files -> 21 notes: 19 full, 2 partial, 3 duplicates)
@@ -45,7 +46,6 @@
 ## queued (none — all dispatched)
 ### moved to in flight:
 - 000-electronics-instructions
-- 00-general-mechanical-and-materials
 - 00-general-electronics
 
 ## then
