@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- 000-electronics-instructions (23 docs, all full; verify subfolder recursion in QA)
 - 00-general-acoustics (89 files -> 56 notes incl. collection notes; ~12 full, ~28 partial, ~22 unreadable djvu/scans)
 - effect-of-temperature (47 files -> 43 notes: 36 full, 5 partial, 2 ini, 2 duplicates)
 - 00-general-mechanical-and-materials (28 items: 14 full, 5 partial books, 3 image-only, 1 duplicate)
@@ -45,7 +46,6 @@
 
 ## queued (none — all dispatched)
 ### moved to in flight:
-- 000-electronics-instructions
 - 00-general-electronics
 
 ## then
