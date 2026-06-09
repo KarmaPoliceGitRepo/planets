@@ -1,0 +1,85 @@
+concept_term	aliases_seen	one_line_definition	doc_slug
+Fourier Transform	CTFT, continuous-time Fourier transform	Integral transform decomposing a signal into its frequency components	2d-fourier
+2D Fourier Transform	2D-CTFT, 2D-DFT	Extension of the Fourier transform to two-dimensional signals (e.g. images)	2d-fourier
+Discrete Fourier Transform	DFT	Computes N frequency samples from N time-domain samples; associated with circular convolution	2d-fourier
+Discrete Cosine Transform	DCT	Real-valued transform using cosine basis functions; used heavily in image/audio compression	2d-fourier
+DTFT	Discrete-Time Fourier Transform	FT of a discrete aperiodic signal; periodic and continuous in frequency	2d-fourier
+Parseval / Plancherel equality	energy conservation	Energy in time domain equals energy in frequency domain	2d-fourier
+Separability	separable 2D FT	The 2D DFT can be computed as successive 1D DFTs along rows then columns	2d-fourier
+Polynomial algebra	C[x]/p(x)	Vector space of polynomials of degree < n with multiplication modulo p(x)	alternatives-dft
+Vandermonde matrix	Vandermonde structure	Matrix V_{kl} = alpha_k^l where alpha_k are evaluation points	alternatives-dft
+Beraha-Kahane-Weiss theorem	BKW theorem	Characterises the limit of zeros of recursively defined polynomial sequences	alternatives-dft
+Circular convolution	periodic convolution	Convolution with periodic signal extension; associated with DFT (p_n = x^n - 1)	alternatives-dft
+Control volume	CV	Closed simply-connected region in space used for integral balance laws	aa210a-control-volumes
+Gauss's theorem	Divergence theorem	Volume integral of divergence = surface integral of flux	aa210a-control-volumes
+Stokes' theorem	curl theorem	Surface integral of curl = line integral around boundary	aa210a-control-volumes
+Kronecker delta	delta_ij, unit tensor	Tensor equal to 1 when i=j and 0 otherwise; acts as identity on tensors	aa210a-control-volumes
+Levi-Civita tensor	epsilon_ijk, alternating tensor	Totally antisymmetric rank-3 tensor; encodes the cross product	aa210a-control-volumes
+Complex number	imaginary number	Number of the form a + bi where i^2 = -1	complex-numbers
+Argand plane	complex plane	2D geometric representation of complex numbers as points (a, b)	complex-numbers
+Euler's formula	Euler identity	e^{i theta} = cos(theta) + i sin(theta)	complex-numbers
+Complex conjugate	conjugate, z-bar	For z = a + bi, z-bar = a - bi; used for division and to compute |z|^2	complex-numbers
+Partial differential equation	PDE	Equation involving partial derivatives of a function of several variables	ma250-pde
+Wave equation	hyperbolic PDE	Second-order linear PDE describing wave propagation; u_tt = c^2 u_xx	ma250-pde
+Heat equation	diffusion equation, parabolic PDE	PDE describing heat/diffusion: u_t = k u_xx	ma250-pde
+Laplace equation	harmonic equation, elliptic PDE	PDE ∇^2 u = 0; solutions are harmonic functions	ma250-pde
+Fourier series	eigenfunction expansion	Representation of a periodic function as a sum of sinusoids	ma250-pde
+Separation of variables	product ansatz	Method assuming u(x,t) = X(x)T(t) to convert PDE to two ODEs	ma250-pde
+Gibbs phenomenon	Gibbs overshoot	~9% overshoot of Fourier series near jump discontinuities regardless of truncation order	ma250-pde
+Transfer function	H(s)	Laplace-domain ratio of output to input for a linear system; H(s) = N(s)/D(s)	pole-zero-mit
+Poles	system poles	Values of s where the transfer function denominator D(s) = 0 (H → ∞)	pole-zero-mit
+Zeros	system zeros	Values of s where the transfer function numerator N(s) = 0 (H = 0)	pole-zero-mit
+Asymptotic stability	BIBO stability	All poles in the left-half s-plane ↔ homogeneous response decays to zero	pole-zero-mit
+Bode plot	frequency response	Log-frequency plot of transfer function magnitude and phase	pole-zero-mit
+Damping ratio	zeta	Parameter 0 ≤ ζ < 1 for underdamped second-order system; controls oscillatory decay	pole-zero-mit
+Divergence theorem	Gauss's theorem	Converts volume integral of div F to surface integral of F·n	divergence-theorem-proof
+Flux	surface flux	Rate of flow of a vector field across a surface: ∬ F·n dσ	divergence-theorem-proof
+Surface integral	integral over surface	Integral of a function over a curved surface, computed via parameterisation	divergence-theorem-proof
+Mathematical proof	rigorous proof	A logically valid argument establishing a mathematical statement beyond all doubt	foundations-of-mathematics-stewart-tall
+Complete ordered field	real numbers axioms	An ordered field in which every non-empty bounded set has a least upper bound	foundations-of-mathematics-stewart-tall
+Cardinality	cardinal number	Measure of the 'size' of a set; |N| = aleph_0 < |R| by Cantor's argument	foundations-of-mathematics-stewart-tall
+Riemann integral	definite integral	Limit of Riemann sums; Apostol defines it first, before the derivative	apostol-calculus
+Fundamental theorem of calculus	FTC	Integral and derivative are inverse operations: d/dx ∫_a^x f = f(x)	apostol-calculus
+Polar coordinates	polar form	Coordinate system (r, theta) related to Cartesian by x=r cos θ, y=r sin θ	polar-equations-graphs
+Cardioid	heart curve	Polar curve r = 1 ± sin θ or r = 1 ± cos θ; cusp at origin	polar-equations-graphs
+Rose curve	rhodonea curve	Polar curve r = sin(nθ); has n petals (n odd) or 2n petals (n even)	polar-equations-graphs
+Limaçon	limaçon of Pascal	Polar curve r = a + b cos θ; shape varies with a/b ratio	polar-equations-graphs
+2nd rank tensor	second-order tensor	Quantity with two indices transforming as T'_{ij} = A_{ik} A_{jl} T_{kl}	tensors-anisotropic-rocks
+4th rank tensor	fourth-order tensor	Quantity with four indices; elastic stiffness C_{ijkl} is the primary example	tensors-anisotropic-rocks
+Voigt notation	Voigt matrix	Compact 6×6 matrix representation of the 4th rank elastic tensor	tensors-anisotropic-rocks
+Christoffel tensor	acoustic tensor	T_{ik} = C_{ijkl} n_j n_l; eigenvalues give seismic wave velocities	tensors-anisotropic-rocks
+Neumann's principle	crystal symmetry constraint	Physical property symmetry must include all crystal point-group symmetry elements	tensors-anisotropic-rocks
+Crystal preferred orientation	CPO, LPO, texture	Statistical alignment of crystal axes in a polycrystalline material causing bulk anisotropy	tensors-anisotropic-rocks
+Post-perovskite	MgSiO3 post-perovskite	High-pressure phase of MgSiO3 (>120 GPa); likely dominates D'' layer anisotropy	tensors-anisotropic-rocks
+Metric tensor	g_ij	Symmetric rank-2 tensor encoding lengths, angles, and volumes in curved coordinates	grinfeld-tensor-analysis
+Covariant derivative	nabla, ∇_k	Generalised derivative in curved spaces; includes Christoffel symbol correction terms	grinfeld-tensor-analysis
+Christoffel symbols	connection coefficients	Γ^k_{ij}; encode how basis vectors change with position in curvilinear coordinates	grinfeld-tensor-analysis
+Calculus of Moving Surfaces	CMS	Framework for differentiating integrals over time-evolving surfaces	grinfeld-tensor-analysis
+Riemann curvature tensor	Riemann tensor	R^i_{jkl}; measures non-commutativity of covariant differentiation; zero iff space is flat	tensor-calculus-general-relativity
+Pseudo-Riemannian manifold	spacetime manifold	4D curved geometric structure with metric signature (-,+,+,+) underpinning general relativity	tensor-calculus-general-relativity
+Geodesic	shortest path in curved space	Generalisation of straight line to curved spacetime; free-fall trajectories	tensor-calculus-general-relativity
+Stress tensor	Cauchy stress tensor	σ_{ij} = stress in direction j on surface perpendicular to direction i	tensors-handout-cbe6333
+Velocity gradient tensor	∇v	(∇v)_{ij} = ∂v_j/∂x_i; describes local deformation rates in a fluid	tensors-handout-cbe6333
+Einstein summation convention	dummy index, repeated index	Repeated index in a term implies summation over that index	tensors-handout-cbe6333
+Double dot product	double inner product, A:B	A:B = A_{ij} B_{ji}; contracts a pair of indices from each tensor to yield a scalar	tensors-handout-cbe6333
+Dyadic product	outer product, direct product	Product vw with components (vw)_{ij} = v_i w_j; yields a rank-2 tensor from two vectors	vector-tensor-mathematics
+Nonlinear dynamics	dynamical systems	Study of systems whose time evolution is governed by nonlinear differential equations	nonlinear-dynamics-chaos
+Fixed point	equilibrium point	State where dx/dt = 0; classified by Jacobian eigenvalues as stable/unstable/saddle	nonlinear-dynamics-chaos
+Bifurcation	qualitative change in dynamics	Change in number or stability of fixed points/limit cycles as a parameter varies	nonlinear-dynamics-chaos
+Limit cycle	Hopf oscillation	Isolated closed orbit in phase space; source of self-sustained oscillations	nonlinear-dynamics-chaos
+Strange attractor	chaotic attractor	Fractal set in phase space to which chaotic trajectories are attracted (e.g. Lorenz)	nonlinear-dynamics-chaos
+Lyapunov exponent	lambda	Measures average rate of divergence of nearby trajectories; positive = chaos	nonlinear-dynamics-chaos
+Jordan Canonical Form	JCF, Jordan normal form	Canonical matrix form with eigenvalues on diagonal and 1s on superdiagonal	ma251-advanced-linear-algebra
+Cayley-Hamilton theorem		Every matrix satisfies its own characteristic polynomial: p_A(A) = 0	ma251-advanced-linear-algebra
+Minimal polynomial	m_A(x)	The monic polynomial of lowest degree satisfied by A; its factorisation determines the JCF block structure	ma251-advanced-linear-algebra
+Vector space	linear space	Set with addition and scalar multiplication satisfying the eight vector space axioms	ma106-linear-algebra
+Rank-nullity theorem	dimension theorem	dim(ker T) + dim(im T) = dim(domain) for any linear map T	ma106-linear-algebra
+Linear independence	linearly independent set	A set of vectors no one of which is a linear combination of the others	ma106-linear-algebra
+Basis	Hamel basis	A linearly independent spanning set; all bases of a vector space have the same cardinality (dimension)	ma106-linear-algebra
+Method of characteristics	characteristic curves	Technique that converts a first-order PDE into a system of ODEs along special curves	linear-pde-myint-u
+Green's function	impulse response	Solution to a PDE with a delta-function source; general solution = convolution of Green's function with source	linear-pde-myint-u
+Digital signal processing	DSP	Theory and algorithms for processing discrete-time signals, including filtering and spectral analysis	dsp-matlab-proakis
+Z-transform		Discrete analogue of the Laplace transform; X(z) = sum x[n] z^{-n}	dsp-matlab-proakis
+Programmed learning	self-paced instruction	Educational format presenting material in short validated frames with immediate feedback	stroud-engineering-mathematics
+Wave chaos	quantum chaos in acoustics	Study of how classical chaos manifests in the short-wavelength limit of wave equations	wave-chaos
+Infinity principle	limit, infinitesimal	Strogatz's framing of calculus: slice into infinitesimals, solve, and reassemble	infinite-powers

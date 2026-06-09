@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- honing (3 docs: 2 full, 1 partial ASM chapter)
 - emat (1 doc, full)
 - lubrication-film (4 docs: 3 full, 1 partial thesis)
 - laser-induced (6 docs, all full)
@@ -20,9 +21,9 @@
 - wear-measurement (6 files, 5 notes, 1 duplicate)
 
 ## in flight
+- airborne-ultrasonics
 - design-engineering
 - effect-of-stress
-- honing
 - effect-of-temperature
 - maths
 - microstructure
@@ -31,7 +32,6 @@
 - signal-processing
 
 ## queued
-- airborne-ultrasonics
 - contact-study-using-us-waves
 - data-sheets
 - bore-and-liner
