@@ -40,3 +40,9 @@ concept_term	aliases_seen	one_line_definition	doc_slug
 drive_file_id	title	mime_type	size_bytes	status	doc_slug_or_dash
 ```
 status ∈ read | partial | unreadable | skipped-duplicate
+
+## Conflict rule (added 2026-06-09)
+When sources disagree, prioritize the better-quality source:
+peer-reviewed journal / published standard > textbook > PhD thesis > conference paper > slides/datasheet > personal notes.
+Prefer newer reviews over older primaries for settled topics. Record the disagreement explicitly:
+"X (per <better source>); <other source> claims Y" — never silently average.

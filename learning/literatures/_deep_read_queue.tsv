@@ -1,28 +1,28 @@
 status_in_queue	folder	drive_file_id	title	prior_status	doc_slug
 working	effect-of-stress	13BRgDczkKywLswJ7SUe5Hm8TtdSdwRgh	Kube & Turner 2016 stress-dependent scattering polycrystals	partial	kube-turner-2016-scattering
-working	effect-of-stress	181sLIH0RfLxr-rmsSTw8P4XJsH3HQurK	Zarembo & Krasilnikov 1971 nonlinear elastic waves review	partial	zarembo-krasilnikov-1971-nonlinear
+done	effect-of-stress	181sLIH0RfLxr-rmsSTw8P4XJsH3HQurK	Zarembo & Krasilnikov 1971 nonlinear elastic waves review	partial	zarembo-krasilnikov-1971-nonlinear
 working	effect-of-stress	1gR5HdQb5OrqKswGTwaodyrTlM_oUJKi1	Chen Mills Dwyer-Joyce 2015 rolling bearing load monitoring ToF	partial	chen-mills-2015-bearing-tof
 working	effect-of-temperature	1QMTMjLTrTyKPqLQX_IZCUN83rFk9hTU3	1986 - Novel techniques...Wadley.pdf	partial	wadley-1986-ultrasonic-internal-temperature
-pending	effect-of-temperature	1example-bhatia-1960	1960 - Bhatia - attenuation metals low temperatures.pdf	partial	bhatia-1960-attenuation-metals-low-temperatures
-pending	effect-of-temperature	1example-krsmanovic-2009	2009 - Krsmanovic PhD - BIT gas flow.pdf	partial	krsmanovic-2009-phd-bit-gas-flow
-pending	effect-of-temperature	1example-moreira-2019	2019 - Moreira - heat transfer coefficient review.pdf	partial	moreira-2019-heat-transfer-coefficient-review
-pending	effect-of-temperature	1example-scruby-1993-laser	1993 - Scruby Moss - noncontact laser ultrasonics steel.pdf	partial	scruby-1993-noncontact-laser-ultrasonics-steel
-pending	effect-of-temperature	1p0-pBTq-sEjQhnB92lC8z2ugzQ9Yq-rX	2020 1-s2.0-S0960148119315721-main.pdf	partial	wei-2020-2d-temperature-reconstruction
-pending	effect-of-temperature	desktop-ini-1	desktop.ini	unreadable	—
-pending	effect-of-temperature	desktop-ini-2	desktop.ini	unreadable	—
-pending	microstructure	1-jsZE3S7nT48PtYDWqUR9K0rdJiAxAoZ	Ultrasonic Backscattering in Cubic Polycrystals with Ellipsoidal Grains and Texture - (2013) L Yang and SI Rokhlin.pdf	partial	yang-rokhlin-backscattering-cubic-2013
-pending	microstructure	11ViFems1RHxF4WUKgJ5rB4FUxCFGPSWL	A unified theory for elastic wave propagation in polycrystalline materials - (1984) FE Stanke and GS Kino.pdf	partial	stanke-kino-unified-theory-1984
-pending	microstructure	17Y0BNfnHZnxGGC4_7f7QlLdaLqlIqQYR	Elastic wave propagation and scattering in heterogeneous, anisotropic media - Textured polycrystalline materials - (1999) JA Turner.pdf	partial	turner-textured-polycrystals-1999
+failed: placeholder/junk id	effect-of-temperature	1example-bhatia-1960	1960 - Bhatia - attenuation metals low temperatures.pdf	partial	bhatia-1960-attenuation-metals-low-temperatures
+failed: placeholder/junk id	effect-of-temperature	1example-krsmanovic-2009	2009 - Krsmanovic PhD - BIT gas flow.pdf	partial	krsmanovic-2009-phd-bit-gas-flow
+failed: placeholder/junk id	effect-of-temperature	1example-moreira-2019	2019 - Moreira - heat transfer coefficient review.pdf	partial	moreira-2019-heat-transfer-coefficient-review
+failed: placeholder/junk id	effect-of-temperature	1example-scruby-1993-laser	1993 - Scruby Moss - noncontact laser ultrasonics steel.pdf	partial	scruby-1993-noncontact-laser-ultrasonics-steel
+working	effect-of-temperature	1p0-pBTq-sEjQhnB92lC8z2ugzQ9Yq-rX	2020 1-s2.0-S0960148119315721-main.pdf	partial	wei-2020-2d-temperature-reconstruction
+failed: placeholder/junk id	effect-of-temperature	desktop-ini-1	desktop.ini	unreadable	—
+failed: placeholder/junk id	effect-of-temperature	desktop-ini-2	desktop.ini	unreadable	—
+working	microstructure	1-jsZE3S7nT48PtYDWqUR9K0rdJiAxAoZ	Ultrasonic Backscattering in Cubic Polycrystals with Ellipsoidal Grains and Texture - (2013) L Yang and SI Rokhlin.pdf	partial	yang-rokhlin-backscattering-cubic-2013
+working	microstructure	11ViFems1RHxF4WUKgJ5rB4FUxCFGPSWL	A unified theory for elastic wave propagation in polycrystalline materials - (1984) FE Stanke and GS Kino.pdf	partial	stanke-kino-unified-theory-1984
+working	microstructure	17Y0BNfnHZnxGGC4_7f7QlLdaLqlIqQYR	Elastic wave propagation and scattering in heterogeneous, anisotropic media - Textured polycrystalline materials - (1999) JA Turner.pdf	partial	turner-textured-polycrystals-1999
 pending	microstructure	1DdmyCkwERDYkIYIQQzXOYTW_JWTsPKic	The Influence of Austenite Grain Size on the Mechanical Properties of Low-Alloy Steel with Boron - B Bialobrzeska (2016).pdf	partial	bialobrzeska-austenite-grain-size-2016
 pending	microstructure	1E1ePPY5bAqCffpcHVJOcb8cHzbqw7Zqi	Analytical Ultrasonics in Materials Research and Testing - NASA.pdf	partial	nasa-analytical-ultrasonics-1984
 pending	microstructure	1GFk5w_kAAITWSPPHR8hlJtv0kPT_v_BT	Development of Nonlinear Ultrasound Techniques Final_Thesis_Corrected_28_10_2014.pdf	partial	fierro-nonlinear-us-phd-2014
-pending	microstructure	1HzkboDcrVLH_8fMJuQw1Lzfw4_ewzwpf	2005 - Wave-induced fluid flow in random porous media- Attenuation and dispersion of elastic waves - Tobias M. Muller.pdf	partial	muller-gurevich-fluid-flow-2005
+working	microstructure	1HzkboDcrVLH_8fMJuQw1Lzfw4_ewzwpf	2005 - Wave-induced fluid flow in random porous media- Attenuation and dispersion of elastic waves - Tobias M. Muller.pdf	partial	muller-gurevich-fluid-flow-2005
 pending	microstructure	1K31ENnIhdaEmlbyJN-M1XXC-pjl0UCCW	Ultrasonic inspection of highly scattering material - PhD Thesis -(2015) AV Pamel.pdf	partial	pamel-highly-scattering-phd-2015
 pending	microstructure	1KQ7YvuP3hYFU8B6bAg0k_Dx1HOkoxne1	Acoustic attenuation in solids.pdf	partial	acoustic-attenuation-in-solids-proceedings
 pending	microstructure	1XxRUB98ehHmTm5tceMiuCmV44sD2WQpg	Effects of Grain Size on Ultrasonic Attenuation in Type 316L Stainless Steel - T Wan (2017).pdf	partial	wan-316L-grain-size-2017
-pending	microstructure	1bY4HdJTLt5IFQJtxpFrg6UViN0fun8Mj	Ultrasonic scattering in polycrystals with orientation clusters of orthorhombic crystallites - (2013) L Yang.pdf	partial	yang-orthorhombic-cluster-2013
-pending	microstructure	1hYovhnuaM0V7OUAPV47akHPA2g0hB5eQ	Determination of absolute material nonlinearity with air-coupled ultrasonic receivers - (2017) David Torello.pdf	partial	torello-air-coupled-nonlinearity-2017
-pending	microstructure	1iMbHO5f5y124JKuc-l2rZluE-K4Kdpra	Ultrasonic method of observing the behaviour of dislocation in sodium chloride crystals - (1962) LG Merkulov.pdf	partial	merkulov-dislocations-nacl-1962
+working	microstructure	1bY4HdJTLt5IFQJtxpFrg6UViN0fun8Mj	Ultrasonic scattering in polycrystals with orientation clusters of orthorhombic crystallites - (2013) L Yang.pdf	partial	yang-orthorhombic-cluster-2013
+working	microstructure	1hYovhnuaM0V7OUAPV47akHPA2g0hB5eQ	Determination of absolute material nonlinearity with air-coupled ultrasonic receivers - (2017) David Torello.pdf	partial	torello-air-coupled-nonlinearity-2017
+working	microstructure	1iMbHO5f5y124JKuc-l2rZluE-K4Kdpra	Ultrasonic method of observing the behaviour of dislocation in sodium chloride crystals - (1962) LG Merkulov.pdf	partial	merkulov-dislocations-nacl-1962
 pending	microstructure	1oU4oWgjutXu45rLp6VBKrEJBjJZ60Qs1	Modulation Method for Measurements of Ultrasonic Dispersion - (1956) Zverev.pdf	partial	zverev-dispersion-modulation-1956
 pending	microstructure	1pvKDXQ3x5H2ZabY2gQ9ZhFjpzy3cdRpM	Dislocation Contribution to the Attenuation of Ultrasound in Ferromagnetics - (1960) W J Bratina.pdf	partial	bratina-mills-dislocation-1960
 pending	microstructure	1t9x2Q1RtKdvedPTNsmt97QPqwTKW6jJD	Effects of frequency-dependent attenuation and velocity dispersion on in vitro ultrasound velocity measurements in intact human femur specimens - (2006) Haiat.pdf	partial	haiat-femur-sos-2006
