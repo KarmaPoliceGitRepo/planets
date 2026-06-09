@@ -1,6 +1,7 @@
 # Reading progress (working file — updated as agents complete)
 
 ## done
+- 00-general-engineering-books (17 files via 4 split agents: most partial, ASM scan + docx unreadable)
 - effect-of-stress (24 files -> 21 notes: 19 full, 2 partial, 3 duplicates)
 - data-sheets (22 files: 17 full, 5 partial catalogs)
 - 99-other-relevant-papers (4 files: 3 full, 1 unreadable 60MB scan)
@@ -46,7 +47,6 @@
 - 000-electronics-instructions
 - 00-general-mechanical-and-materials
 - 00-general-electronics
-- 00-general-engineering-books
 
 ## then
 - merge phase (concept clustering, concepts/ pages, rewrite notes to link, GLOSSARY, INDEX, MANIFEST)
