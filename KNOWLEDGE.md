@@ -15,6 +15,7 @@ primarily as a home for reusable **Claude Code skills** under `.claude/skills/`.
 - This `KNOWLEDGE.md` at the repo root is the project's persistent memory, written/read by the `graphify` skill.
 
 ## Decisions
+- 2026-06-14 — Added `podcast-the-missing-link/`: a full end-to-end, free, beginner-friendly podcast production system for the show "The Missing Link" (Nepal migration/villages/energy/tourism). Built with a systems-engineering methodology (stakeholders → needs → requirements → ConOps → functional → physical architecture → V&V → traceability) plus implementation guides, episode content, and working automation scripts (FFmpeg mastering to -16 LUFS, Whisper transcription, episode scaffolding). Tooling chosen for $0 cost + 12-year-old usability (OBS, Audacity, FFmpeg, Whisper, Canva, Spotify for Creators, YouTube). The "Uber-for-guides" app is scoped as the show's subject/future system, not built here. Scripts verified end-to-end with FFmpeg (`process_episode.sh` prints PASS; outputs meet MP3 44.1k/128k and MP4 H.264/AAC specs).
 - 2026-06-06 — Added first two skills (`image-to-pptx`, `task-history-review`) via PR #1, which was merged to `main`.
 - 2026-06-06 — Skills are versioned in-repo (project scope) so all agents share them, rather than relying on ephemeral user-scope installs in the remote container.
 - 2026-06-07 — Added `graphify` skill: durable project memory stored in root `KNOWLEDGE.md`, organized as light entity/relationship graph + notes.

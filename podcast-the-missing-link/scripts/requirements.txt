@@ -1,0 +1,8 @@
+# Python helpers for The Missing Link podcast.
+# Install with:  python3 -m pip install -r scripts/requirements.txt
+#
+# Whisper does local, free speech-to-text for transcripts & subtitles (F7).
+# It pulls in torch automatically. First run also downloads the chosen model.
+# Note: FFmpeg must also be installed on the system (see scripts/setup.sh) —
+# Whisper shells out to it to read audio.
+openai-whisper>=20231117
