@@ -1,0 +1,12 @@
+# user edits & media (can be large / private)
+projects/
+samples/*.mp4
+samples/*.mov
+samples/*.mp3
+samples/*.wav
+# transcription caches
+*.whisper.json
+# python / test scratch
+__pycache__/
+*.pyc
+tests/_tmp/
