@@ -80,13 +80,19 @@ if [ -n "$PY" ]; then
   printf "Set it up now? [y/N] "
   read -r ans
   if [ "${ans:-N}" = "y" ] || [ "${ans:-N}" = "Y" ]; then
-    "$PY" -m venv "$ROOT/.venv" && \
-    # shellcheck disable=SC1091
-    . "$ROOT/.venv/bin/activate" 2>/dev/null || . "$ROOT/.venv/Scripts/activate"
-    python -m pip install --upgrade pip
-    python -m pip install -r "$SCRIPT_DIR/requirements.txt"
-    green "✅ Whisper installed into .venv"
-    yellow "   (transcribe.py will auto-use this .venv.)"
+    if "$PY" -m venv "$ROOT/.venv"; then
+      # Invoke the venv's Python directly so installs are GUARANTEED to land in
+      # .venv (no reliance on `activate`, which is fragile and OS-specific).
+      VENV_PY="$ROOT/.venv/bin/python"
+      [ -x "$VENV_PY" ] || VENV_PY="$ROOT/.venv/Scripts/python.exe"   # Windows layout
+      "$VENV_PY" -m pip install --upgrade pip
+      "$VENV_PY" -m pip install -r "$SCRIPT_DIR/requirements.txt"
+      green "✅ Whisper installed into .venv"
+      yellow "   (transcribe.py auto-detects and uses this .venv — just run it.)"
+    else
+      red "❌ Could not create the .venv. You can still install globally with:"
+      yellow "   $PY -m pip install -r scripts/requirements.txt"
+    fi
   else
     yellow "Skipped. Run transcribe.py later and it'll guide you."
   fi

@@ -123,7 +123,7 @@ awk -v v="$MB" -v hi="$MAX_MB" 'BEGIN{exit !(v<=hi)}' \
 bold "-----------------------------------------------"
 if [ "$pass" -eq 1 ]; then
   green "RESULT: PASS ✅  — exports/ is ready to publish."
-  echo  "Next: bash scripts/transcribe.py $EP"
+  echo  "Next: python3 scripts/transcribe.py $EP"
 else
   red   "RESULT: FAIL ❌  — see ❌ lines above."
   yellow "Common fixes: re-record closer to the mic (too quiet) or back off (too hot),"

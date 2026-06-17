@@ -39,9 +39,11 @@
 
 ## Part B — Technical mastering with one command (F5 + F6)
 
-This replaces fiddly manual compression/normalisation with a repeatable script
-that guarantees **PR-1 (−16 LUFS, ≤ −1 dBTP)**, **PR-2 (noise)**, **PR-3 (MP3
-spec)**, and **PR-4 (size)** every single time.
+This replaces fiddly manual loudness/format work with a repeatable script that
+enforces **PR-1 (−16 LUFS, ≤ −1 dBTP)**, **PR-3 (MP3 spec)**, and **PR-4 (size)**
+every single time, and applies a high-pass filter to cut low-frequency rumble.
+(**PR-2 — the noise floor — is handled in editing step A3 above**, using your
+room tone; the script does not do broadband denoising.)
 
 ```bash
 # from the podcast-the-missing-link/ folder:
@@ -50,7 +52,8 @@ bash scripts/process_episode.sh episodes/01-the-missing-link
 
 What it does, in order:
 1. Finds `working/episode_premaster.wav` (audio) and any `raw/*.mp4` (video).
-2. Applies a gentle **high-pass + noise gate** to clean rumble/hiss.
+2. Applies a gentle **high-pass filter** to cut low-frequency rumble/hum
+   (hiss/broadband noise is removed earlier by the Audacity step A3).
 3. Runs **two-pass loudness normalisation** to **−16 LUFS, true-peak −1 dBTP**.
 4. Exports **`exports/episode.mp3`** (44.1 kHz, 128 kbps — PR-3) and, if video
    exists, muxes the mastered audio into **`exports/episode.mp4`** (H.264/AAC — IR-3).

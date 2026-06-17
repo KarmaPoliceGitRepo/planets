@@ -22,18 +22,36 @@ it and exits politely — it never crashes with a wall of red.
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from pathlib import Path
+from typing import List, Optional
 
 AUDIO_EXTS = (".mp3", ".wav", ".m4a", ".mp4", ".mov", ".mkv", ".aac", ".flac")
 
 
-def find_input(ep: Path) -> Path | None:
+def maybe_reexec_in_venv() -> None:
+    """If scripts/setup.sh created a local .venv (with Whisper) but we're not
+    running inside it, re-run this script with the venv's Python. This makes
+    `python3 scripts/transcribe.py ...` "just work" for beginners after setup.
+    A guard env var prevents any chance of an infinite re-exec loop."""
+    if os.environ.get("MISSING_LINK_REEXEC"):
+        return
+    repo_root = Path(__file__).resolve().parent.parent
+    here = Path(sys.executable).resolve()
+    for cand in (repo_root / ".venv" / "bin" / "python",
+                 repo_root / ".venv" / "Scripts" / "python.exe"):
+        if cand.exists() and cand.resolve() != here:
+            os.environ["MISSING_LINK_REEXEC"] = "1"
+            os.execv(str(cand), [str(cand), os.path.abspath(__file__), *sys.argv[1:]])
+
+
+def find_input(ep: Path) -> Optional[Path]:
     """Prefer the finished export; fall back to the newest raw recording."""
     preferred = ep / "exports" / "episode.mp3"
     if preferred.exists():
         return preferred
-    candidates: list[Path] = []
+    candidates: List[Path] = []
     for sub in ("exports", "working", "raw"):
         d = ep / sub
         if d.is_dir():
@@ -89,6 +107,8 @@ def main() -> int:
     try:
         import whisper  # type: ignore
     except ImportError:
+        # If a local .venv has Whisper, transparently re-run inside it.
+        maybe_reexec_in_venv()
         print("ℹ️  Whisper isn't installed yet. Install it (one time) with:\n")
         print("    python3 -m pip install -r scripts/requirements.txt\n")
         print("   (or:  python3 -m pip install openai-whisper)")

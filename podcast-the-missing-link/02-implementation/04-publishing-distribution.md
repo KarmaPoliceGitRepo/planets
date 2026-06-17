@@ -6,8 +6,8 @@
 ## 4.1 Make the transcript & captions first (F7 — accessibility, N-21)
 
 ```bash
-bash scripts/transcribe.py episodes/01-the-missing-link
-# or:  python3 scripts/transcribe.py episodes/01-the-missing-link
+python3 scripts/transcribe.py episodes/01-the-missing-link
+# (auto-uses scripts/setup.sh's .venv if you created one)
 ```
 This creates `captions/episode.txt` (full transcript) and
 `captions/episode.srt` (subtitles for YouTube). Skim and fix any names

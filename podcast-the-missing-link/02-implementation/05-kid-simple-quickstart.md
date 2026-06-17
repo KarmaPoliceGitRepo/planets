@@ -55,7 +55,7 @@ Wait for it to say **PASS** ✅. Now you have `episode.mp3` and `episode.mp4`.
 
 **7. Make subtitles** 🤖
 ```bash
-bash scripts/transcribe.py episodes/01-the-missing-link
+python3 scripts/transcribe.py episodes/01-the-missing-link
 ```
 This writes the words out so deaf listeners can read along.
 

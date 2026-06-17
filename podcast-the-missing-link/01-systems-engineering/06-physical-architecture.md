@@ -45,7 +45,7 @@
 | **C1** | **OBS Studio** | Records camera + mic + screen to MP4; great for video & remote captures | Free, open-source | Win/Mac/Linux | QuickTime, built-in camera app |
 | **C2** | **Audacity** | Multitrack audio editor (cut, denoise, levels, music) | Free, open-source | Win/Mac/Linux | GarageBand (Mac), Ocenaudio |
 | **C3** | **Browser call tool** | Free remote-guest calls; e.g. **Riverside.fm** free tier (per-speaker tracks) or **Zoom**/**Google Meet** + double-ender | Free tier | Browser | Cleanfeed, Jitsi |
-| **C4** | **FFmpeg + repo scripts** | Command-line engine doing noise gate, **loudness normalise to −16 LUFS**, MP3/MP4 export, PASS/FAIL checks | Free, open-source | Win/Mac/Linux | Auphonic (free 2h/mo, GUI) |
+| **C4** | **FFmpeg + repo scripts** | Command-line engine doing high-pass rumble filtering, **loudness normalise to −16 LUFS**, MP3/MP4 export, PASS/FAIL checks | Free, open-source | Win/Mac/Linux | Auphonic (free 2h/mo, GUI) |
 | **C5** | **Whisper** (`openai-whisper`, runs locally) | Speech-to-text → transcript + `.srt` captions | Free, open-source | Win/Mac/Linux | YouTube auto-captions, Spotify auto-transcripts |
 | **C6** | **Canva** | Drag-and-drop cover art (1400×1400) & social clips | Free tier | Browser | GIMP, Photopea |
 | **C7** | **Spotify for Creators** (was Anchor) | Free unlimited podcast **host**; auto-creates the **RSS feed**; 1-click to Spotify; submits to Apple | Free | Browser/app | Podbean free, RSS.com |
