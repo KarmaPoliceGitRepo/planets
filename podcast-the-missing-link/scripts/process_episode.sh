@@ -37,10 +37,17 @@ if ! command -v ffmpeg >/dev/null 2>&1; then
   red "❌ FFmpeg not found. Run: bash scripts/setup.sh"; exit 1
 fi
 
+# Prefer the hand-edited / selection-rendered premaster; fall back to a cleaned
+# file from clean_audio.sh so a beginner can skip Audacity entirely.
 IN="$EP/working/episode_premaster.wav"
+if [ ! -f "$IN" ] && [ -f "$EP/working/episode_clean.wav" ]; then
+  IN="$EP/working/episode_clean.wav"
+  info "No premaster found — using cleaned audio: working/episode_clean.wav"
+fi
 if [ ! -f "$IN" ]; then
-  red "❌ Expected your edit at: $IN"
-  yellow "   In Audacity: File → Export → WAV → save as that name."
+  red "❌ Expected your edit at: $EP/working/episode_premaster.wav"
+  yellow "   In Audacity: File → Export → WAV → save as that name,"
+  yellow "   or run: bash scripts/clean_audio.sh $EP"
   exit 1
 fi
 
@@ -77,8 +84,14 @@ ffmpeg -y -hide_banner -loglevel error -i "$IN" -af "$AF" -ar "$MP3_RATE" "$OUT_
 ffmpeg -y -hide_banner -loglevel error -i "$OUT_WAV" -codec:a libmp3lame -b:a "$MP3_BITRATE" -ar "$MP3_RATE" "$OUT_MP3"
 green "✅ Audio exported: $OUT_MP3"
 
-# === optional VIDEO: mux mastered audio into newest raw video ================
-VID="$(ls -t "$EP"/raw/*.mp4 "$EP"/raw/*.mov "$EP"/raw/*.mkv 2>/dev/null | head -n1 || true)"
+# === optional VIDEO: mux mastered audio into the chosen video ================
+# Prefer a render_selection.py "cut" (only the kept parts); else newest raw video.
+if [ -f "$EP/working/episode_cut.mp4" ]; then
+  VID="$EP/working/episode_cut.mp4"
+  info "Using selected cut: working/episode_cut.mp4"
+else
+  VID="$(ls -t "$EP"/raw/*.mp4 "$EP"/raw/*.mov "$EP"/raw/*.mkv 2>/dev/null | head -n1 || true)"
+fi
 if [ -n "${VID:-}" ]; then
   OUT_MP4="$EP/exports/episode.mp4"
   info "Found video: $(basename "$VID") → building episode.mp4 (H.264/AAC)"

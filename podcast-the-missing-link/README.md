@@ -32,19 +32,47 @@ podcast-the-missing-link/
 │   ├── 02-recording-setup.md         how to record audio + video well
 │   ├── 03-editing-workflow.md        clean up and assemble an episode
 │   ├── 04-publishing-distribution.md get onto Spotify, Apple, YouTube
-│   └── 05-kid-simple-quickstart.md   ⭐ the 12-year-old, 10-step version
+│   ├── 05-kid-simple-quickstart.md   ⭐ the 12-year-old, 10-step version
+│   └── 06-studio-and-segments.md     🖥️ the one-window Studio app + segment editing
 ├── 03-content/                   ← the "soul": what we actually say
 │   ├── series-arc.md                 the whole season mapped out
 │   ├── episode-01-the-missing-link.md the first full episode script
 │   ├── show-notes-template.md        reusable show-notes / description
 │   └── research-pack.md              facts, themes, and questions to explore
+├── studio/                       ← the one-window web UI (runs locally)
+│   └── studio.html                  the Studio front-end
+├── slides/                       ← "what this is + how to use it" deck
+│   ├── make_slides.py               (re)builds the deck
+│   ├── how-to-use-the-missing-link.pptx   editable PowerPoint
+│   └── how-to-use-the-missing-link.pdf    printable PDF
 └── scripts/                      ← the "robot helpers": automation
     ├── setup.sh                      installs/checks the free software
+    ├── studio.py                     🖥️ the local Studio app (drives everything)
     ├── new_episode.sh                creates a fresh episode folder
-    ├── process_episode.sh            auto-cleans + loudness-normalises audio/video
+    ├── clean_audio.sh                DSP cleanup (denoise/de-ess/de-click/compress)
+    ├── segment_episode.py            splits into tagged segments + sub-sections
+    ├── render_selection.py           rebuilds the episode from the parts you keep
+    ├── process_episode.sh            loudness-normalises + exports audio/video
     ├── transcribe.py                 makes transcripts & subtitles (accessibility)
     └── requirements.txt              the Python helpers needed
 ```
+
+---
+
+## 🖥️ The fastest path: the Studio app
+
+One window, no command line. It runs the whole pipeline with buttons and lets you
+**choose what to keep, topic by topic**:
+
+```bash
+bash scripts/setup.sh          # one time: checks FFmpeg, installs Whisper
+python3 scripts/studio.py      # opens http://127.0.0.1:8765 in your browser
+```
+
+Inside the Studio you **Clean → Split into segments → tick what to keep →
+Rebuild → Master → make Subtitles**. Full walkthrough:
+[`02-implementation/06-studio-and-segments.md`](02-implementation/06-studio-and-segments.md).
+A ready-made explainer deck (pptx + pdf) lives in [`slides/`](slides/).
 
 ---
 
@@ -52,6 +80,7 @@ podcast-the-missing-link/
 
 | You are… | Start with |
 |---|---|
+| **Just want it done (one window)** | [`02-implementation/06-studio-and-segments.md`](02-implementation/06-studio-and-segments.md) — the Studio app |
 | **A 12-year-old / total beginner** | [`02-implementation/05-kid-simple-quickstart.md`](02-implementation/05-kid-simple-quickstart.md) |
 | **Ready to record today** | [`02-implementation/02-recording-setup.md`](02-implementation/02-recording-setup.md) |
 | **Curious about the engineering** | [`01-systems-engineering/01-stakeholders.md`](01-systems-engineering/01-stakeholders.md) |
