@@ -41,38 +41,38 @@ flowchart LR
 | ID | Stereo | Requirement (actor shall …) | refinedBy | derivedFrom | verify | St | Pri |
 |---|---|---|---|---|---|---|---|
 | **SR-1.1** | F | ReelCut shall split media into tagged segments and sub-sections. | F-4 | SN-1 | T | Built | M |
-| **SR-1.2** | F | ReelCut shall let the creator keep/drop and re-order the kept sub-sections. | F-5,F-6 | SN-1 | T | Built | M |
+| **SR-1.2** | F | ReelCut shall let the creator keep/drop and re-order the kept sub-sections. | F-5,F-6 | SN-2.1,SN-2.2 | T | Built | M |
 | **SR-1.3** | F | ReelCut shall render the chosen order with transitions. | F-8 | SN-1 | T | Built | M |
-| **SR-1.4** | F | ReelCut shall re-time captions to the new sequence. | F-9 | SN-2 | T | Built | M |
-| **SR-1.5** | P | ReelCut shall output audio at **−16 LUFS ±1, TP ≤ −1 dBTP**. | F-10 | SN-2 | T | Built | M |
-| **SR-1.6** | P | ReelCut shall keep audio and video in sync across cuts and transitions. | F-8 | SN-2 | A/T | Built | M |
+| **SR-1.4** | F | ReelCut shall re-time captions to the new sequence. | F-9 | SN-2.3 | T | Built | M |
+| **SR-1.5** | P | ReelCut shall output audio at **−16 LUFS ±1, TP ≤ −1 dBTP**. | F-10 | SN-2.4 | T | Built | M |
+| **SR-1.6** | P | ReelCut shall keep audio and video in sync across cuts and transitions. | F-8 | SN-2.5 | A/T | Built | M |
 | **SR-1.7** | I | ReelCut shall serve the HMI over HTTP on **127.0.0.1** and shall not upload media. | — (ctx) | SN-3 | I | Built | M |
-| **SR-1.8** | I | ReelCut shall output **H.264/AAC MP4, MP3 44.1 kHz, and SubRip**. | F-8,F-10 | SN-2 | T | Built | M |
+| **SR-1.8** | I | ReelCut shall output **H.264/AAC MP4, MP3 44.1 kHz, and SubRip**. | F-8,F-10 | SN-1 | T | Built | M |
 | **SR-2.1** | F | ReelCut shall demux input into independent A/V tracks. | F-2 | SN-6 | T | Planned | M |
 | **SR-2.2** | F | ReelCut shall hold a portable, renderer-agnostic project document (stable media handles; no absolute paths / FFmpeg strings). | F-2 | SN-6 | I/T | Planned | M |
-| **SR-2.3** | F | ReelCut shall replace the audio, invalidate/flag affected captions, and offer re-transcribe. | F-11 | SN-5 | T | Planned | M |
-| **SR-2.4** | F | ReelCut shall add audio with per-track level/mute and optional duck-under-speech. | F-12 | SN-5 | T | Planned | M |
-| **SR-2.5** | F | ReelCut shall add image clips (still, editable 4 s default, Ken-Burns off, no intrinsic audio). | F-13 | SN-5 | T | Planned | M |
-| **SR-2.6** | P | ReelCut shall preserve **−16 LUFS** and A/V sync on the final mix after add/replace audio. | F-10,F-12 | SN-2 | T | Planned | M |
-| **SR-2.7** | I | ReelCut shall expose endpoints for replace/add audio and add image, accepting PNG/JPG + MP3/WAV/M4A/AAC. | — (ctx) | SN-5 | T | Planned | M |
+| **SR-2.3** | F | ReelCut shall replace the audio, invalidate/flag affected captions, and offer re-transcribe. | F-11 | SN-5.3 | T | Planned | M |
+| **SR-2.4** | F | ReelCut shall add audio with per-track level/mute and optional duck-under-speech. | F-12 | SN-5.2 | T | Planned | M |
+| **SR-2.5** | F | ReelCut shall add image clips (still, editable 4 s default, Ken-Burns off, no intrinsic audio). | F-13 | SN-5.1 | T | Planned | M |
+| **SR-2.6** | P | ReelCut shall preserve **−16 LUFS** and A/V sync on the final mix after add/replace audio. | F-10,F-12 | SN-2.4 | T | Planned | M |
+| **SR-2.7** | I | ReelCut shall expose endpoints for replace/add audio and add image, accepting PNG/JPG + MP3/WAV/M4A/AAC. | — (ctx) | SN-5.1 | T | Planned | M |
 | **SR-2.8** | Ph | ReelCut shall support independent A/V manipulation at the **MoP threshold/objective** level. | F-6,F-14 | SN-6 | D | Planned | M/C |
 | **SR-3.1** | F | ReelCut shall validate every imported artifact against accepted formats and reject it with a reason. | F-15 | SN-1 | T | Planned | S |
-| **SR-3.2** | F | ReelCut shall autosave the project document continuously and restore it on resume / after a crash. | F-16 | SN-8 | T | Planned | S |
-| **SR-3.3** | F | ReelCut shall let the creator undo/redo any edit via a reversible command stack. | F-17 | SN-8 | T | Planned | S |
-| **SR-3.4** | F | ReelCut shall let the creator cancel/abort any long operation and shall report progress and errors to the HMI. | F-18,F-19 | SN-8 | T | Planned | S |
-| **SR-3.5** | F | ReelCut shall, on any source change, invalidate/flag derived artifacts and offer regeneration. | F-4,F-11 | SN-2 | T | Planned | S |
+| **SR-3.2** | F | ReelCut shall autosave the project document continuously and restore it on resume / after a crash. | F-16 | SN-8.1 | T | Planned | S |
+| **SR-3.3** | F | ReelCut shall let the creator undo/redo any edit via a reversible command stack. | F-17 | SN-8.2 | T | Planned | S |
+| **SR-3.4** | F | ReelCut shall let the creator cancel/abort any long operation and shall report progress and errors to the HMI. | F-18,F-19 | SN-8.3 | T | Planned | S |
+| **SR-3.5** | F | ReelCut shall, on any source change, invalidate/flag derived artifacts and offer regeneration. | F-4,F-11 | SN-2.3 | T | Planned | S |
 | **SR-3.6** | P | ReelCut shall re-cut only changed clips when re-rendering after an edit. | F-20 | SN-1 | A/T | Planned | C |
 | **SR-4.1** | F | ReelCut shall treat the original recording as read-only and keep all edits non-destructive and reversible. | F-30 | SN-9 | T | Planned | M |
-| **SR-4.2** | F | ReelCut shall let the creator export in a chosen aspect ratio {16:9, 9:16, 1:1} and resolution preset. | F-25 | SN-10 | T | Planned | S |
-| **SR-4.3** | F | ReelCut shall produce captions in the detected spoken language and, on request, an English translation. | F-26 | SN-11 | T | Planned | S |
+| **SR-4.2** | F | ReelCut shall let the creator export in a chosen aspect ratio {16:9, 9:16, 1:1} and resolution preset. | F-25 | SN-10.1,SN-10.2 | T | Planned | S |
+| **SR-4.3** | F | ReelCut shall produce captions in the detected spoken language and, on request, an English translation. | F-26 | SN-11.1,SN-11.2 | T | Planned | S |
 | **SR-4.4** | P | ReelCut shall render a preview that is frame-accurate to the exported output. | F-31 | SN-12 | A/T | Planned | S |
-| **SR-4.5** | F | ReelCut shall detect and optionally remove filler words and silences beyond a creator-set threshold. | F-21 | SN-13 | T | Planned | S |
-| **SR-4.6** | F | ReelCut shall export creator-selected highlight sub-ranges as standalone clips and let the creator pick a cover frame. | F-22 | SN-14 | T | Planned | S |
+| **SR-4.5** | F | ReelCut shall detect and optionally remove filler words and silences beyond a creator-set threshold. | F-21 | SN-13.1,SN-13.2 | T | Planned | S |
+| **SR-4.6** | F | ReelCut shall export creator-selected highlight sub-ranges as standalone clips and let the creator pick a cover frame. | F-22 | SN-14.1,SN-14.2 | T | Planned | S |
 | **SR-4.7** | F | ReelCut shall emit chapter markers/timestamps derived from the topic segments. | F-23 | SN-15 | T | Planned | C |
-| **SR-4.8** | F | ReelCut shall apply an audio-cleanup chain (denoise/dehum, speech leveling) that preserves −16 LUFS. | F-24 | SN-16 | T | Planned | S |
+| **SR-4.8** | F | ReelCut shall apply an audio-cleanup chain (denoise/dehum, speech leveling) that preserves −16 LUFS. | F-24 | SN-16.1,SN-16.2 | T | Planned | S |
 | **SR-4.9** | F | ReelCut shall optionally burn captions into the video (open captions) for sound-off playback. | F-27 | SN-17 | T | Planned | S |
-| **SR-4.10** | F | ReelCut shall optionally insert branding elements: intro/outro, title card, lower-thirds, logo/watermark. | F-28 | SN-18 | T | Planned | C |
-| **SR-4.11** | F | ReelCut shall save reusable style presets and apply them to new projects. | F-29 | SN-19 | T | Planned | C |
+| **SR-4.10** | F | ReelCut shall optionally insert branding elements: intro/outro, title card, lower-thirds, logo/watermark. | F-28 | SN-18.1–.4 | T | Planned | C |
+| **SR-4.11** | F | ReelCut shall save reusable style presets and apply them to new projects. | F-29 | SN-19.1,SN-19.2 | T | Planned | C |
 
 ## Full requirement attributes (p.15 «extendedRequirement»: risk + rationale)
 | ID | risk | rationale (why this requirement exists) |

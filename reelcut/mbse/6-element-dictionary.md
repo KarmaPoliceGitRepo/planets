@@ -77,6 +77,11 @@
 | SN-18 | stakeholder need | On-brand — optional intro/outro, title, lower-thirds, logo/watermark. |
 | SN-19 | stakeholder need | Consistency — save/reuse a style preset across episodes. |
 
+> Needs are stated **atomically** (one action · one object · one capability) as
+> *"The ‹actor› needs to …"* in `1-problem-domain/black-box/1`; compound rows above
+> are need *groups* split into sub-needs `SN-‹n›.‹m›` (e.g. SN-8 → SN-8.1 autosave,
+> SN-8.2 undo/redo, SN-8.3 cancel). System requirements derive from the atomic sub-need.
+
 ## Use cases (black-box behavior)
 | Element | Kind | Description |
 |---|---|---|
