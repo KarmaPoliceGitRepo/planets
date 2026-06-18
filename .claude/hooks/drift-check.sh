@@ -66,8 +66,20 @@ if [ -f "$reqs" ] && [ -n "$defined_f" ]; then
   done < <(grep -E '^\| \*\*SR-' "$reqs")
 fi
 
+# 4) Podcast (PRIMARY SoI): every N-xx referenced in the needs doc must resolve
+#    to a defined need (- **N-xx** ...).
+pod_needs="podcast-the-missing-link/01-systems-engineering/02-stakeholder-needs.md"
+if [ -f "$pod_needs" ]; then
+  defined_n="$(grep -oE '\*\*N-[0-9]+\*\*' "$pod_needs" | tr -d '*' | sort -u)"
+  if [ -n "$defined_n" ]; then
+    for ref in $(grep -oE 'N-[0-9]+' "$pod_needs" | sort -u); do
+      grep -qx "$ref" <<<"$defined_n" || issues+=("trace(podcast): undefined need $ref referenced")
+    done
+  fi
+fi
+
 if (( ${#issues[@]} == 0 )); then
-  echo "drift-check: OK (fences balanced, SN/F traceability resolves)"
+  echo "drift-check: OK (podcast needs resolve; reelcut SN/F traceability resolves; fences balanced)"
   exit 0
 fi
 

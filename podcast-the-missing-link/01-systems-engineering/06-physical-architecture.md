@@ -106,6 +106,12 @@ command line** (strengthens UR-1 ease-of-use) and to support **edit-by-meaning**
 | **C5b** | **Segmenter** (Whisper + grouping) | **F4c** split into tagged **segments** + **sub-sections**; user selects what to keep | `scripts/segment_episode.py`, `scripts/render_selection.py` |
 | **C10** | **Studio UI** (local web app, Python stdlib only) | integration/HMI: drives F4b/F4c/F5/F6/F7 from one browser window, binds to `127.0.0.1` (local-only, offline-friendly) | `scripts/studio.py` + `studio/studio.html` |
 
+> **Relationship to `reelcut/`:** components **C4b + C5b + C10** together are the
+> local **Studio editor** subsystem. `reelcut/` (and its `reelcut/mbse` model) is the
+> **detailed implementation / sub-model of this subsystem only** — it is *not* a
+> separate system. The System of Interest is **this podcast production & distribution
+> system**; reelcut is one allocated component under it.
+
 These are **additive and backward-compatible**: the original Audacity →
 `process_episode.sh` path still works unchanged. `process_episode.sh` now also
 prefers `working/episode_clean.wav` (if no hand-made premaster exists) and
