@@ -1,54 +1,62 @@
 # ReelCut — MBSE Model (00 · Overview & Framework)
 
-> **Method:** OMG **SysML** (language) organised by the **MagicGrid** framework
-> (Dassault Systèmes / Morkevicius). **Single source of truth (G-2):** this
-> `reelcut/mbse/` model. Skill outputs (brainstorming spec, writing-plans) are
-> transient drafts distilled into here.
+> **Method:** OMG **SysML** organised by the **MagicGrid** framework, applied per
+> **NASA/MSFC "NASA MBSE Implementation"** (Plattsmier, 2019, NTRS 20190032390) and
+> aligned to **NPR 7123.1** System Design processes. This model is the **single
+> source of truth** (skill outputs are distilled into it).
 
-## Conformance statement (read this first)
-This model **conforms to MagicGrid's structure** (four SysML pillars ×
-Problem/Solution domains) and uses **SysML semantics** for relations
-(`satisfy`, `derive`, `refine`, `allocate`). Because the repo has no SysML
-authoring tool, notation is **hybrid (decision Q5-c)**:
-- **Authoritative**, rigor-critical elements — requirements, ports/interfaces,
-  and the Parameters pillar (parametric/constraint blocks) — are written in
-  **SysML v2 textual notation** (```sysml fenced blocks).
-- **Illustrative** views — context, use-case, state, sequence, BDD/IBD — are
-  **Mermaid renderings** and are *non-normative*; the tables are normative.
+## The MagicGrid (pillars × layers of abstraction)
 
-## MagicGrid index — every cell has a home
+Columns = SysML pillars; rows = layer of abstraction. Workflow follows the arrows
+(left→right across a layer, then down).
 
-| Pillar → / Domain ↓ | **Requirements** | **Behavior** | **Structure** | **Parameters** |
+| Layer ↓ / Pillar → | **Requirements** | **Behavior** | **Structure** | **Parametrics** |
 |---|---|---|---|---|
-| **Black box (Problem)** | **B1** Stakeholder Needs → `01 §B1` | **B2** Use Cases → `02` | **B3** System Context → `03 §B3` | **B4** MoE → `06 §B4` |
-| **White box (Solution)** | **W1** System Requirements → `01 §W1` | **W2** System Behaviour → `04` | **W3** System Structure → `03 §W3` | **W4** System Parameters / MoP → `06 §W4` |
-| **Implementation** | code under `reelcut/app/` (allocated via W3) | — | — | — |
+| **Conceptual** (Black Box / *Stakeholder Needs Definition*) | Stakeholder Needs `1-problem-domain/black-box/1` | Use Cases `…/2` | **System Context (IBD)** `…/3` | Measurements of Effectiveness `…/4` |
+| **Logical** (White Box / *Architecture Definition*) | System Requirements `…/white-box/1` | Functional Analysis `…/2` | Logical Subsystems Communication `…/3` | (MoE/MoP) |
+| **Physical** (Solution / *Design Definition*) | Component Requirements (SW + HW) `2-solution-domain/1` | Component Behavior `…/2` | Component Structure `…/3` | Component Parameters (MoP) `…/4` |
 
-**Traceability** (closes the loop need→req→function→block→parameter→verification)
-→ `05`. Verification tests → `reelcut/tests/`.
+- **Conceptual:** stakeholder needs → … → **system requirements**.
+- **Logical:** system requirements → … → **system-element (component) requirements**.
+- **Physical:** component requirements → **hardware + software requirements**; the
+  **scripts** under `reelcut/app/` are the physical realisation and the means of
+  **verifying the software requirements**; **hardware requirements are constraints**
+  (e.g. *runs on Android ≥ Galaxy S23 / iPhone 11*).
 
-## ID scheme & attributes
-- **STK-** stakeholder · **N-** stakeholder need (B1) · **UC-** use case (B2) ·
-  **MOE-** measure of effectiveness (B4) · **FR/PR/IR/CR-** system requirement (W1) ·
-  **A-** activity/state (W2) · **B-** block (W3) · **MOP-** measure of performance (W4) ·
-  **T-** test. (N-5…N-9 are **reserved**; IDs are stable by decision Q2-a.)
-- **Every W1 requirement carries:** Text · Cell · **Status** {Built \| Planned} ·
-  **Verify** {I=Inspection, A=Analysis, D=Demonstration, T=Test} · **From** (derived-from) ·
-  **Alloc** (allocated-to block) · **Pri** (MoSCoW: M/S/C/W) · Rationale.
-
-## Block → code map (W3 allocation)
+## Package structure (mirrors NTRS 20190032390 p.10)
 ```
-B-1 Web UI            → app/static/        B-8  Master            → app/pipeline/master.py
-B-2 Local Server      → app/server.py      B-9  FFmpeg (external) → system binary
-B-3 Edit Model        → app/model.py       B-10 Track/Clip Model  → app/model.py (extended)   [Planned]
-B-4 Probe             → app/pipeline/probe.py   B-11 Image-clip Synth → app/pipeline/render.py (ext) [Planned]
-B-5 Segmenter         → app/pipeline/segment.py B-12 Audio Mixer/Ducker → app/pipeline/audio_mix.py  [Planned]
-B-6 Render Engine     → app/pipeline/render.py  B-13 Demux/Ingest     → app/pipeline/probe.py (ext)  [Planned]
-B-7 Caption Re-timer  → app/pipeline/captions.py
+reelcut/mbse/
+├── 00-model-overview.md
+├── 1-problem-domain/
+│   ├── black-box/   1-stakeholder-needs · 2-use-cases · 3-system-context(IBD) · 4-measures-of-effectiveness
+│   └── white-box/   1-system-requirements · 2-functional-analysis · 3-logical-subsystems
+├── 2-solution-domain/
+│   └── 1-component-requirements · 2-component-behavior · 3-component-structure · 4-component-parameters
+├── 3-system-configuration.md      (top-level system: structural + behavioural features)
+├── 4-implementation-domain.md     (scripts ↔ software-requirement verification; HW constraints)
+├── 5-traceability.md
+└── diagrams/                      (rendered SVGs, mirroring the cells)
 ```
 
-## Status legend
-**Built** = implemented & tested today. **Planned** = designed here (media-tracks v2:
-needs N-11…N-19), not yet implemented; gated behind GATE 2 approval.
+## Relationships (SysML, applied per your rules)
+| Relation | Rule used here |
+|---|---|
+| **«deriveReqt»** | **requirement → requirement only.** User needs →(ConOps/mission analysis)→ Stakeholder Needs (SN) → System Requirements (SR) → Component Requirements (CR/HW). |
+| **«refine»** | a **behaviour/use-case/function refines a requirement or need** (SR are *written from* functions). |
+| **«satisfy»** | a **white-box structural element satisfies a requirement**. |
+| **«verify»** | a requirement is **verified by behaviour or structure** of system components (logical subsystems) — realised as tests / analysis. |
+| **«allocate»** | a **behaviour is allocated to a structure in the same abstraction layer**; a structure allocates to a structure. Allocation implies *complete inheritance of scope* — decompose a behaviour until a part can be allocated **in its entirety** to one structure. |
+| **«value binding»** | a parametric value binds to a structural value property (MoE/MoP). |
 
-Read in order **00 → 06**. Start the product with `../run.sh`.
+## ID scheme (NASA-style: prefix = layer, stereotype = type)
+- **SN-** Stakeholder Need · **UC-** Use Case · **F-** Function · **MOE-** Measure of Effectiveness
+- **SR-** System Requirement, stereotyped «functionalRequirement» / «interfaceRequirement» / «performanceRequirement» / «physicalRequirement»
+- **LS-** Logical Subsystem · **I-** Interface Block · **MOP-** Measure of Performance
+- **C-** Component (physical) · **CR-** Component (software) Requirement · **HC-** Hardware Constraint · **T-** Test (software-requirement verification)
+- Requirement attributes (per p.15 «extendedRequirement»): `id · text · stereotype · status{Built|Planned} · verifyMethod{I|A|D|T} · risk · derivedFrom · refinedBy · satisfiedBy · priority(MoSCoW) · rationale`.
+
+> **Migration note:** supersedes the earlier flat `01–06` model (which lacked the
+> logical layer and function-derived requirements). Old → new: N-→SN-, FR/PR/IR/CR-
+> (as *types*) → SR- with stereotypes; new logical + physical layers added.
+
+Read **00 → 5**.

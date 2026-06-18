@@ -1,6 +1,0 @@
-flowchart TD
-  U[Browser] -- upload --> S[B-2 Server] --> PR[B-4 Probe]
-  S --> SEG[B-5 Segmenter] --> MDL[(B-3 project.json)]
-  U -- keep/order/transition --> S --> MDL
-  MDL -- plan --> RND[B-6 Render] --> CAP[B-7 Captions]
-  RND --> MAS[B-8 Master] --> EXP[(exports/)] --> U

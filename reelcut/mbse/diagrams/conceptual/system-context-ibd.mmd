@@ -1,0 +1,13 @@
+flowchart TB
+  subgraph CTX["ibd [block] ReelCut Context"]
+    direction TB
+    SOI["«block» : ReelCut\n(System of Interest — black box)"]
+  end
+  CR["«block» : Creator"] ---|"iEditDecision: editDecision"| SOI
+  SOI ---|"iDelivery: preview, mp4/mp3/srt"| CR
+  BR["«block» : Web Browser"] ---|"iHMI: http/json @127.0.0.1"| SOI
+  FS["«block» : File System\n(reference property:\nupload directory)"] ---|"iMedia: mediaFile"| SOI
+  SOI ---|"iMedia: renderedFile"| FS
+  FF["«block» : FFmpeg/ffprobe"] ---|"iEngine: filterGraph/measurement"| SOI
+  WH["«block» : Whisper (opt)"] ---|"iTranscript: timedText"| SOI
+  MOB["«block» : Mobile Client (future)"] -.->|"iProject: portable project doc"| SOI

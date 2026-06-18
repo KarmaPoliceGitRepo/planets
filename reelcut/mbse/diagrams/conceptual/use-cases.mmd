@@ -1,0 +1,9 @@
+flowchart LR
+  Creator(["👤 STK-1 Creator"])
+  subgraph SoI["«block» ReelCut In Use"]
+    UC1((UC-1 Upload)); UC2((UC-2 Auto-segment)); UC3((UC-3 Keep/drop))
+    UC4((UC-4 Re-order)); UC5((UC-5 Transitions)); UC6((UC-6 Export))
+    UC7((UC-7 Replace audio)); UC8((UC-8 Add audio))
+    UC9((UC-9 Add image)); UC10((UC-10 Level/mute))
+  end
+  Creator --- UC1 & UC2 & UC3 & UC4 & UC5 & UC6 & UC7 & UC8 & UC9 & UC10

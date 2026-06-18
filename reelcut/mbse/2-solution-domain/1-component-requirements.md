@@ -1,0 +1,36 @@
+# Physical · Solution · Requirements — Component Requirements (SW + HW)
+
+> MagicGrid cell **Requirements / Physical**. Component (system-element)
+> requirements **derive** from system requirements (`«deriveReqt»`). Per your #1
+> they split into **software requirements** — *verified by the scripts/tests* — and
+> **hardware requirements expressed as constraints**.
+
+## Software Component Requirements (CR-) — verified by scripts (tests T-)
+| ID | Shall (software) | derivedFrom | Component | verify (test) | St |
+|---|---|---|---|---|---|
+| **CR-1** | `render` shall fold clips with concat/xfade+acrossfade at `offset=running−t`. | SR-1.3, SR-1.6 | C-Render | T-3, T-4 | Built |
+| **CR-2** | `master` shall two-pass loudnorm to −16 LUFS and report PASS/FAIL. | SR-1.5 | C-Master | T-7 | Built |
+| **CR-3** | `captions.remap` shall re-time cues to the new order. | SR-1.4 | C-Caption | T-6 | Built |
+| **CR-4** | `model` shall hold first-class tracks/clips; media by stable handle; **no abs paths / FFmpeg strings**. | SR-2.2 | C-Model | T-8 | Planned |
+| **CR-5** | `demux` shall split input into independent A/V tracks. | SR-2.1 | C-Demux | T-8 | Planned |
+| **CR-6** | `model/captions` shall, on audio replace, invalidate/flag captions. | SR-2.3 | C-Model,C-Caption | T-9 | Planned |
+| **CR-7** | `audio_mix` shall mix per-track level/mute + optional sidechain duck. | SR-2.4 | C-AudioMix | T-10 | Planned |
+| **CR-8** | `render` shall synthesise image clips (loop + optional zoompan). | SR-2.5 | C-ImageSynth | T-11 | Planned |
+
+> **Software-requirement verification = the scripts:** each CR is verified by a
+> test in `reelcut/tests/` (T-*); the implementation scripts both **realise** and
+> **verify** these requirements (your #1).
+
+## Hardware Requirements as Constraints (HC-)
+| ID | Hardware constraint | derivedFrom | Applies to | Verify |
+|---|---|---|---|---|
+| **HC-1** | The mobile client **shall run on Android ≥ Samsung Galaxy S23, or iPhone 11 or newer**. | SN-7 | C-Mobile (future) | Analysis |
+| **HC-2** | Desktop **shall run on any machine with Python 3 + FFmpeg** (no GPU required). | SN-4 | C-Server | Inspection |
+
+```sysml
+constraint def MobileHardwareFloor {        // HC-1 as a constraint (your #1)
+    require { androidTier >= GalaxyS23 or iosModel >= iPhone11 }
+}
+deriveReqt CR_4_PortableModel from SR_2_2;
+verify CR_2_Loudness by Test_T7;            // SW requirement verified by the script/test
+```

@@ -1,0 +1,8 @@
+flowchart LR
+  SN5["SN-5 add/replace media"] -->|deriveReqt| SR23["SR-2.3 replace audio"]
+  SN5 -->|deriveReqt| SR24["SR-2.4 add audio"]
+  SN5 -->|deriveReqt| SR25["SR-2.5 image clips"]
+  SN6["SN-6 independent A/V"] -->|deriveReqt| SR21["SR-2.1 demux"] --> SR22["SR-2.2 portable model"]
+  SR23 -->|deriveReqt| CR6["CR-6"]; SR24 -->|deriveReqt| CR7["CR-7"]
+  SR25 -->|deriveReqt| CR8["CR-8"]; SR21 -->|deriveReqt| CR5["CR-5"]; SR22 -->|deriveReqt| CR4["CR-4"]
+  SN7["SN-7 mobile"] -->|deriveReqt| HC1["HC-1 (constraint)"]

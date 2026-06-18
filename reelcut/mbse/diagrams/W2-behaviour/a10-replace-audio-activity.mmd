@@ -1,6 +1,0 @@
-flowchart TD
-  s([upload new audio]) --> setp[set as primary audio track]
-  setp --> chk{captions/segments derived from old audio?}
-  chk -- yes --> flag[mark stale + offer re-transcribe]
-  chk -- no --> keep[no caption change]
-  flag --> done([render + master −16 LUFS]); keep --> done
