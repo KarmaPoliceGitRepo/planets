@@ -16,6 +16,9 @@
 | **MOP-7** | Render time / min footage | TBD | SR-1.3 | MOE-1 | Planned |
 | **MOP-8** | Media egress bytes | 0 (firm) | SR-1.7 | MOE-2 | Built |
 | **MOP-9** | Runtime deps beyond stdlib+FFmpeg | 0 | SR (CR) | MOE-4 | Built |
+| **MOP-10** | Aspect/preset fidelity + caption availability | exact preset; open+translated avail | SR-4.2/4.3/4.9 | MOE-7 | Planned |
+| **MOP-11** | Filler/silence removed; chapters present | filler ≥ threshold trimmed; chapters = #segments | SR-4.5/4.7 | MOE-8 | Planned |
+| **MOP-12** | Speech clarity gain / noise floor | noise floor ↓ TBD dB; speech leveled | SR-4.8 | MOE-9 | Planned |
 
 ## Parametric diagram (constraint blocks · value bindings · MoE roll-up)
 

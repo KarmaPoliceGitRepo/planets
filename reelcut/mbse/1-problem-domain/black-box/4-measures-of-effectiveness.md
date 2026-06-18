@@ -13,6 +13,9 @@
 | **MOE-4** | Cost / portability — free, runs anywhere, portable doc | SN-4/SN-7 | $0; portable | MOP-9 |
 | **MOE-5** | Creative control — keep/order/replace/add media | SN-5/SN-6 | all ops (threshold) | MOP-3 |
 | **MOE-6** | Accessibility — captions present, correct, readable | SN-2 | SRT; **0** mismatch | MOP-6 |
+| **MOE-7** | Reach — output fits target platforms & is followable sound-off / cross-language | SN-10/11/17 | aspect presets; open+translated captions | MOP-10 |
+| **MOE-8** | Engagement — tight pacing, strong hook, navigable | SN-2/13/14/15 | filler/silence removed; chapters | MOP-11 |
+| **MOE-9** | Audio clarity — speech intelligible, low noise | SN-16 | noise floor ↓; speech leveled | MOP-12 |
 
 ## MoE value tree (bdd — «moe» value properties refining needs)
 
@@ -25,8 +28,12 @@ flowchart TB
   H --> M4["«moe» portability (MOE-4)"]
   H --> M5["«moe» creativeControl (MOE-5)"]
   H --> M6["«moe» captionMismatch=0 (MOE-6)"]
+  H --> M7["«moe» reach (MOE-7)"]
+  H --> M8["«moe» engagement (MOE-8)"]
+  H --> M9["«moe» audioClarity (MOE-9)"]
   M1 -.->|refine| N1["SN-1"]; M2 -.->|refine| N3["SN-3"]; M3 -.->|refine| N2["SN-2"]
   M4 -.->|refine| N4["SN-4/SN-7"]; M5 -.->|refine| N5["SN-5/SN-6"]; M6 -.->|refine| N2
+  M7 -.->|refine| N10["SN-10/11/17"]; M8 -.->|refine| N13["SN-13/14/15"]; M9 -.->|refine| N16["SN-16"]
 ```
 
 

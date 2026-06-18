@@ -59,6 +59,8 @@ Transposed from user needs (N-10…N-18) and stakeholder needs (SN-1…SN-7):
 | **MV-4** | **Private by construction**: complete the whole job with **nothing leaving the device** unless the creator explicitly publishes. |
 | **MV-5** | **Edit on the go**: continue the same edit on a phone via a portable project document. |
 | **MV-6** | **Never lose work**: autosave & restore (incl. crash recovery), undo/redo edits, and cancel/abort any long operation. |
+| **MV-7** | **Grow / repurpose**: tighten, pull platform-fit highlight clips with sound-off & translated captions and chapters, to reach more audience. |
+| **MV-8** | **Polish / brand**: clean audio + consistent branding/presets, non-destructively, with a preview you can trust. |
 
 ## `/brainstorming` — every way a node interacts with the SoI
 

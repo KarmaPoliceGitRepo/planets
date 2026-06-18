@@ -48,12 +48,15 @@
 | MV-4 | mission vignette | Complete the whole job with nothing leaving the device unless explicitly published. |
 | MV-5 | mission vignette | Resume the same edit on a phone via a portable project document. |
 | MV-6 | mission vignette | Never lose work: autosave/restore (crash recovery), undo/redo, cancel/abort a long operation. |
-| CAP-1…CAP-11 | capability | Ingest, Comprehend, Curate, Bridge, Re-media, Balance, Render, Normalize, Caption, Keep-local/Port, **Sustain** (work preservation) — the consolidated capabilities the needs must cover (see `0-enterprise-sos/3`). |
+| MV-7 | mission vignette | Grow/repurpose: tighten, platform-fit highlight clips with sound-off & translated captions + chapters. |
+| MV-8 | mission vignette | Polish/brand: clean audio + consistent branding/presets, non-destructive, trustworthy preview. |
+| CAP-1…CAP-11 | capability | Ingest, Comprehend, Curate, Bridge, Re-media, Balance, Render, Normalize, Caption, Keep-local/Port, **Sustain** (work preservation). |
+| CAP-12…CAP-21 | capability | Tighten, Repurpose, Structure (chapters), Present (aspect/burned captions), Localise (translation), Enhance-audio, Brand, Reuse (presets), Protect (non-destructive), Trust (WYSIWYG) — production-quality & growth capabilities (see `0-enterprise-sos/3`). |
 
 ## Stakeholders & needs
 | Element | Kind | Description |
 |---|---|---|
-| STK-1…STK-5 | stakeholder | Creator, Viewer, Privacy-conscious user, Maintainer/distributor, Mobile creator. |
+| STK-1…STK-7 | stakeholder | Creator, Viewer, Privacy-conscious user, Maintainer/distributor, Mobile creator, Returning/interrupted creator, Growth-focused creator (vlogger/podcaster). |
 | SN-1 | stakeholder need | Produce a clean watchable video from a raw recording without editing skill. |
 | SN-2 | stakeholder need | Get a tight, well-ordered video with readable captions. |
 | SN-3 | stakeholder need | Keep all media on the local machine (nothing uploaded). |
@@ -62,6 +65,17 @@
 | SN-6 | stakeholder need | Manipulate audio and video independently (threshold/objective MoP). |
 | SN-7 | stakeholder need | Edit on Android / iOS. |
 | SN-8 | stakeholder need | Never lose work — autosave/restore (incl. crash recovery), undo/redo, cancel/abort with clear errors. |
+| SN-9 | stakeholder need | Keep the original recording untouched — non-destructive, reversible edits. |
+| SN-10 | stakeholder need | Export in the right shape for the platform (aspect 16:9/9:16/1:1 + resolution preset). |
+| SN-11 | stakeholder need | Captions in the spoken language + optional English translation. |
+| SN-12 | stakeholder need | Trust the preview — WYSIWYG (preview = export). |
+| SN-13 | stakeholder need | One-tap tighten — auto-remove filler words and long silences. |
+| SN-14 | stakeholder need | Repurpose — extract short highlight clips + pick a cover frame. |
+| SN-15 | stakeholder need | Chapters/timestamps auto-derived from topic segments. |
+| SN-16 | stakeholder need | Clean audio — reduce noise/hum, even out speech. |
+| SN-17 | stakeholder need | Follow with sound off — optional burned-in (open) captions. |
+| SN-18 | stakeholder need | On-brand — optional intro/outro, title, lower-thirds, logo/watermark. |
+| SN-19 | stakeholder need | Consistency — save/reuse a style preset across episodes. |
 
 ## Use cases (black-box behavior)
 | Element | Kind | Description |
@@ -78,6 +92,9 @@
 | MOE-4 | «moe» | Cost / portability — free, runs anywhere, portable document. |
 | MOE-5 | «moe» | Creative control — keep/order/replace/add media. |
 | MOE-6 | «moe» | Accessibility — captions present, correct, readable (0 mismatch, firm). |
+| MOE-7 | «moe» | Reach — output fits target platforms & is followable sound-off / cross-language. |
+| MOE-8 | «moe» | Engagement — tight pacing, strong hook, navigable (chapters). |
+| MOE-9 | «moe» | Audio clarity — speech intelligible, low noise. |
 
 ## Functions (logical behavior)
 | Element | Kind | Description |
@@ -85,6 +102,7 @@
 | F-1…F-7 | function | Ingest, Demux, Transcribe, Segment&tag, Select, Sequence, Set-transition/flag-gaps. |
 | F-8…F-14 | function | Render(cut+join), Re-time captions, Master loudnorm, Replace audio, Mix+duck, Synthesise image clip, Adjust track level/mute. |
 | F-15…F-20 | function | Validate input, Manage session (autosave/restore), Undo/redo, Report progress/errors, Cancel/abort, Incremental re-render — surfaced by the behaviour brainstorm (`white-box/5`). |
+| F-21…F-31 | function | Detect/trim filler+silence, Extract highlight+cover, Generate chapters, Clean audio, Reframe to aspect, Translate captions, Burn-in captions, Compose branding, Save/apply preset, Enforce non-destructive, WYSIWYG preview — surfaced by the conceptual-layer need elicitation (SN-9…SN-19). |
 
 ## System requirements (logical requirements)
 | Element | Kind | Description |
@@ -92,6 +110,7 @@
 | SR-1.1…SR-1.8 | system requirement | Built baseline: segment&tag, keep/order, render+transitions, re-time captions, loudness −16 LUFS, A/V sync, local-only HMI, output formats. |
 | SR-2.1…SR-2.8 | system requirement | Media increment: demux, portable model, replace audio, add/mix audio, image clips, mix loudness, media endpoints, independent-manipulation MoP. |
 | SR-3.1…SR-3.6 | system requirement | Robustness/session: validate-and-reject, autosave/restore, undo/redo, cancel+progress, invalidate-on-source-change, incremental re-render. |
+| SR-4.1…SR-4.11 | system requirement | Production/growth ("ReelCut shall…"): non-destructive, aspect/preset, multilingual captions, WYSIWYG, auto-tighten, highlights+cover, chapters, clean audio, burned captions, branding, style presets. |
 
 ## Logical subsystems (logical structure)
 | Element | Kind | Description |
@@ -129,6 +148,7 @@
 | MOP-1…MOP-3 | «constraint» / MoP | Loudness/true-peak, A/V-sync error, independent-manipulation level. |
 | MOP-4…MOP-6 | «constraint» / MoP | Image default duration/motion, duck attenuation, caption integrity. |
 | MOP-7…MOP-9 | «constraint» / MoP | Render time per minute, media egress bytes (0), runtime deps beyond stdlib+FFmpeg (0). |
+| MOP-10…MOP-12 | «constraint» / MoP | Aspect/preset+caption availability (→MOE-7), filler-removed+chapters (→MOE-8), speech clarity/noise floor (→MOE-9). |
 
 ## Behaviours (logical behavior — see `white-box/5`)
 | Element | Kind | Description |
@@ -142,5 +162,6 @@
 | T-1…T-7 | test | Built: reorder, keep/renumber, timing math, ffmpeg render, segment, caption remap, e2e/loudness. |
 | T-8…T-11 | test | Planned (media): demux/portable-model, replace-audio, add-audio, image-clip. |
 | T-12…T-16 | test | Planned (robustness): validate-input, autosave/restore, undo/redo, cancel/progress, incremental-render. |
+| T-17…T-27 | test | Planned (production/growth): non-destructive, aspect/preset, multilingual-captions, WYSIWYG, auto-tighten, highlight-clip, chapters, clean-audio, burned-captions, branding, style-preset. |
 </content>
 </invoke>

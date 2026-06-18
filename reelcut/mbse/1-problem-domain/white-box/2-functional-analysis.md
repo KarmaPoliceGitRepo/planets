@@ -40,10 +40,23 @@ flowchart TD
 | **F-18** | Report progress / errors | UC-6/7/8 | Planned | LS-HMI |
 | **F-19** | Cancel / abort operation (CB-3) | UC-6 | Planned | LS-HMI |
 | **F-20** | Incremental re-render (CB-5) | UC-6 | Planned | LS-Render |
+| **F-21** | Detect & trim filler words / silence | UC-2 | Planned | LS-Segment |
+| **F-22** | Extract highlight clip + pick cover frame | UC-6 | Planned | LS-Render |
+| **F-23** | Generate chapters from segments | UC-2 | Planned | LS-Segment |
+| **F-24** | Clean audio (denoise / dehum / level) | UC-8 | Planned | LS-AudioMix |
+| **F-25** | Reframe / letterbox to aspect preset | UC-6 | Planned | LS-Render |
+| **F-26** | Translate captions | UC-2 | Planned | LS-Caption |
+| **F-27** | Burn-in (open) captions | UC-6 | Planned | LS-Render |
+| **F-28** | Compose branding overlays | UC-6 | Planned | LS-Render |
+| **F-29** | Save / apply style preset | UC-1 | Planned | LS-EditModel |
+| **F-30** | Enforce non-destructive source (read-only) | UC-1 | Planned | LS-Ingest |
+| **F-31** | Render WYSIWYG preview | UC-6 | Planned | LS-Render |
 
 > **F-15…F-20** were surfaced by the `brainstorming` behaviour-completeness pass
 > (`5-behaviour-catalogue.md`): the alternate/exception/edge flows consolidate into
 > reusable behaviours (CB-) that need these previously-missing functions.
+> **F-21…F-31** were surfaced by the conceptual-layer **need elicitation**
+> (`brainstorming`): production-quality & growth needs SN-9…SN-19.
 
 > **Allocation rule (your #5.4):** each function is decomposed until it can be
 > allocated **in its entirety** to one logical subsystem (same abstraction layer);
