@@ -1,0 +1,14 @@
+sequenceDiagram
+  participant MD as EditModel
+  participant SV as Server
+  participant FS as Filesystem
+  participant BR as Browser
+  loop on every edit / timer
+    MD->>SV: state changed
+    SV->>FS: write projectDoc (autosave)
+  end
+  note over BR,FS: close / crash
+  BR->>SV: reopen session
+  SV->>FS: read last projectDoc
+  FS-->>SV: projectDoc
+  SV-->>BR: restore edit (B-SE.2)

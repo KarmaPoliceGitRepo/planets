@@ -1,0 +1,14 @@
+sequenceDiagram
+  participant RC as ReelCut
+  participant WH as Whisper
+  participant FF as FFmpeg
+  RC->>WH: transcribe(audio)
+  alt Whisper present & speech found
+    WH-->>RC: timedText
+    RC->>RC: F-4 segment & tag by topic
+  else no Whisper / no speech (B-SG.2)
+    RC->>FF: silencedetect(audio)
+    FF-->>RC: silence ranges
+    RC->>RC: F-4 segment by silence
+  end
+  RC-->>RC: SegmentModel (segments + subs + tags)

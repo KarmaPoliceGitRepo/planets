@@ -13,6 +13,7 @@
 | STK-3 | Privacy-conscious user | media never leaves the machine |
 | STK-4 | Maintainer / distributor | free, dependency-light, runs anywhere |
 | STK-5 | Mobile creator | edit on Android / iOS |
+| STK-6 | Returning / interrupted creator | never lose work; undo mistakes; resume after closing or a crash |
 
 ## Stakeholder Needs (SN-)
 | ID | Stakeholder | Need (shall) | Pri | Status | Derives |
@@ -24,6 +25,7 @@
 | **SN-5** | STK-1 | **Add photos & audio, or replace the audio**, with the simplest possible UX. | M | Planned | SR-2.x |
 | **SN-6** | STK-1 | **Manipulate audio and video independently** (MoP: *threshold* = constrained, *objective* = fully independent timelines). | M/C | Planned | SR-2.x |
 | **SN-7** | STK-5 | Edit on **Android / iOS**. | C | Planned | HC-1 |
+| **SN-8** | STK-6 | **Never lose work**: autosave & restore (incl. crash recovery), **undo/redo** edits, and **cancel/abort** any long operation with clear error feedback. | S | Planned | SR-3.x |
 
 ## ConOps (one line)
 A creator records on a phone/camera, opens ReelCut locally, and goes

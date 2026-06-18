@@ -13,6 +13,10 @@ files are the single source of truth**; `render.sh` *extracts* `.mmd` and *rende
 | Enterprise/SoS | `enterprise/system-activity.svg` | system-level activity (SoI + external entities, swimlanes) |
 | Logical | `logical/system-sequence.svg` | UC-6 export **sequence** (SoI ↔ FFmpeg/Whisper/FS) |
 | Logical | `logical/system-state-machine.svg` | session **state machine** (sources requirement conditions) |
+| Logical | `logical/activity-end-to-end.svg` | **end-to-end activity** with alternate/exception branches |
+| Logical | `logical/seq-*.svg` | **interaction model** — sequences: ingest, segment, curate-reorder, replace-audio, add-audio, render-retry, autosave-restore |
+| Logical | `logical/state-end-to-end.svg` | **overall state machine** (all states incl. error/recovery) |
+| Logical | `logical/state-persistence-history.svg` | concurrent **autosave + undo/redo** region |
 | Conceptual | `conceptual/use-cases.svg` | use cases (UC-1…10) inside the SoI context block |
 | Conceptual | `conceptual/moe-value-tree.svg` | **MoE value tree** — «moe» properties refining needs |
 | Logical | `logical/requirements-diagram.svg` | **Requirements diagram** — derive/refine/satisfy/verify |

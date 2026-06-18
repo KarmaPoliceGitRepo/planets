@@ -51,6 +51,12 @@ flowchart LR
 | **SR-2.6** | P | Add/replace audio **preserves −16 LUFS** on the final mix & A/V sync. | F-10,F-12 | SN-2 | T | Planned | M |
 | **SR-2.7** | I | Endpoints for replace/add audio & add image; accept PNG/JPG + MP3/WAV/M4A/AAC. | — (ctx) | SN-5 | T | Planned | M |
 | **SR-2.8** | Ph | Independent-manipulation **MoP threshold/objective**. | F-6,F-14 | SN-6 | D | Planned | M/C |
+| **SR-3.1** | F | **Validate** every imported artifact (media/audio/image) against accepted formats; **reject with a reason**. | F-15 | SN-1 | T | Planned | S |
+| **SR-3.2** | F | **Autosave** the project doc continuously and **restore** it on resume / after a crash. | F-16 | SN-8 | T | Planned | S |
+| **SR-3.3** | F | **Undo / redo** any edit operation via a reversible command stack. | F-17 | SN-8 | T | Planned | S |
+| **SR-3.4** | F | **Cancel / abort** any long operation and report **progress + errors** to the HMI. | F-18,F-19 | SN-8 | T | Planned | S |
+| **SR-3.5** | F | On any **source change**, invalidate/flag derived artifacts and offer regeneration. | F-4,F-11 | SN-2 | T | Planned | S |
+| **SR-3.6** | P | **Incremental re-render**: on edit after a render, re-cut only changed clips. | F-20 | SN-1 | A/T | Planned | C |
 
 ## Full requirement attributes (p.15 «extendedRequirement»: risk + rationale)
 | ID | risk | rationale (why this requirement exists) |
@@ -71,6 +77,12 @@ flowchart LR
 | SR-2.6 | Med | Any added/replaced audio must re-pass −16 LUFS on the final mix. |
 | SR-2.7 | Low | New endpoints must accept the agreed image/audio formats. |
 | SR-2.8 | High | The threshold/objective MoP defines how independent A/V truly is — scope-defining. |
+| SR-3.1 | Low | Rejecting bad input early prevents confusing downstream failures (non-expert UX). |
+| SR-3.2 | Med | A long edit lost to a crash is the worst possible UX; autosave protects it (SN-8). |
+| SR-3.3 | Med | Non-experts make mistakes; reversibility makes the tool safe to explore. |
+| SR-3.4 | Med | Renders are slow; cancel + progress avoid a frozen, opaque app. |
+| SR-3.5 | Med | Stale captions/segments after a source change silently corrupt the output. |
+| SR-3.6 | Low | Re-cutting only changed clips keeps iterative editing responsive. |
 
 ```sysml
 requirement def SR_1_5_Loudness {

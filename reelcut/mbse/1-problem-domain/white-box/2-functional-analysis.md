@@ -34,7 +34,59 @@ flowchart TD
 | **F-12** | Mix audio + duck | UC-8 | Planned | LS-AudioMix |
 | **F-13** | Synthesise image clip | UC-9 | Planned | LS-Render |
 | **F-14** | Adjust track level/mute | UC-10 | Planned | LS-EditModel |
+| **F-15** | Validate input (CB-1) | UC-1/7/9 | Planned | LS-Ingest |
+| **F-16** | Manage session: autosave/restore (CB-7) | (all) | Planned | LS-HMI |
+| **F-17** | Undo / redo (CB-6) | (all edit UCs) | Planned | LS-EditModel |
+| **F-18** | Report progress / errors | UC-6/7/8 | Planned | LS-HMI |
+| **F-19** | Cancel / abort operation (CB-3) | UC-6 | Planned | LS-HMI |
+| **F-20** | Incremental re-render (CB-5) | UC-6 | Planned | LS-Render |
+
+> **F-15…F-20** were surfaced by the `brainstorming` behaviour-completeness pass
+> (`5-behaviour-catalogue.md`): the alternate/exception/edge flows consolidate into
+> reusable behaviours (CB-) that need these previously-missing functions.
 
 > **Allocation rule (your #5.4):** each function is decomposed until it can be
 > allocated **in its entirety** to one logical subsystem (same abstraction layer);
 > see the `«allocate»` rows in white-box `3`.
+
+## End-to-end activity (behaviours + flow, with alternate / exception branches)
+
+```mermaid
+flowchart TD
+  S([Start]) --> V{F-15 valid media?}
+  V -- no --> RJ[reject + reason] --> S
+  V -- yes --> ING[F-1/2 ingest + demux]
+  ING --> SP{speech present?}
+  SP -- yes --> ASR[F-3 transcribe]
+  SP -- no --> SIL[silence-detect fallback]
+  ASR --> SEG[F-4 segment + tag]; SIL --> SEG
+  SEG --> CUR[F-5 keep/drop]
+  CUR --> KEEP{>=1 kept?}
+  KEEP -- no --> CUR
+  KEEP -- yes --> ORD[F-6 order]
+  ORD --> JUMP{jarring jump?}
+  JUMP -- yes --> TR[F-7 set transition]
+  JUMP -- no --> RM
+  TR --> RM[F-11/12/13 re-media: replace/add audio, add image]
+  RM --> SRC{source changed?}
+  SRC -- yes --> INV[CB-4 invalidate captions/segments] --> SEG
+  SRC -- no --> RND[F-8 render two-stage]
+  RND --> ERR{ffmpeg error?}
+  ERR -- yes --> RT[CB-3 retry once / abort+log]
+  RT --> RND
+  ERR -- no --> CAP[F-9 re-time captions]
+  CAP --> MAS[F-10 master -16 LUFS]
+  MAS --> SPEC{in spec?}
+  SPEC -- no --> MAS
+  SPEC -- yes --> DEL[F-? deliver mp4/mp3/srt local]
+  DEL --> E([Done])
+  CUR -. F-17 undo/redo .-> CUR
+  ORD -. F-17 undo/redo .-> ORD
+  RM  -. F-17 undo/redo .-> RM
+  S   -. F-16 autosave/restore .-> E
+  RND -. F-18/F-19 progress / cancel .-> RND
+```
+
+> Decision nodes are the **alternate/exception** branches from the behaviour
+> catalogue; the dotted edges are the **cross-cutting** session behaviours
+> (undo/redo, autosave, progress/cancel) that apply throughout.

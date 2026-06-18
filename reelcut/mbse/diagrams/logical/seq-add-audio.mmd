@@ -1,0 +1,16 @@
+sequenceDiagram
+  participant BR as Browser
+  participant MD as EditModel
+  participant AM as AudioMix
+  participant MS as Master
+  BR->>MD: addTrack(audio, level, mute)
+  opt duck-under-speech (B-AA.2)
+    alt speech track exists
+      MD->>AM: mix + sidechain duck
+    else no speech track (B-AA.3)
+      AM-->>BR: warn: duck disabled (CB-2)
+    end
+  end
+  AM->>MS: mixed audio
+  MS->>MS: re-check -16 LUFS (B-AA.5)
+  MS-->>BR: mixed, in-spec

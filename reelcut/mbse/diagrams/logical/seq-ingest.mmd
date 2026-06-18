@@ -1,0 +1,18 @@
+sequenceDiagram
+  actor CR as Creator
+  participant BR as Browser
+  participant RC as ReelCut
+  participant FF as ffprobe
+  participant FS as Filesystem
+  CR->>BR: choose file
+  BR->>RC: POST /upload (X-Filename, raw body)
+  RC->>FF: probe(mediaFile)
+  alt valid A/V
+    FF-->>RC: streams + duration
+    RC->>RC: F-2 demux into A/V tracks
+    RC->>FS: store tracks
+    RC-->>BR: 200 {accepted, tracks}
+  else invalid / corrupt (B-IN.4)
+    FF-->>RC: error
+    RC-->>BR: 422 {rejected, reason}
+  end

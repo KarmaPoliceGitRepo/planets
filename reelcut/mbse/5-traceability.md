@@ -32,6 +32,10 @@ flowchart LR
   SR23 -->|deriveReqt| CR6["CR-6"]; SR24 -->|deriveReqt| CR7["CR-7"]
   SR25 -->|deriveReqt| CR8["CR-8"]; SR21 -->|deriveReqt| CR5["CR-5"]; SR22 -->|deriveReqt| CR4["CR-4"]
   SN7["SN-7 mobile"] -->|deriveReqt| HC1["HC-1 (constraint)"]
+  SN8["SN-8 preserve work"] -->|deriveReqt| SR32["SR-3.2 autosave/restore"]
+  SN8 -->|deriveReqt| SR33["SR-3.3 undo/redo"] --> F17["F-17"]
+  SN8 -->|deriveReqt| SR34["SR-3.4 cancel/progress"]
+  SR32 --> F16["F-16"]
 ```
 
 ## Cross-pillar matrix (per system requirement)
@@ -51,6 +55,12 @@ flowchart LR
 | SR-2.5 image clips | F-13 | LS-Render | T-11 | MOP-4 |
 | SR-2.6 mix loudness | F-10,F-12 | LS-Master | T-9,T-10 | MOP-1 |
 | SR-2.8 MoP threshold | F-6,F-14 | LS-EditModel | T-8..T-11 | MOP-3 |
+| SR-3.1 validate input | F-15 | LS-Ingest | T-12 | — |
+| SR-3.2 autosave/restore | F-16 | LS-HMI | T-13 | — |
+| SR-3.3 undo/redo | F-17 | LS-EditModel | T-14 | — |
+| SR-3.4 cancel/progress | F-18,F-19 | LS-HMI | T-15 | — |
+| SR-3.5 invalidate-on-source-change | F-4,F-11 | LS-Caption | T-9 | MOP-6 |
+| SR-3.6 incremental re-render | F-20 | LS-Render | T-16 | MOP-7 |
 
 ## MoE roll-up
 MOE-2←MOP-8 · MOE-3←MOP-1,MOP-2,MOP-5 · MOE-6←MOP-6 · MOE-5←MOP-3 · MOE-1←MOP-4,MOP-7 · MOE-4←MOP-9.
@@ -58,7 +68,9 @@ MOE-2←MOP-8 · MOE-3←MOP-1,MOP-2,MOP-5 · MOE-6←MOP-6 · MOE-5←MOP-3 · 
 ## Test catalogue (`../tests/`)
 T-1 reorder · T-2 keep/renumber · T-3 timing math · T-4 ffmpeg render · T-5 segment ·
 T-6 caption remap · T-7 e2e/loudness · **T-8** demux/portable-model · **T-9** replace-audio ·
-**T-10** add-audio · **T-11** image-clip. (T-1…T-7 Built; T-8…T-11 Planned.)
+**T-10** add-audio · **T-11** image-clip · **T-12** validate-input · **T-13** autosave/restore ·
+**T-14** undo/redo · **T-15** cancel/progress · **T-16** incremental-render.
+(T-1…T-7 Built; T-8…T-16 Planned.)
 
 ## Conformance
 Model now rooted at the **Enterprise/SoS** layer: SoI black-box node inside the

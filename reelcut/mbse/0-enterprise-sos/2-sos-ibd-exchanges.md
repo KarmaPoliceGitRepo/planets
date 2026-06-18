@@ -58,6 +58,7 @@ Transposed from user needs (N-10…N-18) and stakeholder needs (SN-1…SN-7):
 | **MV-3** | **Re-voice / re-score / illustrate**: replace the audio, add a music/VO track (ducked), and drop in photos — independently of the video. |
 | **MV-4** | **Private by construction**: complete the whole job with **nothing leaving the device** unless the creator explicitly publishes. |
 | **MV-5** | **Edit on the go**: continue the same edit on a phone via a portable project document. |
+| **MV-6** | **Never lose work**: autosave & restore (incl. crash recovery), undo/redo edits, and cancel/abort any long operation. |
 
 ## `/brainstorming` — every way a node interacts with the SoI
 

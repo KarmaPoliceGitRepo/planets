@@ -16,6 +16,7 @@
 | MV-3 | MUC-i replace audio · MUC-j add & duck a track · MUC-k insert photos · MUC-l balance/mute tracks |
 | MV-4 | MUC-m keep all media local · MUC-n publish only on explicit action |
 | MV-5 | MUC-o carry edit as portable doc · MUC-p resume edit on phone |
+| MV-6 | MUC-q autosave & restore (incl. crash recovery) · MUC-r undo/redo edits · MUC-s cancel/abort a long operation |
 
 ## 2 · Decompose each MUC → capabilities, then regroup (consolidation)
 
@@ -33,6 +34,7 @@ De-duplicating by purpose, the 16 mission use cases collapse onto **10 capabilit
 | **CAP-8 Normalize** | loudness + A/V-sync to spec | d, j | MV-1,2,3 |
 | **CAP-9 Caption** | produce correct, re-timed captions | h | MV-2 |
 | **CAP-10 Keep-local / Port** | stay on device; portable doc; mobile | m, n, o, p | MV-4,5 |
+| **CAP-11 Sustain** | preserve work: autosave/restore, undo/redo, cancel/abort, error recovery | q, r, s | MV-6 |
 
 ## 3 · Derive stakeholder needs — capability coverage matrix
 
@@ -52,8 +54,9 @@ and justified (every SN traces to ≥1 CAP):
 | CAP-8 Normalize | SN-2 |
 | CAP-9 Caption | SN-2 |
 | CAP-10 Keep-local / Port | SN-3, SN-4, **SN-7** |
+| CAP-11 Sustain | **SN-8** |
 
-**Result:** the consolidated capability set is fully covered by **SN-1…SN-7**
+**Result:** the consolidated capability set is fully covered by **SN-1…SN-8**
 (`1-problem-domain/black-box/1-stakeholder-needs.md`) — no capability is orphaned,
 no need is unjustified. This is the bottom-up validation of the SN baseline that
 the system-level black box then refines into use cases UC-1…UC-10.
@@ -64,6 +67,7 @@ requirement def CAP_5_ReMedia { doc /* replace/add audio, add images */ }
 deriveReqt SN_5_AddOrReplaceMedia    from CAP_5_ReMedia;
 deriveReqt SN_6_IndependentManipulation from CAP_6_Balance;
 deriveReqt SN_7_Mobile               from CAP_10_KeepLocalPort;
+deriveReqt SN_8_PreserveWork         from CAP_11_Sustain;
 ```
 
 > Trace recorded in `5-traceability.md` (mission thread: MV → MUC → CAP → SN → SR).

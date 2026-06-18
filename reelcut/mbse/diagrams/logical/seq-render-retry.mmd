@@ -1,0 +1,22 @@
+sequenceDiagram
+  actor CR as Creator
+  participant BR as Browser
+  participant RN as Render
+  participant FF as FFmpeg
+  BR->>RN: render(plan)
+  loop each changed clip (CB-5 incremental)
+    RN->>FF: cut+normalise clip
+    alt ffmpeg error (B-RN.2)
+      FF-->>RN: error
+      RN->>FF: retry once
+    else ok
+      FF-->>RN: clip
+    end
+    RN-->>BR: progress % (F-18)
+  end
+  opt cancel (B-RN.3 / F-19)
+    CR->>BR: cancel
+    BR->>RN: abort → cleanup + log
+  end
+  RN->>FF: join clips (xfade/acrossfade)
+  FF-->>RN: edit

@@ -47,7 +47,8 @@
 | MV-3 | mission vignette | Replace audio, add a ducked music/VO track, drop in photos — independent of video. |
 | MV-4 | mission vignette | Complete the whole job with nothing leaving the device unless explicitly published. |
 | MV-5 | mission vignette | Resume the same edit on a phone via a portable project document. |
-| CAP-1…CAP-10 | capability | Ingest, Comprehend, Curate, Bridge, Re-media, Balance, Render, Normalize, Caption, Keep-local/Port — the consolidated capabilities that the stakeholder needs must cover (see `0-enterprise-sos/3`). |
+| MV-6 | mission vignette | Never lose work: autosave/restore (crash recovery), undo/redo, cancel/abort a long operation. |
+| CAP-1…CAP-11 | capability | Ingest, Comprehend, Curate, Bridge, Re-media, Balance, Render, Normalize, Caption, Keep-local/Port, **Sustain** (work preservation) — the consolidated capabilities the needs must cover (see `0-enterprise-sos/3`). |
 
 ## Stakeholders & needs
 | Element | Kind | Description |
@@ -60,6 +61,7 @@
 | SN-5 | stakeholder need | Add photos & audio, or replace the audio, with the simplest UX. |
 | SN-6 | stakeholder need | Manipulate audio and video independently (threshold/objective MoP). |
 | SN-7 | stakeholder need | Edit on Android / iOS. |
+| SN-8 | stakeholder need | Never lose work — autosave/restore (incl. crash recovery), undo/redo, cancel/abort with clear errors. |
 
 ## Use cases (black-box behavior)
 | Element | Kind | Description |
@@ -82,12 +84,14 @@
 |---|---|---|
 | F-1…F-7 | function | Ingest, Demux, Transcribe, Segment&tag, Select, Sequence, Set-transition/flag-gaps. |
 | F-8…F-14 | function | Render(cut+join), Re-time captions, Master loudnorm, Replace audio, Mix+duck, Synthesise image clip, Adjust track level/mute. |
+| F-15…F-20 | function | Validate input, Manage session (autosave/restore), Undo/redo, Report progress/errors, Cancel/abort, Incremental re-render — surfaced by the behaviour brainstorm (`white-box/5`). |
 
 ## System requirements (logical requirements)
 | Element | Kind | Description |
 |---|---|---|
 | SR-1.1…SR-1.8 | system requirement | Built baseline: segment&tag, keep/order, render+transitions, re-time captions, loudness −16 LUFS, A/V sync, local-only HMI, output formats. |
 | SR-2.1…SR-2.8 | system requirement | Media increment: demux, portable model, replace audio, add/mix audio, image clips, mix loudness, media endpoints, independent-manipulation MoP. |
+| SR-3.1…SR-3.6 | system requirement | Robustness/session: validate-and-reject, autosave/restore, undo/redo, cancel+progress, invalidate-on-source-change, incremental re-render. |
 
 ## Logical subsystems (logical structure)
 | Element | Kind | Description |
@@ -126,10 +130,17 @@
 | MOP-4…MOP-6 | «constraint» / MoP | Image default duration/motion, duck attenuation, caption integrity. |
 | MOP-7…MOP-9 | «constraint» / MoP | Render time per minute, media egress bytes (0), runtime deps beyond stdlib+FFmpeg (0). |
 
+## Behaviours (logical behavior — see `white-box/5`)
+| Element | Kind | Description |
+|---|---|---|
+| B-IN.* … B-SE.* | behaviour | Per-stage Nominal/Alternate/Exception/Edge flows for every stage (ingest, segment, curate, sequence, transition, re-media, mix, render, caption, master, deliver, session). |
+| CB-1…CB-7 | reusable behaviour | Validate-and-Reject, Guard-Precondition, Retry-or-Abort, Invalidate-Derived-on-Source-Change, Incremental-Re-render, Undo/Redo, Autosave/Restore — the consolidated behavioural elements. |
+
 ## Verification (tests)
 | Element | Kind | Description |
 |---|---|---|
 | T-1…T-7 | test | Built: reorder, keep/renumber, timing math, ffmpeg render, segment, caption remap, e2e/loudness. |
-| T-8…T-11 | test | Planned: demux/portable-model, replace-audio, add-audio, image-clip. |
+| T-8…T-11 | test | Planned (media): demux/portable-model, replace-audio, add-audio, image-clip. |
+| T-12…T-16 | test | Planned (robustness): validate-input, autosave/restore, undo/redo, cancel/progress, incremental-render. |
 </content>
 </invoke>

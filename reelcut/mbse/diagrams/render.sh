@@ -26,6 +26,16 @@ MAP="
 0-enterprise-sos/4-actors-perspectives-activities.md|1|enterprise/system-activity
 1-problem-domain/white-box/4-system-behavior-dynamics.md|0|logical/system-sequence
 1-problem-domain/white-box/4-system-behavior-dynamics.md|1|logical/system-state-machine
+1-problem-domain/white-box/2-functional-analysis.md|1|logical/activity-end-to-end
+1-problem-domain/white-box/6-interaction-model.md|0|logical/seq-ingest
+1-problem-domain/white-box/6-interaction-model.md|1|logical/seq-segment
+1-problem-domain/white-box/6-interaction-model.md|2|logical/seq-curate-reorder
+1-problem-domain/white-box/6-interaction-model.md|3|logical/seq-replace-audio
+1-problem-domain/white-box/6-interaction-model.md|4|logical/seq-add-audio
+1-problem-domain/white-box/6-interaction-model.md|5|logical/seq-render-retry
+1-problem-domain/white-box/6-interaction-model.md|6|logical/seq-autosave-restore
+1-problem-domain/white-box/7-state-model.md|0|logical/state-end-to-end
+1-problem-domain/white-box/7-state-model.md|1|logical/state-persistence-history
 1-problem-domain/black-box/2-use-cases.md|0|conceptual/use-cases
 1-problem-domain/black-box/3-system-context.md|0|conceptual/system-context-ibd
 1-problem-domain/white-box/1-system-requirements.md|0|logical/requirements-diagram

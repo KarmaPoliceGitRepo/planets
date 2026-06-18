@@ -14,7 +14,7 @@ Columns = SysML pillars; rows = layer of abstraction. Workflow follows the arrow
 |---|---|---|---|---|
 | **Enterprise / SoS** (*Mission Analysis*) | Mission UCs → Capabilities → derived Needs `0-enterprise-sos/3` | SoS activities & perspectives `…/4` | **SoS Context BDD + IBD** `…/1`,`…/2` | (mission effectiveness → MoE) |
 | **Conceptual** (Black Box / *Stakeholder Needs Definition*) | Stakeholder Needs `1-problem-domain/black-box/1` | Use Cases `…/2` | **System Context (IBD)** `…/3` | Measurements of Effectiveness `…/4` |
-| **Logical** (White Box / *Architecture Definition*) | System Requirements `…/white-box/1` | Functional Analysis `…/2` + **Sequence & State Machine** `…/4` | Logical Subsystems Communication `…/3` | (MoE/MoP) |
+| **Logical** (White Box / *Architecture Definition*) | System Requirements `…/white-box/1` | Functional Analysis `…/2` + **Behaviour Catalogue `…/5` + Interaction `…/6` + State Model `…/7`** (+ dynamics `…/4`) | Logical Subsystems Communication `…/3` | (MoE/MoP) |
 | **Physical** (Solution / *Design Definition*) | Component Requirements (SW + HW) `2-solution-domain/1` | Component Behavior `…/2` | Component Structure `…/3` | Component Parameters (MoP) `…/4` |
 
 > **Enterprise/SoS layer (top):** the SoI is first a **black-box node** inside the
@@ -71,6 +71,13 @@ Every modeled element has a one-line description in **`6-element-dictionary.md`*
 (the data dictionary) and its **full property set, value types and signals** in
 **`7-properties-and-types.md`** (with compartment diagrams). Every MagicGrid cell —
 across all four pillars and all four layers — has a rendered diagram in `diagrams/`
-(22 SVGs, incl. property compartments under `diagrams/types/`).
+(32 SVGs, incl. property compartments under `diagrams/types/` and the full
+**behaviour model** — end-to-end activity, per-use-case interaction/sequences, and
+the orthogonal end-to-end state machine — under `diagrams/logical/`).
 
-Read **00 → 7**.
+> **Behaviour-model rule (CLAUDE.md):** behaviour scope is enriched/completed via
+> the `brainstorming` skill. The behaviour catalogue (`white-box/5`) enumerates all
+> Nominal/Alternate/Exception/Edge flows per stage and consolidates them into
+> reusable behaviours (CB-1…CB-7).
+
+Read **00 → 7** (white-box `1 → 7`).

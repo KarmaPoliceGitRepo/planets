@@ -1,0 +1,43 @@
+stateDiagram-v2
+  [*] --> Idle
+  Idle --> Validating: upload(media)
+  Validating --> Idle: reject [invalid/corrupt] / show reason
+  Validating --> Ingesting: accept [valid A/V]
+  Ingesting --> Segmenting: demuxed
+  state Segmenting {
+    [*] --> Transcribing
+    Transcribing --> Tagging: timedText
+    Transcribing --> SilenceFallback: no speech / no Whisper
+    SilenceFallback --> Tagging
+    Tagging --> [*]
+  }
+  Segmenting --> Editing: segments ready
+  state Editing {
+    [*] --> Curating
+    Curating --> Ordering: keep set
+    Ordering --> Transitioning: jumps flagged
+    Transitioning --> ReMedia: optional
+    ReMedia --> Curating: source changed / re-segment
+    ReMedia --> Ready: edit settled
+    Ordering --> Ready
+  }
+  Editing --> Idle: discard
+  Ready --> Rendering: export [>=1 kept]
+  state Rendering {
+    [*] --> Cutting
+    Cutting --> Cutting: next clip (incremental)
+    Cutting --> RetryCut: ffmpeg error
+    RetryCut --> Cutting: retry ok
+    RetryCut --> Aborted: retry failed / cancel
+    Cutting --> Joining: all clips ready
+    Joining --> [*]
+  }
+  Rendering --> Editing: aborted / error [revise]
+  Rendering --> Captioning: render ok
+  Captioning --> Mastering: cues re-timed
+  Captioning --> Mastering: no transcript [skip]
+  Mastering --> Mastering: out of spec [re-pass]
+  Mastering --> Delivered: in spec [-16 LUFS, TP<=-1]
+  Delivered --> Editing: revise
+  Delivered --> [*]: done [files on local disk]
+  Aborted --> Editing
