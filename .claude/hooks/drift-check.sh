@@ -18,18 +18,27 @@ set -uo pipefail
 root="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 cd "$root" || exit 0
 MBSE="reelcut/mbse"
-[ -d "$MBSE" ] || exit 0   # model not present: nothing to check
 
 issues=()
 
-# 1) Code-fence parity: every ``` must be matched (odd count breaks mermaid).
-while IFS= read -r f; do
-  [ -f "$f" ] || continue
-  n="$(grep -c '^```' "$f" 2>/dev/null)"; n="${n:-0}"
-  if (( n % 2 != 0 )); then
-    issues+=("fence-parity: odd \`\`\` count ($n) in $f")
-  fi
-done < <(find "$MBSE" -name '*.md' 2>/dev/null)
+# 1) Code-fence parity across BOTH models: every ``` must be matched
+#    (odd count breaks mermaid / code blocks). Scans the reelcut MBSE model and
+#    the podcast SE docs.
+for dir in "$MBSE" "podcast-the-missing-link"; do
+  [ -d "$dir" ] || continue
+  while IFS= read -r f; do
+    [ -f "$f" ] || continue
+    n="$(grep -c '^```' "$f" 2>/dev/null)"; n="${n:-0}"
+    if (( n % 2 != 0 )); then
+      issues+=("fence-parity: odd \`\`\` count ($n) in $f")
+    fi
+  done < <(find "$dir" -name '*.md' 2>/dev/null)
+done
+
+[ -d "$MBSE" ] || { # reelcut model absent: report fence result only
+  if (( ${#issues[@]} == 0 )); then echo "drift-check: OK (fences balanced)"; exit 0
+  else echo "drift-check: ${#issues[@]} issue(s):"; printf '  - %s\n' "${issues[@]}"; exit 1; fi
+}
 
 needs="$MBSE/1-problem-domain/black-box/1-stakeholder-needs.md"
 reqs="$MBSE/1-problem-domain/white-box/1-system-requirements.md"

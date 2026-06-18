@@ -10,7 +10,7 @@
 
 ## 2.0 Collective needs (group level)
 
-Each stakeholder **group** from [`01-stakeholders.md`](01-stakeholders.md) §1.3 holds
+Each stakeholder **group** from [`01-stakeholders.md`](01-stakeholders.md) §1.4 holds
 one **collective need**. The per-stakeholder needs below (`N-xx`) are *refinements*
 of these parents — every detailed need rolls up to exactly one collective need.
 
