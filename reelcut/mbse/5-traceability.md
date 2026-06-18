@@ -6,6 +6,22 @@
 > **«allocate»** to structure; requirements **«verify»** by behaviour/structure/tests;
 > MoP **value-bind** to structure and roll up to MoE.
 
+## Mission thread (Enterprise/SoS: Vignette → Mission UC → Capability → Need)
+```mermaid
+flowchart LR
+  MV1["MV-1 raw→watchable"] --> CAP1["CAP-1 Ingest"] & CAP3["CAP-3 Curate"] & CAP7["CAP-7 Render"]
+  MV2["MV-2 tighten/order"] --> CAP2["CAP-2 Comprehend"] & CAP4["CAP-4 Bridge"] & CAP9["CAP-9 Caption"]
+  MV3["MV-3 re-media"] --> CAP5["CAP-5 Re-media"] & CAP6["CAP-6 Balance"]
+  MV4["MV-4 private"] --> CAP10["CAP-10 Keep-local/Port"]
+  MV5["MV-5 on-the-go"] --> CAP10
+  CAP1 --> SN1["SN-1"]; CAP2 --> SN2["SN-2"]; CAP3 --> SN1
+  CAP4 --> SN2; CAP5 --> SN5["SN-5"]; CAP6 --> SN6["SN-6"]
+  CAP7 --> SN1; CAP8["CAP-8 Normalize"] --> SN2; CAP9 --> SN2
+  CAP10 --> SN3["SN-3"] & SN4["SN-4"] & SN7["SN-7"]
+```
+> Bottom-up validation: every capability is owned by ≥1 need; every need traces to
+> ≥1 capability (see `0-enterprise-sos/3`). SN baseline therefore complete & justified.
+
 ## Vertical thread (p.27 style: Need → System Req → Component Req)
 ```mermaid
 flowchart LR
@@ -45,7 +61,11 @@ T-6 caption remap · T-7 e2e/loudness · **T-8** demux/portable-model · **T-9**
 **T-10** add-audio · **T-11** image-clip. (T-1…T-7 Built; T-8…T-11 Planned.)
 
 ## Conformance
-All four pillars populated across **Conceptual / Logical / Physical** layers (NTRS p.7),
+Model now rooted at the **Enterprise/SoS** layer: SoI black-box node inside the
+System-of-Systems context block, external + environment nodes (incl. iPhone &
+Android), SoS BDD + IBD with exchanged items, mission vignettes → mission use cases
+→ capabilities → **derived** stakeholder needs (bottom-up validation). Below it, all
+four pillars populated across **Conceptual / Logical / Physical** layers (NTRS p.7),
 package tree mirrors p.10, relationships per your #5, requirement attributes per p.15,
 requirement stereotypes per p.16. Mobile (SN-7) is a hardware **constraint** (HC-1),
 detailed design deferred.

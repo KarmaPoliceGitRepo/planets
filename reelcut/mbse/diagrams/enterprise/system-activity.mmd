@@ -1,0 +1,21 @@
+flowchart TB
+  subgraph CRl["Creator"]
+    A1["provide recording + decisions"]
+  end
+  subgraph RClane["ReelCut (SoI)"]
+    A2["Ingest media"] --> A3["Analyse & Segment"] --> A4["Present segments"]
+    A4 --> A5["Apply keep/drop + order"] --> A6["Set transitions"]
+    A6 --> A7["Re-media (replace/add audio, image)"] --> A8["Render cut"]
+    A8 --> A9["Caption"] --> A10["Master loudness"] --> A11["Deliver outputs"]
+  end
+  subgraph FSlane["Filesystem"]
+    A0["hold upload/render dirs"]
+  end
+  subgraph FFlane["FFmpeg / Whisper"]
+    A8b["execute filter-graph"]; A9b["transcribe"]; A10b["measure loudness"]
+  end
+  A1 --> A2; A0 --> A2
+  A3 -. audioStream .-> A9b; A9b -. timedText .-> A9
+  A8 -. filterGraph .-> A8b; A8b -. renderedMedia .-> A8
+  A10 -. measure .-> A10b; A10b -. LUFS/TP .-> A10
+  A11 --> A0

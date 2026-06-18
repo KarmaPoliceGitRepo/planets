@@ -7,6 +7,12 @@ files are the single source of truth**; `render.sh` *extracts* `.mmd` and *rende
 
 | Layer | File | Diagram |
 |---|---|---|
+| Enterprise/SoS | `enterprise/sos-context-bdd.svg` | **SoS BDD** — SoI black-box node + external/environment nodes (incl. iPhone, Android), caps + constraints |
+| Enterprise/SoS | `enterprise/sos-ibd.svg` | **SoS IBD** — item flows / exchanged items between nodes |
+| Enterprise/SoS | `enterprise/perspective-contexts.svg` | per-perspective system contexts (each owns its use cases) |
+| Enterprise/SoS | `enterprise/system-activity.svg` | system-level activity (SoI + external entities, swimlanes) |
+| Logical | `logical/system-sequence.svg` | UC-6 export **sequence** (SoI ↔ FFmpeg/Whisper/FS) |
+| Logical | `logical/system-state-machine.svg` | session **state machine** (sources requirement conditions) |
 | Conceptual | `conceptual/use-cases.svg` | use cases (UC-1…10) inside the SoI context block |
 | Conceptual | `conceptual/system-context-ibd.svg` | **IBD** system context (ports/interface blocks/flows) |
 | Logical | `logical/functional-analysis-activity.svg` | UC-6 export activity (functions) |

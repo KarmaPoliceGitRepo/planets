@@ -12,9 +12,15 @@ Columns = SysML pillars; rows = layer of abstraction. Workflow follows the arrow
 
 | Layer ↓ / Pillar → | **Requirements** | **Behavior** | **Structure** | **Parametrics** |
 |---|---|---|---|---|
+| **Enterprise / SoS** (*Mission Analysis*) | Mission UCs → Capabilities → derived Needs `0-enterprise-sos/3` | SoS activities & perspectives `…/4` | **SoS Context BDD + IBD** `…/1`,`…/2` | (mission effectiveness → MoE) |
 | **Conceptual** (Black Box / *Stakeholder Needs Definition*) | Stakeholder Needs `1-problem-domain/black-box/1` | Use Cases `…/2` | **System Context (IBD)** `…/3` | Measurements of Effectiveness `…/4` |
-| **Logical** (White Box / *Architecture Definition*) | System Requirements `…/white-box/1` | Functional Analysis `…/2` | Logical Subsystems Communication `…/3` | (MoE/MoP) |
+| **Logical** (White Box / *Architecture Definition*) | System Requirements `…/white-box/1` | Functional Analysis `…/2` + **Sequence & State Machine** `…/4` | Logical Subsystems Communication `…/3` | (MoE/MoP) |
 | **Physical** (Solution / *Design Definition*) | Component Requirements (SW + HW) `2-solution-domain/1` | Component Behavior `…/2` | Component Structure `…/3` | Component Parameters (MoP) `…/4` |
+
+> **Enterprise/SoS layer (top):** the SoI is first a **black-box node** inside the
+> **System of Systems** — surrounded by external/environment nodes (incl. iPhone &
+> Android). Mission vignettes → mission use cases → **capabilities** → **derive the
+> stakeholder needs** bottom-up, validating the Conceptual baseline below.
 
 - **Conceptual:** stakeholder needs → … → **system requirements**.
 - **Logical:** system requirements → … → **system-element (component) requirements**.
@@ -27,9 +33,10 @@ Columns = SysML pillars; rows = layer of abstraction. Workflow follows the arrow
 ```
 reelcut/mbse/
 ├── 00-model-overview.md
+├── 0-enterprise-sos/  1-sos-context-and-bdd · 2-sos-ibd-exchanges · 3-mission-use-cases-to-needs · 4-actors-perspectives-activities
 ├── 1-problem-domain/
 │   ├── black-box/   1-stakeholder-needs · 2-use-cases · 3-system-context(IBD) · 4-measures-of-effectiveness
-│   └── white-box/   1-system-requirements · 2-functional-analysis · 3-logical-subsystems
+│   └── white-box/   1-system-requirements · 2-functional-analysis · 3-logical-subsystems · 4-system-behavior-dynamics(seq+state)
 ├── 2-solution-domain/
 │   └── 1-component-requirements · 2-component-behavior · 3-component-structure · 4-component-parameters
 ├── 3-system-configuration.md      (top-level system: structural + behavioural features)
@@ -49,6 +56,7 @@ reelcut/mbse/
 | **«value binding»** | a parametric value binds to a structural value property (MoE/MoP). |
 
 ## ID scheme (NASA-style: prefix = layer, stereotype = type)
+- **MV-** Mission Vignette · **MUC-** Mission Use Case · **CAP-** Capability *(Enterprise/SoS)*
 - **SN-** Stakeholder Need · **UC-** Use Case · **F-** Function · **MOE-** Measure of Effectiveness
 - **SR-** System Requirement, stereotyped «functionalRequirement» / «interfaceRequirement» / «performanceRequirement» / «physicalRequirement»
 - **LS-** Logical Subsystem · **I-** Interface Block · **MOP-** Measure of Performance

@@ -6,9 +6,26 @@ set -u
 cd "$(dirname "$0")" || exit 1
 MBSE=".."
 command -v npx >/dev/null 2>&1 || { echo "❌ need Node/npx"; exit 1; }
-echo '{"args":["--no-sandbox","--disable-setuid-sandbox"]}' > .pptr.json
+# Ensure a headless Chromium is available (fresh containers have none cached).
+SHELL_BIN=$(find "${PUPPETEER_CACHE_DIR:-$HOME/.cache/puppeteer}" -name chrome-headless-shell -type f 2>/dev/null | head -1)
+if [ -z "$SHELL_BIN" ]; then
+  echo "… fetching chrome-headless-shell (one-time)"
+  npx -y puppeteer browsers install chrome-headless-shell >/dev/null 2>&1
+  SHELL_BIN=$(find "${PUPPETEER_CACHE_DIR:-$HOME/.cache/puppeteer}" -name chrome-headless-shell -type f 2>/dev/null | head -1)
+fi
+if [ -n "$SHELL_BIN" ]; then
+  printf '{"executablePath":"%s","args":["--no-sandbox","--disable-setuid-sandbox"]}\n' "$SHELL_BIN" > .pptr.json
+else
+  echo '{"args":["--no-sandbox","--disable-setuid-sandbox"]}' > .pptr.json
+fi
 
 MAP="
+0-enterprise-sos/1-sos-context-and-bdd.md|0|enterprise/sos-context-bdd
+0-enterprise-sos/2-sos-ibd-exchanges.md|0|enterprise/sos-ibd
+0-enterprise-sos/4-actors-perspectives-activities.md|0|enterprise/perspective-contexts
+0-enterprise-sos/4-actors-perspectives-activities.md|1|enterprise/system-activity
+1-problem-domain/white-box/4-system-behavior-dynamics.md|0|logical/system-sequence
+1-problem-domain/white-box/4-system-behavior-dynamics.md|1|logical/system-state-machine
 1-problem-domain/black-box/2-use-cases.md|0|conceptual/use-cases
 1-problem-domain/black-box/3-system-context.md|0|conceptual/system-context-ibd
 1-problem-domain/white-box/2-functional-analysis.md|0|logical/functional-analysis-activity

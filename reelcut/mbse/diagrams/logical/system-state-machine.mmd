@@ -1,0 +1,16 @@
+stateDiagram-v2
+  [*] --> Idle
+  Idle --> Ingesting: upload(mediaFile)
+  Ingesting --> Segmenting: media probed [valid A/V]
+  Ingesting --> Idle: reject [invalid/unsupported]
+  Segmenting --> Editing: segments ready
+  Editing --> Editing: keep/drop · reorder · setTransition · reMedia
+  Editing --> Rendering: export [>=1 clip kept]
+  Editing --> Idle: discard
+  Rendering --> Captioning: render ok
+  Rendering --> Editing: ffmpeg error [retry]
+  Captioning --> Mastering: captions re-timed
+  Mastering --> Delivered: loudness in spec [-16 LUFS, TP<=-1]
+  Mastering --> Rendering: out of spec [re-pass]
+  Delivered --> Editing: revise
+  Delivered --> [*]: done (files on local disk)

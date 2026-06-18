@@ -1,0 +1,13 @@
+flowchart TB
+  subgraph P1["context «Authoring» (Creator-facing)"]
+    C1(["Creator"]) --- R1(["ReelCut"]) --- B1(["Browser"])
+  end
+  subgraph P2["context «Media Processing» (engine-facing)"]
+    R2(["ReelCut"]) --- F2(["FFmpeg"]) --- W2(["Whisper"])
+  end
+  subgraph P3["context «Asset & Storage» (data-facing)"]
+    R3(["ReelCut"]) --- FS3(["Filesystem"]) --- L3(["Media Library"])
+  end
+  subgraph P4["context «Portability» (mobile-facing)"]
+    R4(["ReelCut"]) --- M4(["Mobile Client"])
+  end
