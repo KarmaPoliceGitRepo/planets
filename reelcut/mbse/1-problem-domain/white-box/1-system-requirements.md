@@ -73,6 +73,10 @@ flowchart LR
 | **SR-4.9** | F | ReelCut shall optionally burn captions into the video (open captions) for sound-off playback. | F-27 | SN-17 | T | Planned | S |
 | **SR-4.10** | F | ReelCut shall optionally insert branding elements: intro/outro, title card, lower-thirds, logo/watermark. | F-28 | SN-18.1–.4 | T | Planned | C |
 | **SR-4.11** | F | ReelCut shall save reusable style presets and apply them to new projects. | F-29 | SN-19.1,SN-19.2 | T | Planned | C |
+| **SR-5.1** | F | ReelCut shall export a full plain-text transcript of the spoken content. | F-32 | SN-21 | T | Planned | S |
+| **SR-5.2** | F | ReelCut shall batch-export multiple projects using a shared preset. | F-33 | SN-24 | T | Planned | C |
+| **SR-5.3** | F | ReelCut shall flag added audio not marked royalty-free and let the creator record a license note. | F-34 | SN-28 | T | Planned | C |
+| **SR-5.4** | F | ReelCut shall embed title, description, and chapter metadata into the exported MP4/MP3. | F-35 | SN-30,SN-25 | T | Planned | C |
 
 ## Full requirement attributes (p.15 «extendedRequirement»: risk + rationale)
 | ID | risk | rationale (why this requirement exists) |
@@ -110,6 +114,10 @@ flowchart LR
 | SR-4.9 | Med | Most social video is watched muted; open captions are how the audience follows. |
 | SR-4.10 | Low | Branding drives recognition/consistency but must stay optional (authenticity). |
 | SR-4.11 | Low | Presets cut per-episode effort and keep a channel visually consistent. |
+| SR-5.1 | Low | A plain-text transcript serves screen-reader users and SEO/show-notes reuse. |
+| SR-5.2 | Med | Bulk creators need many episodes out with one house style; per-project export does not scale. |
+| SR-5.3 | Med | Flagging unlicensed audio protects creators from takedowns; ReelCut has no Content-ID DB, so it flags, not enforces. |
+| SR-5.4 | Low | Embedded title/chapter metadata makes the export discoverable and navigable once published. |
 
 ```sysml
 requirement def SR_1_5_Loudness {

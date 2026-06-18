@@ -51,12 +51,19 @@ flowchart TD
 | **F-29** | Save / apply style preset | UC-1 | Planned | LS-EditModel |
 | **F-30** | Enforce non-destructive source (read-only) | UC-1 | Planned | LS-Ingest |
 | **F-31** | Render WYSIWYG preview | UC-6 | Planned | LS-Render |
+| **F-32** | Export plain-text transcript | UC-2 | Planned | LS-Caption |
+| **F-33** | Batch-export projects with shared preset | UC-6 | Planned | LS-Render |
+| **F-34** | Flag non-royalty-free audio / log license | UC-9 | Planned | LS-Ingest |
+| **F-35** | Embed title/description/chapter metadata | UC-6 | Planned | LS-Render |
 
 > **F-15…F-20** were surfaced by the `brainstorming` behaviour-completeness pass
 > (`5-behaviour-catalogue.md`): the alternate/exception/edge flows consolidate into
 > reusable behaviours (CB-) that need these previously-missing functions.
 > **F-21…F-31** were surfaced by the conceptual-layer **need elicitation**
 > (`brainstorming`): production-quality & growth needs SN-9…SN-19.
+> **F-32…F-35** were surfaced by the **stakeholder-register expansion** (SN-20…SN-30):
+> transcript export, batch export, license flagging, embedded metadata. The remaining
+> register needs map onto existing functions/requirements.
 
 > **Allocation rule (your #5.4):** each function is decomposed until it can be
 > allocated **in its entirety** to one logical subsystem (same abstraction layer);

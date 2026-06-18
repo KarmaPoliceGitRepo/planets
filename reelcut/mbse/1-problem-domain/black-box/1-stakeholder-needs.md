@@ -15,6 +15,33 @@
 | STK-5 | Mobile creator | edit on Android / iOS |
 | STK-6 | Returning / interrupted creator | never lose work; undo mistakes; resume after closing or a crash |
 | STK-7 | Growth-focused creator (vlogger / podcaster) | reach more audience: repurpose to shorts, captions for sound-off, on-brand & professional |
+| STK-8 | Active consumer | find and play published content; navigate by metadata |
+| STK-9 | Offline / background listener | listen audio-only, offline, in the background |
+| STK-10 | Accessibility user | transcripts and screen-reader-friendly text, not just captions |
+| STK-11 | Audio engineer / production team | meet platform technical specs (loudness, bitrate) |
+| STK-12 | Enterprise / network creator | process episodes in bulk with a shared house style |
+| STK-13 | Guest / subject-matter expert | be correctly attributed on screen |
+| STK-14 | Advertiser / sponsor | have ad slots placed and labelled in the content |
+| STK-15 | Hardware / gear ecosystem (Rode, Shure, Sony, Apple…) | have recorder file formats ingested and run on common OS |
+| STK-16 | Copyright / licensing body | avoid unlicensed audio in published output |
+| STK-17 | Government regulator (GDPR / CCPA / accessibility) | no personal-data collection; accessible output |
+| STK-18 | Social / interfacing platform (X, Instagram, TikTok) | receive shareable, correctly-shaped exports with a cover image |
+
+### Parked / out-of-SoI stakeholders (registered for completeness; no buildable ReelCut need)
+
+> INCOSE: identify all stakeholders, but derive needs only inside the System-of-Interest
+> boundary. ReelCut's SoI is a **local, offline, single-user editor**. The stakeholders
+> below belong to the **streaming-platform** system, not ReelCut; each is registered with
+> the reason no need is derived. Revisit only if the SoI is ever re-baselined to a platform.
+
+| ID | Stakeholder | Why no ReelCut need (Parked / Rejected) |
+|---|---|---|
+| STK-P1 | Shareholders / corporate leadership | Platform ROI/growth; ReelCut's product owner is STK-4. **Parked.** |
+| STK-P2 | ML / recommendation engineer | Needs behavioural/telemetry data — **directly conflicts SN-3** (zero egress). ReelCut emits no telemetry. **Rejected.** |
+| STK-P3 | Cloud / CDN provider | Local tool; no streaming/delivery infrastructure. **Parked.** |
+| STK-P4 | Trust & safety / moderation | ReelCut does not host or distribute content. **Parked.** |
+| STK-P5 | Enterprise team-access / bulk-upload API | Single-user local app; multi-tenant API is a different system. **Parked (deferred).** |
+| STK-P6 | Premium billing (ad-free / DRM) | No accounts, payments, or DRM in a local tool. **Rejected.** |
 
 ## Stakeholder Needs (SN-)
 
@@ -63,6 +90,18 @@
 | **SN-18.4** | Growth-focused creator | The growth-focused creator needs to add a logo/watermark to the video. | C | Planned | SR-4.10 |
 | **SN-19.1** | Growth-focused creator | The growth-focused creator needs to save a style preset. | C | Planned | SR-4.11 |
 | **SN-19.2** | Growth-focused creator | The growth-focused creator needs to apply a saved preset to a new project. | C | Planned | SR-4.11 |
+| **SN-20.1** | Audio engineer | The audio engineer needs to set the export's target loudness. | S | Planned | SR-1.5 |
+| **SN-20.2** | Audio engineer | The audio engineer needs to set the export's target bitrate. | C | Planned | SR-4.2 |
+| **SN-21** | Accessibility user | The accessibility user needs to export a full transcript file. | S | Planned | SR-5.1 |
+| **SN-22** | Offline / background listener | The offline listener needs to export an audio-only MP3. | S | Built | SR-1.8 |
+| **SN-23** | Guest / SME | The guest needs to be credited by an on-screen name attribution. | C | Planned | SR-4.10 |
+| **SN-24** | Enterprise / network creator | The enterprise creator needs to batch-export multiple episodes with one preset. | C | Planned | SR-5.2 |
+| **SN-25** | Advertiser / sponsor | The advertiser needs to mark mid-roll ad-insertion points in the timeline. | C | Planned | SR-4.7 |
+| **SN-26** | Hardware / gear ecosystem | The gear maker needs ReelCut to ingest its recorder's WAV/MP4 files. | M | Planned | SR-3.1 |
+| **SN-27** | Social / interfacing platform | The social platform needs ReelCut to export a cover thumbnail image. | C | Planned | SR-4.6 |
+| **SN-28** | Copyright / licensing body | The licensing body needs ReelCut to flag audio not marked royalty-free. | C | Planned | SR-5.3 |
+| **SN-29** | Government regulator | The regulator needs ReelCut to collect zero personal data. | M | Built | SR-1.7 |
+| **SN-30** | Active consumer | The active consumer needs ReelCut to embed title and chapter metadata in the export. | C | Planned | SR-5.4 |
 
 ## ConOps (one line)
 A creator records on a phone/camera, opens ReelCut locally, and goes

@@ -77,6 +77,10 @@ flowchart LR
 | SR-4.9 burned-in captions | F-27 | LS-Render | T-25 | MOP-10 |
 | SR-4.10 branding | F-28 | LS-Render | T-26 | — |
 | SR-4.11 style presets | F-29 | LS-EditModel | T-27 | — |
+| SR-5.1 transcript export | F-32 | LS-Caption | T-28 | — |
+| SR-5.2 batch export | F-33 | LS-Render | T-29 | MOP-7 |
+| SR-5.3 license flag | F-34 | LS-Ingest | T-30 | — |
+| SR-5.4 embed metadata | F-35 | LS-Render | T-31 | — |
 
 ## MoE roll-up
 MOE-2←MOP-8 · MOE-3←MOP-1,MOP-2,MOP-5 · MOE-6←MOP-6 · MOE-5←MOP-3 · MOE-1←MOP-4,MOP-7 · MOE-4←MOP-9 ·
@@ -90,7 +94,8 @@ T-6 caption remap · T-7 e2e/loudness · **T-8** demux/portable-model · **T-9**
 **T-17** non-destructive · **T-18** aspect/preset · **T-19** multilingual-captions ·
 **T-20** WYSIWYG-preview · **T-21** auto-tighten · **T-22** highlight-clip ·
 **T-23** chapters · **T-24** clean-audio · **T-25** burned-captions · **T-26** branding ·
-**T-27** style-preset. (T-1…T-7 Built; T-8…T-27 Planned.)
+**T-27** style-preset · **T-28** transcript-export · **T-29** batch-export ·
+**T-30** license-flag · **T-31** embed-metadata. (T-1…T-7 Built; T-8…T-31 Planned.)
 
 ## Conformance
 Model now rooted at the **Enterprise/SoS** layer: SoI black-box node inside the

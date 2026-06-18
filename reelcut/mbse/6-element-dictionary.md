@@ -57,6 +57,8 @@
 | Element | Kind | Description |
 |---|---|---|
 | STK-1…STK-7 | stakeholder | Creator, Viewer, Privacy-conscious user, Maintainer/distributor, Mobile creator, Returning/interrupted creator, Growth-focused creator (vlogger/podcaster). |
+| STK-8…STK-18 | stakeholder | In-SoI register expansion: Active consumer, Offline/background listener, Accessibility user, Audio engineer, Enterprise/network creator, Guest/SME, Advertiser/sponsor, Hardware/gear ecosystem, Copyright/licensing body, Government regulator, Social/interfacing platform. Each derives a need on ReelCut's local/export/metadata behaviour (SN-20…SN-30). |
+| STK-P1…STK-P6 | stakeholder (parked) | Registered for completeness but **outside the ReelCut SoI** (they belong to the streaming-platform system): Shareholders, ML/recommendation engineer (conflicts SN-3), CDN provider, Trust & safety/moderation, Enterprise team-access/bulk API, Premium billing/DRM. No need derived; revisit only if SoI is re-baselined. |
 | SN-1 | stakeholder need | Produce a clean watchable video from a raw recording without editing skill. |
 | SN-2 | stakeholder need | Get a tight, well-ordered video with readable captions. |
 | SN-3 | stakeholder need | Keep all media on the local machine (nothing uploaded). |
@@ -81,6 +83,8 @@
 > *"The ‹actor› needs to …"* in `1-problem-domain/black-box/1`; compound rows above
 > are need *groups* split into sub-needs `SN-‹n›.‹m›` (e.g. SN-8 → SN-8.1 autosave,
 > SN-8.2 undo/redo, SN-8.3 cancel). System requirements derive from the atomic sub-need.
+
+| SN-20…SN-30 | stakeholder need | Stakeholder-register expansion (SN-20.1/.2 loudness/bitrate targets, SN-21 transcript export, SN-22 audio-only MP3, SN-23 guest attribution, SN-24 batch export, SN-25 ad-insertion markers, SN-26 ingest recorder formats, SN-27 cover thumbnail, SN-28 license flag, SN-29 zero personal data, SN-30 embedded metadata). Most map onto existing SRs; only SN-21/24/28/30 need new SR-5.x. |
 
 ## Use cases (black-box behavior)
 | Element | Kind | Description |
@@ -108,6 +112,7 @@
 | F-8…F-14 | function | Render(cut+join), Re-time captions, Master loudnorm, Replace audio, Mix+duck, Synthesise image clip, Adjust track level/mute. |
 | F-15…F-20 | function | Validate input, Manage session (autosave/restore), Undo/redo, Report progress/errors, Cancel/abort, Incremental re-render — surfaced by the behaviour brainstorm (`white-box/5`). |
 | F-21…F-31 | function | Detect/trim filler+silence, Extract highlight+cover, Generate chapters, Clean audio, Reframe to aspect, Translate captions, Burn-in captions, Compose branding, Save/apply preset, Enforce non-destructive, WYSIWYG preview — surfaced by the conceptual-layer need elicitation (SN-9…SN-19). |
+| F-32…F-35 | function | Export plain-text transcript, Batch-export with shared preset, Flag non-royalty-free audio / log license, Embed title/description/chapter metadata — surfaced by the stakeholder-register expansion (SN-21/24/28/30). |
 
 ## System requirements (logical requirements)
 | Element | Kind | Description |
@@ -116,6 +121,7 @@
 | SR-2.1…SR-2.8 | system requirement | Media increment: demux, portable model, replace audio, add/mix audio, image clips, mix loudness, media endpoints, independent-manipulation MoP. |
 | SR-3.1…SR-3.6 | system requirement | Robustness/session: validate-and-reject, autosave/restore, undo/redo, cancel+progress, invalidate-on-source-change, incremental re-render. |
 | SR-4.1…SR-4.11 | system requirement | Production/growth ("ReelCut shall…"): non-destructive, aspect/preset, multilingual captions, WYSIWYG, auto-tighten, highlights+cover, chapters, clean audio, burned captions, branding, style presets. |
+| SR-5.1…SR-5.4 | system requirement | Stakeholder-register ("ReelCut shall…"): export plain-text transcript, batch-export with shared preset, flag non-royalty-free audio + license note, embed title/description/chapter metadata. |
 
 ## Logical subsystems (logical structure)
 | Element | Kind | Description |
@@ -168,5 +174,6 @@
 | T-8…T-11 | test | Planned (media): demux/portable-model, replace-audio, add-audio, image-clip. |
 | T-12…T-16 | test | Planned (robustness): validate-input, autosave/restore, undo/redo, cancel/progress, incremental-render. |
 | T-17…T-27 | test | Planned (production/growth): non-destructive, aspect/preset, multilingual-captions, WYSIWYG, auto-tighten, highlight-clip, chapters, clean-audio, burned-captions, branding, style-preset. |
+| T-28…T-31 | test | Planned (stakeholder-register): transcript-export, batch-export, license-flag, embed-metadata. |
 </content>
 </invoke>
