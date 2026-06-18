@@ -8,6 +8,21 @@
 > **Format:** *"As a **\<stakeholder\>**, I need **\<capability\>** so that
 > **\<benefit\>**."*
 
+## 2.0 Collective needs (group level)
+
+Each stakeholder **group** from [`01-stakeholders.md`](01-stakeholders.md) §1.3 holds
+one **collective need**. The per-stakeholder needs below (`N-xx`) are *refinements*
+of these parents — every detailed need rolls up to exactly one collective need.
+
+| Collective need | Group | Refined by (detailed needs) |
+|---|---|---|
+| **CN-G1** Audience: find, play, follow relevant episodes — reliably, accessibly, on any platform/device. | G1 | N-10, N-11, N-12, N-13, N-21, N-25, N-26 |
+| **CN-G2** Content originators: plan→record→edit→publish quality episodes at zero cost / low skill, with fair attribution. | G2 | N-01…N-09, N-22 |
+| **CN-G3** Subjects & beneficiaries: be represented fairly; gain visibility/income/support from the exposure. | G3 | N-16, N-17, N-33 |
+| **CN-G4** Financial & sponsoring: verifiable reach/impact + brand-safe alignment for the money. | G4 | N-24, N-27 |
+| **CN-G5** Technical enablers: standards-conformant, compatible inputs/outputs; no lock-in; free tiers & low connectivity. | G5 | N-11, N-14, N-15, N-29, N-30 |
+| **CN-G6** Regulatory & interfacing: lawful, licensed, age-appropriate, culturally respectful, cleanly shareable. | G6 | N-18, N-19, N-20, N-23, N-31, N-32 |
+
 ## 2.1 Host / Creator (S1)
 
 - **N-01** As the host, I need to record **clear, listenable audio** at home so my message isn't lost to hiss and echo.
@@ -53,15 +68,26 @@
 
 - **N-24** As a future sponsor, I need **basic audience numbers and a professional brand** so I can justify supporting the show.
 
-## 2.8 Needs → priority (MoSCoW)
+## 2.8 Newly-registered stakeholders (S15–S22, S12b)
+
+- **N-25** As a **discovery listener** (S15), I need the show **surfaced by recommendations and related-content**, with good titles/tags, so I find it without searching.
+- **N-26** As an **offline/premium listener** (S16), I need **downloadable audio** so I can listen with no signal or in the background.
+- **N-27** As an **advertiser / sponsor** (S17, S18), I need **verifiable listen/view counts and brand-safe content** so I can justify my spend on host-read or placed ads.
+- **N-29** As a **playback device** (S19), I need **standard formats** (MP3, MP4/H.264/AAC) so the show plays on any phone, speaker, or TV.
+- **N-30** As an **in-field creator on weak signal** (S20), I need **low-bandwidth upload and local capture** so connectivity never blocks recording or publishing.
+- **N-31** As **platform Trust & Safety** (S21), I need each episode to **pass community-guideline and age checks** so it is not demonetised or removed.
+- **N-32** As an **interfacing social platform** (S22), I need **clean vertical clips and embeddable previews** so shared links render and survive re-compression.
+- **N-33** As the **promoted venture** (S12b), I need every episode to **carry a call-to-action and community link** so listeners can act on it.
+
+## 2.9 Needs → priority (MoSCoW)
 
 To keep a beginner from drowning, we prioritise. **Must** = v1 launch.
 
 | Priority | Needs |
 |---|---|
 | **Must have** | N-01, N-03, N-04, N-05, N-06, N-07, N-08, N-18, N-19, N-20 |
-| **Should have** | N-02, N-09, N-10, N-13, N-21 |
-| **Could have** | N-11, N-12, N-14, N-15, N-16, N-22, N-24 |
+| **Should have** | N-02, N-09, N-10, N-13, N-21, N-29, N-33 |
+| **Could have** | N-11, N-12, N-14, N-15, N-16, N-22, N-24, N-25, N-26, N-27, N-30, N-31, N-32 |
 | **Won't (yet)** | N-17 stays a *standing ethical rule*; N-23 handled by a guardian; full bilingual dubbing deferred |
 
 > 🧭 **Reading the priorities:** Launch the **audio** show well first (Musts).
