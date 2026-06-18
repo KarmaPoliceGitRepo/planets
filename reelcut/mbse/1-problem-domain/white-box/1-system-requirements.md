@@ -52,6 +52,26 @@ flowchart LR
 | **SR-2.7** | I | Endpoints for replace/add audio & add image; accept PNG/JPG + MP3/WAV/M4A/AAC. | — (ctx) | SN-5 | T | Planned | M |
 | **SR-2.8** | Ph | Independent-manipulation **MoP threshold/objective**. | F-6,F-14 | SN-6 | D | Planned | M/C |
 
+## Full requirement attributes (p.15 «extendedRequirement»: risk + rationale)
+| ID | risk | rationale (why this requirement exists) |
+|---|---|---|
+| SR-1.1 | Low | Segmentation is the basis for every downstream edit operation. |
+| SR-1.2 | Low | Keep/order is the core creative act a non-expert performs. |
+| SR-1.3 | Med | Gap-aware transitions are where the FFmpeg starvation bug lived; render must be robust. |
+| SR-1.4 | Med | Re-ordering invalidates caption timing; mismatch breaks accessibility (MOE-6). |
+| SR-1.5 | Low | −16 LUFS is the platform-neutral loudness target for watchability (MOE-3). |
+| SR-1.6 | Med | Overlapping transitions can drift A/V; sync is a hard watchability gate. |
+| SR-1.7 | Low | Local-only HMI is the privacy guarantee (MOE-2, egress=0). |
+| SR-1.8 | Low | Fixed output formats keep outputs universally playable. |
+| SR-2.1 | Med | Demux is the precondition for independent A/V manipulation (SN-6). |
+| SR-2.2 | High | A portable, renderer-agnostic doc underpins the future mobile port; abs paths/FFmpeg strings would lock it in. |
+| SR-2.3 | Med | Replacing audio orphans captions/segments derived from the old audio. |
+| SR-2.4 | Med | Mixing must not blow the loudness budget; duck needs a speech track. |
+| SR-2.5 | Low | Image clips reuse the reorder UX; main risk is duration/motion defaults. |
+| SR-2.6 | Med | Any added/replaced audio must re-pass −16 LUFS on the final mix. |
+| SR-2.7 | Low | New endpoints must accept the agreed image/audio formats. |
+| SR-2.8 | High | The threshold/objective MoP defines how independent A/V truly is — scope-defining. |
+
 ```sysml
 requirement def SR_1_5_Loudness {
     attribute stereotype = "performanceRequirement";

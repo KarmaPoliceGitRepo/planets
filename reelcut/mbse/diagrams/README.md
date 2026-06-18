@@ -19,6 +19,9 @@ files are the single source of truth**; `render.sh` *extracts* `.mmd` and *rende
 | Physical | `physical/mop-parametric.svg` | **Parametric diagram** — MoP constraint blocks + bindings + MoE roll-up |
 | Physical | `physical/system-config-bdd.svg` | **System-configuration BDD** — top block: structural + behavioural features |
 | Traceability | `traceability/mission-thread.svg` | mission thread MV → MUC/CAP → SN |
+| Types | `types/value-types.svg` | **value-type catalogue** (units / enums) |
+| Types | `types/signals.svg` | **signal/flow-item** structure (typed properties) |
+| Types | `types/soi-block.svg` | **SoI block compartments** (values · ports · operations) |
 | Conceptual | `conceptual/system-context-ibd.svg` | **IBD** system context (ports/interface blocks/flows) |
 | Logical | `logical/functional-analysis-activity.svg` | UC-6 export activity (functions) |
 | Logical | `logical/logical-subsystems-bdd.svg` | logical subsystem breakdown |

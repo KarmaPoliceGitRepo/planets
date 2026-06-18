@@ -37,6 +37,9 @@ MAP="
 2-solution-domain/3-component-structure.md|0|physical/component-structure-bdd
 2-solution-domain/4-component-parameters.md|0|physical/mop-parametric
 3-system-configuration.md|0|physical/system-config-bdd
+7-properties-and-types.md|0|types/value-types
+7-properties-and-types.md|1|types/signals
+7-properties-and-types.md|2|types/soi-block
 5-traceability.md|0|traceability/mission-thread
 5-traceability.md|1|traceability/vertical-thread
 "

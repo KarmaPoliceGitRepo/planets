@@ -21,6 +21,18 @@
 > test in `reelcut/tests/` (T-*); the implementation scripts both **realise** and
 > **verify** these requirements (your #1).
 
+### Full attributes (risk + rationale)
+| ID | risk | rationale |
+|---|---|---|
+| CR-1 | Med | The two-stage fold is what avoids the acrossfade audio-drop bug. |
+| CR-2 | Low | Two-pass loudnorm + PASS/FAIL makes loudness verifiable in CI. |
+| CR-3 | Med | Cue re-timing keeps captions aligned after reorder. |
+| CR-4 | High | Stable media handles / no abs paths make the project portable for mobile. |
+| CR-5 | Med | Demux yields the independent tracks the media feature needs. |
+| CR-6 | Med | Invalidating captions on replace prevents stale, wrong subtitles. |
+| CR-7 | Med | Per-track level/mute + sidechain duck is the add-audio core. |
+| CR-8 | Low | Image-clip synth (loop + optional zoompan) reuses the render path. |
+
 ## Hardware Requirements as Constraints (HC-)
 | ID | Hardware constraint | derivedFrom | Applies to | Verify |
 |---|---|---|---|---|

@@ -1,0 +1,9 @@
+classDiagram
+  class Duration { <<valueType>> +Real value; unit = s }
+  class Loudness { <<valueType>> +Real value; unit = LUFS }
+  class TruePeak { <<valueType>> +Real value; unit = dBTP }
+  class SyncError { <<valueType>> +Real value; unit = ms }
+  class DataSize { <<valueType>> +Integer value; unit = byte }
+  class TransitionKind { <<enumeration>> none crossfade dissolve fade wipe slide circle radial }
+  class Status { <<enumeration>> Built Planned }
+  class VerificationMethodKind { <<enumeration>> Inspection Analysis Demonstration Test }

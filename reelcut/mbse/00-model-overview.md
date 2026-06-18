@@ -68,7 +68,9 @@ reelcut/mbse/
 > (as *types*) → SR- with stereotypes; new logical + physical layers added.
 
 Every modeled element has a one-line description in **`6-element-dictionary.md`**
-(the data dictionary). Every MagicGrid cell — across all four pillars and all
-four layers — has a rendered diagram in `diagrams/` (19 SVGs).
+(the data dictionary) and its **full property set, value types and signals** in
+**`7-properties-and-types.md`** (with compartment diagrams). Every MagicGrid cell —
+across all four pillars and all four layers — has a rendered diagram in `diagrams/`
+(22 SVGs, incl. property compartments under `diagrams/types/`).
 
-Read **00 → 6**.
+Read **00 → 7**.
