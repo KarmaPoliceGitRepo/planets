@@ -10,6 +10,17 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "out=$(bash .claude/hooks/drift-check.sh 2>&1); rc=$?; if [ \"$rc\" -ne 0 ]; then jq -n --arg m \"$out\" '{systemMessage: (\"⚠ MBSE drift-check:\\n\" + $m)}'; fi",
+            "statusMessage": "Checking MBSE model for drift"
+          }
+        ]
+      }
     ]
   }
 }
