@@ -1,0 +1,12 @@
+flowchart TD
+  s([Build]) --> plan[build_plan: kept clips by order]
+  plan --> tm[timing_map: overlap-adjusted new_start]
+  tm --> cut[Stage 1: cut+normalise each clip to its own file]
+  cut --> join[Stage 2: fold]
+  join --> b{boundary?}
+  b -- cut --> cc[concat v+a]
+  b -- transition --> xf[xfade v + acrossfade a at offset=running−t]
+  cc --> upd[update running]; xf --> upd --> more{more?}
+  more -- yes --> b
+  more -- no --> enc[encode edit.mp4] --> cap[A-7 re-time captions]
+  cap --> mas[A-8 loudnorm −16 LUFS → mp3+mp4] --> done([mp4/mp3/srt])

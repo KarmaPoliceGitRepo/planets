@@ -1,0 +1,14 @@
+flowchart LR
+  Creator(["👤 Creator"])
+  subgraph ReelCut
+    UC1((UC-1 Upload)); UC2((UC-2 Auto-segment)); UC3((UC-3 Keep/drop))
+    UC4((UC-4 Re-order)); UC5((UC-5 Transitions)); UC6((UC-6 Export))
+    UC7((UC-7 Replace audio)); UC8((UC-8 Add audio))
+    UC9((UC-9 Add image)); UC10((UC-10 Level/mute))
+  end
+  FFmpeg(["⚙️ FFmpeg"]); Whisper(["🗣️ Whisper?"])
+  Creator --> UC1 --> UC2 --> UC3 --> UC4 --> UC5 --> UC6
+  Creator --> UC7 & UC8 & UC9 & UC10
+  UC2 -. include .-> Whisper
+  UC2 & UC6 & UC8 & UC9 -. include .-> FFmpeg
+  UC7 -. "may trigger" .-> Whisper
