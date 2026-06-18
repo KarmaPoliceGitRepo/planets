@@ -14,6 +14,22 @@
 | **MOE-5** | Creative control — keep/order/replace/add media | SN-5/SN-6 | all ops (threshold) | MOP-3 |
 | **MOE-6** | Accessibility — captions present, correct, readable | SN-2 | SRT; **0** mismatch | MOP-6 |
 
+## MoE value tree (bdd — «moe» value properties refining needs)
+
+```mermaid
+flowchart TB
+  H["«block» MoEHolder"]
+  H --> M1["«moe» simplicity (MOE-1)"]
+  H --> M2["«moe» egressBytes=0 (MOE-2)"]
+  H --> M3["«moe» watchability (MOE-3)"]
+  H --> M4["«moe» portability (MOE-4)"]
+  H --> M5["«moe» creativeControl (MOE-5)"]
+  H --> M6["«moe» captionMismatch=0 (MOE-6)"]
+  M1 -.->|refine| N1["SN-1"]; M2 -.->|refine| N3["SN-3"]; M3 -.->|refine| N2["SN-2"]
+  M4 -.->|refine| N4["SN-4/SN-7"]; M5 -.->|refine| N5["SN-5/SN-6"]; M6 -.->|refine| N2
+```
+
+
 ```sysml
 block def MoEHolder {
     moe simplicity   : Real;

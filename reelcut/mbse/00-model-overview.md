@@ -67,4 +67,8 @@ reelcut/mbse/
 > logical layer and function-derived requirements). Old → new: N-→SN-, FR/PR/IR/CR-
 > (as *types*) → SR- with stereotypes; new logical + physical layers added.
 
-Read **00 → 5**.
+Every modeled element has a one-line description in **`6-element-dictionary.md`**
+(the data dictionary). Every MagicGrid cell — across all four pillars and all
+four layers — has a rendered diagram in `diagrams/` (19 SVGs).
+
+Read **00 → 6**.

@@ -17,6 +17,25 @@
 | **MOP-8** | Media egress bytes | 0 (firm) | SR-1.7 | MOE-2 | Built |
 | **MOP-9** | Runtime deps beyond stdlib+FFmpeg | 0 | SR (CR) | MOE-4 | Built |
 
+## Parametric diagram (constraint blocks · value bindings · MoE roll-up)
+
+```mermaid
+flowchart LR
+  subgraph VP["ReelCut value properties"]
+    v1["loudness : LUFS"]; v2["truePeak : dBTP"]; v3["avSyncErr : ms"]; v4["egressBytes : Bytes"]
+  end
+  subgraph CB["«constraint» blocks (MoP)"]
+    c1["LoudnessBudget\n−17≤LUFS≤−15 ∧ TP≤−1\n(MOP-1)"]
+    c2["AVSyncBudget\n|err|≤frame_ms\n(MOP-2)"]
+    c8["PrivacyBudget\negress==0\n(MOP-8)"]
+  end
+  v1 ---|bind| c1; v2 ---|bind| c1; v3 ---|bind| c2; v4 ---|bind| c8
+  c1 -->|verify| SR15["SR-1.5"]; c2 -->|verify| SR16["SR-1.6"]; c8 -->|verify| SR17["SR-1.7"]
+  c1 -->|contributes| MOE3["MOE-3 watchability"]; c2 --> MOE3
+  c8 -->|contributes| MOE2["MOE-2 privacy"]
+```
+
+
 ```sysml
 constraint def LoudnessBudget { in I_LUFS; in TP;
     require { I_LUFS >= -17 and I_LUFS <= -15 and TP <= -1 } }   // MOP-1

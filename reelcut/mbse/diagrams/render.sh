@@ -28,12 +28,17 @@ MAP="
 1-problem-domain/white-box/4-system-behavior-dynamics.md|1|logical/system-state-machine
 1-problem-domain/black-box/2-use-cases.md|0|conceptual/use-cases
 1-problem-domain/black-box/3-system-context.md|0|conceptual/system-context-ibd
+1-problem-domain/white-box/1-system-requirements.md|0|logical/requirements-diagram
 1-problem-domain/white-box/2-functional-analysis.md|0|logical/functional-analysis-activity
 1-problem-domain/white-box/3-logical-subsystems.md|0|logical/logical-subsystems-bdd
 1-problem-domain/white-box/3-logical-subsystems.md|1|logical/logical-subsystems-ibd
+1-problem-domain/black-box/4-measures-of-effectiveness.md|0|conceptual/moe-value-tree
 2-solution-domain/2-component-behavior.md|0|physical/component-behavior-sequence
 2-solution-domain/3-component-structure.md|0|physical/component-structure-bdd
-5-traceability.md|0|traceability/vertical-thread
+2-solution-domain/4-component-parameters.md|0|physical/mop-parametric
+3-system-configuration.md|0|physical/system-config-bdd
+5-traceability.md|0|traceability/mission-thread
+5-traceability.md|1|traceability/vertical-thread
 "
 
 python3 - "$MBSE" "$MAP" <<'PY'

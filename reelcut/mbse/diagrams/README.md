@@ -14,6 +14,11 @@ files are the single source of truth**; `render.sh` *extracts* `.mmd` and *rende
 | Logical | `logical/system-sequence.svg` | UC-6 export **sequence** (SoI ↔ FFmpeg/Whisper/FS) |
 | Logical | `logical/system-state-machine.svg` | session **state machine** (sources requirement conditions) |
 | Conceptual | `conceptual/use-cases.svg` | use cases (UC-1…10) inside the SoI context block |
+| Conceptual | `conceptual/moe-value-tree.svg` | **MoE value tree** — «moe» properties refining needs |
+| Logical | `logical/requirements-diagram.svg` | **Requirements diagram** — derive/refine/satisfy/verify |
+| Physical | `physical/mop-parametric.svg` | **Parametric diagram** — MoP constraint blocks + bindings + MoE roll-up |
+| Physical | `physical/system-config-bdd.svg` | **System-configuration BDD** — top block: structural + behavioural features |
+| Traceability | `traceability/mission-thread.svg` | mission thread MV → MUC/CAP → SN |
 | Conceptual | `conceptual/system-context-ibd.svg` | **IBD** system context (ports/interface blocks/flows) |
 | Logical | `logical/functional-analysis-activity.svg` | UC-6 export activity (functions) |
 | Logical | `logical/logical-subsystems-bdd.svg` | logical subsystem breakdown |
