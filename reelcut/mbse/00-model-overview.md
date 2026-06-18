@@ -41,6 +41,17 @@ B-6 Render Engine     → app/pipeline/render.py
 B-7 Caption Re-timer  → app/pipeline/captions.py
 B-8 Master            → app/pipeline/master.py
 B-9 FFmpeg (external) → system binary
+
+# v2 (PLANNED — media tracks):
+B-10 Track/Clip Model    → app/model.py (extended, first-class tracks/clips)
+B-11 Image-clip Synth    → app/pipeline/render.py (extended)
+B-12 Audio Mixer/Ducker  → app/pipeline/audio_mix.py (new) + master.py
+B-13 Demux/Ingest        → app/pipeline/probe.py + ingest (extended)
 ```
+
+> **v2 (PLANNED):** needs **N-10…N-19** add demuxed independent A/V tracks, replace/add
+> audio, and image clips (from the 2026-06-18 `/grilling` session), plus a feasibility-first
+> mobile path (N-19). `reelcut/mbse/` is the **single source of truth** (N-18). Nothing in the
+> v2 sections is implemented until GATE 2 is approved.
 
 Read in order 01 → 05. Start the product with `../run.sh`.

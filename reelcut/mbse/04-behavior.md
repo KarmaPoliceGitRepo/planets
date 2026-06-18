@@ -85,3 +85,54 @@ Each transition **overlaps** clips by its duration, so the engine tracks a
 `offset = running − t`. This keeps audio and video aligned for the whole
 timeline — verified numerically in **T-3** and against real FFmpeg output in
 **T-4**.
+
+---
+
+# v2 — Media-track behaviour (PLANNED)
+
+## v2 wizard state machine (adds a Media step)
+
+```mermaid
+stateDiagram-v2
+  [*] --> Upload
+  Upload --> Segments : demux + probe (A-9)
+  Segments --> Order : Next
+  Order --> Media : Next
+  Media --> Media : replace audio (A-10) / add audio (A-11) / add image (A-12) / level-mute
+  Media --> Transitions : Next
+  Transitions --> Export : Next
+  Export --> Done : render+caption+master ok (A-6)
+  Media --> Order : Back
+  Done --> [*]
+```
+
+## A-10 Replace audio — activity
+
+```mermaid
+flowchart TD
+  s([upload new audio]) --> setp[set as primary audio track]
+  setp --> chk{captions/segments derived from old audio?}
+  chk -- yes --> flag[mark stale + offer re-transcribe]
+  chk -- no --> keep[no caption change]
+  flag --> done([render+master -16 LUFS])
+  keep --> done
+```
+
+## v2 behaviour catalogue
+
+| ID | Activity | Realised by | Req |
+|---|---|---|---|
+| **A-9** | Demux input → A/V tracks (+ per-stream probe) | `probe` + ingest (extended) | FR-9 |
+| **A-10** | Replace audio track (+ invalidate/flag captions) | `model` + `captions` (extended) | FR-11 |
+| **A-11** | Add/mix audio + optional duck (sidechain) | `audio_mix` (new) + `master` | FR-12 |
+| **A-12** | Synthesise image clip (loop + optional Ken-Burns `zoompan`) | `render` (extended) | FR-13 |
+
+## v2 critical properties
+- **PR-4 (loudness preserved):** A-11 mixes tracks with `amix`/`sidechaincompress`, but the **final
+  mix** still goes through the existing two-pass `loudnorm` (A-8) → −16 LUFS, so adding/replacing
+  audio never changes the loudness contract.
+- **PR-3 (MoP):** the threshold keeps spoken sub-sections A/V-locked during reorder (A-4 unchanged);
+  image clips and audio tracks are the only independently-placed items now. The objective
+  (independent A/V timelines) is a future behaviour, enabled by the B-10 first-class model.
+- **Caption integrity (N-14):** A-10 must never leave captions that no longer match the audible
+  speech — it flags/clears them rather than silently shipping a mismatch.

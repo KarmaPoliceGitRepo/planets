@@ -98,3 +98,63 @@ flowchart TD
 A single Python process serves the UI and runs all blocks in-process; **B-9
 FFmpeg** is the only external dependency. Everything binds to `127.0.0.1`
 (satisfies **CR-1** privacy / local-only).
+
+---
+
+# v2 — New/extended blocks (PLANNED)
+
+## v2 BDD additions
+
+```mermaid
+classDiagram
+  class B3_EditModel {
+    EXTENDED: tracks[] + clips[] (first-class)
+    clip.track_ref, media by stable handle
+    no abs paths / no ffmpeg strings (CR-3)
+    realised: app/model.py
+  }
+  class B10_TrackClipModel {
+    +tracks: video, audio(primary), audio(added), image-items
+    +per-track level/mute; locked-group constraint (threshold MoP)
+    +portable/renderer-agnostic document (CR-3)
+    realised: app/model.py (extended)
+  }
+  class B11_ImageClipSynth {
+    +still -> video clip (loop + optional zoompan/Ken-Burns)
+    +editable duration (default 4s)
+    realised: pipeline/render.py (extended)
+  }
+  class B12_AudioMixerDucker {
+    +amix per-track level/mute
+    +sidechaincompress duck-under-speech
+    +feeds final mix -> -16 LUFS master
+    realised: pipeline/ (new audio_mix.py) + master.py
+  }
+  class B13_Demux {
+    +split input into A/V tracks (ffmpeg -map)
+    +probe per-stream
+    realised: pipeline/probe.py + ingest (extended)
+  }
+  B3_EditModel <|-- B10_TrackClipModel : evolves
+  B10_TrackClipModel --> B11_ImageClipSynth : image clips
+  B10_TrackClipModel --> B12_AudioMixerDucker : audio tracks
+  B13_Demux --> B10_TrackClipModel : tracks
+  B11_ImageClipSynth ..> B9_FFmpeg
+  B12_AudioMixerDucker ..> B9_FFmpeg
+  B13_Demux ..> B9_FFmpeg
+```
+
+## v2 ports (new API endpoints)
+
+| Port (endpoint) | Dir | Payload | Block | Req |
+|---|---|---|---|---|
+| `POST /api/audio/replace` | in | new audio (raw body + `X-Filename`) | B-10/B-13 | FR-11 |
+| `POST /api/audio/add` | in | audio + `{level,mute,duck}` | B-12 | FR-12 |
+| `POST /api/track` | in | `{id,track,level,mute}` | B-10 | PR-3 |
+| `POST /api/image/add` | in | image + `{duration,kenburns,order}` | B-11 | FR-13 |
+
+## v2 deployment note
+All v2 blocks run **in the same local process** and only invoke **B-9 FFmpeg** —
+no new runtime dependency, preserving CR-1/CR-2. **CR-3** (portable, renderer-agnostic
+project document) is the structural hook that lets a future **mobile client** (N-19)
+author the same document and target a different renderer/transport.
