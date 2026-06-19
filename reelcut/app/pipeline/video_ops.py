@@ -38,3 +38,19 @@ def burn_captions(video: str, srt: str, out_path: str) -> str:
                     "-c:a", "copy", out_path],
                    capture_output=True, check=True)
     return out_path
+
+
+def highlight_clip(src: str, start: float, end: float, out_path: str) -> str:
+    """Export a sub-range as a standalone highlight clip (SR-4.6)."""
+    subprocess.run(["ffmpeg", "-y", "-ss", f"{start}", "-to", f"{end}", "-i", src,
+                    "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
+                    "-c:a", "aac", "-b:a", "192k", out_path],
+                   capture_output=True, check=True)
+    return out_path
+
+
+def cover_frame(src: str, t: float, out_png: str) -> str:
+    """Grab a single frame at time ``t`` as the cover image (SR-4.6)."""
+    subprocess.run(["ffmpeg", "-y", "-ss", f"{t}", "-i", src, "-frames:v", "1", out_png],
+                   capture_output=True, check=True)
+    return out_png

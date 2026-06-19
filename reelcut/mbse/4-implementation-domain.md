@@ -85,6 +85,18 @@ progress) remains Planned (server-side wiring).
 
 Verified: `python3 tests/test_phase4.py` → `Ran 6 tests … OK`.
 
+### Built (Phase 5) — tighten, repurpose, clean-audio, metadata, batch
+
+| SR | Requirement (short) | Module | Verifying test | Status |
+|---|---|---|---|---|
+| **SR-4.5** | detect/remove filler words + silences | `pipeline/tighten.py` | `tests/test_phase5.py::TestTighten` | ✅ Built (silence core) |
+| **SR-4.6** | export highlight clips + pick cover frame | `pipeline/video_ops.py` (`highlight_clip`, `cover_frame`) | `tests/test_phase5.py::TestMediaExtras` | ✅ Built |
+| **SR-4.8** | audio-cleanup chain (denoise/dehum/level) | `pipeline/audio_mix.py` (`clean_audio`) | `tests/test_phase5.py::TestMediaExtras` | ✅ Built |
+| **SR-5.2** | batch-export multiple projects with one preset | `export.py` (`batch_export`) | `tests/test_phase5.py::TestBatch` | ✅ Built |
+| **SR-5.4** | embed title/description/chapter metadata | `metadata.py` (`embed_metadata`) | `tests/test_phase5.py::TestMediaExtras` | ✅ Built |
+
+Verified: `python3 tests/test_phase5.py` → `Ran 5 tests … OK`. **29 of 37 SRs Built.**
+
 ### Planned backlog (SR-2.x … SR-5.x) — not yet implemented
 
 These are specified and traced but **have no implementing code yet**; they are not
@@ -94,10 +106,9 @@ claimed as met. Build order follows priority (Must → Should → Could).
 |---|---|---|---|
 | SR-2.7 | HTTP endpoints for replace/add audio + add image | `server.py` (ext) | Must |
 | SR-3.4 | cancel/abort + progress reporting | `server.py` | Should |
-| SR-4.3, SR-4.5, SR-4.6, SR-4.8 | translation; tighten (filler/silence); highlights+cover; clean audio (denoise) | `captions.py`, `segment.py`, `audio_mix.py` (ext) | Should |
+| SR-4.3 | captions translated to English (needs Whisper translate model) | `captions.py` (ext) | Should |
 | SR-4.4 | WYSIWYG frame-accurate preview | `render.py` (ext) | Should |
 | SR-3.6, SR-2.8, SR-4.10 | incremental re-render; independent-manip MoP; branding overlays | various (ext) | Could |
-| SR-5.2, SR-5.4 | batch export; embedded title/chapter metadata | `server.py`, `master.py` (ext) | C |
 
 ## Build sequence (physical-layer increments)
 

@@ -41,6 +41,17 @@ def add_audio(video: str, extra_audio: str, out_path: str,
     return out_path
 
 
+def clean_audio(src: str, out_path: str) -> str:
+    """Reduce noise/hum and improve speech clarity (SR-4.8): high-pass rumble
+    cut + FFT denoise. Loudness is re-normalised separately by master.py so the
+    final mix still meets −16 LUFS (SR-2.6)."""
+    subprocess.run(["ffmpeg", "-y", "-i", src,
+                    "-af", "highpass=f=80,afftdn=nr=12,dynaudnorm=p=0.9",
+                    out_path],
+                   capture_output=True, check=True)
+    return out_path
+
+
 def image_clip(image: str, out_path: str, duration: float = 4.0,
                width: int = 1280, height: int = 720) -> str:
     """Synthesise a still video clip from an image (SR-2.5): fixed duration,

@@ -46,3 +46,17 @@ def chapters_ffmetadata(project: dict) -> str:
                   f"START={start_ms}", f"END={end_ms}", f"title={title}"]
         t += seg_dur
     return "\n".join(lines) + "\n"
+
+
+def batch_export(projects: list, preset: dict) -> list:
+    """Apply one shared preset to many projects for batch export (SR-5.2).
+
+    Returns the list of preset-applied project dicts (the render of each then
+    follows the normal single-project path)."""
+    from . import model  # local import avoids a cycle at module load
+    out = []
+    for p in projects:
+        q = dict(p)
+        model.apply_preset(q, preset)
+        out.append(q)
+    return out
