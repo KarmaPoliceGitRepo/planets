@@ -67,9 +67,23 @@ SR-1.5 path); **SR-2.7** (HTTP endpoints for these ops) remains Planned.
 | **SR-3.1** | validate every import; reject with a reason | `app/validate.py` | `tests/test_phase3.py::TestValidate` | ✅ Built |
 | **SR-3.3** | undo/redo via reversible command stack | `model.py` (`History`) | `tests/test_phase3.py::TestHistory` | ✅ Built |
 
-Verified: `python3 tests/test_phase3.py` → `Ran 4 tests … OK`. **SR-3.2** (autosave/
-restore), **SR-3.4** (cancel/progress), **SR-3.5** (invalidate-on-source-change) remain
-Planned (server-side wiring).
+Verified: `python3 tests/test_phase3.py` → `Ran 4 tests … OK`. **SR-3.4** (cancel/
+progress) remains Planned (server-side wiring).
+
+### Built (Phase 4) — production, growth & register
+
+| SR | Requirement (short) | Module | Verifying test | Status |
+|---|---|---|---|---|
+| **SR-3.2** | autosave + restore (crash recovery) | `model.py` (`autosave`, `restore`) | `tests/test_phase4.py::TestModelState` | ✅ Built |
+| **SR-3.5** | invalidate/flag derived artefacts on source change | `model.py` (`needs_regeneration`) | `tests/test_phase4.py::TestModelState` | ✅ Built |
+| **SR-4.2** | export chosen aspect {16:9,9:16,1:1} + resolution | `pipeline/video_ops.py` (`reframe`) | `tests/test_phase4.py::TestVideoOps` | ✅ Built |
+| **SR-4.7** | chapter markers from topic segments | `export.py` (`chapters_ffmetadata`) | `tests/test_phase4.py::TestTextDerivations` | ✅ Built |
+| **SR-4.9** | burn-in (open) captions | `pipeline/video_ops.py` (`burn_captions`) | `tests/test_phase4.py::TestVideoOps` | ✅ Built |
+| **SR-4.11** | save + reuse style presets | `model.py` (`save_preset`, `apply_preset`) | `tests/test_phase4.py::TestModelState` | ✅ Built |
+| **SR-5.1** | export full plain-text transcript | `export.py` (`transcript_txt`) | `tests/test_phase4.py::TestTextDerivations` | ✅ Built |
+| **SR-5.3** | flag non-royalty-free audio + license note | `model.py` (`flag_audio_license`) | `tests/test_phase4.py::TestModelState` | ✅ Built |
+
+Verified: `python3 tests/test_phase4.py` → `Ran 6 tests … OK`.
 
 ### Planned backlog (SR-2.x … SR-5.x) — not yet implemented
 
@@ -79,10 +93,11 @@ claimed as met. Build order follows priority (Must → Should → Could).
 | SR group | Theme | New/extended module | Priority |
 |---|---|---|---|
 | SR-2.7 | HTTP endpoints for replace/add audio + add image | `server.py` (ext) | Must |
-| SR-3.2, SR-3.4, SR-3.5 | autosave/restore; cancel+progress; invalidate-on-source-change | `server.py`, `model.py` | Should |
-| SR-4.2–4.9 | aspect/preset export; translation; WYSIWYG preview; tighten (filler/silence); highlights+cover; clean audio; burn-in captions | `render.py`, `captions.py`, `segment.py` (ext) | Should |
-| SR-3.6, SR-4.10/4.11, SR-2.8 | incremental re-render; branding; presets; independent-manip MoP | various (ext) | Could |
-| SR-5.1–5.4 | transcript export; batch export; license flag; embedded metadata | `captions.py`, `server.py`, `master.py` (ext) | S/C |
+| SR-3.4 | cancel/abort + progress reporting | `server.py` | Should |
+| SR-4.3, SR-4.5, SR-4.6, SR-4.8 | translation; tighten (filler/silence); highlights+cover; clean audio (denoise) | `captions.py`, `segment.py`, `audio_mix.py` (ext) | Should |
+| SR-4.4 | WYSIWYG frame-accurate preview | `render.py` (ext) | Should |
+| SR-3.6, SR-2.8, SR-4.10 | incremental re-render; independent-manip MoP; branding overlays | various (ext) | Could |
+| SR-5.2, SR-5.4 | batch export; embedded title/chapter metadata | `server.py`, `master.py` (ext) | C |
 
 ## Build sequence (physical-layer increments)
 

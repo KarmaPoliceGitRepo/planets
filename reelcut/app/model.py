@@ -205,3 +205,53 @@ class History:
             return None
         self._i += 1
         return copy.deepcopy(self._stack[self._i])
+
+
+# ---- Phase 3/4: autosave, source-change, presets, license -------------------
+_STYLE_KEYS = ("transition_type", "transition_duration", "aspect", "branding")
+
+
+def autosave(project: dict, path: str) -> str:
+    """Continuously persist to a sidecar so a crash never loses work (SR-3.2)."""
+    side = path + ".autosave"
+    Path(side).write_text(json.dumps(project, ensure_ascii=False, indent=2), encoding="utf-8")
+    return side
+
+
+def restore(path: str) -> dict | None:
+    """Return the autosaved project if a sidecar exists, else None (SR-3.2)."""
+    side = path + ".autosave"
+    if Path(side).exists():
+        return json.loads(Path(side).read_text(encoding="utf-8"))
+    return None
+
+
+def needs_regeneration(project: dict) -> bool:
+    """True if the source file changed since import; flags derived artefacts
+    stale so the UI can offer regeneration (SR-3.5)."""
+    recorded = project.get("source_sha256")
+    if recorded is None:
+        return False
+    changed = source_digest(project) != recorded
+    if changed:
+        project["captions_stale"] = True
+        project["segments_stale"] = True
+    return changed
+
+
+def save_preset(project: dict, name: str) -> dict:
+    """Capture the reusable style of a project as a named preset (SR-4.11)."""
+    return {"name": name, "style": {k: project[k] for k in _STYLE_KEYS if k in project}}
+
+
+def apply_preset(project: dict, preset: dict) -> None:
+    """Apply a saved preset's style to a project (SR-4.11)."""
+    project.update(preset.get("style", {}))
+
+
+def flag_audio_license(project: dict, track_id: str, royalty_free: bool,
+                       note: str = "") -> None:
+    """Record a licence decision for an added audio track; flag if not
+    royalty-free so the creator is warned before publishing (SR-5.3)."""
+    project.setdefault("audio_licenses", {})[track_id] = {
+        "royalty_free": royalty_free, "note": note, "flagged": not royalty_free}
