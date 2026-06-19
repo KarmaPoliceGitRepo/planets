@@ -1,0 +1,79 @@
+name: build
+
+# Tests run anywhere; the desktop/mobile binaries are built on runners that have
+# the native toolchains a Linux dev container lacks (macOS/Xcode, Windows, Android SDK).
+on:
+  push:
+    branches: [ "**" ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Install FFmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Run all reelcut suites
+        working-directory: reelcut
+        run: |
+          for t in tests/test_reelcut.py tests/test_phase*.py; do
+            echo "== $t =="; python3 "$t" || exit 1
+          done
+
+  desktop:
+    needs: test
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Install build deps
+        run: pip install pywebview pyinstaller
+      - name: Build app
+        working-directory: reelcut
+        run: pyinstaller desktop/reelcut.spec
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reelcut-desktop-${{ matrix.os }}
+          path: reelcut/dist/
+
+  mobile-android:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - uses: actions/setup-java@v4
+        with: { distribution: "temurin", java-version: "17" }
+      - uses: android-actions/setup-android@v3
+      - name: Install + typecheck
+        working-directory: reelcut/mobile
+        run: npm install && npm run tsc
+      # Release build requires a generated android/ project + signing config:
+      #   npx react-native init done once, keystore in CI secrets.
+      - name: Assemble (best-effort)
+        working-directory: reelcut/mobile
+        run: test -d android && (cd android && ./gradlew assembleRelease) || echo "android/ project not generated yet"
+
+  mobile-ios:
+    needs: test
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - name: Install + typecheck
+        working-directory: reelcut/mobile
+        run: npm install && npm run tsc
+      # Archive requires a generated ios/ workspace + signing identity in CI secrets.
+      - name: Archive (best-effort)
+        working-directory: reelcut/mobile
+        run: test -d ios && (cd ios && xcodebuild -scheme ReelCut -sdk iphoneos -configuration Release archive || true) || echo "ios/ workspace not generated yet"

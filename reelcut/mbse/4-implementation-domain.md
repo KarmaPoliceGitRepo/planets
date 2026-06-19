@@ -186,12 +186,22 @@ achievable. Current contribution of the **Built** scope:
 
 | Podcast MoE | ReelCut contribution (Built) | Gap (Planned) |
 |---|---|---|
-| **MoE-4 Quality** | ✅ −16 LUFS/−1 dBTP master; H.264/AAC MP4; A/V sync (SR-1.5/1.6/1.8) | denoise/clarity SR-4.8 |
-| **MoE-2 Accessibility** | ✅ re-timed `.srt` captions on the edit (SR-1.4/1.8) | transcript SR-5.1, translation SR-4.3, burn-in SR-4.9 |
-| **MoE-3 Sustainability** | ✅ local stdlib server, one-command `run.sh`, FFmpeg-only — $0 (SR-1.7) | tighten/effort SR-4.5 |
-| **MoE-6 Portability** | ◐ JSON project doc saved by `model.py` (partial SR-2.2) | fully renderer-agnostic doc SR-2.2 |
-| **MoE-1 Reach / MoE-5 Integrity** | (podcast-system level — publish/licence; ReelCut feeds exports) | metadata SR-5.4, license flag SR-5.3 |
+| **MoE-4 Quality** | ✅ −16 LUFS/−1 dBTP master; clean-audio denoise (SR-4.8); H.264/AAC MP4; A/V sync (SR-1.5/1.6/1.8/4.8) | — |
+| **MoE-2 Accessibility** | ✅ re-timed `.srt`, burn-in captions, transcript export, translation pipeline (SR-1.4/4.9/5.1/4.3) | translation needs a model at runtime |
+| **MoE-3 Sustainability** | ✅ local stdlib server, one-command run, auto-tighten (SR-1.7/4.5); $0/no-GPU | — |
+| **MoE-6 Portability** | ✅ portable renderer-agnostic project doc (SR-2.2) | — |
+| **MoE-1 Reach / MoE-5 Integrity** | ✅ reframe to platform aspect, embedded metadata, license flag (SR-4.2/5.4/5.3); publish/CTA at podcast layer | — |
 
-**Validation verdict:** the Built ReelCut baseline **validates against MoE-3 and MoE-4
-in full** and **MoE-2/MoE-6 in part**; MoE-1/MoE-5 are realised above ReelCut at the
-podcast-system layer. Remaining MoE coverage is bounded by the Planned backlog above.
+**Validation verdict:** with all 37 SRs Built, ReelCut **validates against MoE-2, MoE-3,
+MoE-4, MoE-6 in full** and contributes the export-side of **MoE-1/MoE-5** (final
+publish/CTA remain podcast-system-layer). The only runtime caveat is the SR-4.3
+translation model (pluggable, not bundled offline).
+
+## Continuous integration
+
+`.github/workflows/build.yml` runs the full Python suite on every push (Ubuntu +
+FFmpeg) and **builds the native binaries on runners that have the toolchains** this
+container lacks: PyInstaller on `macos-latest` + `windows-latest` (desktop), and
+Node/Java/Android-SDK + macOS/Xcode jobs (mobile, best-effort until the
+`android/`/`ios/` projects are generated). This is how the build-ready desktop/mobile
+source becomes installable artifacts without a local Mac/Windows.

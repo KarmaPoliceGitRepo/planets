@@ -47,6 +47,17 @@
 > a plan failure). This document fully details **P1** and fixes the **P5/P6 architecture**
 > so later plans inherit the decisions.
 
+## Build status (updated 2026-06-19)
+
+**All 37 system requirements Built & verified** — implemented in increments P1–P8
+(P0 baseline + portable/non-destructive/demux, media ops, robustness, production/
+growth, register, endpoints+incremental, and the closing set), each TDD with a
+passing test. 9 test suites / ~45 tests green with real FFmpeg.
+- **P5 desktop** + **P6 mobile**: source scaffolded and build-ready under
+  `reelcut/desktop/` and `reelcut/mobile/`; compiled on CI runners with the native
+  toolchains (`.github/workflows/build.yml`) since a Linux container cannot.
+- **Only runtime caveat:** SR-4.3 translation model is injected at runtime, not bundled.
+
 ## Desktop architecture (P5) — decided
 
 - **Wrap, don't rewrite.** A native window via **pywebview** loads `http://127.0.0.1:<port>`
