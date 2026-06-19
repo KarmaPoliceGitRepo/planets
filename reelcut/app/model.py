@@ -160,3 +160,10 @@ def from_portable(doc: dict, project_dir: str) -> dict:
     if src and not os.path.isabs(src):
         project["source"] = os.path.normpath(os.path.join(project_dir, src))
     return project
+
+
+# ---- Phase 2: replacing audio orphans captions (SR-2.3) --------------------
+def mark_captions_stale(project: dict) -> None:
+    """Flag captions/segments as derived-from-old-audio after an audio replace,
+    so the UI can offer re-transcribe (SR-2.3 / SR-3.5)."""
+    project["captions_stale"] = True

@@ -48,6 +48,18 @@ FFmpeg (`python3 tests/test_reelcut.py` → `Ran 12 tests … OK`).
 Verified: `python3 tests/test_phase1.py` → `Ran 3 tests … OK`. Plan:
 `docs/superpowers/plans/2026-06-19-reelcut-cross-platform-build.md`.
 
+### Built (Phase 2) — media operations
+
+| SR | Requirement (short) | Module | Verifying test | Status |
+|---|---|---|---|---|
+| **SR-2.3** | replace audio; flag captions stale; offer re-transcribe | `pipeline/audio_mix.py` (`replace_audio`), `model.py` (`mark_captions_stale`) | `tests/test_phase2.py::TestMedia::test_replace_audio`, `::TestCaptionsStale` | ✅ Built |
+| **SR-2.4** | add audio with level/mute + optional duck-under-speech | `pipeline/audio_mix.py` (`add_audio`) | `tests/test_phase2.py::TestMedia::test_add_audio_mix` | ✅ Built |
+| **SR-2.5** | add image clips (still, editable duration, no intrinsic audio) | `pipeline/audio_mix.py` (`image_clip`) | `tests/test_phase2.py::TestMedia::test_image_clip` | ✅ Built |
+
+Verified: `python3 tests/test_phase2.py` → `Ran 4 tests … OK`. **SR-2.6** (preserve
+−16 LUFS after mix) is met by re-running `master.py` on the mixed output (existing
+SR-1.5 path); **SR-2.7** (HTTP endpoints for these ops) remains Planned.
+
 ### Planned backlog (SR-2.x … SR-5.x) — not yet implemented
 
 These are specified and traced but **have no implementing code yet**; they are not
@@ -55,7 +67,7 @@ claimed as met. Build order follows priority (Must → Should → Could).
 
 | SR group | Theme | New/extended module | Priority |
 |---|---|---|---|
-| SR-2.3–2.7 | replace/add audio (+duck), add image clips, endpoints, preserve −16 LUFS | `pipeline/audio_mix.py`, `render.py` (ext), `server.py` (ext) | Must |
+| SR-2.7 | HTTP endpoints for replace/add audio + add image | `server.py` (ext) | Must |
 | SR-3.1–3.5 | validate input; autosave/restore; undo/redo; cancel+progress; invalidate-on-source-change | `server.py`, `model.py` (command stack) | Should |
 | SR-4.2–4.9 | aspect/preset export; translation; WYSIWYG preview; tighten (filler/silence); highlights+cover; clean audio; burn-in captions | `render.py`, `captions.py`, `segment.py` (ext) | Should |
 | SR-3.6, SR-4.10/4.11, SR-2.8 | incremental re-render; branding; presets; independent-manip MoP | various (ext) | Could |
