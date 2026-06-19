@@ -7,7 +7,8 @@
     "start": "react-native start",
     "ios": "react-native run-ios",
     "android": "react-native run-android",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "setup-ios": "bash setup-ios.sh"
   },
   "dependencies": {
     "react": "18.2.0",
@@ -17,6 +18,10 @@
     "react-native-fs": "^2.20.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@react-native/babel-preset": "0.74.0",
+    "@react-native/metro-config": "0.74.0",
+    "@react-native/typescript-config": "0.74.0",
     "typescript": "^5.4.0",
     "@types/react": "^18.2.0"
   }
