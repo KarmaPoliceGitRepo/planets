@@ -47,6 +47,7 @@ jobs:
   mobile-android:
     needs: test
     runs-on: ubuntu-latest
+    continue-on-error: true   # best-effort until android/ project is generated + signing secrets added
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -66,6 +67,7 @@ jobs:
   mobile-ios:
     needs: test
     runs-on: macos-latest
+    continue-on-error: true   # best-effort until ios/ workspace is generated + signing identity added
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
