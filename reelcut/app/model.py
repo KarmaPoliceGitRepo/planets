@@ -116,3 +116,47 @@ def load(path: str) -> dict:
 
 def save(project: dict, path: str) -> None:
     Path(path).write_text(json.dumps(project, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+# ---- Phase 1: non-destructive source guard (SR-4.1) -------------------------
+import hashlib
+import os
+
+
+class SourceMutated(Exception):
+    """Raised when an imported source file has changed since import (SR-4.1)."""
+
+
+def source_digest(project: dict) -> str:
+    """sha256 of the source media file (streamed, constant memory)."""
+    with open(project["source"], "rb") as f:
+        h = hashlib.sha256()
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def assert_source_unchanged(project: dict) -> None:
+    recorded = project.get("source_sha256")
+    if recorded is not None and source_digest(project) != recorded:
+        raise SourceMutated(project["source"])
+
+
+# ---- Phase 1: portable, renderer-agnostic project doc (SR-2.2) --------------
+def to_portable(project: dict, project_dir: str) -> dict:
+    """Strip absolute paths and renderer (ffmpeg_*) strings; store source as a
+    handle relative to project_dir."""
+    doc = {k: v for k, v in project.items() if not k.startswith("ffmpeg_")}
+    src = project.get("source")
+    if src and os.path.isabs(src):
+        doc["source"] = os.path.relpath(src, project_dir)
+    return doc
+
+
+def from_portable(doc: dict, project_dir: str) -> dict:
+    """Resolve the relative source handle to an absolute path on this machine."""
+    project = dict(doc)
+    src = doc.get("source")
+    if src and not os.path.isabs(src):
+        project["source"] = os.path.normpath(os.path.join(project_dir, src))
+    return project

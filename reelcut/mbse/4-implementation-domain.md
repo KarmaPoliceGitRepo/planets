@@ -37,6 +37,17 @@
 All eight **Must** requirements of the baseline are implemented and pass with real
 FFmpeg (`python3 tests/test_reelcut.py` → `Ran 12 tests … OK`).
 
+### Built (Phase 1) — portable doc + non-destructive + demux
+
+| SR | Requirement (short) | Module | Verifying test | Status |
+|---|---|---|---|---|
+| **SR-4.1** | original read-only; edits non-destructive | `model.py` (`source_digest`, `assert_source_unchanged`) | `tests/test_phase1.py::TestNonDestructive` | ✅ Built |
+| **SR-2.2** | portable, renderer-agnostic project doc | `model.py` (`to_portable`, `from_portable`) | `tests/test_phase1.py::TestPortableDoc` | ✅ Built |
+| **SR-2.1** | demux into independent A/V tracks | `pipeline/demux.py` | `tests/test_phase1.py::TestDemux` | ✅ Built |
+
+Verified: `python3 tests/test_phase1.py` → `Ran 3 tests … OK`. Plan:
+`docs/superpowers/plans/2026-06-19-reelcut-cross-platform-build.md`.
+
 ### Planned backlog (SR-2.x … SR-5.x) — not yet implemented
 
 These are specified and traced but **have no implementing code yet**; they are not
@@ -44,9 +55,7 @@ claimed as met. Build order follows priority (Must → Should → Could).
 
 | SR group | Theme | New/extended module | Priority |
 |---|---|---|---|
-| SR-2.1, SR-2.2 | demux to independent A/V tracks; portable renderer-agnostic project doc | `pipeline/demux.py` (new), `model.py` (ext) | Must |
 | SR-2.3–2.7 | replace/add audio (+duck), add image clips, endpoints, preserve −16 LUFS | `pipeline/audio_mix.py`, `render.py` (ext), `server.py` (ext) | Must |
-| SR-4.1 | non-destructive, read-only source | `model.py` (ext) | Must |
 | SR-3.1–3.5 | validate input; autosave/restore; undo/redo; cancel+progress; invalidate-on-source-change | `server.py`, `model.py` (command stack) | Should |
 | SR-4.2–4.9 | aspect/preset export; translation; WYSIWYG preview; tighten (filler/silence); highlights+cover; clean audio; burn-in captions | `render.py`, `captions.py`, `segment.py` (ext) | Should |
 | SR-3.6, SR-4.10/4.11, SR-2.8 | incremental re-render; branding; presets; independent-manip MoP | various (ext) | Could |
