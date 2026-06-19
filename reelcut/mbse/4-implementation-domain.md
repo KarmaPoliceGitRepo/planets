@@ -60,6 +60,17 @@ Verified: `python3 tests/test_phase2.py` → `Ran 4 tests … OK`. **SR-2.6** (p
 −16 LUFS after mix) is met by re-running `master.py` on the mixed output (existing
 SR-1.5 path); **SR-2.7** (HTTP endpoints for these ops) remains Planned.
 
+### Built (Phase 3, partial) — robustness
+
+| SR | Requirement (short) | Module | Verifying test | Status |
+|---|---|---|---|---|
+| **SR-3.1** | validate every import; reject with a reason | `app/validate.py` | `tests/test_phase3.py::TestValidate` | ✅ Built |
+| **SR-3.3** | undo/redo via reversible command stack | `model.py` (`History`) | `tests/test_phase3.py::TestHistory` | ✅ Built |
+
+Verified: `python3 tests/test_phase3.py` → `Ran 4 tests … OK`. **SR-3.2** (autosave/
+restore), **SR-3.4** (cancel/progress), **SR-3.5** (invalidate-on-source-change) remain
+Planned (server-side wiring).
+
 ### Planned backlog (SR-2.x … SR-5.x) — not yet implemented
 
 These are specified and traced but **have no implementing code yet**; they are not
@@ -68,7 +79,7 @@ claimed as met. Build order follows priority (Must → Should → Could).
 | SR group | Theme | New/extended module | Priority |
 |---|---|---|---|
 | SR-2.7 | HTTP endpoints for replace/add audio + add image | `server.py` (ext) | Must |
-| SR-3.1–3.5 | validate input; autosave/restore; undo/redo; cancel+progress; invalidate-on-source-change | `server.py`, `model.py` (command stack) | Should |
+| SR-3.2, SR-3.4, SR-3.5 | autosave/restore; cancel+progress; invalidate-on-source-change | `server.py`, `model.py` | Should |
 | SR-4.2–4.9 | aspect/preset export; translation; WYSIWYG preview; tighten (filler/silence); highlights+cover; clean audio; burn-in captions | `render.py`, `captions.py`, `segment.py` (ext) | Should |
 | SR-3.6, SR-4.10/4.11, SR-2.8 | incremental re-render; branding; presets; independent-manip MoP | various (ext) | Could |
 | SR-5.1–5.4 | transcript export; batch export; license flag; embedded metadata | `captions.py`, `server.py`, `master.py` (ext) | S/C |

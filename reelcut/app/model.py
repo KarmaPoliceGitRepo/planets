@@ -167,3 +167,41 @@ def mark_captions_stale(project: dict) -> None:
     """Flag captions/segments as derived-from-old-audio after an audio replace,
     so the UI can offer re-transcribe (SR-2.3 / SR-3.5)."""
     project["captions_stale"] = True
+
+
+# ---- Phase 3: reversible command stack — undo/redo (SR-3.3) -----------------
+import copy
+
+
+class History:
+    """A linear undo/redo stack of project snapshots. ``record`` is called after
+    every edit; ``undo``/``redo`` return the project state to restore (or None
+    when there is nothing to move to)."""
+
+    def __init__(self, project: dict):
+        self._stack = [copy.deepcopy(project)]
+        self._i = 0
+
+    def record(self, project: dict) -> None:
+        # drop any redo branch, then push the new state
+        del self._stack[self._i + 1:]
+        self._stack.append(copy.deepcopy(project))
+        self._i = len(self._stack) - 1
+
+    def can_undo(self) -> bool:
+        return self._i > 0
+
+    def can_redo(self) -> bool:
+        return self._i < len(self._stack) - 1
+
+    def undo(self):
+        if not self.can_undo():
+            return None
+        self._i -= 1
+        return copy.deepcopy(self._stack[self._i])
+
+    def redo(self):
+        if not self.can_redo():
+            return None
+        self._i += 1
+        return copy.deepcopy(self._stack[self._i])
