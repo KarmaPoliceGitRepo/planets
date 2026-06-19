@@ -83,6 +83,20 @@ Methods: **T**est / **D**emonstration / **I**nspection / **A**nalysis.
 | N-12/N-21 access/lang | Can bilingual & deaf listeners follow? | Transcript/captions present, key parts translated |
 | N-09/N-24 grow | Is there a CTA + numbers for sponsors? | CTA in notes, analytics dashboard exists |
 
+## 7.4a Mission validation (did we meet the *Measures of Effectiveness*?)
+
+Validation closes the top of the V: the MoE from [`00-concept-and-moe.md`](00-concept-and-moe.md)
+are the mission-level acceptance bar. Each is judged by the requirement targets that realise it.
+
+| MoE | Validation question | Evidence (pass bar) |
+|---|---|---|
+| **MoE-1 Reach** | Is the show where the audience is, and findable? | Live on Spotify/Apple (RSS) + YouTube; title/chapter metadata present (FR-7/8, IR-2). |
+| **MoE-2 Accessibility** | Can bilingual / deaf listeners follow on weak data? | `.srt`+`.txt` present, ≥ 90 % accuracy; MP3 ≥ 128 kbps, ≤ 40 MB/30 min (FR-6, PR-3/4/5). |
+| **MoE-3 Sustainability** | Can a beginner sustain it alone, free? | One episode ≤ 3 h at $0 via single-command tasks (PR-6, UR-2/4). |
+| **MoE-4 Quality** | Does it sound clean and consistent; is video valid? | −16 LUFS ±1 / TP ≤ −1 dBTP; noise ≤ −50 dBFS; H.264/AAC MP4 (PR-1/2, IR-3). |
+| **MoE-5 Integrity & impact** | Is it lawful, consented, respectful, with a CTA? | Licence log + consent on file; CTA in every episode (CR-1/4, FR-9). |
+| **MoE-6 Portability** | Can it move host with no lock-in? | RSS feed + episodes exported to a second host (CR-6). |
+
 ## 7.5 Test log template
 
 Copy this per episode into the episode folder:

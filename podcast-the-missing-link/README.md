@@ -19,6 +19,7 @@ It is built using a real **systems engineering (SE) methodology**, so the
 podcast-the-missing-link/
 ├── README.md                     ← you are here (start here)
 ├── 01-systems-engineering/       ← the "engineering brain": why we build it this way
+│   ├── 00-concept-and-moe.md         why it exists: mission + measures of success
 │   ├── 01-stakeholders.md            who cares about this podcast
 │   ├── 02-stakeholder-needs.md       what they need, in plain words
 │   ├── 03-requirements.md            those needs turned into testable rules
