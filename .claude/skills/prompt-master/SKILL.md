@@ -43,9 +43,9 @@ Apply these principles in order:
 You are a helpful assistant.
 
 Transcript:
-[TRANSCRIPT]
+<TRANSCRIPT>
 {{TRANSCRIPT}}
-[/TRANSCRIPT]
+</TRANSCRIPT>
 
 Task: Identify the three most engaging moments in the transcript above.
 ```
