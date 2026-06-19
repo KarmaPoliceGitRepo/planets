@@ -1,9 +1,37 @@
 # ReelCut — MBSE Model (00 · Overview & Framework)
 
+> **Position in the bigger model — read first.** ReelCut is **not** a standalone
+> system. It is the **implementation-layer System-of-Interest** selected by the
+> **podcast** system's physical-layer trade study (variant **V3 — Integrated local
+> Studio**; see
+> [`../../podcast-the-missing-link/01-systems-engineering/06-physical-architecture.md`](../../podcast-the-missing-link/01-systems-engineering/06-physical-architecture.md)
+> §6.0). The real System-of-Interest is the **Missing Link Podcast Production &
+> Distribution System**; ReelCut realises its local **Studio editor** subsystem
+> (components C4b DSP-clean + C5b Segmenter + C10 Studio UI). This model details
+> that subsystem. The cross-layer requirement bridge is in §00.1 below.
+
 > **Method:** OMG **SysML** organised by the **MagicGrid** framework, applied per
 > **NASA/MSFC "NASA MBSE Implementation"** (Plattsmier, 2019, NTRS 20190032390) and
 > aligned to **NPR 7123.1** System Design processes. This model is the **single
 > source of truth** (skill outputs are distilled into it).
+
+## 00.1 Cross-layer bridge — podcast requirements → ReelCut needs/requirements
+
+The podcast system allocates the editing/mastering/captioning functions (F4, F4b,
+F4c, F5, F6, F7) to the Studio solution; the requirements behind those functions are
+the **parent** requirements this ReelCut model refines:
+
+| Podcast requirement (parent) | Realised by ReelCut |
+|---|---|
+| FR-3 non-destructive edit (cut/trim/re-order/denoise) | SN-1, SN-2.1/2.2, SN-9, SN-13; SR-1.1/1.2, SR-4.1/4.5 |
+| PR-1 loudness −16 LUFS / −1 dBTP · PR-2 noise floor | SN-2.4, SN-16; SR-1.5, SR-4.8 |
+| FR-5 export MP3 + MP4 · IR-3 H.264/AAC | SN-1; SR-1.8 |
+| FR-6 transcript + `.srt` captions | SN-2.3, SN-11, SN-21; SR-1.4, SR-4.3, SR-5.1 |
+| UR-1/UR-4 beginner, single-action local UI | SN-1, SN-12; SR-1.7 (127.0.0.1 HMI), SR-4.4 |
+| CR-6 no lock-in / portable project | SN-9; SR-2.2 |
+
+These podcast requirements are the upward trace target; everything below in this
+model traces back to them (and through them to the podcast needs N-xx).
 
 ## The MagicGrid (pillars × layers of abstraction)
 

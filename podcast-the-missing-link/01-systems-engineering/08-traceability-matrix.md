@@ -34,13 +34,36 @@
 | **N-22** helper-friendly | UR-1 | all | quickstart | D |
 | **N-23** minor safety | CR-5 | F9 | adult-owned accounts | I |
 | **N-24** sponsor-ready | FR-9 | F10 | C7/C9 analytics | I dashboard |
+| **N-25** discoverability | FR-9, IR-2 | F8, F9 | C6, C7, C9 (metadata/tags) | I metadata present |
+| **N-26** offline/download | FR-5, PR-3, PR-4 | F6, F9 | C4 FFmpeg, C7 host | D download + play |
+| **N-27** advertiser reach | FR-9 | F10 | C7/C9 analytics | I impressions/brand-safe |
+| **N-29** device formats | IR-3, PR-3 | F6 | C4 FFmpeg | D codec/bitrate |
+| **N-30** in-field weak signal | FR-10, PR-4 | F2, F3 | C3 + phone, C8 cloud | D local capture |
+| **N-31** Trust&Safety/age | CR-2, CR-5 | F1, F9 | editorial review, adult accounts | I policy/age |
+| **N-32** social clips/embeds | FR-9 | F8, F10 | C6 Canva (clips) | I clip + preview |
+| **N-33** CTA / community link | FR-9 | F8 | show-notes template | I CTA present |
+
+> **Collective needs:** every `N-xx` above also rolls up to one group **collective
+> need CN-G1…CN-G6** ([`01-stakeholders.md`](01-stakeholders.md) §1.4,
+> [`02-stakeholder-needs.md`](02-stakeholder-needs.md) §2.0). The roll-up is the
+> upward parent of these rows.
 
 ## 8.2 Coverage check (no gaps, no orphans)
 
-- ✅ **Every need N-01…N-24** maps to ≥ 1 requirement.
+- ✅ **Every need N-01…N-33** maps to ≥ 1 requirement.
 - ✅ **Every requirement** (FR-1…11, PR-1…6, UR-1…4, IR-1…4, CR-1…6) maps to ≥ 1 function **and** has a verification method in [`07`](07-verification-validation.md).
 - ✅ **Every function F1…F10** is allocated to ≥ 1 component in [`06`](06-physical-architecture.md).
-- ✅ **Every component C1…C9** traces up to ≥ 1 function it serves.
+- ✅ **Every component C1…C10 (+ C4b/C5b)** traces up to ≥ 1 function it serves.
+- ✅ **Every MoE-1…MoE-6** ([`00`](00-concept-and-moe.md)) is realised by ≥ 1 requirement target.
+
+## 8.4a Solution-selection & cross-layer trace
+
+| From | To | Link |
+|---|---|---|
+| Requirements UR-2, CR-1, CR-6, UR-1/3, UR-4, PR-6, N-15, PR-1, IR-3 | Trade study | criteria K1–K6 ([`06`](06-physical-architecture.md) §6.0.3) |
+| Trade study | **V3 Integrated local Studio** | selected (score 12; V4 eliminated on cost gate) §6.0.5 |
+| V3 selected solution | `reelcut/mbse` model | realises Studio subsystem (C4b/C5b/C10); bridge in `reelcut/mbse/00-model-overview.md` §00.1 |
+| Podcast FR-3/PR-1/PR-2/FR-5/FR-6/IR-3/UR-1/CR-6 | ReelCut SN/SR | parent→child trace table, `…/00-model-overview.md` §00.1 |
 
 ## 8.3 Bidirectional spot-checks
 

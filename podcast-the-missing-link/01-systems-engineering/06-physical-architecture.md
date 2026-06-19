@@ -5,6 +5,64 @@
 > (F1–F10 from [`05`](05-functional-architecture.md)) to one. Selection rule from
 > our constraints: **free, beginner-usable, no lock-in** (CR-1, CR-6, UR-2).
 
+## 6.0 Solution selection (trade study)
+
+Before naming components we choose the **architecture**. The SoI is first stated as
+a **solution class**, then specialised into candidate **variants**, then scored
+against **requirement-derived criteria** to pick one. §6.1 onward details the
+**selected** variant.
+
+### 6.0.1 SoI as a solution class
+
+**Local-first Podcast Production & Distribution Toolchain** — a $0, beginner-operable
+set of components running on the creator's **own laptop** that takes raw
+microphone/camera input to edited, mastered, captioned audio + video, publishes via
+RSS + YouTube, backs up off-device, and avoids lock-in.
+
+### 6.0.2 Candidate variants (specialisations of the class)
+
+| Variant | Architecture | Essence |
+|---|---|---|
+| **V1** | GUI tool-chain | OBS + Audacity + Auphonic (GUI master) + Canva + Spotify for Creators + YouTube — manual, many apps |
+| **V2** | Script / CLI chain | OBS + FFmpeg scripts (`process_episode.sh`) + Whisper CLI + host/YouTube — repeatable, terminal-driven |
+| **V3** | **Integrated local Studio** | OBS + a one-window local web app (`studio.py`, 127.0.0.1) wrapping DSP-clean + segment-edit + master/export + transcribe, then host/YouTube |
+| **V4** | Commercial all-in-one | Descript / Riverside Pro — single paid app |
+
+### 6.0.3 Criteria (each traced to a requirement)
+
+| Crit | Meaning | Source |
+|---|---|---|
+| **K1 Cost = $0** (gate) | no paid software, no card | UR-2, CR-1 |
+| **K2 No lock-in** (gate) | episodes + RSS portable | CR-6 |
+| **K3 Beginner-usable** | "12-year-old", one quickstart, no jargon | UR-1, UR-3 |
+| **K4 Low effort** | single-action tasks, ≤ 3 h/episode | UR-4, PR-6 |
+| **K5 Offline / field** | creation works with no internet | N-15, §6.5 |
+| **K6 Quality** | hits −16 LUFS + valid MP4 | PR-1, IR-3 |
+
+### 6.0.4 Trade-study matrix (H = 2, M = 1, L = 0)
+
+| | K1 cost | K2 lock-in | K3 beginner | K4 effort | K5 offline | K6 quality | Score |
+|---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| **V1 GUI** | M (Auphonic free cap) | H | M (many apps) | M | M (Auphonic cloud) | H | **8** |
+| **V2 CLI** | H | H | L (terminal) | H | H | H | **9** |
+| **V3 Studio** | H | H | H (one window) | H | H | H | **12** |
+| **V4 Paid** | **L → eliminated** | M | H | H | M | H | — |
+
+**V4 is eliminated before scoring** — it fails the hard cost gate **K1** (UR-2/CR-1).
+
+### 6.0.5 Selection
+
+**Selected: V3 — Integrated local Studio.** It is the only variant scoring full marks
+on the gates *and* on beginner-usability (K3) and effort (K4): one browser window, no
+terminal, single-action tasks, fully offline, $0, portable. **V2 (CLI scripts) is
+retained underneath V3** (the Studio drives the same FFmpeg/Whisper scripts) and
+**V1 (Auphonic GUI)** is documented as a fallback for anyone who prefers it.
+
+➡️ **The selected solution V3 is realised in detail by the `reelcut/` model** (its
+local Studio editor subsystem); see §6.6 and
+[`../../reelcut/mbse/00-model-overview.md`](../../reelcut/mbse/00-model-overview.md).
+The components below (§6.2) are V3's allocation.
+
 ## 6.1 Physical block diagram
 
 ```
