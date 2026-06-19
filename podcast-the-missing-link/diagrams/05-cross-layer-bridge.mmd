@@ -1,0 +1,17 @@
+flowchart LR
+  subgraph POD["Podcast SoI (system)"]
+    FR3["FR-3 edit"]
+    PR1["PR-1 loudness"]
+    FR6["FR-6 transcript"]
+    CR6["CR-6 no lock-in"]
+  end
+  subgraph RC["reelcut SoI (implementation)"]
+    SR11["SR-1.1 segment"]
+    SR15["SR-1.5 -16 LUFS"]
+    SR43["SR-4.3 captions"]
+    SR22["SR-2.2 portable doc"]
+  end
+  FR3 --> SR11
+  PR1 --> SR15
+  FR6 --> SR43
+  CR6 --> SR22

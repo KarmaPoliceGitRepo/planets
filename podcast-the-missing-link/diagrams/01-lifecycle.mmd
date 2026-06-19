@@ -1,0 +1,21 @@
+flowchart TD
+  subgraph CONCEPT["Conceptual layer"]
+    M["Mission"] --> MOE["MoE-1..6"]
+    MOE --> N["Needs N-01..N-33 (+ collective CN-G1..6)"]
+  end
+  subgraph SYSTEM["System layer (problem domain)"]
+    N --> R["Requirements FR / PR / UR / IR / CR"]
+    R --> CO["ConOps modes M1..M5"]
+    R --> F["Functions F1..F10"]
+  end
+  subgraph PHYS["Physical / solution layer"]
+    F --> TS["Trade study: variants V1..V4"]
+    TS --> SEL["Select V3 Integrated Studio"]
+    SEL --> C["Components C1..C10 (+C4b/C5b)"]
+  end
+  subgraph IMPL["Implementation layer"]
+    SEL --> RC["reelcut/mbse: Studio editor subsystem"]
+    C --> SCR["scripts/ + studio/"]
+  end
+  C --> VV["V&V: verify reqs + validate MoE"]
+  VV -.->|validates| MOE
