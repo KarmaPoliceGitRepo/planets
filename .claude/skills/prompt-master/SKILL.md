@@ -59,10 +59,9 @@ Task: Identify the three most engaging moments in the transcript above.
 - When you need only structured output: end with `Respond ONLY with valid JSON. No prose before or after.`
 
 **Reasoning (chain-of-thought)**
-- For complex tasks prepend: "Think step by step before giving your final answer."
-- For Claude: prefix the assistant turn with `Let me think through this:` to prime CoT.
-- Avoid CoT for simple classification tasks — it wastes tokens and can confuse the output format.
-
+- For complex tasks, ask the model to think step by step *privately* before answering.
+- Prefer wording like: "Take a moment to think, then provide your final answer." / "Do not show your reasoning."
+- Avoid requesting reasoning for strict-format tasks (classification/JSON extraction) — it wastes tokens and can break the required output format.
 **Constraints and guardrails**
 - List what the model must NOT do: "Do not add information not present in the source text."
 - For length limits: "Stay under 150 words." / "Respond in exactly 5 bullet points."
