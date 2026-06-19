@@ -61,3 +61,18 @@ def remap(project: dict, timing_map: List[dict], out_srt: str,
                          "text": sub_text.get(clip["id"], "")})
     _write_srt(cues, Path(out_srt))
     return {"ok": True, "cues": len(cues)}
+
+
+# ---- SR-4.3: caption translation (mechanism; ML backend is pluggable) -------
+def translate_cues(cues: List[dict], translator) -> List[dict]:
+    """Return cues with text passed through ``translator`` (str -> str), keeping
+    timings. ``translator`` is any callable — a Whisper-translate task, an offline
+    dictionary, or a stub. The pipeline is built here; the model is injected."""
+    return [{**c, "text": translator(c.get("text", ""))} for c in cues]
+
+
+def write_translated_srt(cues: List[dict], translator, out_srt: str) -> dict:
+    """Translate cues and write the English (or target) .srt (SR-4.3)."""
+    tcues = translate_cues(cues, translator)
+    _write_srt(tcues, Path(out_srt))
+    return {"ok": True, "cues": len(tcues)}

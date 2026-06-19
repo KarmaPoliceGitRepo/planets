@@ -273,6 +273,13 @@ def incremental_plan(old_project: dict, new_project: dict) -> dict:
     return {"reuse": reuse, "recut": recut}
 
 
+def timing_for(project: dict) -> List[dict]:
+    """The output timing map for a project. Preview and final export both derive
+    their clip boundaries from THIS one function, so the preview is frame-accurate
+    to the export by construction (SR-4.4 / WYSIWYG)."""
+    return timing_map(build_plan(project))
+
+
 if __name__ == "__main__":
     import sys
     proj = json.loads(Path(sys.argv[1]).read_text())
