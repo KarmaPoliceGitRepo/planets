@@ -250,6 +250,29 @@ def build_filtergraph(plan: Plan, has_video: bool = True):
     return fg, v, a, tm
 
 
+def _kept_index(project: dict) -> Dict[str, tuple]:
+    out: Dict[str, tuple] = {}
+    for seg in project.get("segments", []):
+        if seg.get("keep", True) is False:
+            continue
+        for s in seg.get("subsections", []):
+            if s.get("keep", True):
+                out[s["id"]] = (round(s.get("start", 0.0), 3),
+                                round(s.get("end", 0.0), 3),
+                                s.get("order", 0))
+    return out
+
+
+def incremental_plan(old_project: dict, new_project: dict) -> dict:
+    """Compare two project states and report which kept clips can be reused versus
+    re-cut, so a re-render only touches changed clips (SR-3.6). A clip is reusable
+    when its id, source in/out and output order are all unchanged."""
+    old, new = _kept_index(old_project), _kept_index(new_project)
+    reuse = [i for i in new if i in old and old[i] == new[i]]
+    recut = [i for i in new if i not in old or old[i] != new[i]]
+    return {"reuse": reuse, "recut": recut}
+
+
 if __name__ == "__main__":
     import sys
     proj = json.loads(Path(sys.argv[1]).read_text())

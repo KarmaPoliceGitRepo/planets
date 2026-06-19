@@ -29,6 +29,7 @@ HOST, PORT = "127.0.0.1", 8770
 
 sys.path.insert(0, str(APP))
 import model as M                                    # noqa: E402
+import api as API                                     # noqa: E402
 from pipeline import probe as P, segment as SEG, render as R, captions as CAP, master as MAS  # noqa: E402
 
 _job_lock = threading.Lock()
@@ -243,6 +244,16 @@ class H(BaseHTTPRequestHandler):
                 if _job["running"]:
                     return self._json({"error": "busy"}, 409)
                 _run_render(data["id"]); return self._json({"ok": True})
+            if u.path in ("/api/replace-audio", "/api/add-audio", "/api/add-image"):
+                workdir = str(_proj_file(data["id"]).parent)
+                if u.path == "/api/replace-audio":
+                    out = API.replace_audio(workdir, data["video"], data["audio"])
+                elif u.path == "/api/add-audio":
+                    out = API.add_audio(workdir, data["video"], data["audio"],
+                                        float(data.get("level_db", 0.0)), bool(data.get("duck", False)))
+                else:
+                    out = API.add_image(workdir, data["image"], float(data.get("duration", 4.0)))
+                return self._json({"ok": True, "out": out})
             return self._json({"error": "not found"}, 404)
         except (KeyError, ValueError) as exc:
             return self._json({"error": str(exc)}, 400)

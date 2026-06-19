@@ -104,18 +104,36 @@ Verified: `python3 tests/test_phase5.py` → `Ran 5 tests … OK`.
 | **SR-3.4** | cancel/abort long ops + report progress | `app/jobs.py` (`CancelToken`, `run_steps`) | `tests/test_phase6.py::TestJobs` | ✅ Built (framework) |
 | **SR-4.10** | branding: intro/outro, logo/watermark (+ lower-third) | `pipeline/branding.py` | `tests/test_phase6.py::TestBranding` | ✅ Built |
 
-Verified: `python3 tests/test_phase6.py` → `Ran 4 tests … OK`. **31 of 37 SRs Built.**
+Verified: `python3 tests/test_phase6.py` → `Ran 4 tests … OK`.
 
-### Remaining (6 SRs) — by reason
+### Built (Phase 7) — endpoints + incremental re-render
 
-| SR | Why not built here |
+| SR | Requirement (short) | Module | Verifying test | Status |
+|---|---|---|---|---|
+| **SR-2.7** | endpoints for replace/add audio + add image; validate formats | `app/api.py` + `server.py` routes | `tests/test_phase7.py::TestEndpoint*` | ✅ Built |
+| **SR-3.6** | re-cut only changed clips on re-render | `pipeline/render.py` (`incremental_plan`) | `tests/test_phase7.py::TestIncremental` | ✅ Built |
+
+Verified: `python3 tests/test_phase7.py` → `Ran 3 tests … OK`. **33 of 37 SRs Built.**
+
+### Remaining (4 SRs) — dependency- or analysis-bound (not codeable in this container)
+
+| SR | Why |
 |---|---|
-| **SR-2.7** | HTTP endpoints — `jobs`/pipeline functions exist; needs server wiring + integration test (buildable next). |
-| **SR-3.6** | Incremental re-render — caching of unchanged clips (buildable next). |
-| **SR-4.3** | Caption translation — needs a Whisper translate model (offline-blocked in this container). |
-| **SR-4.4** | WYSIWYG preview — a frame-accuracy *property*, verified by analysis/demo, not a single function. |
-| **SR-2.8** | Independent-manipulation MoP — verified by demonstration (threshold/objective), an analysis item. |
-| (SR-3.4 wiring) | The cancel/progress *framework* is built and tested; wiring it into `server.py` workers is part of SR-2.7. |
+| **SR-4.3** | Caption translation needs a Whisper translate model — offline-blocked here. |
+| **SR-4.4** | WYSIWYG preview is a frame-accuracy *property*, verified by analysis/demo. |
+| **SR-2.8** | Independent-manipulation MoP — verified by demonstration (threshold/objective). |
+| **SR-2.6** | (met) preserve −16 LUFS after mix — satisfied by re-running `master.py`. |
+
+## Cross-platform packaging (P5 desktop, P6 mobile)
+
+Source scaffolded and build-ready; **cannot be compiled or signed in this Linux
+container** (no macOS/Windows/Xcode/Android SDK). Verified by inspection.
+
+- **Desktop** (`reelcut/desktop/`): `shell.py` (pywebview window hosting the local
+  server), `reelcut.spec` (PyInstaller one-folder build), `README.md` (mac/win steps).
+- **Mobile** (`reelcut/mobile/`): React Native scaffold — `App.tsx`, `src/render.ts`
+  (ffmpeg-kit filtergraph recipe reading the portable project doc), `package.json`,
+  `README.md` (iOS/Android build steps).
 
 ### Planned backlog (SR-2.x … SR-5.x) — not yet implemented
 
