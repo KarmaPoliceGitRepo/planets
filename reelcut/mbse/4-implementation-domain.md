@@ -95,7 +95,27 @@ Verified: `python3 tests/test_phase4.py` → `Ran 6 tests … OK`.
 | **SR-5.2** | batch-export multiple projects with one preset | `export.py` (`batch_export`) | `tests/test_phase5.py::TestBatch` | ✅ Built |
 | **SR-5.4** | embed title/description/chapter metadata | `metadata.py` (`embed_metadata`) | `tests/test_phase5.py::TestMediaExtras` | ✅ Built |
 
-Verified: `python3 tests/test_phase5.py` → `Ran 5 tests … OK`. **29 of 37 SRs Built.**
+Verified: `python3 tests/test_phase5.py` → `Ran 5 tests … OK`.
+
+### Built (Phase 6) — cancel/progress + branding
+
+| SR | Requirement (short) | Module | Verifying test | Status |
+|---|---|---|---|---|
+| **SR-3.4** | cancel/abort long ops + report progress | `app/jobs.py` (`CancelToken`, `run_steps`) | `tests/test_phase6.py::TestJobs` | ✅ Built (framework) |
+| **SR-4.10** | branding: intro/outro, logo/watermark (+ lower-third) | `pipeline/branding.py` | `tests/test_phase6.py::TestBranding` | ✅ Built |
+
+Verified: `python3 tests/test_phase6.py` → `Ran 4 tests … OK`. **31 of 37 SRs Built.**
+
+### Remaining (6 SRs) — by reason
+
+| SR | Why not built here |
+|---|---|
+| **SR-2.7** | HTTP endpoints — `jobs`/pipeline functions exist; needs server wiring + integration test (buildable next). |
+| **SR-3.6** | Incremental re-render — caching of unchanged clips (buildable next). |
+| **SR-4.3** | Caption translation — needs a Whisper translate model (offline-blocked in this container). |
+| **SR-4.4** | WYSIWYG preview — a frame-accuracy *property*, verified by analysis/demo, not a single function. |
+| **SR-2.8** | Independent-manipulation MoP — verified by demonstration (threshold/objective), an analysis item. |
+| (SR-3.4 wiring) | The cancel/progress *framework* is built and tested; wiring it into `server.py` workers is part of SR-2.7. |
 
 ### Planned backlog (SR-2.x … SR-5.x) — not yet implemented
 
@@ -106,9 +126,11 @@ claimed as met. Build order follows priority (Must → Should → Could).
 |---|---|---|---|
 | SR-2.7 | HTTP endpoints for replace/add audio + add image | `server.py` (ext) | Must |
 | SR-3.4 | cancel/abort + progress reporting | `server.py` | Should |
-| SR-4.3 | captions translated to English (needs Whisper translate model) | `captions.py` (ext) | Should |
-| SR-4.4 | WYSIWYG frame-accurate preview | `render.py` (ext) | Should |
-| SR-3.6, SR-2.8, SR-4.10 | incremental re-render; independent-manip MoP; branding overlays | various (ext) | Could |
+| SR-2.7 | HTTP endpoints for replace/add audio + add image (wires `jobs` + pipeline) | `server.py` (ext) | Must |
+| SR-3.6 | incremental re-render of changed clips only | `render.py` (ext) | Could |
+| SR-4.3 | captions translated to English (needs Whisper translate model — offline-blocked) | `captions.py` (ext) | Should |
+| SR-4.4 | WYSIWYG frame-accurate preview (verify by analysis) | `render.py` (ext) | Should |
+| SR-2.8 | independent-manipulation MoP (verify by demonstration) | analysis | C |
 
 ## Build sequence (physical-layer increments)
 
