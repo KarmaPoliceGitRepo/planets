@@ -1,0 +1,10 @@
+flowchart LR
+  LSh -- editDecision --> LSe
+  LSi -- "A/V tracks" --> LSe
+  LSs -- "segments/tags" --> LSe
+  LSe -- "render plan (ordered clips + transitions)" --> LSr
+  LSa -- "mixed audio" --> LSr
+  LSr -- "edit + timing map" --> LSc
+  LSr -- "edit" --> LSm
+  LSc -- srt --> LSh
+  LSm -- "mp4/mp3" --> LSh

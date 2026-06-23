@@ -1,0 +1,5 @@
+flowchart TB
+  SYS["«block» ReelCut (physical config)"]
+  SYS --> CServer & CUI & CProbe & CSegment & CModel & CRender & CCaption & CMaster
+  CModel -.->|extends| CDemux & CImageSynth & CAudioMix
+  CProbe & CSegment & CRender & CMaster -.->|invoke| CFFmpeg["C-FFmpeg (ext)"]

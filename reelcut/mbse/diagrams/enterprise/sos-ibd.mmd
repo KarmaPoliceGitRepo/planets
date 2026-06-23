@@ -1,0 +1,16 @@
+flowchart LR
+  CAP["cap : CaptureDevice"] -->|"rawRecording (A/V)"| FS["filesystem : HostFilesystem"]
+  LIB["lib : MediaLibrary"] -->|"photo, extraAudio"| FS
+  FS -->|"mediaFile"| SOI(["soi : ReelCut"])
+  SOI -->|"renderedFile (mp4/mp3/srt)"| FS
+  CR["creator : Creator"] -->|"editDecision"| BR["browser : WebBrowser"]
+  BR -->|"httpRequest (json @127.0.0.1)"| SOI
+  SOI -->|"httpResponse: segments, preview, exports"| BR
+  BR -->|"preview, delivery"| CR
+  SOI -->|"filterGraph cmd"| FF["ffmpeg : FFmpeg"]
+  FF -->|"renderedMedia, loudnessMeasurement"| SOI
+  SOI -->|"audioStream"| WH["asr : WhisperASR [0..1]"]
+  WH -->|"timedText"| SOI
+  FS -->|"finishedVideo"| PUB["publish : PublishingDest"]
+  FS -->|"finishedVideo"| VW["viewer : Viewer"]
+  SOI <-.->|"portableProjectDoc"| MOB["android / iphone : MobileClient (future)"]

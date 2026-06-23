@@ -1,0 +1,12 @@
+flowchart TD
+  SC["Solution class: Local-first podcast toolchain"]
+  SC --> V1["V1 GUI"]
+  SC --> V2["V2 CLI scripts"]
+  SC --> V3["V3 Integrated Studio"]
+  SC --> V4["V4 Paid all-in-one"]
+  V4 -->|fails K1 cost gate| X["eliminated"]
+  V1 --> SCORE["score vs K1..K6"]
+  V2 --> SCORE
+  V3 --> SCORE
+  SCORE --> PICK["V3 selected (score 12)"]
+  PICK --> RC["realised by reelcut/mbse"]

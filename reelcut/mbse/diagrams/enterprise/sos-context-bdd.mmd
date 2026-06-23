@@ -1,0 +1,18 @@
+flowchart TB
+  subgraph SOS["bdd «system context» block ReelCut_SoS"]
+    direction TB
+    SOI["«system of interest» block : ReelCut\n— black box node —\ncaps: ingest, segment, curate, render,\ncaption, master, re-media, export\nconstraint: 127.0.0.1 only · stdlib + FFmpeg"]
+    CR["«external» block : Creator (actor)\ncaps: record, decide keep/order, choose media\nconstraint: non-expert (0 training)"]
+    VW["«external» block : Viewer / Audience\ncaps: watch, read captions\nconstraint: arbitrary device"]
+    CAP["«external» block : Capture Device\n(phone cam / camera)\ncaps: record A/V\nconstraint: variable codec, rate"]
+    LIB["«external» block : Media Library\n(local photos & audio)\ncaps: store reusable assets\nconstraint: on local disk only"]
+    FS["«external» block : Host Filesystem\ncaps: store upload + render dirs\nconstraint: local; reference property"]
+    BR["«external» block : Web Browser\ncaps: render HMI, run wizard JS\nconstraint: localhost origin"]
+    FF["«external» block : FFmpeg / ffprobe\ncaps: decode, filter-graph, loudnorm, probe\nconstraint: CLI subprocess"]
+    WH["«external» block : Whisper ASR (optional)\ncaps: speech→timed text\nconstraint: optional; offline model"]
+    AND["«environment» block : Android Phone\ncaps: capture, host future client\nconstraint HC-1: ≥ Galaxy S23"]
+    IOS["«environment» block : iPhone\ncaps: capture, host future client\nconstraint HC-1: ≥ iPhone 11"]
+    PUB["«external» block : Publishing Destination\n(social / storage — optional)\ncaps: host finished video\nconstraint: user-initiated egress only"]
+    SOS_C(("ReelCut_SoS"))
+    SOS_C --- SOI & CR & VW & CAP & LIB & FS & BR & FF & WH & AND & IOS & PUB
+  end

@@ -1,0 +1,14 @@
+sequenceDiagram
+  actor CR as Creator
+  participant BR as Browser
+  participant MD as EditModel
+  participant CP as Caption
+  CR->>BR: replace audio (file)
+  BR->>MD: replaceAudio(audioFile)
+  alt unsupported format (B-RA.5)
+    MD-->>BR: 422 rejected (CB-1)
+  else accepted
+    MD->>MD: fit length (pad/trim B-RA.3/4)
+    MD->>CP: CB-4 invalidate cues+segments from old audio
+    CP-->>BR: captions flagged stale → offer re-transcribe
+  end

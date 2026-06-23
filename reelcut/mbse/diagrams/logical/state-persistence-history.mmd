@@ -1,0 +1,21 @@
+stateDiagram-v2
+  state Session {
+    direction LR
+    state Persistence {
+      [*] --> Clean
+      Clean --> Dirty: edit
+      Dirty --> Autosaving: timer / edit
+      Autosaving --> Clean: projectDoc written
+      Clean --> Restoring: reopen after close/crash
+      Restoring --> Clean: projectDoc loaded
+    }
+    --
+    state History {
+      [*] --> Empty
+      Empty --> Undoable: edit pushed
+      Undoable --> Undoable: edit pushed
+      Undoable --> Redoable: undo
+      Redoable --> Undoable: redo / new edit
+      Undoable --> Empty: cleared
+    }
+  }

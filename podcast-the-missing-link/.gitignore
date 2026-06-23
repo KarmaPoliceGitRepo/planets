@@ -1,0 +1,9 @@
+# Episode media is user-generated and can be large — don't commit it.
+# Keep the folder + its structure, ignore the contents.
+episodes/*
+!episodes/.gitkeep
+
+# Local Python virtual env created by setup.sh
+.venv/
+__pycache__/
+*.pyc

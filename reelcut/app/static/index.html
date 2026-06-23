@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ReelCut — edit your talk by topic</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header>
+  <div class="brand">🎬 <b>ReelCut</b> <span class="muted">edit your talk by topic</span></div>
+  <div class="muted small">runs on your computer · your video never leaves it</div>
+</header>
+
+<nav id="steps">
+  <span data-step="0" class="on">0 · Upload</span>
+  <span data-step="1">1 · Segments</span>
+  <span data-step="2">2 · Order &amp; keep</span>
+  <span data-step="3">3 · Transitions</span>
+  <span data-step="4">4 · Export</span>
+</nav>
+
+<main>
+  <!-- STEP 0 -->
+  <section data-panel="0" class="panel on">
+    <div class="card drop" id="drop">
+      <h2>Upload a video</h2>
+      <p class="muted">Drag a file here, or choose one. It's copied into a local project — nothing is uploaded to the internet.</p>
+      <input type="file" id="file" accept="video/*,audio/*">
+      <div id="uplog" class="muted small"></div>
+    </div>
+    <div class="card" id="recent"></div>
+  </section>
+
+  <!-- STEP 1 -->
+  <section data-panel="1" class="panel">
+    <div class="card">
+      <div class="row">
+        <h2 class="grow">Segments — tick the topics to keep</h2>
+        <select id="model" title="Whisper model (used if installed)">
+          <option>tiny</option><option selected>base</option><option>small</option>
+        </select>
+        <button id="btn-segment" class="b2">Analyse &amp; split</button>
+      </div>
+      <p class="muted small" id="engineNote"></p>
+      <div id="segList"><p class="muted">Press “Analyse &amp; split”.</p></div>
+      <div class="row end"><button class="next" data-go="2">Next: order &amp; keep →</button></div>
+    </div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section data-panel="2" class="panel">
+    <div class="card">
+      <h2>Order &amp; keep sub-sections</h2>
+      <p class="muted small">Drag to reorder. Or use the tools: this is the order your final video will play in.</p>
+      <div class="row tools">
+        <span class="muted small">Swap</span>
+        <input id="swapA" type="number" min="1" class="mini"> ↔
+        <input id="swapB" type="number" min="1" class="mini">
+        <button class="ghost" id="btn-swap">Swap</button>
+        <span class="sep"></span>
+        <span class="muted small">Renumber (current positions in new order)</span>
+        <input id="perm" type="text" class="grow" placeholder="e.g. 1, 4, 2, 3">
+        <button class="ghost" id="btn-perm">Apply</button>
+        <button class="ghost" id="btn-reset">Reset to time order</button>
+      </div>
+      <ol id="seqList" class="seq"></ol>
+      <div class="row end">
+        <button class="back" data-go="1">← Segments</button>
+        <button class="next" data-go="3">Next: transitions →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section data-panel="3" class="panel">
+    <div class="card">
+      <div class="row"><h2 class="grow">Transitions</h2>
+        <button class="ghost" id="btn-allgaps">Apply crossfade to all gaps</button></div>
+      <p class="muted small">Each join between two clips. <b class="gap">Gaps</b> (a cut-out chunk or a reorder jump) are highlighted — they look best with a transition.</p>
+      <div id="boundList"></div>
+      <div class="row end">
+        <button class="back" data-go="2">← Order</button>
+        <button class="next" data-go="4">Next: export →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 4 -->
+  <section data-panel="4" class="panel">
+    <div class="card">
+      <div class="row"><h2 class="grow">Export</h2>
+        <button id="btn-render" class="b2">🎬 Build my video</button></div>
+      <p class="muted small">Renders your order + transitions, re-times captions for the new sequence, and masters the audio to −16 LUFS.</p>
+      <div id="result"></div>
+      <pre id="log" class="log">Ready.</pre>
+    </div>
+  </section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>

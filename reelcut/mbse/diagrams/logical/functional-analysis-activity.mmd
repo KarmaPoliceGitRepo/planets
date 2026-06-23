@@ -1,0 +1,7 @@
+flowchart TD
+  s([Export]) --> a1[cut+normalise each clip]
+  a1 --> a2[join: concat / xfade+acrossfade @ offset=running−t]
+  a2 --> a3[encode edit]
+  a3 --> a4[re-time captions to new order]
+  a4 --> a5[two-pass loudnorm → −16 LUFS]
+  a5 --> e([mp4/mp3/srt])

@@ -1,0 +1,10 @@
+flowchart TB
+  RC["«block» ReelCut (logical)"]
+  RC --> LSi["«block» LS-Ingest\n(ingest + demux)"]
+  RC --> LSs["«block» LS-Segment\n(ASR + segment/tag)"]
+  RC --> LSe["«block» LS-EditModel\n(tracks/clips: keep/order/transition/level)"]
+  RC --> LSr["«block» LS-Render\n(cut+join, image-clip synth)"]
+  RC --> LSa["«block» LS-AudioMix\n(mix + duck)"]
+  RC --> LSc["«block» LS-Caption\n(re-time / invalidate)"]
+  RC --> LSm["«block» LS-Master\n(loudnorm −16 LUFS)"]
+  RC --> LSh["«block» LS-HMI\n(local UI + API)"]

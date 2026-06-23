@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Missing Link — Studio</title>
+<style>
+  :root{--bg:#0f1720;--card:#16212e;--ink:#e8eef5;--mut:#90a4b8;--acc:#39b88b;--acc2:#2f7fd1;--bad:#e0564f;--line:#26384a}
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.5 system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+  header{padding:16px 22px;background:linear-gradient(90deg,#11304a,#123c33);border-bottom:1px solid var(--line)}
+  header h1{margin:0;font-size:19px}
+  header p{margin:4px 0 0;color:var(--mut);font-size:13px}
+  main{max-width:980px;margin:0 auto;padding:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:0 0 16px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  label{color:var(--mut);font-size:13px}
+  select,input{background:#0d1620;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:14px}
+  button{cursor:pointer;border:0;border-radius:8px;padding:9px 14px;font-size:14px;font-weight:600;color:#06210f;background:var(--acc)}
+  button.b2{background:var(--acc2);color:#06182b}
+  button.ghost{background:#1d2c3c;color:var(--ink)}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  .steps{display:flex;gap:8px;flex-wrap:wrap}
+  .num{display:inline-block;width:22px;height:22px;border-radius:50%;background:#23394d;text-align:center;line-height:22px;font-size:12px;margin-right:6px}
+  .seg{border:1px solid var(--line);border-radius:10px;margin:10px 0;overflow:hidden}
+  .seghead{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#13202d}
+  .seghead .t{font-weight:700}
+  .tag{font-size:11px;color:#0a2a1d;background:var(--acc);border-radius:20px;padding:2px 9px;font-weight:700}
+  .time{color:var(--mut);font-size:12px;margin-left:auto}
+  .subs{padding:4px 12px 10px 40px}
+  .sub{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-top:1px dashed var(--line)}
+  .sub:first-child{border-top:0}
+  .sub .txt{flex:1}
+  .sub .txt small{color:var(--mut)}
+  .off{opacity:.4}
+  .log{white-space:pre-wrap;background:#0a1119;border:1px solid var(--line);border-radius:8px;padding:12px;font:12px/1.45 ui-monospace,Menlo,Consolas,monospace;max-height:260px;overflow:auto;color:#cfe3d6}
+  .pill{font-size:12px;padding:2px 8px;border-radius:20px;background:#1d2c3c;color:var(--mut)}
+  .ok{color:var(--acc)} .err{color:var(--bad)}
+  .muted{color:var(--mut);font-size:13px}
+  .grow{flex:1}
+  h3{margin:0 0 8px;font-size:15px}
+  .keepall{font-size:12px;color:var(--acc2);background:none;padding:2px 6px;font-weight:600}
+</style>
+</head>
+<body>
+<header>
+  <h1>🎙️ The Missing Link — Studio</h1>
+  <p>Raw video + audio → clean → choose what to keep → master → ready for YouTube &amp; Spotify. All on your computer.</p>
+</header>
+<main>
+
+  <div class="card">
+    <div class="row">
+      <label for="ep">Episode</label>
+      <select id="ep" class="grow"></select>
+      <button class="ghost" onclick="refreshEpisodes()">↻</button>
+      <button class="b2" onclick="newEpisode()">+ New episode</button>
+    </div>
+    <p class="muted" id="epinfo"></p>
+  </div>
+
+  <div class="card">
+    <h3>Pipeline</h3>
+    <div class="steps">
+      <button onclick="job('/api/clean',{strength:strength()})"><span class="num">1</span>Clean audio</button>
+      <select id="strength" title="cleaning strength">
+        <option value="light">light</option>
+        <option value="medium" selected>medium</option>
+        <option value="strong">strong</option>
+      </select>
+      <button class="b2" onclick="job('/api/segment',{model:model(),reuse:false})"><span class="num">2</span>Split into segments</button>
+      <select id="model" title="whisper model (bigger = better + slower)">
+        <option>tiny</option><option selected>base</option><option>small</option><option>medium</option>
+      </select>
+      <button onclick="job('/api/render',{})"><span class="num">3</span>Rebuild (keep ticked)</button>
+      <button class="b2" onclick="job('/api/master',{})"><span class="num">4</span>Master (-16 LUFS)</button>
+      <button class="ghost" onclick="job('/api/transcribe',{})">Subtitles</button>
+    </div>
+    <p class="muted">Tip: a brand-new episode → record into <code>raw/</code> first, then run 1 → 2, tick what to keep below, then 3 → 4.</p>
+  </div>
+
+  <div class="card">
+    <div class="row">
+      <h3 class="grow">Segments &amp; sub-sections — tick what to keep</h3>
+      <span id="kept" class="pill"></span>
+      <button class="ghost" onclick="loadSegments()">Reload</button>
+      <button onclick="saveSegments()">💾 Save choices</button>
+    </div>
+    <div id="segments"><p class="muted">Run “Split into segments” to see topics here.</p></div>
+  </div>
+
+  <div class="card">
+    <div class="row"><h3 class="grow">Activity</h3><span id="status" class="pill">idle</span></div>
+    <div id="log" class="log">Ready.</div>
+  </div>
+</main>
+
+<script>
+let PLAN=null, POLL=null;
+const $=s=>document.querySelector(s);
+const ep=()=>$('#ep').value, strength=()=>$('#strength').value, model=()=>$('#model').value;
+const esc=s=>(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const mmss=t=>{t=Math.max(0,Math.floor(t));return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0')};
+
+async function refreshEpisodes(){
+  const r=await fetch('/api/episodes'); const d=await r.json();
+  const sel=$('#ep'); const cur=sel.value; sel.innerHTML='';
+  (d.episodes||[]).forEach(e=>{
+    const o=document.createElement('option'); o.value=e.path;
+    o.textContent=e.name+(e.has_mp3?'  ✅mp3':'')+(e.has_segments?'  ✂️':'');
+    sel.appendChild(o);
+  });
+  if(cur)sel.value=cur;
+  epinfo(); loadSegments();
+}
+function epinfo(){const o=$('#ep').selectedOptions[0];$('#epinfo').textContent=o?('Folder: '+o.value):'No episodes yet — make one.';}
+$('#ep')&&$('#ep').addEventListener('change',()=>{epinfo();loadSegments();});
+
+async function newEpisode(){
+  const number=prompt('Episode number (e.g. 01)','01'); if(number===null)return;
+  const title=prompt('Episode title','The Missing Link'); if(title===null)return;
+  await fetch('/api/new_episode',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({number,title})});
+  startPoll(); setTimeout(refreshEpisodes,1200);
+}
+
+async function loadSegments(){
+  $('#segments').innerHTML='<p class="muted">Loading…</p>';
+  const r=await fetch('/api/segments?episode='+encodeURIComponent(ep()));
+  if(!r.ok){PLAN=null;$('#segments').innerHTML='<p class="muted">No segments yet — run “Split into segments”.</p>';$('#kept').textContent='';return;}
+  PLAN=await r.json(); renderSegments();
+}
+
+function renderSegments(){
+  const box=$('#segments'); box.innerHTML='';
+  (PLAN.segments||[]).forEach((seg,si)=>{
+    const sd=document.createElement('div'); sd.className='seg';
+    const head=document.createElement('div'); head.className='seghead';
+    head.innerHTML=`<input type="checkbox" ${seg.keep!==false?'checked':''} onchange="toggleSeg(${si},this.checked)">
+      <span class="num">${si+1}</span><span class="t">${esc(seg.title||('Segment '+(si+1)))}</span>
+      <span class="tag">${esc(seg.tag||'topic')}</span>
+      <span class="time">${mmss(seg.start)}–${mmss(seg.end)}</span>
+      <button class="keepall" onclick="allSubs(${si},true)">all</button>
+      <button class="keepall" onclick="allSubs(${si},false)">none</button>`;
+    sd.appendChild(head);
+    const subs=document.createElement('div'); subs.className='subs';
+    (seg.subsections||[]).forEach((sub,ji)=>{
+      const row=document.createElement('div'); row.className='sub'+((seg.keep===false||sub.keep===false)?' off':'');
+      row.innerHTML=`<input type="checkbox" ${sub.keep!==false?'checked':''} onchange="toggleSub(${si},${ji},this.checked)">
+        <div class="txt"><small>${mmss(sub.start)}–${mmss(sub.end)} · <b>${esc(sub.tag||'')}</b></small><br>${esc(sub.text||'')}</div>`;
+      subs.appendChild(row);
+    });
+    sd.appendChild(subs); box.appendChild(sd);
+  });
+  updateKept();
+}
+function toggleSeg(si,v){PLAN.segments[si].keep=v;renderSegments();}
+function toggleSub(si,ji,v){PLAN.segments[si].subsections[ji].keep=v;renderSegments();}
+function allSubs(si,v){(PLAN.segments[si].subsections||[]).forEach(s=>s.keep=v);if(v)PLAN.segments[si].keep=true;renderSegments();}
+function updateKept(){
+  let k=0,sec=0;
+  (PLAN.segments||[]).forEach(s=>{if(s.keep!==false){sec++;(s.subsections||[]).forEach(x=>{if(x.keep!==false)k+=(x.end-x.start);});}});
+  $('#kept').textContent=`keeping ~${mmss(k)} · ${sec} segment(s)`;
+}
+async function saveSegments(){
+  if(!PLAN)return;
+  await fetch('/api/save_segments',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({episode:ep(),plan:PLAN})});
+  flash('Saved your choices.');
+}
+
+async function job(path,extra){
+  const body=Object.assign({episode:ep()},extra||{});
+  const r=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const d=await r.json();
+  if(d.error){flash('⚠️ '+d.error,true);return;}
+  startPoll();
+}
+function startPoll(){clearInterval(POLL);POLL=setInterval(pollJob,800);pollJob();}
+async function pollJob(){
+  const r=await fetch('/api/job'); const j=await r.json();
+  $('#log').textContent=j.log||'(no output)'; $('#log').scrollTop=$('#log').scrollHeight;
+  if(j.running){$('#status').textContent='running: '+j.name;$('#status').className='pill';}
+  else{
+    clearInterval(POLL);
+    const ok=j.returncode===0;
+    $('#status').textContent=(j.name?j.name+': ':'')+(ok?'done ✅':'finished (code '+j.returncode+')');
+    $('#status').className='pill '+(ok?'ok':'err');
+    refreshEpisodes();
+  }
+}
+function flash(m,bad){$('#status').textContent=m;$('#status').className='pill '+(bad?'err':'ok');}
+
+refreshEpisodes();
+</script>
+</body>
+</html>

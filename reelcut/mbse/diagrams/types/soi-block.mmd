@@ -1,0 +1,22 @@
+classDiagram
+  class ReelCut {
+    <<block>>
+    +Loudness loudness
+    +TruePeak truePeak
+    +Duration totalDuration
+    +DataSize egressBytes = 0
+    +port hmi : I_HMI
+    +port media : I_Media
+    +port engine : I_Engine
+    +port asr : I_Transcript [0..1]
+    +ref uploadDir : Directory
+    +ingest() 
+    +segment()
+    +render()
+    +mix()
+    +master()
+    +export()
+    +onUpload(MediaFile)
+    +onRender()
+    +onReplaceAudio(MediaFile)
+  }

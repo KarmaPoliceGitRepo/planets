@@ -1,0 +1,12 @@
+flowchart TB
+  SYS["«block» ReelCut\n— values: loudness:LUFS, truePeak:dBTP, egressBytes:Bytes=0\n— ops: ingest() segment() render() mix() master() export()\n— receptions: onUpload, onRender, onReplaceAudio"]
+  SYS -->|part| P1["editModel : C_Model"]
+  SYS -->|part| P2["render : C_Render"]
+  SYS -->|part| P3["master : C_Master"]
+  SYS -->|part| P4["segment : C_Segment"]
+  SYS -->|part| P5["ingest : C_Probe"]
+  SYS -->|part| P6["audioMix : C_AudioMix"]
+  SYS -->|part| P7["caption : C_Caption"]
+  SYS -->|part| P8["hmi : C_Server/C_UI"]
+  SYS -->|"port (interface block)"| PT["hmi:I_HMI · media:I_Media · engine:I_Engine · asr:I_Transcript[0..1]"]
+  SYS -.->|"reference (external)"| RF["uploadDir : Directory"]

@@ -10,6 +10,28 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "out=$(bash .claude/hooks/drift-check.sh 2>&1); rc=$?; if [ \"$rc\" -ne 0 ]; then jq -n --arg m \"$out\" '{systemMessage: (\"⚠ DRIFT-CHECK FAILED:\\n\" + $m)}'; else jq -n --arg m \"$out\" '{systemMessage: (\"✅ \" + $m)}'; fi",
+            "statusMessage": "Running drift-check"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -n '{hookSpecificOutput: {hookEventName: \"UserPromptSubmit\", additionalContext: \"PERSISTENT RULES (every turn): (1) CAVEMAN MODE ON for chat replies — compressed, terse. EXCEPTIONS = full normal English when: writing durable artifacts (model/code/commits/docs), user asks for normal prose, or precision matters. (2) After ANY edit to reelcut/mbse or podcast-the-missing-link, run .claude/hooks/drift-check.sh and report its status line in your reply.\"}}'",
+            "statusMessage": "Injecting persistent caveman + drift rules"
+          }
+        ]
+      }
     ]
   }
 }

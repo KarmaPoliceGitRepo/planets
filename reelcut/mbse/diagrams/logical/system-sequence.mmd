@@ -1,0 +1,26 @@
+sequenceDiagram
+  actor CR as Creator
+  participant BR as Browser
+  participant RC as ReelCut
+  participant FF as FFmpeg/ffprobe
+  participant WH as Whisper
+  participant FS as Filesystem
+  CR->>BR: confirm edit (keep set, order, transitions)
+  BR->>RC: POST /export {editDecision}
+  RC->>RC: compute timeline (offsets, gap→transition)
+  loop each kept clip
+    RC->>FF: cut clip to own file
+    FF-->>RC: clip file
+  end
+  RC->>FF: join clips (xfade/acrossfade at offsets)
+  FF-->>RC: rendered mp4
+  alt captions
+    RC->>WH: audioStream
+    WH-->>RC: timedText
+    RC->>RC: re-time captions to new order
+  end
+  RC->>FF: two-pass loudnorm (-16 LUFS, TP<=-1)
+  FF-->>RC: measured LUFS/TP
+  RC->>FS: write mp4 / mp3 / srt
+  RC-->>BR: 200 {exports, measuredLoudness}
+  BR-->>CR: preview + download links

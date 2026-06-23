@@ -1,0 +1,17 @@
+flowchart LR
+  SN1["«need» SN-1"]; SN2["«need» SN-2"]; SN5["«need» SN-5"]; SN6["«need» SN-6"]
+  SR11["«functionalRequirement» SR-1.1 segment&tag"]
+  SR12["«functionalRequirement» SR-1.2 keep/order"]
+  SR15["«performanceRequirement» SR-1.5 −16 LUFS"]
+  SR23["«functionalRequirement» SR-2.3 replace audio"]
+  SR28["«physicalRequirement» SR-2.8 indep MoP"]
+  F4["«function» F-4"]; F6["«function» F-6"]; F10["«function» F-10"]; F11["«function» F-11"]
+  LSs["«subsystem» LS-Segment"]; LSe["«subsystem» LS-EditModel"]; LSm["«subsystem» LS-Master"]; LSc["«subsystem» LS-Caption"]
+  T5["«test» T-5"]; T1["«test» T-1"]; T7["«test» T-7"]; T9["«test» T-9"]
+  CR2["«swReq» CR-2"]; CR6["«swReq» CR-6"]
+  SN1 -->|deriveReqt| SR11; SN1 -->|deriveReqt| SR12
+  SN2 -->|deriveReqt| SR15; SN5 -->|deriveReqt| SR23; SN6 -->|deriveReqt| SR28
+  F4 -.->|refine| SR11; F6 -.->|refine| SR12; F10 -.->|refine| SR15; F11 -.->|refine| SR23
+  LSs -->|satisfy| SR11; LSe -->|satisfy| SR12; LSm -->|satisfy| SR15; LSc -->|satisfy| SR23
+  SR11 -->|verify| T5; SR12 -->|verify| T1; SR15 -->|verify| T7; SR23 -->|verify| T9
+  SR15 -->|deriveReqt| CR2; SR23 -->|deriveReqt| CR6

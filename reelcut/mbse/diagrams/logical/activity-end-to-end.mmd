@@ -1,0 +1,33 @@
+flowchart TD
+  S([Start]) --> V{F-15 valid media?}
+  V -- no --> RJ[reject + reason] --> S
+  V -- yes --> ING[F-1/2 ingest + demux]
+  ING --> SP{speech present?}
+  SP -- yes --> ASR[F-3 transcribe]
+  SP -- no --> SIL[silence-detect fallback]
+  ASR --> SEG[F-4 segment + tag]; SIL --> SEG
+  SEG --> CUR[F-5 keep/drop]
+  CUR --> KEEP{>=1 kept?}
+  KEEP -- no --> CUR
+  KEEP -- yes --> ORD[F-6 order]
+  ORD --> JUMP{jarring jump?}
+  JUMP -- yes --> TR[F-7 set transition]
+  JUMP -- no --> RM
+  TR --> RM[F-11/12/13 re-media: replace/add audio, add image]
+  RM --> SRC{source changed?}
+  SRC -- yes --> INV[CB-4 invalidate captions/segments] --> SEG
+  SRC -- no --> RND[F-8 render two-stage]
+  RND --> ERR{ffmpeg error?}
+  ERR -- yes --> RT[CB-3 retry once / abort+log]
+  RT --> RND
+  ERR -- no --> CAP[F-9 re-time captions]
+  CAP --> MAS[F-10 master -16 LUFS]
+  MAS --> SPEC{in spec?}
+  SPEC -- no --> MAS
+  SPEC -- yes --> DEL[F-? deliver mp4/mp3/srt local]
+  DEL --> E([Done])
+  CUR -. F-17 undo/redo .-> CUR
+  ORD -. F-17 undo/redo .-> ORD
+  RM  -. F-17 undo/redo .-> RM
+  S   -. F-16 autosave/restore .-> E
+  RND -. F-18/F-19 progress / cancel .-> RND

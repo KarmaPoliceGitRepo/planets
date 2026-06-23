@@ -1,0 +1,12 @@
+sequenceDiagram
+  actor CR as Creator
+  participant BR as Browser
+  participant MD as EditModel
+  CR->>BR: keep/drop, drag/swap/renumber
+  BR->>MD: setKeep / reorder(permutation)
+  MD-->>BR: updated order (+ jarring-jump flags B-SQ.3)
+  opt undo (B-CU.3 / B-SQ.2)
+    CR->>BR: undo
+    BR->>MD: F-17 pop command stack
+    MD-->>BR: restored state
+  end

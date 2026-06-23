@@ -1,0 +1,13 @@
+sequenceDiagram
+  participant UI as C-UI
+  participant SV as C-Server
+  participant MD as C-Model
+  participant RN as C-Render
+  participant CP as C-Caption
+  participant MS as C-Master
+  UI->>SV: POST /api/render {id}
+  SV->>MD: build plan (ordered kept clips)
+  SV->>RN: render(plan)  → edit + timing_map
+  SV->>CP: remap(timing_map) → srt
+  SV->>MS: master(edit) → mp4/mp3 (−16 LUFS)
+  SV-->>UI: result
