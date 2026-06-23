@@ -77,7 +77,8 @@ condition under which it should be revisited.
 |----|--------|-------|-------------|
 | I-1 | Open | Native `ios/`/`android/` projects not generated (needs a Mac). | Run `reelcut/mobile/setup-ios.sh` on macOS. |
 | I-2 | Open | No automated verification that diagrams render. | Add a render check (R-3). |
-| I-3 | Open | **A full code-review of the ReelCut modules has not been run** — the "improvements list" the user expected does not yet exist. | Run `/code-review` over the merged code; record findings here. |
+| I-3 | Open | **A defect-level code-review of the finished ReelCut modules has not been run** — i.e. bugs/quality issues in code that already runs. (Distinct from the requirement-gap review, which was done — see note below.) | Run `/code-review` over the merged code; record findings here. |
+| I-4 | Closed | Earlier "find gaps/errors" findings (Jun 17–19) were narrated **in chat only** and lost when the session compacted (transcript now starts at the 2026-06-23 01:03 summary). | The durable record of those gaps survives: the **requirement-conformance gaps** are in [`reelcut/mbse/4-implementation-domain.md`](reelcut/mbse/4-implementation-domain.md) (SR→module→test→status) and phase commits `310bafc`…`4e57a4c` (37/37 SRs closed). Root cause = no auto-log existed; fixed by this file + SessionStart/UserPromptSubmit hooks. |
 
 ### Dependencies (external things we rely on)
 | ID | Status | Dependency |
