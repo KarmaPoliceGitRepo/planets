@@ -7,6 +7,24 @@ This repo keeps durable project memory in **`KNOWLEDGE.md` at the repo root**, m
 - **Read it first.** At the start of any non-trivial task, read `KNOWLEDGE.md` for established architecture, decisions, conventions, and gotchas. A `SessionStart` hook (`.claude/settings.json`) also auto-injects it into context each session.
 - **Keep it current.** When you learn or decide something durable, record it with the `graphify` skill (`/graphify`) and commit the update.
 
+## Decision Log + RAID register rule (persistent)
+
+This repo keeps a durable **`DECISIONS.md` at the repo root** — the Decision Log
+(ADRs), accepted **concessions/waivers/deviations**, and the **RAID register**
+(Risks, Assumptions, Issues, Dependencies) plus a technical-debt register. It is the
+companion to `KNOWLEDGE.md`: `KNOWLEDGE.md` holds facts/architecture, `DECISIONS.md`
+holds *why* and *what is still open*.
+
+- **Read it first.** At the start of any non-trivial task, read `DECISIONS.md` so you
+  do not re-derive settled decisions or re-discover known issues. A `SessionStart` hook
+  (`.claude/settings.json`) also auto-injects it into context each session.
+- **Keep it current — same commit.** Whenever a durable decision is made, a concession
+  is knowingly accepted, or a problem/risk is found, add or update an entry in
+  `DECISIONS.md` **in the same commit as the change it describes**.
+- **Never delete entries.** History is the point — change an entry's **Status**
+  (`Superseded(by ID)`, `Closed`, `Mitigated`, …) instead of removing it. IDs are
+  immutable once assigned.
+
 ## MBSE behaviour rule (persistent)
 
 For any **MBSE task**, you **MUST** use the `brainstorming` skill (`/brainstorming`)

@@ -7,6 +7,11 @@
             "type": "command",
             "command": "test -f KNOWLEDGE.md && { echo '# Project memory (graphify store) — auto-loaded from KNOWLEDGE.md. Use the graphify skill (/graphify) to update it.'; echo; sed -n '1,400p' KNOWLEDGE.md; } || true",
             "statusMessage": "Loading graphify project memory"
+          },
+          {
+            "type": "command",
+            "command": "test -f DECISIONS.md && { echo '# Decision Log + RAID register — auto-loaded from DECISIONS.md. Record durable decisions, accepted concessions/waivers, and open risks/issues here in the same commit as the change.'; echo; sed -n '1,400p' DECISIONS.md; } || true",
+            "statusMessage": "Loading Decision Log + RAID register"
           }
         ]
       }
@@ -27,8 +32,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -n '{hookSpecificOutput: {hookEventName: \"UserPromptSubmit\", additionalContext: \"PERSISTENT RULES (every turn): (1) CAVEMAN MODE ON for chat replies — compressed, terse. EXCEPTIONS = full normal English when: writing durable artifacts (model/code/commits/docs), user asks for normal prose, or precision matters. (2) After ANY edit to reelcut/mbse or podcast-the-missing-link, run .claude/hooks/drift-check.sh and report its status line in your reply.\"}}'",
-            "statusMessage": "Injecting persistent caveman + drift rules"
+            "command": "jq -n '{hookSpecificOutput: {hookEventName: \"UserPromptSubmit\", additionalContext: \"PERSISTENT RULES (every turn): (1) CAVEMAN MODE ON for chat replies — compressed, terse. EXCEPTIONS = full normal English when: writing durable artifacts (model/code/commits/docs), user asks for normal prose, or precision matters. (2) After ANY edit to reelcut/mbse or podcast-the-missing-link, run .claude/hooks/drift-check.sh and report its status line in your reply. (3) Maintain DECISIONS.md (Decision Log + RAID register): whenever a durable decision is made, a concession/waiver is accepted, or a problem/risk is found, append or update an entry in DECISIONS.md in the SAME commit. Never delete entries — change their Status. Do not re-derive past decisions; read DECISIONS.md first.\"}}'",
+            "statusMessage": "Injecting persistent caveman + drift + decision-log rules"
           }
         ]
       }
