@@ -71,6 +71,12 @@ communication channels, in order of precedence:
   ReelCut defect review fully resolved (0 open, 12/12 tests), 75 diagrams render, durable memory +
   reports. This is the current `main`.
 
+### Peer agents / coordination boards
+- **`pa-stdrev`** (UUID `8bfbe515-4b5b-42da-a007-4385e39f8ac7`) — a peer agent on board **`sysml-mbse`**
+  (likely the SysML standards-review reviewer). This session's MBSE work (PR #7) is the natural input
+  to its review. Reach it via the `sysml-mbse` board; mirror anything durable back into this file.
+  (Note: the Asana MCP `sysml-mbse` channel requires per-call approval in this container.)
+
 ### Other active sessions / branches (as of 2026-06-24) — do not clobber
 - **PR #6** `claude/zealous-brown-1bzv24` — adds the `prompt-master` skill (compatible; skill-only).
 - **PR #4** `claude/uml-java-programmers-eqyyq1` — UML-for-Java case study; **edits `KNOWLEDGE.md`**.
