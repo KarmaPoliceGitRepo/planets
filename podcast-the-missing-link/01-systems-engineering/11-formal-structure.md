@@ -24,6 +24,14 @@ Every quantitative value property below is typed by one of these. No untyped pro
 | `Pixels` | length | px (artwork ≥ 1400×1400) | IR-2 |
 | `Cost` | money | currency (= 0) | UR-2, CR-1 |
 | `Bool` | logical | true/false | consent, licence, lock-in flags |
+| `Bytes` | data size | byte (B) | C10.egressBytes (= 0) |
+| `Storage` | data size | GB | C0.storageGB, C8.quotaGB |
+| `Resolution` | image size | W×H px | C1.resolution |
+| `FrameRate` | rate | fps | C1.fps |
+| `Count` | cardinality | — (dimensionless) | C2.tracks, C3.speakers, C7.episodes |
+| `LanguageCode` | code | BCP-47 tag (e.g. ne, en) | C5.lang |
+| `Identifier` | identity | opaque string | C9.channelId |
+| `Threshold` | duration | second (s) | C5b.gapThresh (silence-gap split) |
 
 ## 11.2 Interface blocks (realize the interface requirements IR-1…4)
 
@@ -53,7 +61,9 @@ Signals/flow items used above (`AudioSignal`, `VideoSignal`, `RSSFeed`, `MP4`, `
 - **Ports** (typed by §11.2 interface blocks): `mic : I-Mic`, `cam : I-Camera`, `guest : I-Guest`,
   `rss : ~I-RSS`, `video : ~I-Video`, `archive : ~I-Backup`.
 - **Value properties:** `loudness : LUFS = −16`, `truePeak : dBTP = −1`, `cost : Cost = 0`,
-  `effortPerEpisode : Effort`.
+  `effortPerEpisode : Effort`, and the derived effectiveness flags `reach : Bool`,
+  `accessible : Bool`, `integrity : Bool`, `portable : Bool` (each computed by an MoE constraint
+  block in `13-parametrics-and-requirements.md` §13.1/§13.2a).
 - **Operations (behavioural):** `plan()`, `capture()`, `produce()`, `publish()`, `engage()` —
   one per ConOps mode group; each is realized by the function chain in `12-formal-behaviour.md`.
 
@@ -66,19 +76,19 @@ without features, a description, or a link.
 
 | Cmp `«block»` | Description | Ports (typed) | Operations (described) | Value properties | `«allocate»` fn | `«satisfy»` req |
 |---|---|---|---|---|---|---|
-| **C0 Laptop** | Integration hub running C1–C6 | `usb : I-Mic, I-Camera` | `host()` run all local tools | `storageGB` | F3 | UR-2, HC |
-| **C1 OBS** | Records camera+mic+screen to MP4 | `mic:I-Mic`, `cam:I-Camera`, `out:rawAV` | `record()`, `stopAndSave()` | `resolution`, `fps` | F2 Capture | FR-1, FR-2, IR-1 |
-| **C2 Audacity** | Multitrack audio editor | `in:rawAudio`, `out:roughMaster` | `cut()`, `denoise()`, `level()`, `addMusic()` | `tracks` | F4 Edit | FR-3, FR-4 |
-| **C3 Caller** | Remote-guest call/record tool | `guest:I-Guest`, `out:guestTrack` | `connect()`, `recordPerSpeaker()` | `speakers` | F2 (remote) | FR-10, IR-4 |
+| **C0 Laptop** | Integration hub running C1–C6 | `usb : I-Mic, I-Camera` | `host()` run all local tools | `storageGB : Storage` | F3 | UR-2, HC |
+| **C1 OBS** | Records camera+mic+screen to MP4 | `mic:I-Mic`, `cam:I-Camera`, `out:rawAV` | `record()`, `stopAndSave()` | `resolution : Resolution`, `fps : FrameRate` | F2 Capture | FR-1, FR-2, IR-1 |
+| **C2 Audacity** | Multitrack audio editor | `in:rawAudio`, `out:roughMaster` | `cut()`, `denoise()`, `level()`, `addMusic()` | `tracks : Count` | F4 Edit | FR-3, FR-4 |
+| **C3 Caller** | Remote-guest call/record tool | `guest:I-Guest`, `out:guestTrack` | `connect()`, `recordPerSpeaker()` | `speakers : Count` | F2 (remote) | FR-10, IR-4 |
 | **C4 FFmpeg** | Loudness master + MP3/MP4 export | `in:roughMaster`, `out:MasterWav, MP3, MP4` | `master()` → −16 LUFS, `exportMp3()`, `exportMp4()`, `checkPass()` | `targetLUFS:LUFS=−16`, `truePeak:dBTP=−1` | F5 Master, F6 Export | PR-1, PR-2, PR-3, IR-3 |
-| **C5 Whisper** | Local speech-to-text | `in:MasterWav`, `out:Transcript, Captions` | `transcribe()`, `writeSrt()` | `accuracy:Accuracy`, `lang` | F7 Transcribe | FR-6, PR-5 |
+| **C5 Whisper** | Local speech-to-text | `in:MasterWav`, `out:Transcript, Captions` | `transcribe()`, `writeSrt()` | `accuracy:Accuracy`, `lang : LanguageCode` | F7 Transcribe | FR-6, PR-5 |
 | **C6 Canva** | Cover art + social clips | `out:CoverArt` | `makeCover()` (≥1400px), `makeClip()` | `dims:Pixels` | F8 Package | IR-2, FR-9 |
-| **C7 Host (Spotify for Creators)** | Free unlimited host; generates RSS | `in:MP3, CoverArt`, `rss:I-RSS` | `publishAudio()`, `emitRss()` | `episodes` | F9 Publish | FR-7, CR-6 |
-| **C8 Cloud backup** | Off-device copy of raw + masters | `archive:I-Backup` | `sync()`, `restore()` | `quotaGB` | F3 Ingest/Backup | FR-11, UR-4 |
-| **C9 YouTube** | Video host + discovery | `in:MP4, Captions`, `video:I-Video` | `uploadVideo()`, `attachCaptions()` | `channelId` | F9 Publish | FR-8, IR-3 |
-| **C10 Studio UI** | One-window local web app (127.0.0.1) | `in:rawAV`, `out:episode_cut, episode_clean` | `driveClean()`, `driveSegment()`, `driveMaster()`, `driveExport()` | `egressBytes:Bytes=0` | F4b, F4c, F5–F7 (HMI) | UR-1, UR-3 |
+| **C7 Host (Spotify for Creators)** | Free unlimited host; generates RSS | `in:MP3, CoverArt`, `rss:I-RSS` | `publishAudio()`, `emitRss()` | `episodes : Count` | F9 Publish | FR-7, CR-6 |
+| **C8 Cloud backup** | Off-device copy of raw + masters | `archive:I-Backup` | `sync()`, `restore()` | `quotaGB : Storage` | F3 Ingest/Backup | FR-11, UR-4 |
+| **C9 YouTube** | Video host + discovery | `in:MP4, Captions`, `video:I-Video` | `uploadVideo()`, `attachCaptions()` | `channelId : Identifier` | F9 Publish | FR-8, IR-3 |
+| **C10 Studio UI** | One-window local web app (127.0.0.1) | `in:rawAV`, `out:episode_cut, episode_clean` | `driveClean()`, `driveSegment()`, `driveMaster()`, `driveExport()` | `egressBytes : Bytes = 0` | F4b, F4c, F5–F7 (HMI) | UR-1, UR-3 |
 | **C4b DSP cleaner** | High-pass→denoise→de-click→de-ess→compress | `in:rawAudio`, `out:cleanWav` | `clean()` | `noiseFloor:dBFS` | F4b clean audio | PR-2 |
-| **C5b Segmenter** | Whisper + grouping → segments/sub-sections | `in:cleanWav`, `out:segments` | `segment()`, `group()`, `select()` | `gapThresh` | F4c segment | FR-3, UR-1 |
+| **C5b Segmenter** | Whisper + grouping → segments/sub-sections | `in:cleanWav`, `out:segments` | `segment()`, `group()`, `select()` | `gapThresh : Threshold` | F4c segment | FR-3, UR-1 |
 
 > **Realizes the implementation sub-model:** `C10 ▽ {C4b, C5b}` together are the **Studio editor
 > subsystem**; `C10 «realize» reelcut/` (the ReelCut MBSE model is the detailed sub-model of this

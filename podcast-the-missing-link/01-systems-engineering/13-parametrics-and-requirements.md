@@ -40,6 +40,43 @@ flowchart TB
   C5["C5 Whisper.accuracy"] -->|provides value| PR5
 ```
 
+### 13.2a Complete MoE parametric coverage (all six constraint blocks)
+
+§13.2 above diagrams MoE-2 and MoE-4; this completes the remaining four so **every MoE is a
+constraint block whose parameters are bound to typed value properties** (`11` §11.1) and to the
+requirement that supplies the value. No MoE is prose-only.
+
+| MoE `«constraintBlock»` | bound value property : type (owner) | provided by req | verify |
+|---|---|---|---|
+| `ReachBudget` (MoE-1) | `reach : Bool` (PodcastSystem) | FR-7 onRSS, FR-8 onYouTube, IR-2 hasMetadata | publish check |
+| `AccessBudget` (MoE-2) | `accuracy : Accuracy`, `bitrate : Bitrate`, `fileSize : FileSize` | PR-3, PR-4, PR-5, FR-6 | transcript + encode check |
+| `SustainBudget` (MoE-3) | `effortPerEpisode : Effort`, `cost : Cost` (PodcastSystem) | PR-6, UR-2, UR-4 | timing + cost check |
+| `QualityBudget` (MoE-4) | `loudness : LUFS`, `truePeak : dBTP` (PodcastSystem ← C4), `noiseFloor : dBFS` (C4b) | PR-1, PR-2, IR-3 | process_episode.sh PASS |
+| `IntegrityBudget` (MoE-5) | `integrity : Bool` (licence ∧ consent ∧ cta) | CR-1…CR-5, FR-9 | inspection |
+| `PortabilityBudget` (MoE-6) | `portable : Bool` (RSS exportable) | CR-6 | export check |
+| `ArtworkBudget` | `dims : Pixels` (C6) | IR-2 (≥ 1400×1400) | inspection |
+
+```mermaid
+flowchart LR
+  rch["reach : Bool"] -->|bind| R["ReachBudget MoE-1"]
+  FR7["FR-7 onRSS"] -->|provides| rch
+  FR8["FR-8 onYouTube"] -->|provides| rch
+  IR2["IR-2 metadata + artwork>=1400"] -->|provides| rch
+  eff["effortPerEpisode : Effort"] -->|bind| S["SustainBudget MoE-3"]
+  cst["cost : Cost = 0"] -->|bind| S
+  PR6["PR-6 <=3h"] -->|provides| eff
+  UR2["UR-2 $0"] -->|provides| cst
+  integ["integrity : Bool"] -->|bind| I["IntegrityBudget MoE-5"]
+  CR1["CR-1..5 rights/consent"] -->|provides| integ
+  FR9["FR-9 CTA"] -->|provides| integ
+  port["portable : Bool"] -->|bind| P["PortabilityBudget MoE-6"]
+  CR6["CR-6 RSS portable"] -->|provides| port
+  dims["dims : Pixels"] -->|bind| A["ArtworkBudget"]
+  IR2 -->|provides| dims
+  ld["loudness : LUFS"] -->|bind| Q["QualityBudget MoE-4"]
+  C4["C4 FFmpeg.targetLUFS=-16"] -->|provides| ld
+```
+
 ## 13.3 Requirements diagram (derive / refine / satisfy / verify)
 
 ```mermaid

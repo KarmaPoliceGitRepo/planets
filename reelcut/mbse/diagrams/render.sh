@@ -46,6 +46,7 @@ MAP="
 2-solution-domain/2-component-behavior.md|0|physical/component-behavior-sequence
 2-solution-domain/3-component-structure.md|0|physical/component-structure-bdd
 2-solution-domain/4-component-parameters.md|0|physical/mop-parametric
+2-solution-domain/4-component-parameters.md|1|physical/mop-parametric-full
 3-system-configuration.md|0|physical/system-config-bdd
 7-properties-and-types.md|0|types/value-types
 7-properties-and-types.md|1|types/signals

@@ -42,7 +42,7 @@ render_src "$SE/09-model-map.md"                01-lifecycle 02-traceability-spi
 render_src "$SE/10-cross-layer-traceability.md" 10-xlayer-requirements 10-xlayer-structure 10-xlayer-behaviour 10-xlayer-parametric 10-xlayer-configuration
 render_src "$SE/11-formal-structure.md"         11-component-bdd 11-context-ibd
 render_src "$SE/12-formal-behaviour.md"         12-use-cases 12-activity 12-state-machine 12-sequence-remote
-render_src "$SE/13-parametrics-and-requirements.md" 13-parametric 13-requirements-diagram
+render_src "$SE/13-parametrics-and-requirements.md" 13-parametric 13-parametric-full 13-requirements-diagram
 
 rm -f .pptr.json
 echo "Done: $ok ok, $fail failed."

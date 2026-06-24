@@ -3,8 +3,10 @@ classDiagram
     <<block>>
     +Loudness loudness
     +TruePeak truePeak
+    +SyncError avSyncErr
     +Duration totalDuration
     +DataSize egressBytes = 0
+    +Count runtimeDeps = 0
     +port hmi : I_HMI
     +port media : I_Media
     +port engine : I_Engine

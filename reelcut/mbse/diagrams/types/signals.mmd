@@ -1,14 +1,14 @@
 classDiagram
-  class MediaFile { <<signal>> +Path path; +String container; +Count vStreams; +Count aStreams; +Duration duration }
+  class MediaFile { <<signal>> +Path path; +ContainerFormat container; +Count vStreams; +Count aStreams; +Duration duration }
   class ImageFile { <<signal>> +Path path; +Count width; +Count height }
   class AudioFile { <<signal>> +Path path; +Duration duration; +Count sampleRate }
-  class EditDecision { <<signal>> +Boolean[] keepSet; +Permutation order; +TransitionKind[] transitions; +Real[] trackLevels; +Boolean[] mutes }
-  class FilterGraph { <<signal>> +String command }
+  class EditDecision { <<signal>> +KeepFlag[] keepSet; +Permutation order; +TransitionKind[] transitions; +TrackLevel[] trackLevels; +MuteState[] mutes }
+  class FilterGraph { <<signal>> +FFmpegCommand command }
   class Measurement { <<signal>> +Loudness loudness; +TruePeak truePeak; +Duration duration }
   class TimedText { <<signal>> +Cue[] cues }
-  class Cue { <<valueType>> +Duration start; +Duration end; +String text }
+  class Cue { <<valueType>> +Duration start; +Duration end; +CaptionText text }
   class Delivery { <<signal>> +MediaFile mp4; +MediaFile mp3; +File srt; +Loudness measuredLoudness }
-  class ProjectDoc { <<signal>> +String version; +Track[] tracks; +Clip[] clips; +String[] mediaHandles }
+  class ProjectDoc { <<signal>> +SemVer version; +Track[] tracks; +Clip[] clips; +MediaHandle[] mediaHandles }
   class SegmentModel { <<signal>> +Segment[] segments }
   class Segment { <<valueType>> +Duration start; +Duration end; +TagLabel tag; +SubSection[] subs }
   MediaFile <|-- ImageFile
