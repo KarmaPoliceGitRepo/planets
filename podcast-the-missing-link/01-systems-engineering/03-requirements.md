@@ -78,3 +78,14 @@ The system is accepted when, in a single beginner sitting, the user can:
 ➡️ See the full chain in the
 [`08-traceability-matrix.md`](08-traceability-matrix.md). Next, the operational
 picture: [`04-concept-of-operations.md`](04-concept-of-operations.md).
+
+
+## Cross-layer like-to-like links (ADR-013)
+
+> Mirrors this file's rows from the cross-layer spine (`10-cross-layer-traceability.md`).
+> `▽` = within-layer decomposition · `⇒` = across-layer realization (routed via a Configuration item).
+
+| Link | Type | From | To |
+|------|------|------|----|
+| FR-1 ▽→ PR-1 · FR-6 ▽→ PR-5 | ▽ prerequisite | functional requirement | performance requirement |
+| requirement ⇒ component | ⇒ allocate (via V3) | system requirement | physical component C0–C10 |

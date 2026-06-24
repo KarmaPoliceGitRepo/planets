@@ -110,3 +110,14 @@ flowchart TD
 > Decision nodes are the **alternate/exception** branches from the behaviour
 > catalogue; the dotted edges are the **cross-cutting** session behaviours
 > (undo/redo, autosave, progress/cancel) that apply throughout.
+
+
+## Cross-layer like-to-like links (ADR-013)
+
+> Mirrors this file's rows from the cross-layer spine (`../../../8-cross-layer-traceability.md`).
+> `▽` = within-layer decomposition · `⇒` = across-layer realization (routed via a Configuration item).
+
+| Link | Type | From | To |
+|------|------|------|----|
+| F-4 ▽ {F-4.1, F-4.2, F-4.3} | ▽ decompose | F-4 segment media | detect silences · group sub-sections · tag keep/drop |
+| F-4.x ⇒ C-Segment ops | ⇒ allocate | logical function | component operation |

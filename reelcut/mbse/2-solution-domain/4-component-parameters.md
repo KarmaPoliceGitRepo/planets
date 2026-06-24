@@ -48,3 +48,14 @@ constraint def PrivacyBudget  { in egress; require { egress == 0 } }            
 binding  ReelCutConfig::loudness -> LoudnessBudget.I_LUFS;
 verify   SR_1_5_Loudness by LoudnessBudget;     // parametric verifies requirement (p.25)
 ```
+
+
+## Cross-layer like-to-like links (ADR-013)
+
+> Mirrors this file's rows from the cross-layer spine (`../../8-cross-layer-traceability.md`).
+> `▽` = within-layer decomposition · `⇒` = across-layer realization (routed via a Configuration item).
+
+| Link | Type | From | To |
+|------|------|------|----|
+| MOP-1 / MOP-1b ⇐ MOE-9 | ⇐ refine | Measure of Performance | from MOE-9 (loudness/true-peak) |
+| MOP ⇒ value binding ⇒ test | ⇒ verify | performance parameter | bound value property → pass-gate |

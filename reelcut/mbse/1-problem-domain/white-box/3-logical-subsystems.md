@@ -53,3 +53,15 @@ block def LS_EditModel {
 allocate F_6_Sequence to LS_EditModel;     // behaviour → structure, same layer
 satisfy  LS_EditModel  by_satisfies SR_1_2; // logical structure satisfies SR
 ```
+
+
+## Cross-layer like-to-like links (ADR-013)
+
+> Mirrors this file's rows from the cross-layer spine (`../../../8-cross-layer-traceability.md`).
+> `▽` = within-layer decomposition · `⇒` = across-layer realization (routed via a Configuration item).
+
+| Link | Type | From | To |
+|------|------|------|----|
+| ReelCut System ▽ {LS-Ingest … LS-HMI} | ▽ composition | system block | 8 logical subsystems |
+| LS-Ingest ▽ {C-Probe, C-Demux} · LS-HMI ▽ {C-Server, C-UI} | ▽ composition | logical subsystem | physical components |
+| LS ⇒ C | ⇒ allocate / realize | logical subsystem | physical component |

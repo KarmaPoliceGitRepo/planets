@@ -55,3 +55,14 @@ target (Measure of Performance, MoP) and traces down to needs.
 
 ➡️ Next: who cares and what they need — [`01-stakeholders.md`](01-stakeholders.md)
 and [`02-stakeholder-needs.md`](02-stakeholder-needs.md).
+
+
+## Cross-layer like-to-like links (ADR-013)
+
+> Mirrors this file's rows from the cross-layer spine (`10-cross-layer-traceability.md`).
+> `▽` = within-layer decomposition · `⇒` = across-layer realization (routed via a Configuration item).
+
+| Link | Type | From | To |
+|------|------|------|----|
+| MoE-4 ▽ {loudness, caption accuracy} | ▽ constraint decomposition | MoE-4 Quality | sub-measures |
+| MoE-4.x ⇒ PR-1 / PR-5 | ⇒ refine | Measure of Effectiveness | performance requirement |

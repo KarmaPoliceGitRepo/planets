@@ -45,3 +45,14 @@ block def MoEHolder {
 }
 refine MoEHolder::egressBytes -> SN_3_Privacy;     // «refine» MoE → need (p.24)
 ```
+
+
+## Cross-layer like-to-like links (ADR-013)
+
+> Mirrors this file's rows from the cross-layer spine (`../../../8-cross-layer-traceability.md`).
+> `▽` = within-layer decomposition · `⇒` = across-layer realization (routed via a Configuration item).
+
+| Link | Type | From | To |
+|------|------|------|----|
+| MOE-9 ▽ {loudness, true-peak} | ▽ constraint decomposition | MOE-9 Audio clarity | sub-measures |
+| MOE-9.x ⇒ MOP-1 / MOP-1b | ⇒ refine | Measure of Effectiveness | Measure of Performance |

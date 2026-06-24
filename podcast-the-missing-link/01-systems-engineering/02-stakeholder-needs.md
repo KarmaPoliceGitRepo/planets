@@ -96,3 +96,14 @@ To keep a beginner from drowning, we prioritise. **Must** = v1 launch.
 
 ➡️ Next: convert these needs into precise, testable
 [`03-requirements.md`](03-requirements.md).
+
+
+## Cross-layer like-to-like links (ADR-013)
+
+> Mirrors this file's rows from the cross-layer spine (`10-cross-layer-traceability.md`).
+> `▽` = within-layer decomposition · `⇒` = across-layer realization (routed via a Configuration item).
+
+| Link | Type | From | To |
+|------|------|------|----|
+| CN-G2 ▽ {N-01, N-21} | ▽ containment | collective listener need | individual needs |
+| N-01 ⇒ FR-1, PR-1 | ⇒ deriveReqt (via V3) | conceptual need | system requirement |
