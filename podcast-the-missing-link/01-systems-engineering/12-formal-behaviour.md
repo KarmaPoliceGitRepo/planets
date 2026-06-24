@@ -126,6 +126,46 @@ sequenceDiagram
   C1->>C8: sync(raw + per-speaker tracks)
 ```
 
+## 12.4a Sequence — M1 Solo capture (exercises mic / cam / archive ports)
+
+```mermaid
+sequenceDiagram
+  actor Host
+  participant C1 as C1 OBS
+  participant C0 as C0 Laptop
+  participant C8 as C8 Backup
+  Host->>C1: record() [mic:I-Mic, cam:I-Camera]
+  C1-->>C0: rawAV (audio + video)
+  C0->>C0: new_episode folder (F3 Ingest)
+  C0->>C8: sync(raw + masters) [archive:~I-Backup]
+  C8-->>Host: backup confirmed
+```
+
+## 12.4b Sequence — M4 Produce & Publish (exercises rss / video ports)
+
+```mermaid
+sequenceDiagram
+  participant C10 as Studio C10
+  participant C4 as FFmpeg C4
+  participant C5 as Whisper C5
+  participant C6 as Canva C6
+  participant C7 as HostRSS C7
+  participant C9 as YouTube C9
+  C10->>C4: master loudnorm to -16 LUFS
+  C4-->>C10: MasterWav PASS gate
+  C4->>C5: MasterWav
+  C5-->>C10: transcript and srt
+  C6-->>C10: cover art 1400px plus
+  C10->>C7: publishAudio MP3 plus metadata via rss port
+  C7-->>C7: emitRss feed
+  C10->>C9: uploadVideo MP4 plus captions via video port
+  note over C7,C9: RSS to Spotify and Apple, plus YouTube hosts the video
+```
+
+> Together, §12.4 (M2: guest, mic), §12.4a (M1: mic, cam, archive) and §12.4b (M4: rss, video)
+> exercise **every port of the PodcastSystem context IBD** (`11` §11.7) — no connector is left
+> un-interacted.
+
 ## 12.5 Behaviour-completeness register (nominal / alternate / exception / edge)
 
 | Class | Behaviour | Where handled |

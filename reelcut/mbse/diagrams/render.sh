@@ -34,6 +34,7 @@ MAP="
 1-problem-domain/white-box/6-interaction-model.md|4|logical/seq-add-audio
 1-problem-domain/white-box/6-interaction-model.md|5|logical/seq-render-retry
 1-problem-domain/white-box/6-interaction-model.md|6|logical/seq-autosave-restore
+1-problem-domain/white-box/6-interaction-model.md|7|logical/seq-logical-subsystems
 1-problem-domain/white-box/7-state-model.md|0|logical/state-end-to-end
 1-problem-domain/white-box/7-state-model.md|1|logical/state-persistence-history
 1-problem-domain/black-box/2-use-cases.md|0|conceptual/use-cases
