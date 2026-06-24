@@ -110,13 +110,33 @@ meets the HARD rule.
 
 ---
 
+## 4a. Pass 2 (2026-06-24) — four-question deep completeness (ADR-015)
+
+A second pass drove both models to **YES** on four targeted SysML-quality questions, verified by an
+8-agent re-audit (then a fix-and-iterate round for the residual gaps).
+
+| # | Question | ReelCut | Podcast |
+|---|----------|---------|---------|
+| **Q1** | Does **every use case** have its own **activity-decomposition** diagram? | ✅ UC-1…10 (`2a-use-case-activities.md`) | ✅ UC-P1…5 (`14-use-case-activities.md`) |
+| **Q2** | Does **each IBD** have a matching **interaction (sequence)** diagram exercising its ports? | ✅ `6-interaction-model.md §8` (+ IBD connectors completed) | ✅ `12 §12.4/12.4a/12.4b` (all ports) |
+| **Q3** | Is **every value property typed** by a relevant value type? | ✅ + new TrackLevel/Attenuation/HostAddress/AspectKind/Rate + enums; signal element types defined | ✅ + new Bytes/Storage/Resolution/FrameRate/Count/LanguageCode/Identifier/Threshold |
+| **Q4** | Is every **MoP/MoE bound via a parametric diagram**? | ✅ 12/12 MoP constraint blocks + binding matrix | ✅ 6/6 MoE constraint blocks |
+
+- **Method:** the 14 per-UC activity diagrams were produced by a **draft → adversarial-review agent
+  pipeline** (Opus); each reviewer **render-validated** its Mermaid. An 8-agent audit then re-audit
+  confirmed closure; the second iteration added the UC-6 activity, completed the Logical-Subsystems
+  IBD connectors, defined the residual signal element types, and fixed a port-attribution nit.
+- **Diagram total after pass 2: 75 (ReelCut 49 + podcast 26), 0 render failures.**
+
 ## 5. Sign-off
 
-Both models satisfy the HARD rule: every element has named + described structural and behavioural
-features, every element carries at least one relevant relationship (zero orphans), and all 55
-diagrams render. Traceability is continuous across all layers in both models and bridges from the
-podcast mission into the ReelCut implementation via the configuration join (ADR-013). Decisions and
-the resolved gaps are logged in `DECISIONS.md` (ADR-013, ADR-014, RAID I-8).
+Both models satisfy the HARD rule and the four deep-completeness questions: every element has named +
+described structural and behavioural features, every element carries at least one relevant
+relationship (zero orphans), every use case has an activity decomposition, every IBD has an
+interaction diagram, every value property is typed, every MoP/MoE is parametrically bound, and all
+**75** diagrams render. Traceability is continuous across all layers in both models and bridges from
+the podcast mission into the ReelCut implementation via the configuration join (ADR-013). Decisions
+and resolved gaps are logged in `DECISIONS.md` (ADR-013, ADR-014, **ADR-015**, RAID I-8, I-9).
 
 *Generated 2026-06-24 on branch `claude/nepal-village-tourism-podcast-dp29gf`. Regenerate diagrams
 with `reelcut/mbse/diagrams/render.sh` and `podcast-the-missing-link/diagrams/render.sh`; check the
