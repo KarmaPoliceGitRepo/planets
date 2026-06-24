@@ -1,0 +1,20 @@
+flowchart TB
+  subgraph L0[MoE — constraint blocks]
+    MOE4["MoE-4 Quality (parent)"] --> Q1["loudness conformance"]
+    MOE4 --> Q2["caption accuracy"]
+    MOE6["MoE-6 Portability"] --> P6a["no lock-in / RSS portable"]
+  end
+  subgraph L2[Performance requirements — refined constraints]
+    Q1 ==>|refine ⇒| PR1["PR-1 = −16 LUFS, ≤ −1 dBTP"]
+    Q2 ==>|refine ⇒| PR5["PR-5 ≥ 90% transcript accuracy"]
+    P6a ==>|refine ⇒| CR6["CR-6 portable RSS / open formats"]
+  end
+  subgraph L3[Component capability — binding]
+    PR1 -->|bind| B1["C4 FFmpeg loudnorm I=-16:TP=-1"]
+    PR5 -->|bind| B2["C5 Whisper model accuracy"]
+    CR6 -->|bind| B3["C7 RSS feed export"]
+  end
+  subgraph L4[Verified]
+    B1 ==>|verify ⇒| V1["process_episode.sh PASS gate (−16 ±1)"]
+    B2 ==>|verify ⇒| V2["transcript spot-check"]
+  end

@@ -37,5 +37,25 @@ for name in $NAMES; do
     echo "  ✅ $name.svg"; ok=$((ok+1))
   else echo "  ❌ $name.svg"; fail=$((fail+1)); fi
 done
+
+# second source: cross-layer traceability (10), one diagram per pillar + config join
+SRC2="../01-systems-engineering/10-cross-layer-traceability.md"
+NAMES2="10-xlayer-requirements 10-xlayer-structure 10-xlayer-behaviour 10-xlayer-parametric 10-xlayer-configuration"
+python3 - "$SRC2" "$NAMES2" <<'PY'
+import sys, re, pathlib
+src = pathlib.Path(sys.argv[1]); names = sys.argv[2].split()
+blocks = re.findall(r"```mermaid\n(.*?)```", src.read_text(encoding="utf-8"), re.S)
+for i, name in enumerate(names):
+    if i >= len(blocks): print(f"  ⚠️  no block #{i} for {name}"); continue
+    p = pathlib.Path(name + ".mmd"); p.write_text(blocks[i].rstrip()+"\n", encoding="utf-8")
+    print(f"  extracted block #{i} -> {p}")
+PY
+for name in $NAMES2; do
+  [ -f "$name.mmd" ] || continue
+  if npx -y @mermaid-js/mermaid-cli -p .pptr.json -i "$name.mmd" -o "$name.svg" >/dev/null 2>&1; then
+    echo "  ✅ $name.svg"; ok=$((ok+1))
+  else echo "  ❌ $name.svg"; fail=$((fail+1)); fi
+done
+
 rm -f .pptr.json
 echo "Done: $ok ok, $fail failed."

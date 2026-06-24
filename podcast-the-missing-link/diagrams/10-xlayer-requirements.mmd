@@ -1,0 +1,28 @@
+flowchart TB
+  subgraph L0[Mission]
+    MOE1["MoE-1 Reach"]:::m
+    MOE4["MoE-4 Quality"]:::m
+  end
+  subgraph L1[Conceptual needs — containment ▽]
+    CNG2["CN-G2 Listeners (collective)"] --> N01["N-01 clear audio"]
+    CNG2 --> N21["N-21 captions"]
+    CNG1["CN-G1 Host (collective)"] --> N07["N-07 plan series"]
+  end
+  subgraph L2[System requirements — containment ▽]
+    FR1["FR-1 capture clean audio"]
+    PR1["PR-1 −16 LUFS / −1 dBTP"]
+    FR6["FR-6 transcript + captions"]
+    PR5["PR-5 ≥90% transcript accuracy"]
+    FR1 -.->|prerequisite ▽| PR1
+    FR6 -.->|prerequisite ▽| PR5
+  end
+  subgraph L3[Component allocation]
+    PR1 ==>|deriveReqt ⇒ via V3| C4["C4 FFmpeg −16 LUFS"]
+    PR5 ==>|deriveReqt ⇒ via V3| C5["C5 Whisper"]
+  end
+  MOE1 ==>|⇒| N01
+  MOE4 ==>|⇒| N01
+  N01 ==>|deriveReqt ⇒| FR1
+  N01 ==>|deriveReqt ⇒| PR1
+  N21 ==>|deriveReqt ⇒| FR6
+  classDef m fill:#eef;
