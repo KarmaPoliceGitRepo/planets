@@ -1,0 +1,33 @@
+classDiagram
+  class PodcastSystem {
+    «block» SoI
+    +loudness: LUFS = -16
+    +truePeak: dBTP = -1
+    +cost: Cost = 0
+    +mic: I-Mic
+    +rss: ~I-RSS
+    +plan() capture() produce() publish() engage()
+  }
+  class C4_FFmpeg {
+    «block»
+    +targetLUFS: LUFS = -16
+    +master() exportMp3() exportMp4() checkPass()
+  }
+  class C5_Whisper {
+    «block»
+    +accuracy: Accuracy
+    +transcribe() writeSrt()
+  }
+  class C10_Studio {
+    «block»
+    +egressBytes: Bytes = 0
+    +driveClean() driveSegment() driveMaster() driveExport()
+  }
+  class C4b_DSP { «block» +noiseFloor: dBFS +clean() }
+  class C5b_Segmenter { «block» +segment() group() select() }
+  PodcastSystem *-- C4_FFmpeg : ffmpeg
+  PodcastSystem *-- C5_Whisper : whisper
+  PodcastSystem *-- C10_Studio : studio
+  C10_Studio *-- C4b_DSP : dsp
+  C10_Studio *-- C5b_Segmenter : segmenter
+  C10_Studio ..> ReelCut : «realize»

@@ -17,7 +17,10 @@ sequence. The three reorder methods below all just rewrite `order`.
 """
 from __future__ import annotations
 
+import copy
+import hashlib
 import json
+import os
 from pathlib import Path
 from typing import Dict, List
 
@@ -33,8 +36,19 @@ def kept_subs(project: dict) -> List[dict]:
             for sub in seg.get("subsections", []):
                 if sub.get("keep", True):
                     out.append(sub)
-    out.sort(key=lambda s: (s.get("order", 10_000), s.get("start", 0)))
+    # Missing `order` sorts last deterministically (CR-L8): use +inf, tie-break on start.
+    out.sort(key=lambda s: (s.get("order") if s.get("order") else float("inf"), s.get("start", 0)))
     return out
+
+
+def _atomic_write(path: str, text: str) -> None:
+    """Write text by writing a temp file then atomically replacing the target, so a
+    crash mid-write can never leave a truncated/corrupt file (CR-H7)."""
+    p = Path(path)
+    tmp = p.with_name(p.name + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    os.replace(tmp, p)  # atomic on POSIX and Windows for same-filesystem paths
+
 
 
 def renumber(project: dict) -> None:
@@ -115,14 +129,10 @@ def load(path: str) -> dict:
 
 
 def save(project: dict, path: str) -> None:
-    Path(path).write_text(json.dumps(project, ensure_ascii=False, indent=2), encoding="utf-8")
+    _atomic_write(path, json.dumps(project, ensure_ascii=False, indent=2))
 
 
 # ---- Phase 1: non-destructive source guard (SR-4.1) -------------------------
-import hashlib
-import os
-
-
 class SourceMutated(Exception):
     """Raised when an imported source file has changed since import (SR-4.1)."""
 
@@ -134,6 +144,15 @@ def source_digest(project: dict) -> str:
         for chunk in iter(lambda: f.read(1 << 20), b""):
             h.update(chunk)
     return h.hexdigest()
+
+
+def baseline_source(project: dict) -> dict:
+    """Record the source file's digest as the integrity baseline (SR-4.1).
+
+    Must be called when a source is imported; without it ``source_sha256`` is
+    never set and ``assert_source_unchanged`` is inert (CR-H6)."""
+    project["source_sha256"] = source_digest(project)
+    return project
 
 
 def assert_source_unchanged(project: dict) -> None:
@@ -170,9 +189,6 @@ def mark_captions_stale(project: dict) -> None:
 
 
 # ---- Phase 3: reversible command stack — undo/redo (SR-3.3) -----------------
-import copy
-
-
 class History:
     """A linear undo/redo stack of project snapshots. ``record`` is called after
     every edit; ``undo``/``redo`` return the project state to restore (or None
@@ -212,9 +228,12 @@ _STYLE_KEYS = ("transition_type", "transition_duration", "aspect", "branding")
 
 
 def autosave(project: dict, path: str) -> str:
-    """Continuously persist to a sidecar so a crash never loses work (SR-3.2)."""
+    """Continuously persist to a sidecar so a crash never loses work (SR-3.2).
+
+    Written atomically (CR-H7) so a crash mid-autosave cannot corrupt the sidecar
+    that ``restore`` later reads."""
     side = path + ".autosave"
-    Path(side).write_text(json.dumps(project, ensure_ascii=False, indent=2), encoding="utf-8")
+    _atomic_write(side, json.dumps(project, ensure_ascii=False, indent=2))
     return side
 
 
@@ -245,8 +264,14 @@ def save_preset(project: dict, name: str) -> dict:
 
 
 def apply_preset(project: dict, preset: dict) -> None:
-    """Apply a saved preset's style to a project (SR-4.11)."""
-    project.update(preset.get("style", {}))
+    """Apply a saved preset's style to a project (SR-4.11).
+
+    Only whitelisted style keys are copied, so a crafted/corrupt preset cannot
+    overwrite structural keys like ``segments`` or ``source`` (CR-M11)."""
+    style = preset.get("style", {})
+    for k in _STYLE_KEYS:
+        if k in style:
+            project[k] = style[k]
 
 
 def flag_audio_license(project: dict, track_id: str, royalty_free: bool,

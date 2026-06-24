@@ -1,0 +1,19 @@
+flowchart TB
+  start([Start: episode is live]) --> DISC{discover via?}
+  DISC -->|RSS feed IR-2| RSS["Browse RSS feed in Spotify or Apple (FR-7)"]
+  DISC -->|YouTube listing| YT["Find video on YouTube (FR-8)"]
+  RSS -->|show notes, chapters, links| OPEN["Open episode: read show notes, chapters, links (FR-9, N-13)"]
+  YT -->|show notes, chapters, links| OPEN
+  OPEN --> MODE{audio or video?}
+  MODE -->|audio| NET{good connection?}
+  NET -->|yes: stream episode.mp3| PLAYA["Stream episode.mp3, 128 kbps (PR-3)"]
+  NET -->|weak data: fetch episode.mp3| DL["Download episode.mp3, 40 MB or less (PR-4, N-11, N-26)"]
+  DL -->|episode.mp3| PLAYA
+  MODE -->|video: episode.mp4| PLAYV["Play episode.mp4 H.264 AAC on YouTube (IR-3)"]
+  PLAYA --> ACC{need captions or transcript?}
+  PLAYV --> ACC
+  ACC -->|deaf or HoH: episode.srt| CAP["Read episode.srt captions (FR-6, N-21)"]
+  ACC -->|prefer text or bilingual: episode.txt| TXT["Read episode.txt transcript, Nepali or English (FR-6, N-12)"]
+  ACC -->|no| FIN
+  CAP --> FIN([End: episode consumed, may engage UC-P5])
+  TXT --> FIN

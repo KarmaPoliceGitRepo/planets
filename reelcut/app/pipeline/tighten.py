@@ -6,9 +6,10 @@ deterministic core implemented here.
 """
 from __future__ import annotations
 
-import re
 import subprocess
 from typing import List, Tuple
+
+from .silences import silent_spans   # sibling in the same package — works as app.pipeline or pipeline (CR-L9)
 
 
 def detect_silences(src: str, noise: str = "-30dB", min_d: float = 0.3) -> List[Tuple[float, float]]:
@@ -16,16 +17,7 @@ def detect_silences(src: str, noise: str = "-30dB", min_d: float = 0.3) -> List[
     p = subprocess.run(
         ["ffmpeg", "-i", src, "-af", f"silencedetect=noise={noise}:d={min_d}", "-f", "null", "-"],
         capture_output=True, text=True)
-    spans, start = [], None
-    for line in p.stderr.splitlines():
-        m = re.search(r"silence_start: ([-\d.]+)", line)
-        if m:
-            start = float(m.group(1))
-        m = re.search(r"silence_end: ([-\d.]+)", line)
-        if m and start is not None:
-            spans.append((start, float(m.group(1))))
-            start = None
-    return spans
+    return silent_spans(p.stderr)
 
 
 def keep_ranges(duration: float, silences: List[Tuple[float, float]],

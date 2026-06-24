@@ -1,0 +1,10 @@
+sequenceDiagram
+  actor Host
+  participant C1 as C1 OBS
+  participant C0 as C0 Laptop
+  participant C8 as C8 Backup
+  Host->>C1: record() [mic:I-Mic, cam:I-Camera]
+  C1-->>C0: rawAV (audio + video)
+  C0->>C0: new_episode folder (F3 Ingest)
+  C0->>C8: sync(raw + masters) [archive:~I-Backup]
+  C8-->>Host: backup confirmed

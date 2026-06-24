@@ -1,0 +1,14 @@
+flowchart TB
+  S([Start: SegmentRequest, demuxed audio track]) --> SPEECH{speech present and Whisper available?}
+  SPEECH -- "no (B-SG.2 alternate)" --> SIL["silence-detect fallback (FFmpeg silencedetect): silence ranges"]
+  SPEECH -- "yes (B-SG.1 nominal)" --> ASR["F-3 Transcribe ASR (Whisper): timedText"]
+  ASR --> ASRERR{ASR error?}
+  ASRERR -- "yes (B-SG.5 exception, CB-3)" --> SIL
+  ASRERR -- no --> GRP
+  SIL --> GRP["F-4.2 group into sub-sections by topic or silence boundary"]
+  GRP --> MONO{single long monologue?}
+  MONO -- "yes (B-SG.6 edge)" --> SPLIT["time-based sub-section split"]
+  MONO -- no --> TAG
+  SPLIT --> TAG["F-4.3 tag keep/drop default per sub-section"]
+  TAG --> MODEL[/"SegmentModel: segments + sub-sections + tags (SR-1.1)"/]
+  MODEL --> E([End: segments ready for Curate UC-3])

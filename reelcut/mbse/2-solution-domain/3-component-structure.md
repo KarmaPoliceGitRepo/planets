@@ -37,3 +37,14 @@ part def ReelCutConfig {            // physical components allocated from logica
 }
 allocate LS_EditModel to C_Model;   // structure → structure (same scope)
 ```
+
+
+## Cross-layer like-to-like links (ADR-013)
+
+> Mirrors this file's rows from the cross-layer spine (`../../8-cross-layer-traceability.md`).
+> `▽` = within-layer decomposition · `⇒` = across-layer realization (routed via a Configuration item).
+
+| Link | Type | From | To |
+|------|------|------|----|
+| C ▽ part | ▽ composition | physical component | internal parts |
+| C ⇒ module | ⇒ realize | physical component | app/ module (implementation) |

@@ -1,0 +1,21 @@
+sequenceDiagram
+  participant HMI as LS-HMI
+  participant ING as LS-Ingest
+  participant SEG as LS-Segment
+  participant EDM as LS-EditModel
+  participant RND as LS-Render
+  participant AUD as LS-AudioMix
+  participant CAP as LS-Caption
+  participant MAS as LS-Master
+  HMI->>ING: onUpload(MediaFile) [I_HMI]
+  ING->>SEG: tracks [I_AVTracks]
+  SEG->>EDM: segments [I_Segments]
+  HMI->>EDM: editDecision keep/order/transitions [I_HMI]
+  EDM->>RND: renderPlan [I_RenderPlan]
+  EDM->>AUD: trackLevels + duck [I_AVTracks]
+  AUD-->>RND: mixed audio [I_Audio]
+  RND->>CAP: timingMap [I_TimingMap]
+  CAP-->>MAS: re-timed srt [I_Captions]
+  RND->>MAS: edit [I_Edit]
+  MAS-->>HMI: delivery (mp4/mp3/srt, -16 LUFS) [I_Media]
+  note over EDM,CAP: replace-audio path invalidates captions (CB-4), CAP re-emits

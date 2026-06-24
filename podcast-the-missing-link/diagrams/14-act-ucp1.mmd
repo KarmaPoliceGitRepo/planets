@@ -1,0 +1,19 @@
+flowchart TB
+  start([start]) --> ideas[/"object: idea backlog + metrics (from F10 Engage)"/]
+  ideas --> topic{"fresh topic available in series-arc.md?"}
+  topic -->|"no fresh topic (edge)"| defer["Defer episode and grow idea backlog (hand back to F10, N-07 weekly cadence)"]
+  defer --> done2([end])
+  topic -->|"yes (nominal)"| pick["Pick topic from series-arc.md"]
+  pick -->|"object: chosen topic"| research["Research topic and angle"]
+  research -->|"object: research notes"| guestQ{"guest needed for this episode?"}
+  guestQ -->|"no - solo M1 (alternate)"| script["Write or adapt script + assemble asset list (show notes, chapters, CTA per FR-9)"]
+  guestQ -->|"yes - remote M2"| book["Book guest (record-each-side + credit/link, N-15/N-16)"]
+  book --> showQ{"guest confirmed?"}
+  showQ -->|"no-show or declines (edge)"| solo["Fall back to solo monologue plan (M1)"]
+  solo --> script
+  showQ -->|"confirmed (object: booking)"| script
+  script -->|"object: royalty-free music and art candidates"| rights{"all assets rights-cleared? (CR-1)"}
+  rights -->|"no - not licensed (exception)"| regather["Reject asset and re-gather royalty-free / CC / public-domain substitute"]
+  regather --> rights
+  rights -->|"yes"| emit[/"object: script, asset list, booking -> to UC-P2 F2 Capture"/]
+  emit --> done([end])

@@ -7,6 +7,7 @@ workers into.
 """
 from __future__ import annotations
 
+import threading
 from typing import Callable, List, Optional
 
 
@@ -15,18 +16,21 @@ class Cancelled(Exception):
 
 
 class CancelToken:
+    """Cross-thread cancel flag. Backed by ``threading.Event`` so a ``cancel()``
+    on the UI thread is reliably visible to the worker thread (CR-H8)."""
+
     def __init__(self) -> None:
-        self._cancelled = False
+        self._event = threading.Event()
 
     def cancel(self) -> None:
-        self._cancelled = True
+        self._event.set()
 
     @property
     def cancelled(self) -> bool:
-        return self._cancelled
+        return self._event.is_set()
 
     def check(self) -> None:
-        if self._cancelled:
+        if self._event.is_set():
             raise Cancelled()
 
 

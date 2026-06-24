@@ -93,3 +93,14 @@
 
 ➡️ Now allocate each function to a real, free tool:
 [`06-physical-architecture.md`](06-physical-architecture.md).
+
+
+## Cross-layer like-to-like links (ADR-013)
+
+> Mirrors this file's rows from the cross-layer spine (`10-cross-layer-traceability.md`).
+> `▽` = within-layer decomposition · `⇒` = across-layer realization (routed via a Configuration item).
+
+| Link | Type | From | To |
+|------|------|------|----|
+| F4 ▽ {F4b, F4c} | ▽ decompose | F4 Edit | F4b clean audio · F4c segment + select |
+| F4b/F4c ⇒ component ops ⇒ reelcut/ | ⇒ refine | function | implementation behaviour |

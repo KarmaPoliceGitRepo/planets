@@ -1,0 +1,18 @@
+flowchart TB
+  SOI["L1  Podcast Production & Distribution System (SoI)"]
+  SOI ==>|realize ⇒ V3| STUDIO["L3  V3 Integrated local Studio"]
+  subgraph L3[Components — composition ▽]
+    STUDIO --> C0["C0 Laptop (hub)"]
+    STUDIO --> C1["C1 OBS (capture)"]
+    STUDIO --> C2["C2 Audacity (edit)"]
+    STUDIO --> C4["C4 FFmpeg (master/export)"]
+    STUDIO --> C5["C5 Whisper (transcribe)"]
+    STUDIO --> C7["C7 Spotify for Creators (host/RSS)"]
+    STUDIO --> C9["C9 YouTube (video)"]
+    STUDIO --> C10["C10 Studio UI (local web app)"]
+  end
+  subgraph L4[Implementation — composition ▽]
+    C10 --> C4b["C4b DSP cleaner"]
+    C10 --> C5b["C5b Segmenter"]
+    C10 ==>|realize ⇒| REEL["reelcut/ Studio editor sub-model"]
+  end

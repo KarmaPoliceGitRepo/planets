@@ -1,0 +1,37 @@
+flowchart TB
+  start(["UC-1 Upload start: Creator submits mediaFile"])
+  val["F-15 validate format and integrity (CB-1)"]
+  fmt{"accepted format?"}
+  reject(["rejected: source not stored"])
+  size{"very large / long file? (B-IN.6 edge)"}
+  chunk["plan chunked handling and raise resource warning"]
+  probe["F-1 probe streams via ffprobe"]
+  pres{"probe ok? (B-IN.5 exception)"}
+  retry["CB-3 retry once or abort"]
+  demux["F-2 demux into independent A/V tracks (B-IN.1 nominal)"]
+  tracks{"track content? (B-IN.2 / B-IN.3 alt)"}
+  podcast["audio-only: podcast mode, require background image, no video track"]
+  noasr["video-only: skip ASR, no captions"]
+  store["store A/V tracks (non-destructive source)"]
+  reup{"re-upload / replace existing source? (B-IN.7 alt)"}
+  inval["CB-4 invalidate downstream artifacts"]
+  done(["accepted: A/V tracks ready for UC-2 Auto-segment"])
+
+  start -->|mediaFile| val
+  val -->|mediaFile| fmt
+  fmt -->|no: unsupported or corrupt B-IN.4| reject
+  fmt -->|yes| size
+  size -->|yes| chunk -->|mediaFile in chunks| probe
+  size -->|no| probe
+  probe --> pres
+  pres -->|no: fail or timeout| retry
+  retry -->|retry once| probe
+  retry -->|abort| reject
+  pres -->|yes: probe report = streams + duration| demux
+  demux -->|A/V tracks| tracks
+  tracks -->|audio only| podcast --> store
+  tracks -->|video only| noasr --> store
+  tracks -->|A and V| store
+  store --> reup
+  reup -->|yes| inval --> done
+  reup -->|no| done

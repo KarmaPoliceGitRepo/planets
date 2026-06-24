@@ -1,0 +1,18 @@
+flowchart TB
+  START([Start UC-3 Keep / drop]) --> IN["from F-4 Segment & tag : tagged segment list in"]
+  IN --> CURATE["act Select : curate sub-sections (F-5 Select keep/drop)"]
+  CURATE --> PREVIEW{"B-CU.2 preview sub-section?"}
+  PREVIEW -- "yes (alternate)" --> PLAY["F-31 render WYSIWYG preview : clip"] --> SETKD
+  PREVIEW -- "no (nominal)" --> SETKD["F-5 set keep/drop per sub-section (B-CU.1) : toggle flag"]
+  SETKD --> ALLKEEP{"keep-all? (B-CU.5 edge)"}
+  ALLKEEP -- "yes (no trim)" --> GUARD
+  ALLKEEP -- "no" --> RENUM["F-5 compact kept indices : renumber kept set"]
+  RENUM --> GUARD{"CB-2 guard : kept >= 1 ?"}
+  GUARD -- "no (exception B-CU.4)" --> BLOCK["block export + reason : keep-none precondition fails"] --> CURATE
+  GUARD -- "yes (nominal)" --> CHANGED{"selection changed from last commit?"}
+  CHANGED -- "no" --> COMMIT
+  CHANGED -- "yes" --> INVAL["CB-4 invalidate derived : flag captions + render stale"]
+  INVAL --> COMMIT["F-5 setKeep commit to EditModel : kept set + order out"]
+  COMMIT --> UNDO{"B-CU.3 undo a drop?"}
+  UNDO -- "yes (alternate, CB-6)" --> POP["F-17 pop command stack : restored state out"] --> CURATE
+  UNDO -- "no" --> END([End : kept set ready for F-6 Sequence order, UC-4])

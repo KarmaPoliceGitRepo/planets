@@ -1,0 +1,33 @@
+flowchart TB
+  start(["UC-6 Export start: edit plan ready (kept order + transitions)"])
+  plan["build render plan from EditDecision (F-8)"]
+  single{"single kept clip? (B-RN.2 alt)"}
+  cut["cut + normalise each clip to its own file (stage 1)"]
+  join["join clips with xfade + acrossfade (stage 2)"]
+  rok{"render ok? (B-RN.3 exception)"}
+  retry["CB-3 retry once or abort"]
+  fail(["export failed: no delivery"])
+  cap["F-9 re-time captions onto new order"]
+  master["F-10 two-pass loudnorm to -16 LUFS"]
+  pass{"loudness PASS? -17..-15 LUFS (B-MS.2)"}
+  kind{"audio-only project? (B-MS.3 edge)"}
+  mp3only["export MP3 only"]
+  both["export MP3 + MP4"]
+  done(["delivery: mp3/mp4/srt at -16 LUFS"])
+
+  start -->|editPlan| plan
+  plan --> single
+  single -->|yes| cap
+  single -->|no| cut
+  cut -->|clips| join
+  join --> rok
+  rok -->|no| retry
+  retry -->|retry once| join
+  retry -->|abort| fail
+  rok -->|yes: joined edit| cap
+  cap -->|timingMap to srt| master
+  master --> pass
+  pass -->|no: re-master| master
+  pass -->|yes: mastered audio| kind
+  kind -->|yes| mp3only --> done
+  kind -->|no| both --> done

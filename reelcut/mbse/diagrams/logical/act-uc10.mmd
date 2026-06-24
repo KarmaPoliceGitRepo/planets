@@ -1,0 +1,37 @@
+flowchart TB
+  START(["UC-10 Level / mute tracks (act Adjust Tracks, refines SN-6)"])
+  SEL["F-14 Select track in EditModel (LS-EditModel)"]
+  ADJ["F-14 Adjust per-track level (EditDecision.trackLevels : TrackLevel[])"]
+  MUTE{"Mute this track?"}
+  APPLY["F-14 Apply mute state (mutes[i] = MuteState.muted)"]
+  UNMUTE["F-14 Keep unmuted (mutes[i] = MuteState.unmuted)"]
+  MORE{"More tracks to set?"}
+  DUCK{"Duck-under-speech requested?"}
+  SPEECH{"Speech track present?"}
+  WARN["CB-2 Guard-Precondition: warn duck disabled, no speech (B-AA.3)"]
+  MIX["F-12 Re-mix tracks with levels + mutes (+ optional duck) [LS-AudioMix]"]
+  CLIP{"Mix would clip?"}
+  ATTEN["B-AA.5 Auto-attenuate (Attenuation : dB) to preserve -16 LUFS"]
+  MASTER["F-10 Re-master: two-pass loudnorm to -16 LUFS [LS-Master]"]
+  SPEC{"Measurement in spec? loudness -16 LUFS +/-1, truePeak <= -1 dBTP"}
+  REPASS["CB-3 Retry-or-Abort: re-pass / flag out-of-spec (B-MS.2)"]
+  UNDO["CB-6 Undo edit via command stack (F-17)"]
+  DONE(["EditModel updated; delivery mix in spec at -16 LUFS"])
+
+  START --> SEL --> ADJ --> MUTE
+  MUTE -->|yes| APPLY --> MORE
+  MUTE -->|no| UNMUTE --> MORE
+  MORE -->|yes| SEL
+  MORE -->|no| DUCK
+  DUCK -->|yes| SPEECH
+  DUCK -->|no| MIX
+  SPEECH -->|no| WARN --> MIX
+  SPEECH -->|yes| MIX
+  MIX --> CLIP
+  CLIP -->|yes| ATTEN --> MASTER
+  CLIP -->|no| MASTER
+  MASTER --> SPEC
+  SPEC -->|no| REPASS --> MASTER
+  SPEC -->|yes| DONE
+  DONE -.->|reversible| UNDO
+  UNDO -.-> SEL

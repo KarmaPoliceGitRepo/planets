@@ -1,0 +1,9 @@
+flowchart TB
+  CFG["CFG-Podcast (V3 selected)"]
+  CFG --> CAP["CFG-Capture (C1/C3)"]
+  CFG --> EDIT["CFG-Edit/Studio (C10)"]
+  CFG --> MAST["CFG-Master (C4)"]
+  CFG --> PUB["CFG-Publish (C7/C9)"]
+  EDIT ==>|realized by| RC["reelcut CFG-ReelCut (its own ⟨R,S,B,P⟩ join)"]
+  RC -.->|variants| DESK["CFG-Desktop"]
+  RC -.->|variants| MOB["CFG-Mobile"]

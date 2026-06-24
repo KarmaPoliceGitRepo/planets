@@ -118,3 +118,14 @@ requirement def SN_5_AddOrReplaceMedia {
 refine UC_7_ReplaceAudio    -> SN_5_AddOrReplaceMedia;
 deriveReqt SR_2_1_Demux from SN_6_IndependentManipulation;
 ```
+
+
+## Cross-layer like-to-like links (ADR-013)
+
+> Mirrors this file's rows from the cross-layer spine (`../../../8-cross-layer-traceability.md`).
+> `▽` = within-layer decomposition · `⇒` = across-layer realization (routed via a Configuration item).
+
+| Link | Type | From | To |
+|------|------|------|----|
+| SN-5 ▽ {SN-5.1, SN-5.2, SN-5.3} | ▽ containment | SN-5 add/replace media | SN-5.1 add image · SN-5.2 add audio · SN-5.3 replace audio |
+| SN-5.x ⇒ SR-2.x | ⇒ deriveReqt (via CFG-Edit) | conceptual need | logical system requirement |

@@ -150,5 +150,36 @@ sequenceDiagram
   FS-->>SV: projectDoc
   SV-->>BR: restore edit (B-SE.2)
 ```
+
+## 8 · Logical-subsystem interaction (the white-box IBD, exercised end-to-end)
+
+This sequence is the **interaction counterpart of the Logical-Subsystems IBD**
+(`3-logical-subsystems.md`): it drives every logical subsystem `LS-*` over the same
+interface ports/connectors the IBD declares (`I_HMI`, `I_AVTracks`, `I_Segments`, `I_RenderPlan`,
+`I_Audio`, `I_Edit`, `I_TimingMap`, `I_Captions`, `I_Media`), so no port is unexercised.
+
+```mermaid
+sequenceDiagram
+  participant HMI as LS-HMI
+  participant ING as LS-Ingest
+  participant SEG as LS-Segment
+  participant EDM as LS-EditModel
+  participant RND as LS-Render
+  participant AUD as LS-AudioMix
+  participant CAP as LS-Caption
+  participant MAS as LS-Master
+  HMI->>ING: onUpload(MediaFile) [I_HMI]
+  ING->>SEG: tracks [I_AVTracks]
+  SEG->>EDM: segments [I_Segments]
+  HMI->>EDM: editDecision keep/order/transitions [I_HMI]
+  EDM->>RND: renderPlan [I_RenderPlan]
+  EDM->>AUD: trackLevels + duck [I_AVTracks]
+  AUD-->>RND: mixed audio [I_Audio]
+  RND->>CAP: timingMap [I_TimingMap]
+  CAP-->>MAS: re-timed srt [I_Captions]
+  RND->>MAS: edit [I_Edit]
+  MAS-->>HMI: delivery (mp4/mp3/srt, -16 LUFS) [I_Media]
+  note over EDM,CAP: replace-audio path invalidates captions (CB-4), CAP re-emits
+```
 </content>
 </invoke>

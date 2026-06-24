@@ -24,12 +24,16 @@ def transcript_txt(project: dict) -> str:
     return "\n".join(s.get("text", "").strip() for s in _kept_subs_in_order(project)).strip() + "\n"
 
 
-def chapters_ffmetadata(project: dict) -> str:
+def chapters_ffmetadata(project: dict, timing_map: list = None) -> str:
     """FFMETADATA chapter list derived from the kept segments (SR-4.7).
 
-    Output is feedable to ``ffmpeg -i in -i chapters.txt -map_metadata 1``.
-    Chapter times are the cumulative output timeline of the kept sub-sections.
-    """
+    Output is feedable to ``ffmpeg -i in -i chapters.txt -map_chapters 1``.
+
+    When ``timing_map`` (from ``render.timing_map``) is provided, chapter times come
+    from the actual rendered output positions, so they stay correct under reorder /
+    transition overlap (CR-M6). Without it, they fall back to the cumulative sum of
+    kept sub-section source durations (correct only when nothing is re-timed)."""
+    pos = {c["id"]: c for c in (timing_map or [])}
     lines = [";FFMETADATA1"]
     t = 0.0
     for seg in project.get("segments", []):
@@ -38,13 +42,20 @@ def chapters_ffmetadata(project: dict) -> str:
         subs = [s for s in seg.get("subsections", []) if s.get("keep", True)]
         if not subs:
             continue
-        seg_dur = sum(max(0.0, s.get("end", 0) - s.get("start", 0)) for s in subs)
-        start_ms = int(round(t * 1000))
-        end_ms = int(round((t + seg_dur) * 1000))
+        if pos:  # use real rendered timeline
+            kept = [pos[s["id"]] for s in subs if s["id"] in pos]
+            if not kept:
+                continue
+            start_s = min(c["new_start"] for c in kept)
+            end_s = max(c["new_start"] + (c["src_end"] - c["src_start"]) for c in kept)
+        else:    # fall back to cumulative source durations
+            seg_dur = sum(max(0.0, s.get("end", 0) - s.get("start", 0)) for s in subs)
+            start_s, end_s = t, t + seg_dur
+            t += seg_dur
         title = seg.get("title", "Chapter").replace("\n", " ")
         lines += ["[CHAPTER]", "TIMEBASE=1/1000",
-                  f"START={start_ms}", f"END={end_ms}", f"title={title}"]
-        t += seg_dur
+                  f"START={int(round(start_s * 1000))}", f"END={int(round(end_s * 1000))}",
+                  f"title={title}"]
     return "\n".join(lines) + "\n"
 
 

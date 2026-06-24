@@ -10,6 +10,7 @@ Build:      see desktop/README.md (PyInstaller per-OS)
 """
 from __future__ import annotations
 
+import socket
 import threading
 import time
 import sys
@@ -28,9 +29,22 @@ def _serve() -> None:
     srv.serve_forever()
 
 
+def _wait_ready(host: str, port: int, timeout: float = 5.0) -> bool:
+    """Poll the server socket until it accepts a connection, instead of guessing a
+    fixed sleep (CR-L11)."""
+    deadline = time.monotonic() + timeout
+    while time.monotonic() < deadline:
+        try:
+            with socket.create_connection((host, port), timeout=0.2):
+                return True
+        except OSError:
+            time.sleep(0.05)
+    return False
+
+
 def main() -> int:
     threading.Thread(target=_serve, daemon=True).start()
-    time.sleep(0.4)  # let the socket come up
+    _wait_ready(S.HOST, S.PORT)   # wait for the socket to actually come up
     webview.create_window("ReelCut", f"http://{S.HOST}:{S.PORT}",
                           width=1200, height=800, min_size=(900, 600))
     webview.start()

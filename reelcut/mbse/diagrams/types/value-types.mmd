@@ -7,3 +7,9 @@ classDiagram
   class TransitionKind { <<enumeration>> none crossfade dissolve fade wipe slide circle radial }
   class Status { <<enumeration>> Built Planned }
   class VerificationMethodKind { <<enumeration>> Inspection Analysis Demonstration Test }
+  class TrackLevel { <<valueType>> +Real value; unit = dB }
+  class Attenuation { <<valueType>> +Real value; unit = dB }
+  class HostAddress { <<valueType>> +String value; pattern = IPv4 }
+  class ContainerFormat { <<enumeration>> mp4 mov mkv webm m4a mp3 }
+  class KeepFlag { <<enumeration>> keep drop }
+  class MuteState { <<enumeration>> muted unmuted }

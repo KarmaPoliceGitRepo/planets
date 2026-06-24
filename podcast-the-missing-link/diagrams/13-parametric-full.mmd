@@ -1,0 +1,18 @@
+flowchart LR
+  rch["reach : Bool"] -->|bind| R["ReachBudget MoE-1"]
+  FR7["FR-7 onRSS"] -->|provides| rch
+  FR8["FR-8 onYouTube"] -->|provides| rch
+  IR2["IR-2 metadata + artwork>=1400"] -->|provides| rch
+  eff["effortPerEpisode : Effort"] -->|bind| S["SustainBudget MoE-3"]
+  cst["cost : Cost = 0"] -->|bind| S
+  PR6["PR-6 <=3h"] -->|provides| eff
+  UR2["UR-2 $0"] -->|provides| cst
+  integ["integrity : Bool"] -->|bind| I["IntegrityBudget MoE-5"]
+  CR1["CR-1..5 rights/consent"] -->|provides| integ
+  FR9["FR-9 CTA"] -->|provides| integ
+  port["portable : Bool"] -->|bind| P["PortabilityBudget MoE-6"]
+  CR6["CR-6 RSS portable"] -->|provides| port
+  dims["dims : Pixels"] -->|bind| A["ArtworkBudget"]
+  IR2 -->|provides| dims
+  ld["loudness : LUFS"] -->|bind| Q["QualityBudget MoE-4"]
+  C4["C4 FFmpeg.targetLUFS=-16"] -->|provides| ld

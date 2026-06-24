@@ -7,16 +7,32 @@ final mix still meets −16 LUFS (SR-2.6).
 """
 from __future__ import annotations
 
+import math
 import os
-import subprocess
+from . import _ff
+
+# Sane gain bounds for the added track. ``level_db`` is interpolated into the
+# FFmpeg filtergraph, so it must be a finite number in range — never a raw string
+# (CR-H2: prevents a crafted value injecting filtergraph nodes).
+_DB_MIN, _DB_MAX = -60.0, 30.0
+
+
+def _validate_db(level_db: float) -> float:
+    v = float(level_db)
+    if not math.isfinite(v) or not (_DB_MIN <= v <= _DB_MAX):
+        raise ValueError(f"level_db must be a finite number in [{_DB_MIN}, {_DB_MAX}] dB; got {level_db!r}")
+    return v
 
 
 def replace_audio(video: str, new_audio: str, out_path: str) -> str:
-    """Swap the video's audio for ``new_audio`` (SR-2.3). Video stream copied."""
-    subprocess.run(["ffmpeg", "-y", "-i", video, "-i", new_audio,
+    """Swap the video's audio for ``new_audio`` (SR-2.3). Video stream copied.
+
+    The audio is padded with silence (``apad``) and ``-shortest`` trims to the
+    video, so the full video is preserved even when ``new_audio`` is shorter than
+    the video (CR-M7)."""
+    _ff.run(["ffmpeg", "-y", "-i", video, "-i", new_audio,
                     "-map", "0:v:0", "-map", "1:a:0", "-c:v", "copy",
-                    "-c:a", "aac", "-b:a", "192k", "-shortest", out_path],
-                   capture_output=True, check=True)
+                    "-af", "apad", "-c:a", "aac", "-b:a", "192k", "-shortest", out_path])
     return out_path
 
 
@@ -27,6 +43,7 @@ def add_audio(video: str, extra_audio: str, out_path: str,
     ``level_db`` adjusts the added track; ``duck`` ducks it under speech using
     sidechain compression keyed by the original (speech) track.
     """
+    level_db = _validate_db(level_db)
     if duck:
         fc = (f"[1:a]volume={level_db}dB[m];"
               f"[m][0:a]sidechaincompress=threshold=0.03:ratio=8:attack=5:release=250[dk];"
@@ -34,10 +51,9 @@ def add_audio(video: str, extra_audio: str, out_path: str,
     else:
         fc = (f"[1:a]volume={level_db}dB[m];"
               f"[0:a][m]amix=inputs=2:duration=first:dropout_transition=0[a]")
-    subprocess.run(["ffmpeg", "-y", "-i", video, "-i", extra_audio,
+    _ff.run(["ffmpeg", "-y", "-i", video, "-i", extra_audio,
                     "-filter_complex", fc, "-map", "0:v:0", "-map", "[a]",
-                    "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", out_path],
-                   capture_output=True, check=True)
+                    "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", out_path])
     return out_path
 
 
@@ -45,10 +61,9 @@ def clean_audio(src: str, out_path: str) -> str:
     """Reduce noise/hum and improve speech clarity (SR-4.8): high-pass rumble
     cut + FFT denoise. Loudness is re-normalised separately by master.py so the
     final mix still meets −16 LUFS (SR-2.6)."""
-    subprocess.run(["ffmpeg", "-y", "-i", src,
+    _ff.run(["ffmpeg", "-y", "-i", src,
                     "-af", "highpass=f=80,afftdn=nr=12,dynaudnorm=p=0.9",
-                    out_path],
-                   capture_output=True, check=True)
+                    out_path])
     return out_path
 
 
@@ -58,9 +73,8 @@ def image_clip(image: str, out_path: str, duration: float = 4.0,
     no Ken-Burns motion, no intrinsic audio."""
     vf = f"scale={width}:{height}:force_original_aspect_ratio=decrease," \
          f"pad={width}:{height}:(ow-iw)/2:(oh-ih)/2,setsar=1"
-    subprocess.run(["ffmpeg", "-y", "-loop", "1", "-i", image, "-t", f"{duration}",
+    _ff.run(["ffmpeg", "-y", "-loop", "1", "-i", image, "-t", f"{duration}",
                     "-vf", vf, "-r", "30", "-pix_fmt", "yuv420p",
                     "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
-                    "-an", out_path],
-                   capture_output=True, check=True)
+                    "-an", out_path])
     return out_path

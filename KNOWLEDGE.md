@@ -3,66 +3,236 @@
 > Durable project memory maintained by the `graphify` skill. Agents read this for
 > context and append durable facts here. Keep entries terse; date decisions.
 > Never write secrets, tokens, or personal data here — this file is committed and shared.
+>
+> **Companion file:** `DECISIONS.md` at the repo root holds the **Decision Log (ADRs)**,
+> **accepted concessions/waivers**, and the **RAID register**. `KNOWLEDGE.md` = facts &
+> architecture; `DECISIONS.md` = *why* and *what is still open*. Both auto-load each session.
 
 ## Overview
-`planets` (GitHub: `KarmaPoliceGitRepo/planets`) is a small repository currently used
-primarily as a home for reusable **Claude Code skills** under `.claude/skills/`. Beyond
-`README.md` and `SECURITY.md`, the substantive content is the skills themselves.
+`planets` (GitHub: `KarmaPoliceGitRepo/planets`) hosts two things: (1) reusable **Claude Code
+skills** under `.claude/skills/`, and (2) a complete **MBSE model + working software** for a free,
+beginner-friendly **podcast production & distribution system** ("The Missing Link").
+
+- The **System-of-Interest** is the **Missing Link Podcast Production & Distribution System**
+  (`podcast-the-missing-link/`).
+- **ReelCut** (`reelcut/`) is its **implementation-layer Studio editor subsystem** — a local-first,
+  distributable video editor with its own full SysML/MagicGrid model (`reelcut/mbse/`), a Python
+  pipeline (`reelcut/app/`), and desktop (`reelcut/desktop/`) + mobile (`reelcut/mobile/`) shells.
 
 ## Architecture
-- Skills live in `.claude/skills/<name>/SKILL.md`, each with YAML frontmatter (`name`, `description`) plus a Markdown body of instructions.
-- Project-scoped skills (committed here) are auto-discovered by any Claude Code session working in this repo; user-scoped copies can also live in `~/.claude/skills/`.
-- This `KNOWLEDGE.md` at the repo root is the project's persistent memory, written/read by the `graphify` skill.
+- **Skills** live in `.claude/skills/<name>/SKILL.md` (YAML frontmatter + Markdown body),
+  auto-discovered in this repo.
+- **Durable memory**: `KNOWLEDGE.md` (facts) + `DECISIONS.md` (decisions/waivers/RAID), both
+  auto-injected each session by a `SessionStart` hook in `.claude/settings.json`.
+- **Harness rules** (`.claude/settings.json` hooks): `SessionStart` loads both memory files;
+  `Stop` runs `.claude/hooks/drift-check.sh` and surfaces its status; `UserPromptSubmit` injects the
+  persistent caveman + drift-check + maintain-`DECISIONS.md` rules every turn. Rules also documented
+  in `CLAUDE.md`.
+- **podcast-the-missing-link/** (the SoI): `01-systems-engineering/` (`00-concept-and-moe` … `08`
+  RTM, `09-model-map`, **`10-cross-layer-traceability`**), `02-implementation/`, `03-content/`,
+  `scripts/` (FFmpeg master, Whisper, studio UI), `diagrams/` (rendered SVGs).
+- **reelcut/** (the implementation SoI): `mbse/` (`0-enterprise-sos/` … `4-implementation-domain`,
+  `5-traceability`, `6-element-dictionary`, `7-properties-and-types`, **`8-cross-layer-traceability`**;
+  `diagrams/` SVGs), `app/` (stdlib `server.py` on 127.0.0.1 + `pipeline/` modules), `desktop/`
+  (pywebview + PyInstaller), `mobile/` (React Native + ffmpeg-kit), `tests/` (unittest).
+- **Traceability — two complementary spines per model:** the **cross-pillar RTM**
+  (need→requirement→function→component→verify; `podcast …/08`, `reelcut/mbse/5-traceability`) and the
+  **down-the-pillar cross-layer** spine (requirement→requirement, structure→structure,
+  behaviour→behaviour, parametric→parametric; `podcast …/10`, `reelcut/mbse/8-cross-layer-traceability`),
+  with within-layer decomposition `▽`, across-layer realization `⇒`, recursion, and a **configuration
+  join** `CFG-Podcast(V3) → CFG-ReelCut → {Desktop, Mobile}` (DECISIONS ADR-013).
+- **CI**: `.github/workflows/build.yml` — unittest suite on Ubuntu+FFmpeg, plus desktop
+  (macOS/Windows PyInstaller) and best-effort mobile binary builds.
 
 ## Decisions
-- 2026-06-19 — **Layering locked + podcast MBSE completed concept→implementation.** The real **System-of-Interest is the Missing Link Podcast Production & Distribution System** (`podcast-the-missing-link/01-systems-engineering/`). **reelcut/mbse is the implementation-layer SoI** — the local Studio editor subsystem (C4b/C5b/C10) selected by the podcast physical-layer trade study (variant **V3 Integrated local Studio**; V4 paid eliminated on the $0 gate). Platform ecosystem (YouTube/Spotify) = external solution classes, NOT context layers; **stakeholder needs belong to the conceptual layer only**. Added: `00-concept-and-moe.md` (mission + MoE-1…6); `06` §6.0 solution class→variants→trade study→selection; cross-layer bridge in `reelcut/mbse/00-model-overview.md` §00.1 (podcast FR/PR/CR → ReelCut SN/SR); RTM `08` extended with N-25…N-33 + MoE + solution-selection trace. drift-check.sh now scans both models and is green. Spec: `docs/superpowers/specs/2026-06-19-podcast-mbse-end-to-end-completion-design.md`.
-- 2026-06-18 — **Stakeholder-register expansion (brainstorming → cascade).** Applied INCOSE rule to a full YouTube/Spotify-style stakeholder map: **register all, derive needs only inside the ReelCut SoI** (local offline editor). Added in-SoI stakeholders **STK-8…STK-18** with atomic needs **SN-20…SN-30** (loudness/bitrate targets, transcript export, audio-only MP3, guest attribution, batch export, ad-insertion markers, ingest recorder formats, cover thumbnail, license flag, zero-personal-data, embedded metadata). Most map to existing SRs; **4 new system reqs SR-5.1…SR-5.4** (transcript, batch-export, license-flag, embed-metadata) + functions **F-32…F-35** + tests **T-28…T-31**. Platform-only stakeholders **STK-P1…STK-P6** registered but **Parked/Rejected** with rationale (ML/recommendation-data + premium-DRM conflict SN-3/identity). Drift-check green. Design doc `docs/superpowers/specs/2026-06-18-reelcut-stakeholder-register-expansion-design.md`.
-- 2026-06-18 — **Persistent harness rules committed (caveman + drift-check).** Made two working conventions durable as project-committed config (ephemeral container ⇒ only the repo is "forever"). (1) **Communication rule** in `CLAUDE.md`: caveman register in chat, but convert to full normal English for any durable artifact (model files, code, commits, KNOWLEDGE.md, specs) and when the user asks or precision matters — "talk caveman, write proper." (2) **Drift-check rule** + tooling: `.claude/hooks/drift-check.sh` (fence parity across model `.md` + SR `derivedFrom`/`refinedBy` ID resolution) wired as a `Stop` hook in `.claude/settings.json` (warns via systemMessage on drift), plus a CLAUDE.md rule to run it and `render.sh` before committing. Scope chosen: project-committed (not ephemeral `~/.claude`).
-- 2026-06-18 — **Conceptual-layer need elicitation + "shall" rewrite (brainstorming → cascade).** Went wide on vlogger/podcaster + audience psychology and SoI improvement levers, adding **SN-9…SN-19** (non-destructive source, platform-ready aspect/preset, multilingual captions, WYSIWYG preview, auto-tighten filler/silence, repurpose highlight-clips+cover, chapters, clean audio denoise/dehum, sound-off burned-in captions, branding, style presets) + **STK-7** growth-focused creator. Cascaded: capabilities **CAP-12…CAP-21**, mission vignettes **MV-7 grow/repurpose** & **MV-8 polish/brand** (coverage complete, every CAP owned by ≥1 need), measures **MOE-7 reach / MOE-8 engagement / MOE-9 audio-clarity** + **MOP-10/11/12**, functions **F-21…F-31**, requirements **SR-4.1…SR-4.11** (+risk/rationale), tests **T-17…T-27**; traceability/dictionary/MoE+mission diagrams updated. **All system requirements rewritten into canonical "ReelCut shall …" form** (SR only; CR-/HC- untouched). 32/32 diagrams green. Design doc `docs/superpowers/specs/2026-06-18-reelcut-conceptual-need-elicitation-design.md`. Commit `4f1498e`.
-- 2026-06-18 — **Behaviour-model rule + behaviour enrichment (brainstorming).** New **persistent rule in CLAUDE.md**: any **MBSE task that enriches or completes the scope of behaviour models MUST use the `brainstorming` skill** (enumerate all Nominal/Alternate/Exception/Edge flows before writing). Applied it to ReelCut: the behaviour views were happy-path only, so added (a) **concept**: SN-8 "never lose work" + STK-6, MV-6, CAP-11 "Sustain" (autosave/restore incl. crash recovery, undo/redo, cancel/abort); (b) **`white-box/5-behaviour-catalogue.md`** — per-stage behaviours B-IN.*…B-SE.* consolidated into reusable behaviours **CB-1…CB-7** (validate-and-reject, guard-precondition, retry-or-abort, invalidate-derived-on-source-change, incremental-re-render, undo/redo, autosave/restore); (c) **three behaviour views end-to-end** — activity with alt/exception branches (`white-box/2`), **interaction model** `white-box/6` (7 sequence diagrams w/ alt/opt/loop), **state model** `white-box/7` (overall state machine w/ error/recovery + a **concurrent persistence/history region** for autosave+undo/redo); (d) new functions **F-15…F-20**, requirements **SR-3.1…SR-3.6** (+risk/rationale), tests **T-12…T-16**, with traceability/dictionary/overview updated. **32/32 diagrams render green.** Design doc: `docs/superpowers/specs/2026-06-18-reelcut-behaviour-model-enrichment-design.md`. Commit `b084120`. (Consolidating behavioural elements via brainstorming was also a user rule, scoped to that session.)
-- 2026-06-18 — Rebuilt ReelCut's MBSE model to **NASA MagicGrid** per **NTRS 20190032390** (Plattsmier/MSFC) + the user's expert direction (the prior flat model was non-conformant: no logical layer, requirements not function-derived, context not an IBD). New `reelcut/mbse/` package tree **mirrors the NASA containment** (p.10): `1-problem-domain/{black-box,white-box}`, `2-solution-domain`, `3-system-configuration`, `4-implementation-domain`, `5-traceability`. **Three abstraction layers** (p.7 grid): Conceptual (stakeholder needs SN- via ConOps → system requirements) > Logical (system reqs → element reqs) > Physical (element reqs → HW+SW). Key conformance points: **system context is an IBD** (ports typed by interface blocks carrying flow-property signals; `uploadDir` is a **reference property** = external upload folder); **functional analysis** decomposes use cases into activities, pools actions, identifies **unique functions** (F-), and **system requirements (SR-) are written FROM those functions** (stereotypes «functional/interface/performance/physical», attrs per p.15); **logical subsystems** (LS-) are solution-neutral with interface blocks; **physical components** (C-) = the `app/` scripts — **software requirements (CR-) verified by the scripts/tests**, **hardware requirements are constraints** (HC-1: Android ≥ Galaxy S23 / iPhone 11). Top-level system block composed of **structural features** (part/value/flow/port/reference properties) + **behavioural features** (operations/receptions). Relationship rules: «deriveReqt» req→req only (SN→SR→CR); «refine» function→requirement; «satisfy» white-box structure→requirement; «verify» by behaviour/structure/tests; «allocate» behaviour→structure (full-scope) and structure→structure. IDs migrated N-→SN-, FR/PR/IR/CR-(types)→SR- with stereotypes. 8 diagrams regenerated by layer (incl. the IBD context) via mermaid-cli. Supersedes flat `01-06`. NOTE: ntrs.nasa.gov is NOT on the container egress allowlist — the user uploaded the PDF locally for me to read.
-- 2026-06-18 — **ReelCut MBSE model completed end-to-end (design).** Rooted the model one layer above the SoI: new `reelcut/mbse/0-enterprise-sos/` (Enterprise/SoS) with the SoI as a **black-box node** in a «system context» SoS block among external + **environment nodes (iPhone, Android)**, an SoS **BDD** (node capabilities + constraints) and **IBD** (exchanged-item dictionary), **mission vignettes MV-1..5 → mission use cases → capabilities CAP-1..10 → *derived* stakeholder needs SN-1..7** (bottom-up validation: every CAP owned by ≥1 SN, every SN traces to ≥1 CAP), plus **actors / per-perspective system contexts / system-level activity**. Added `white-box/4-system-behavior-dynamics.md` (**sequence + state machine**; state-machine guards source requirement conditions). Added `6-element-dictionary.md` — a **data dictionary giving every element a one-line description** (SoS nodes, interfaces, item flows, MV/CAP, STK/SN, UC, MoE, F, SR, LS, C, CR/HC, MoP, T). Added the four previously text-only **cell diagrams**: `logical/requirements-diagram` (derive/refine/satisfy/verify), `physical/mop-parametric` (constraint blocks + value bindings + MoE roll-up), `conceptual/moe-value-tree`, `physical/system-config-bdd` (top block structural+behavioural features). **All four MagicGrid pillars across all four layers (Enterprise-SoS / Conceptual / Logical / Physical) are now populated AND visualised — 19/19 SVGs render green.** `diagrams/render.sh` now **auto-provisions chrome-headless-shell** (fresh containers cache none) and correctly indexes the traceability file's two threads (mission #0, vertical #1 — fixed an index regression). SVGs mirrored outside the repo at `/home/user/claude/projects/mbse/podcast` (ephemeral; the in-repo `diagrams/` tree is durable). Then raised it from "every element described" to "every element's **properties defined + described + visualised**": `7-properties-and-types.md` defines the **value-type catalogue** (units/quantity kinds/enums), the **signal/flow-item catalogue** (internal typed structure), and **per-block property compartments** (value/part/port/flow/reference props + operations/receptions) for the SoI, every logical subsystem and components — with 3 Mermaid **classDiagram** compartment views (`diagrams/types/{value-types,signals,soi-block}`); requirement attributes completed to the p.15 set (**risk + rationale** companion tables for every SR & CR). Read order now `00 → 7`; **22/22 SVGs render green**. Commits `4df92e9`, `ab4dcc6`, `2e9f6a0` on `claude/nepal-village-tourism-podcast-dp29gf`. GATE-2 implementation (SR-2.x media increments) still NOT started.
-- 2026-06-18 — Adopted a formal MBSE framework for ReelCut: **OMG SysML + MagicGrid** (decided via a `/grilling` session, 6 questions). Restructured `reelcut/mbse/` to be MagicGrid-conformant — all 8 cells populated: **B1** needs + **W1** system requirements (`01`), **B2** use cases (`02`), **B3** system context + **W3** structure (`03`), **W2** behaviour (`04`), **B4 MoE + W4 MoP** (new `06-parameters.md`), traceability (`05`). Decisions: keep existing IDs stable (N-5…N-9 reserved); pull governance out of B1 into **G-1/G-2** (was N-10/N-18); add the missing black-box **System Context** + **Measures of Effectiveness** and white-box **MoP** pillars; integrate built-vs-planned via a per-element **Status {Built|Planned}** attribute (no more appended "v2" sections); **hybrid notation** (decision Q5-c) — SysML v2 textual for requirements/ports/parametric-constraint blocks, Mermaid for illustrative views, with a conformance statement in `00`; every W1 requirement carries lean attributes **Cell·Status·Verify(I/A/D/T)·From·Alloc·Rationale + MoSCoW priority**. MoE/MoP: hard targets firm (privacy egress=0, −16 LUFS, caption-integrity=0), soft targets (duck dB, render-time, time-to-complete) marked TBD. Added MOE-6 Accessibility. Model remains design-only (GATE 2 not yet crossed).
-- 2026-06-18 — `/grilling` session refined the ReelCut media-add plan into locked user needs **N-10…N-19** (now being cascaded into `reelcut/mbse/`). Key decisions: needs-approved-before-design (N-10); **demux input into independent audio & video tracks** (N-11); track/clip model is **first-class & extensible** (N-12); independent manipulation is a **graded MoP — threshold = constrained** (spoken sub-sections stay A/V-locked; replace/add audio, add images, per-track level/mute) **/ objective = fully independent A&V timelines** (N-13); **replace audio invalidates/flags captions+segments** derived from old audio, offer re-transcribe (N-14); **add audio = mix + level/mute + optional one-tap duck-under-speech** (needs a speech track) (N-15); **image clips** = synthesised stills, 4s default editable, Ken-Burns off-by-default, no intrinsic audio (independent audio plays under), reuse existing reorder UX (N-16); preserve −16 LUFS + two-stage-render + caption invariants (N-17); **MBSE (`reelcut/mbse/`) is the single source of truth** — skill outputs are transient drafts distilled into it (N-18); mobile Android/iOS availability is **feasibility-first** (N-19). Implementation sliced into 4 ordered increments (demux/track-model → replace-audio → add-audio mix/duck → image-clips), each with binary "done-when" + FFmpeg-verified tests. Refined guard prompt saved at `docs/superpowers/plans/2026-06-18-reelcut-media-add-execution-prompt.md`. Mobile feasibility brief being produced by a parallel subagent. Execution is GATED: design/MBSE only until GATE 2 approval, then implement.
-- 2026-06-18 — Installed `grill-me` + `grilling` skills, vendored byte-identical from `github.com/mattpocock/skills` (MIT, LICENSE kept). `grill-me` is user-invoked only (`disable-model-invocation: true`) and just delegates to a `/grilling` session; `grilling` runs a relentless **one-question-at-a-time** interview to stress-test a plan/design (explores the codebase to answer its own questions where possible, gives a recommended answer per question). Installed BOTH so `/grill-me` is functional. Intended use here: grill the PLANNED ReelCut roadmap (media-add + mobile port) before/around the brainstorming phase.
-- 2026-06-18 — PLANNED (not yet built) — ReelCut roadmap, to be executed **MBSE-first** (update `reelcut/mbse/` user needs → cascade requirements → behaviour → implementation BEFORE coding): (a) **add photos/images + audio track, or replace the audio** — UX must be as simple as possible (likely: in the wizard, allow uploading image/audio "clips" that become orderable items alongside video sub-sections, and a one-click "replace audio" for the whole edit; images get a duration + Ken-Burns optional; new audio is mixed/ducked or swapped); (b) future **Android/iOS app** port — to be planned **in parallel** (separate writing-plans track) and refined after the brainstorm settles. Process gate: run `brainstorming` for (a) to a written spec, MBSE-cascade the needs for (a)+(b), then implement. A `prompt-master` sequential-execution prompt is to be produced as the controlling "guard" before execution begins.
-- 2026-06-18 — Installed the **superpowers** skill bundle into `.claude/skills/`, vendored **byte-identical** from `github.com/obra/superpowers` (MIT): `using-superpowers` (+ `references/` per-platform tool maps: claude-code, codex, copilot, gemini, pi, antigravity), `brainstorming` (+ `visual-companion.md` and `scripts/` browser companion app — `server.cjs`, `start-server.sh`, `stop-server.sh`, `frame-template.html`, `helper.js`; runs on Node builtins only, no `npm install`), and `writing-plans` (brainstorming's designated next step). BEHAVIOR CHANGE: `using-superpowers` is intentionally forceful ("invoke a matching skill before ANY response, even clarifying questions"; ≥1% chance ⇒ invoke) and `brainstorming` enforces a HARD GATE (no code/scaffolding/implementation until a design is presented AND the user approves; writes spec to `docs/superpowers/specs/`, then invokes `writing-plans` which writes to `docs/superpowers/plans/`). Net effect: sessions in this repo default to a **design-first, more interactive** flow. Per the skill's own priority rules, **user instructions + CLAUDE.md still take precedence** over skills. Fetched via `curl` to `raw.githubusercontent.com` (works); note `api.github.com` is unauthenticated-rate-limited (403) in this container.
-- 2026-06-17 — Added `reelcut/`: a standalone, local-first, distributable video editor ("ReelCut — edit your talk by topic"), built with **MBSE** (model package in `reelcut/mbse/`: requirements/use-cases/structure/behaviour/traceability as Mermaid diagrams, IDs traced to code+tests). Product flow: upload one video → auto-segment (Whisper if installed, else **silence-based fallback** via ffmpeg silencedetect) into tagged segments+sub-sections → keep/drop → **re-order** (3 methods: drag-and-drop, swap two positions, renumber-permutation) → **transitions** per boundary with **auto gap/reorder-jump detection** (crossfade/dissolve/fade/wipe/slide/circle/radial via ffmpeg `xfade`+`acrossfade`) → export. Tech: Python **stdlib-only** backend (`app/server.py`, http.server, binds 127.0.0.1, raw-body upload via `X-Filename`, background job + log, path-traversal guard) + vanilla-JS wizard UI (`app/static/`); pipeline modules `probe/segment/render/captions/master`. KEY ENGINEERING: render is **two-stage** — cut+normalise each kept clip to its OWN file, then join separate files; this avoids a real FFmpeg bug where feeding ONE input into many `atrim` branches **starves `acrossfade`** (video xfade survives but audio silently drops with no error). Transitions overlap clips, so offsets use a running overlap-adjusted duration (keeps A/V in sync); captions are **re-timed** onto the new order. Master = two-pass loudnorm −16 LUFS → mp4+mp3+srt. Verified: 12 unit/integration tests pass (incl. real-ffmpeg render T-4) + `tests/run_e2e.sh` full server E2E PASS (−16 LUFS). Scoped to repo `karmapolicegitrepo/planets` (GitHub access limit) but self-contained under `reelcut/` with own README/LICENSE(MIT)/run.sh/run.bat — extractable to its own repo. `projects/` and sample media are git-ignored.
-- 2026-06-17 — Extended `podcast-the-missing-link/` to full end-to-end tooling + a UI. Added: `scripts/clean_audio.sh` (FFmpeg DSP chain highpass→afftdn denoise→adeclick→deesser→acompressor→lowpass; strengths light/medium/strong; writes `working/episode_clean.wav`; does NOT set loudness so −16 LUFS stays solely in `process_episode.sh`); `scripts/segment_episode.py` (Whisper → context-based **segments** + **sub-sections** with keyword **tags**, grouped by silence gaps + lexical-cohesion Jaccard test; caches `working/whisper.json`; writes editable `working/segments.json`); `scripts/render_selection.py` (FFmpeg trim+concat rebuild of audio+video from kept items; backs up original premaster); `scripts/studio.py` + `studio/studio.html` (zero-dependency local web UI on 127.0.0.1:8765 via stdlib `http.server`; drives clean→segment→tick-keep→render→master→subtitles with a background-job log + path-traversal guard); `slides/make_slides.py` → `slides/how-to-use-the-missing-link.pptx` + `.pdf` (python-pptx deck; LibreOffice→PDF with reportlab fallback). `process_episode.sh` now also prefers `episode_clean.wav` (when no premaster) and `episode_cut.mp4` (selection render). New guide `02-implementation/06-studio-and-segments.md`; SE doc 06 §6.6 logs C4b/C5b/C10 + F4b/F4c. All additive/backward-compatible; verified end-to-end (clean→segment(reuse)→render 30s→18s→master PASS −16 LUFS; studio endpoints + traversal guard tested). GOTCHA: LibreOffice is broken in the remote container (can't load any source file) so the committed PDF is the reportlab fallback; on a normal machine the script makes a pixel-perfect PDF from the pptx. Slide deps (python-pptx, reportlab) are intentionally NOT in `scripts/requirements.txt` (kept lean for the Whisper path); `make_slides.py` imports them lazily with install hints.
-- 2026-06-14 — Added `podcast-the-missing-link/`: a full end-to-end, free, beginner-friendly podcast production system for the show "The Missing Link" (Nepal migration/villages/energy/tourism). Built with a systems-engineering methodology (stakeholders → needs → requirements → ConOps → functional → physical architecture → V&V → traceability) plus implementation guides, episode content, and working automation scripts (FFmpeg mastering to -16 LUFS, Whisper transcription, episode scaffolding). Tooling chosen for $0 cost + 12-year-old usability (OBS, Audacity, FFmpeg, Whisper, Canva, Spotify for Creators, YouTube). The "Uber-for-guides" app is scoped as the show's subject/future system, not built here. Scripts verified end-to-end with FFmpeg (`process_episode.sh` prints PASS; outputs meet MP3 44.1k/128k and MP4 H.264/AAC specs).
-- 2026-06-06 — Added first two skills (`image-to-pptx`, `task-history-review`) via PR #1, which was merged to `main`.
-- 2026-06-06 — Skills are versioned in-repo (project scope) so all agents share them, rather than relying on ephemeral user-scope installs in the remote container.
-- 2026-06-07 — Added `graphify` skill: durable project memory stored in root `KNOWLEDGE.md`, organized as light entity/relationship graph + notes.
-- 2026-06-07 — Every session auto-loads this store: a `SessionStart` hook in `.claude/settings.json` cats `KNOWLEDGE.md` into context, and `CLAUDE.md` points agents here. No need to ask agents to read it.
+- 2026-06-24 — **Deep SysML completeness — four-question pass via agent pipeline (ADR-015).** Drove
+  both models to YES on: (Q1) an **activity-decomposition diagram per use case** (ReelCut UC-1..10 in
+  `2a-use-case-activities.md`; podcast UC-P1..5 in `14-use-case-activities.md`); (Q2) a **sequence
+  diagram per IBD** exercising its ports (ReelCut `6-interaction-model.md §8` + completed
+  Logical-Subsystems IBD connectors; podcast `12 §12.4/a/b`); (Q3) **every value property typed** by a
+  defined value type (added domain value types + enums to both catalogues); (Q4) **every MoP/MoE bound
+  via a parametric diagram** (ReelCut 12/12 MoP constraint blocks; podcast 6/6 MoE). The 14 per-UC
+  activity diagrams were generated by a **draft→adversarial-review agent pipeline** (Opus,
+  render-validated). Verified by an 8-agent audit + re-audit; residual gaps closed in a second
+  iteration. **75 diagrams render (ReelCut 49 + podcast 26).** Report: `MBSE-COMPLETENESS-REPORT.md`.
+  Gotcha logged (RAID I-9): each `render.sh` uses a cwd-local `.pptr.json`, so don't run one model's
+  renderer twice concurrently.
+- 2026-06-24 — **SysML model completed to the HARD-rule standard + completeness report (ADR-014).**
+  Audited both models (every element must have named+described structural & behavioural features and
+  ≥1 relationship; all diagrams render). **ReelCut** verified compliant (37 diagrams; every element
+  described in its defining table — the `6-element-dictionary.md` is only a partial index). **Podcast
+  SoI** was prose/RTM, not formal SysML, so added three files: `11-formal-structure.md` (component +
+  SoI blocks with ports/operations/value-properties, interface blocks I-Mic…I-Backup, function I/O
+  flows, value-type catalogue, component BDD + context IBD), `12-formal-behaviour.md` (use-case,
+  activity, state-machine with modes M1–M5 as states, sequence; behaviours enumerated
+  nominal/alt/exception/edge), `13-parametrics-and-requirements.md` (MoE as constraint blocks +
+  parametric & requirements diagrams; orphans K1–K6/modes/CFG linked; N-28 numbering gap documented).
+  18 podcast diagrams render (`render.sh` refactored). Both models now compliant; **55 SVGs total, 0
+  failures.** Findings written to `MBSE-COMPLETENESS-REPORT.md` at the repo root. Pipeline followed:
+  plan → review plan → execute → review → complete.
+- 2026-06-24 — **Durable Decision Log + RAID register created and persisted (`DECISIONS.md`).** New
+  root file = Decision Log (ADRs), accepted concessions/waivers/deviations, and the RAID register
+  (Risks/Assumptions/Issues/Dependencies) + tech-debt register. Made persistent like the
+  caveman/drift rules: `SessionStart` hook auto-loads it; `UserPromptSubmit` hook injects a
+  maintain-it-same-commit rule; `CLAUDE.md` documents the rule (read first, never delete entries —
+  change Status). Seeded with ADR-001…013, waivers WV-001…005, RAID, TD-1…3. Motivation: a
+  multi-hour review's findings had lived only in chat and were lost to `/compact` + container
+  reclaim — this file makes such findings durable. Commits `7ccc3c1`, `d970714`.
+- 2026-06-24 — **Four-pillar like-to-like cross-layer traceability (ADR-013), both models.** Added
+  the down-the-pillar spine to ReelCut (`reelcut/mbse/8-cross-layer-traceability.md`) and the podcast
+  SoI (`podcast-the-missing-link/01-systems-engineering/10-cross-layer-traceability.md`). Each of the
+  four SysML pillars is traced same-kind through every abstraction layer with within-layer
+  decomposition `▽` + across-layer realization `⇒`, applied recursively, and **routed through a
+  Configuration item binding `⟨R,S,B,P⟩`** (the inter-layer join). The configuration join chains
+  `CFG-Podcast(V3) → CFG-ReelCut → {CFG-Desktop, CFG-Mobile}`, so the threads run continuously from
+  the podcast mission into the ReelCut implementation. Closes the model-map gaps (flat namespaces, no
+  config variants, podcast prose-RTM-only). `drift-check.sh` now also asserts the four threads + the
+  config join are present; both `render.sh` scripts emit the new per-pillar diagrams (all green).
+  Commits `73fedc7` (reelcut), `f77136f` (podcast).
+- 2026-06-24 — **ReelCut defect-level code review completed and fully resolved**
+  (`reelcut/CODE-REVIEW-2026-06-24.md`). Four parallel reviewers over `app/**` (~1,700 LOC) found
+  ~50 issues; deduplicated to 12 HIGH / 12 MED / ~11 LOW. Final state: **0 open** — 10 HIGH fixed +
+  2 verified-correct (CR-H9 ducking and CR-H10 A/V crossfade were false positives, proven correct by
+  a golden test), 12 MED fixed, 11 LOW fixed. Highlights: security hardening in `server.py`
+  (project-dir path confinement, Host-header guard vs DNS-rebinding, `/static/` resolve+symlink
+  guard, upload cap) and `audio_mix.py` (`level_db` validated before the filtergraph); correctness
+  (real source-sha256 baseline so the SR-4.1 guard fires; atomic autosave; `threading.Event`
+  CancelToken; drawtext/metadata escaping); new shared helpers `app/pipeline/silences.py` (one strict
+  silencedetect parser) and `app/pipeline/_ff.py` (uniform FFmpeg run + stderr-surfacing error);
+  explicit-context imports (no swallowed `ImportError`). **41 new regression/golden tests** across
+  `tests/test_fixes.py`, `tests/test_golden.py`, `tests/test_batch.py`; full suite **12/12 green**.
+  RAID I-3…I-7 + TD-1 all Closed. Commits `ba6d8d9`, `7efed96`, `9c11473`, `d577460`, `bf8ef4c`.
+- 2026-06-24 — **PR #5 merged to `main`** (merge commit `0c091aa`): the full podcast MBSE model +
+  ReelCut implementation + desktop/mobile + SysML diagrams (231 files). Ongoing work continues on
+  branch `claude/nepal-village-tourism-podcast-dp29gf` (ahead of `main`).
+- 2026-06-19 — **Layering locked + podcast MBSE completed concept→implementation.** The real
+  **System-of-Interest is the Missing Link Podcast Production & Distribution System**
+  (`podcast-the-missing-link/01-systems-engineering/`). **reelcut/mbse is the implementation-layer
+  SoI** — the local Studio editor subsystem (C4b/C5b/C10) selected by the podcast physical-layer
+  trade study (variant **V3 Integrated local Studio**; V4 paid eliminated on the $0 gate). Platform
+  ecosystem (YouTube/Spotify) = external solution classes, NOT context layers; **stakeholder needs
+  belong to the conceptual layer only**. Added `00-concept-and-moe.md` (mission + MoE-1…6); `06`
+  §6.0 solution class→variants→trade study→selection; cross-layer bridge in
+  `reelcut/mbse/00-model-overview.md` §00.1; RTM `08` extended with N-25…N-33 + MoE. Spec:
+  `docs/superpowers/specs/2026-06-19-podcast-mbse-end-to-end-completion-design.md`.
+- 2026-06-19 — **ReelCut cross-platform build executed** (was the `/goal`). Implemented the full
+  app to 37/37 system requirements across 8 phases (`reelcut/app/` pipeline modules + `tests/`),
+  plus desktop packaging (`reelcut/desktop/` pywebview + PyInstaller spec) and a mobile RN project
+  (`reelcut/mobile/`, iOS-convertible via `setup-ios.sh` on a Mac), and CI
+  (`.github/workflows/build.yml`). Roadmap: `docs/superpowers/plans/2026-06-19-reelcut-cross-platform-build.md`.
+- 2026-06-18 — **Stakeholder-register expansion (brainstorming → cascade).** INCOSE rule on a full
+  YouTube/Spotify-style stakeholder map: register all, derive needs only inside the SoI. Added
+  stakeholders + atomic needs SN-20…SN-30, 4 new system reqs SR-5.1…SR-5.4, functions F-32…F-35,
+  tests T-28…T-31. Platform-only stakeholders STK-P1…P6 Parked/Rejected with rationale. Design doc
+  `docs/superpowers/specs/2026-06-18-reelcut-stakeholder-register-expansion-design.md`.
+- 2026-06-18 — **Persistent harness rules committed (caveman + drift-check).** Made conventions
+  durable as project-committed config: (1) **Communication rule** in `CLAUDE.md` — caveman in chat,
+  full English in durable artifacts ("talk caveman, write proper"); (2) **Drift-check**
+  `.claude/hooks/drift-check.sh` (fence parity + SR `derivedFrom`/`refinedBy` ID resolution) wired as
+  a `Stop` hook, plus a CLAUDE.md rule to run it + `render.sh` before committing.
+- 2026-06-18 — **Conceptual-layer need elicitation + "shall" rewrite (brainstorming → cascade).**
+  Added SN-9…SN-19 + cascade (CAP-12…21, MV-7/8, MOE-7/8/9, MOP-10/11/12, F-21…31, SR-4.1…4.11,
+  T-17…27); all system requirements rewritten to canonical "ReelCut shall …". Design doc
+  `docs/superpowers/specs/2026-06-18-reelcut-conceptual-need-elicitation-design.md`.
+- 2026-06-18 — **Behaviour-model rule + behaviour enrichment (brainstorming).** New persistent
+  CLAUDE.md rule: MBSE behaviour-model completeness MUST use `brainstorming` (enumerate
+  Nominal/Alternate/Exception/Edge). Added behaviour catalogue CB-1…CB-7, three end-to-end behaviour
+  views (activity/interaction/state), functions F-15…F-20, SR-3.1…3.6, T-12…16. Design doc
+  `docs/superpowers/specs/2026-06-18-reelcut-behaviour-model-enrichment-design.md`.
+- 2026-06-18 — Rebuilt ReelCut's MBSE model to **NASA MagicGrid** per **NTRS 20190032390**: package
+  tree mirrors NASA containment (`1-problem-domain/{black-box,white-box}`, `2-solution-domain`,
+  `3-system-configuration`, `4-implementation-domain`, `5-traceability`); three abstraction layers;
+  system context as an IBD; system requirements written FROM functions; relationship rules
+  («deriveReqt» req→req, «refine» function→req, «satisfy» structure→req, «verify», «allocate»).
+- 2026-06-18 — **ReelCut MBSE model completed end-to-end.** Added Enterprise/SoS layer
+  (`0-enterprise-sos/`, MV-1…/CAP-/derived SN), `6-element-dictionary.md`, `7-properties-and-types.md`
+  (value-type + signal catalogues, per-block compartments), and the four cell diagrams. All four
+  MagicGrid pillars across all four layers populated and visualised.
+- 2026-06-18 — Adopted **OMG SysML + MagicGrid** for ReelCut (via `/grilling`), hybrid notation
+  (SysML v2 textual + Mermaid), per-element Status {Built|Planned}.
+- 2026-06-18 — `/grilling` locked ReelCut media-add needs N-10…N-19 (demux to independent A/V
+  tracks; graded-MoP independent manipulation; replace-audio flags captions; add-audio mix/duck;
+  image clips; MBSE = single source of truth; mobile feasibility-first).
+- 2026-06-18 — Installed `grill-me` + `grilling` skills (vendored from `github.com/mattpocock/skills`,
+  MIT).
+- 2026-06-18 — Installed the **superpowers** skill bundle (`using-superpowers`, `brainstorming`,
+  `writing-plans`; vendored byte-identical from `github.com/obra/superpowers`, MIT). Design-first,
+  approval-gated workflow; user instructions + CLAUDE.md still take precedence.
+- 2026-06-17 — Added `reelcut/`: a standalone, local-first, distributable video editor. Upload one
+  video → auto-segment (Whisper or silence fallback) → keep/drop → reorder (3 methods) → per-boundary
+  transitions (xfade+acrossfade) → export. Python **stdlib-only** backend (binds 127.0.0.1) + vanilla
+  JS UI. KEY ENGINEERING: **two-stage render** (cut+normalise each clip to its own file, then join) to
+  dodge a real FFmpeg bug where one input into many `atrim` branches starves `acrossfade`. Master =
+  two-pass loudnorm −16 LUFS. Self-contained under `reelcut/` (own README/LICENSE/run scripts).
+- 2026-06-17 — Extended `podcast-the-missing-link/` to full end-to-end tooling + a local studio UI
+  (`scripts/clean_audio.sh`, `segment_episode.py`, `render_selection.py`, `studio.py`). All additive;
+  loudness (−16 LUFS) defined in exactly one place (`process_episode.sh`). GOTCHA: LibreOffice is
+  broken in the container, so the committed how-to PDF is the reportlab fallback.
+- 2026-06-14 — Added `podcast-the-missing-link/`: a free, beginner-friendly podcast production
+  system built with SE methodology (stakeholders→needs→requirements→ConOps→functional→physical→V&V→
+  traceability) + implementation guides, content, and FFmpeg/Whisper automation. $0, 12-year-old
+  usable (OBS, Audacity, FFmpeg, Whisper, Canva, Spotify for Creators, YouTube).
+- 2026-06-06/07 — First skills (`image-to-pptx`, `task-history-review`) merged via PR #1; added
+  `graphify` (root `KNOWLEDGE.md` memory) + the `SessionStart` auto-load hook. Skills are versioned
+  in-repo (project scope) so all agents share them.
 
 ## Conventions
-- One skill per directory under `.claude/skills/`; keep `description` trigger-rich so the skill is matched on the right requests.
-- Keep shell snippets in skill docs copy-pasteable (use `python3 -m pip`, give concrete examples instead of `<placeholder>`s).
+- One skill per directory under `.claude/skills/`; keep `description` trigger-rich.
+- Keep shell snippets in skill docs copy-pasteable.
 - Commit knowledge updates with messages prefixed `graphify:`.
+- **Caveman in chat, full English in artifacts.** Convert to normal prose for any durable artifact
+  (model/code/commits/docs) or when precision matters.
+- **After editing `reelcut/mbse` or `podcast-the-missing-link`,** run `.claude/hooks/drift-check.sh`
+  and keep it green; re-run the relevant `diagrams/render.sh` when Mermaid changes.
+- **Maintain `DECISIONS.md` in the same commit** as any durable decision / accepted concession /
+  found problem. Never delete entries — change their Status.
+- ReelCut tests run via `python3 tests/test_*.py` (no pytest); keep the full suite green before
+  committing app changes.
 
 ## Entities & Relationships
-- **planets repo** —contains→ **.claude/skills/** : project-scoped skills.
+- **Missing Link Podcast System** (`podcast-the-missing-link/`) —is→ **the System-of-Interest**.
+- **ReelCut** (`reelcut/`) —is the **implementation-layer SoI**→ realises the SoI's Studio editor
+  subsystem (C4b/C5b/C10); selected by the podcast trade study as variant **V3**.
+- **`KNOWLEDGE.md`** —pairs with→ **`DECISIONS.md`** : facts vs decisions/RAID; both auto-loaded.
+- **`drift-check.sh`** —guards→ both MBSE models : fence parity, SN/F resolution, 4-pillar threads +
+  config join present.
+- **Configuration join** `CFG-Podcast(V3)` —contains→ `CFG-ReelCut` —specialises into→ Desktop/Mobile.
+- **`app/pipeline/_ff.py`** —standardises→ all FFmpeg calls : capture + stderr-surfacing error.
+- **`app/pipeline/silences.py`** —is the single→ silencedetect parser : used by `segment` + `tighten`.
 - **graphify skill** —writes/reads→ **KNOWLEDGE.md** : the persistent memory store.
-- **image-to-pptx skill** —depends on→ **python-pptx** : builds editable .pptx from images.
-- **task-history-review skill** —reads→ **git + GitHub artifacts** : reconstructs recent activity.
-- **agents** —read→ **KNOWLEDGE.md** : for context before non-trivial tasks.
-- **using-superpowers skill** —gates→ **all responses** : forces a skill check before replying (even clarifying questions).
-- **brainstorming skill** —precedes→ **writing-plans skill** : design (spec) → plan; hard gate before any implementation.
-- **brainstorming skill** —ships→ **visual-companion (server.cjs)** : optional Node browser app for mockups/diagrams.
-- **grill-me skill** —delegates to→ **grilling skill** : `/grill-me` runs a `/grilling` interview session.
-- **grilling skill** —stress-tests→ **plans/designs** : relentless one-question-at-a-time interview before building.
+- **using-superpowers** —gates→ all responses; **brainstorming** —precedes→ **writing-plans**.
 
 ## Glossary
-- **Skill** — a `SKILL.md` under `.claude/skills/` that Claude Code can invoke (e.g. `/graphify`).
-- **graphify store** — this `KNOWLEDGE.md` file; the project's durable memory.
+- **SoI** — System-of-Interest (the podcast production & distribution system).
+- **Like-to-like cross-layer trace** — same-pillar links down the abstraction layers (req→req,
+  structure→structure, behaviour→behaviour, parametric→parametric); `▽` = within-layer decomposition,
+  `⇒` = across-layer realization (routed through a Configuration item).
+- **Configuration item (CFG)** — the inter-layer join binding `⟨Requirements, Structure, Behaviour,
+  Parameters⟩` for one baseline (e.g. `CFG-Podcast(V3)`, `CFG-ReelCut`, `CFG-Desktop`/`CFG-Mobile`).
+- **Decision Log / RAID register** — `DECISIONS.md`: ADRs, accepted concessions/waivers, and
+  Risks/Assumptions/Issues/Dependencies + tech-debt.
 
 ## Gotchas
-- The remote execution environment is an ephemeral container, NOT the user's machine: anything not committed/pushed is lost, and `~/.claude/skills/` here does not sync to the user's real setup.
-- No CI workflows are configured in this repo, so PR checks are limited to the Copilot reviewer.
-- The `using-superpowers`/`brainstorming` skills push a design-first, approval-gated workflow; if a session needs to just-do-a-small-edit, rely on the documented priority (explicit user instructions + CLAUDE.md override skills) rather than fighting the skill.
-- `api.github.com` is rate-limited (HTTP 403, unauthenticated) from this container; fetch upstream files via `raw.githubusercontent.com` with `curl` instead. The GitHub MCP integration token is scoped to `karmapolicegitrepo/planets` and CANNOT create new repos (`403: Resource not accessible by integration`).
+- The remote execution environment is an **ephemeral container**, NOT the user's machine: anything
+  not committed/pushed is lost on reclaim, and `~/.claude/skills/` here does not sync to the user's
+  real setup. (A multi-hour review once lived only in chat and was lost to `/compact` + reclaim —
+  hence `DECISIONS.md`. Persist findings to committed files.)
+- CI now exists (`.github/workflows/build.yml`): tests on Ubuntu+FFmpeg + desktop binaries on
+  macOS/Windows; mobile jobs are **best-effort** (`continue-on-error`) — the native `ios/`/`android/`
+  projects are generated on a Mac via `reelcut/mobile/setup-ios.sh` (iOS tooling is macOS-only; see
+  DECISIONS WV-002).
+- `ffmpeg-kit` (the mobile render dependency) was **retired by Arthenica in 2025** (binaries pulled,
+  repo archived) — accepted technical risk WV-001/R-1; migrate to a maintained fork when one exists.
+- `drift-check.sh` validates fence parity + ID resolution + 4-pillar-thread presence, but does **not**
+  render Mermaid — run `diagrams/render.sh` yourself after changing diagrams (WV-004).
+- `api.github.com` is rate-limited (HTTP 403, unauthenticated) from this container; the GitHub MCP
+  token is scoped to `karmapolicegitrepo/planets` and cannot create new repos.
+- LibreOffice is broken in the container (committed how-to PDF is the reportlab fallback).
 
 ## Open Questions
-- What is the intended longer-term purpose of `planets` beyond hosting skills?
-- ReelCut media-add feature (PLANNED): exact UX for images (duration? Ken-Burns?) and audio (replace whole edit vs add a mixed/ducked track?) — to be settled in `brainstorming`.
-- ReelCut mobile port (PLANNED): target approach (native vs cross-platform e.g. Flutter/React Native vs PWA wrapper) and whether ffmpeg runs on-device or via a companion — to be settled in the parallel writing-plans track.
+- What is the intended longer-term purpose of `planets` beyond hosting skills + the podcast/ReelCut
+  system?
+- Mobile: validate a maintained ffmpeg-kit replacement and stand up a macOS signing pipeline so the
+  iOS/Android builds move from best-effort to supported (WV-001/WV-002).
+- Whether to add a CI render-verification step so diagram SVGs can't silently drift from the Mermaid
+  source (WV-004 / R-3).

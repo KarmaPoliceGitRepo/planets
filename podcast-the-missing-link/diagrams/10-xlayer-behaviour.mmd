@@ -1,0 +1,23 @@
+flowchart TB
+  subgraph L2[Functions — decomposition ▽]
+    F4["F4 Edit (parent)"] --> F4b["F4b clean audio (DSP)"]
+    F4 --> F4c["F4c segment + select"]
+    F2["F2 Capture"]:::f
+    F5["F5 Master"]:::f
+  end
+  subgraph L2m[Operating modes — behaviour context]
+    M4["M4 Produce"]
+  end
+  F4 -. runs in .-> M4
+  F5 -. runs in .-> M4
+  subgraph L3[Component operations]
+    F4b ==>|allocate ⇒| OP1["C4b: highpass→afftdn→compress"]
+    F4c ==>|allocate ⇒| OP2["C5b: silencedetect→group→select"]
+    F5 ==>|allocate ⇒| OP3["C4: loudnorm −16 LUFS"]
+  end
+  subgraph L4[Implementation behaviour]
+    OP1 ==>|refine ⇒| S1["reelcut audio_mix.clean_audio()"]
+    OP2 ==>|refine ⇒| S2["reelcut segment.segment()"]
+    OP3 ==>|refine ⇒| S3["reelcut master.master()"]
+  end
+  classDef f fill:#efe;

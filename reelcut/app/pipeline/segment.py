@@ -73,17 +73,9 @@ def _silence_lines(src: Path, duration: float) -> List[dict]:
         ["ffmpeg", "-hide_banner", "-i", str(src),
          "-af", "silencedetect=noise=-30dB:d=0.4", "-f", "null", "-"],
         capture_output=True, text=True).stderr
-    starts = [float(m) for m in re.findall(r"silence_start: ([0-9.]+)", out)]
-    ends = [float(m) for m in re.findall(r"silence_end: ([0-9.]+)", out)]
-    # Speech = the gaps between silences.
-    speech: List[List[float]] = []
-    cursor = 0.0
-    for ss, se in zip(starts, ends + [duration]):
-        if ss - cursor > 0.4:
-            speech.append([cursor, ss])
-        cursor = se
-    if duration - cursor > 0.4:
-        speech.append([cursor, duration])
+    # Speech = complement of the detected silences (shared robust parser).
+    from .silences import speech_ranges   # sibling import works in both contexts (CR-L9)
+    speech = speech_ranges(out, duration, min_gap=0.4)
     if not speech:
         speech = [[0.0, duration]]
     lines = []

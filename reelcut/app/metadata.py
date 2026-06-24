@@ -7,20 +7,32 @@ embedded metadata. ``chapters_file`` is an FFMETADATA file (see
 """
 from __future__ import annotations
 
-import subprocess
 from typing import Optional
+
+if __package__:  # 'app' in package context; '' when run flat by the server (CR-L9 / TD-1)
+    from app.pipeline import _ff
+else:
+    from pipeline import _ff
 
 
 def embed_metadata(in_media: str, out_path: str, title: Optional[str] = None,
                    description: Optional[str] = None,
                    chapters_file: Optional[str] = None) -> str:
+    def _clean(v: str) -> str:
+        # Values go to FFmpeg via argv (no shell), so the only corruption risk is
+        # embedded newlines breaking the metadata stream — flatten them (CR-H12).
+        return v.replace("\n", " ").replace("\r", " ")
+
     cmd = ["ffmpeg", "-y", "-i", in_media]
     if chapters_file:
-        cmd += ["-i", chapters_file, "-map_metadata", "1"]
+        # Keep the source's own global metadata and import ONLY chapters from the
+        # FFMETADATA file, rather than replacing all metadata with it (CR-L6).
+        cmd += ["-i", chapters_file, "-map_metadata", "0", "-map_chapters", "1"]
     if title is not None:
-        cmd += ["-metadata", f"title={title}"]
+        cmd += ["-metadata", f"title={_clean(title)}"]
     if description is not None:
-        cmd += ["-metadata", f"description={description}", "-metadata", f"comment={description}"]
+        d = _clean(description)
+        cmd += ["-metadata", f"description={d}", "-metadata", f"comment={d}"]
     cmd += ["-c", "copy", out_path]
-    subprocess.run(cmd, capture_output=True, check=True)
+    _ff.run(cmd)
     return out_path

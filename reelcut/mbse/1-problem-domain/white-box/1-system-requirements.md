@@ -129,3 +129,15 @@ refine F_10_Master    -> SR_1_5_Loudness;       // SR written FROM the function
 deriveReqt SR_1_5_Loudness from SN_2_Watchable;
 verify SR_1_5_Loudness by Test_T7;              // verified by behaviour/test
 ```
+
+
+## Cross-layer like-to-like links (ADR-013)
+
+> Mirrors this file's rows from the cross-layer spine (`../../../8-cross-layer-traceability.md`).
+> `▽` = within-layer decomposition · `⇒` = across-layer realization (routed via a Configuration item).
+
+| Link | Type | From | To |
+|------|------|------|----|
+| SR-2.x ▽ {SR-2.3, SR-2.4, SR-2.5} | ▽ containment | media-set parent req | replace audio · add audio · add image |
+| SR-2.1 ▽→ SR-2.2 ▽→ SR-2.3 | ▽ prerequisite | demux | portable doc → replace audio |
+| SR-x ⇒ CR-x | ⇒ deriveReqt (via CFG) | logical system req | physical component req |

@@ -1,0 +1,26 @@
+flowchart TB
+  S(["start"])
+  RX["F-11 receive new audio file (replaceAudio)"]
+  VAL{"F-15 / CB-1 valid audio format?"}
+  RJ["reject 422 with reason (B-RA.5)"]
+  E2(["end: rejected"])
+  LEN{"new audio vs video length?"}
+  PAD["fit length: apad / hold to video (B-RA.3)"]
+  TRIM["fit length: trim shortest / extend last clip (B-RA.4)"]
+  SWAP["F-11 swap whole-edit audio track (B-RA.1)"]
+  GUARD{"speech-derived captions or segments exist?"}
+  INV["CB-4 invalidate captions plus segments from old audio (B-RA.2)"]
+  OFFER["offer re-transcribe; flag captions stale (SR-2.3)"]
+  E1(["end: audio replaced"])
+
+  S --> RX
+  RX --> VAL
+  VAL -- "no (exception)" --> RJ --> E2
+  VAL -- "yes (nominal)" --> LEN
+  LEN -- "shorter (alternate)" --> PAD --> SWAP
+  LEN -- "longer (alternate)" --> TRIM --> SWAP
+  LEN -- "equal (nominal)" --> SWAP
+  SWAP --> GUARD
+  GUARD -- "no (edge: no captions yet)" --> E1
+  GUARD -- "yes (consequence)" --> INV
+  INV --> OFFER --> E1

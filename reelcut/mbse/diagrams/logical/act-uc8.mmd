@@ -1,0 +1,21 @@
+flowchart TB
+  S([Start: UC-8 Add audio]) --> VAL["F-15 validate audio file (CB-1 accepted format)"]
+  VAL --> VOK{format accepted?}
+  VOK -- "no (B-RA.5 / CB-1)" --> REJ[reject with reason]
+  REJ --> E([End: no change])
+  VOK -- "yes : audioTrack" --> ADD["F-12 addTrack into EditModel"]
+  ADD -- ": audioTrack" --> LVL["F-14 set per-track level_db and mute"]
+  LVL -- ": TrackLevel" --> MULTI{add more tracks? B-AA.4}
+  MULTI -- yes --> ADD
+  MULTI -- no --> DUCK{duck-under-speech requested? B-AA.2}
+  DUCK -- no --> MIX["F-12 mix tracks (amix)"]
+  DUCK -- yes --> SPEECH{speech track exists?}
+  SPEECH -- "no (B-AA.3 / CB-2)" --> WARN[warn: duck disabled, continue]
+  WARN --> MIX
+  SPEECH -- yes --> SC["F-12 duck under speech (sidechain)"]
+  SC -- ": duckedAudio" --> MIX
+  MIX -- ": mixedAudio" --> MAS["F-10 master re-check -16 LUFS"]
+  MAS --> CLIP{"mix clips? exceeds -16 LUFS (B-AA.5 / MOP-1)"}
+  CLIP -- "yes (edge) : Attenuation" --> ATT["auto-attenuate to preserve -16 LUFS"]
+  ATT --> MAS
+  CLIP -- "no : mixedAudio" --> DONE([End: mixed in-spec audio])

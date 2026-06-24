@@ -74,7 +74,7 @@ class Plan:
     boundaries: List[Boundary]
     width: int = 1280
     height: int = 720
-    fps: int = 30
+    fps: float = 30.0          # may be fractional (e.g. 23.976) — CR-L2
     timing_map: List[dict] = field(default_factory=list)
 
 
@@ -88,8 +88,10 @@ def kept_clips(project: dict) -> List[Clip]:
             continue
         for sub in seg.get("subsections", []):
             if sub.get("keep", True):
-                clips.append(Clip(sub["id"], float(sub["start"]), float(sub["end"]),
-                                  int(sub.get("order", 10_000))))
+                s, e = float(sub["start"]), float(sub["end"])
+                if e <= s:  # an inverted/zero range would emit an empty -t 0 clip (CR-L10)
+                    raise ValueError(f"sub-section {sub['id']!r} has end ({e}) <= start ({s})")
+                clips.append(Clip(sub["id"], s, e, int(sub.get("order", 10_000))))
     clips.sort(key=lambda c: (c.order, c.start))
     for i, c in enumerate(clips, 1):
         c.order = i
@@ -113,8 +115,10 @@ def build_plan(project: dict) -> Plan:
     orig = _original_index(project)
     boundaries: List[Boundary] = []
     for a, b in zip(clips, clips[1:]):
-        was_adjacent = (orig.get(b.id, -99) == orig.get(a.id, -1) + 1
-                        and abs(b.start - a.end) < 0.20)
+        # Adjacency is purely "were these consecutive in the original?" — a time
+        # proximity heuristic wrongly classified reordered clips that happened to have
+        # near-equal times (CR-M9).
+        was_adjacent = orig.get(b.id, -99) == orig.get(a.id, -1) + 1
         cfg = trans.get(b.id, {})
         boundaries.append(Boundary(
             type=cfg.get("type", "cut" if was_adjacent else "crossfade"),
@@ -122,7 +126,7 @@ def build_plan(project: dict) -> Plan:
             auto_gap=not was_adjacent))
     return Plan(project["source"], clips, boundaries,
                 int(project.get("width", 1280)), int(project.get("height", 720)),
-                int(project.get("fps", 30)))
+                float(project.get("fps", 30)))
 
 
 def timing_map(plan: Plan) -> List[dict]:
@@ -210,8 +214,11 @@ def render(project: dict, out_path: str, has_video: bool = True, progress=None) 
         if len(plan.clips) == 1:
             # single clip: just cut it, no join needed
             files = _extract(plan, workdir, has_video, progress)
-            subprocess.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error",
-                            "-i", str(files[0]), "-c", "copy", out_path], check=False)
+            rc = subprocess.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error",
+                                 "-i", str(files[0]), "-c", "copy", out_path],
+                                capture_output=True, text=True)
+            if rc.returncode != 0 or not Path(out_path).exists():   # CR-M2
+                return {"ok": False, "error": rc.stderr[-1500:], "timing_map": tm}
         else:
             files = _extract(plan, workdir, has_video, progress)
             fg, vlab, alab = _build_join(plan, len(files), has_video)

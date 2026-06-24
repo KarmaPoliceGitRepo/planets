@@ -1,0 +1,8 @@
+flowchart TB
+  CFGroot["CFG-ReelCut (root baseline)"]
+  CFGroot --> CFGedit["CFG-Edit (ingest+segment+model)"]
+  CFGroot --> CFGrender["CFG-Render (render+master)"]
+  CFGroot --> CFGmedia["CFG-Media (audio+image+caption)"]
+  CFGroot --> CFGhmi["CFG-HMI (server+ui)"]
+  CFGroot -.->|variant| CFGdesktop["CFG-Desktop (pywebview+PyInstaller, bundled FFmpeg)"]
+  CFGroot -.->|variant| CFGmobile["CFG-Mobile (RN + ffmpeg-kit) — HC-1, SR-2.7"]

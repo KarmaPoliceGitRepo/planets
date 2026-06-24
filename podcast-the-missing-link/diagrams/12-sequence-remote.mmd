@@ -1,0 +1,20 @@
+sequenceDiagram
+  actor Host
+  actor Guest
+  participant C3 as C3 Caller
+  participant C1 as C1 OBS
+  participant C8 as C8 Backup
+  Host->>C3: connect(guest)
+  Guest->>C3: join (per-speaker tracks, IR-4)
+  Host->>C1: record() local A/V
+  loop interview
+    Guest-->>C1: speech (guestTrack)
+    Host-->>C1: speech
+  end
+  alt call drops (exception, N-15)
+    C3--xHost: link lost
+    Host->>C1: keep local double-ender recording
+    Host->>C3: reconnect()
+  end
+  Host->>C1: stopAndSave()
+  C1->>C8: sync(raw + per-speaker tracks)

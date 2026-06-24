@@ -1,0 +1,16 @@
+sequenceDiagram
+  participant C10 as Studio C10
+  participant C4 as FFmpeg C4
+  participant C5 as Whisper C5
+  participant C6 as Canva C6
+  participant C7 as HostRSS C7
+  participant C9 as YouTube C9
+  C10->>C4: master loudnorm to -16 LUFS
+  C4-->>C10: MasterWav PASS gate
+  C4->>C5: MasterWav
+  C5-->>C10: transcript and srt
+  C6-->>C10: cover art 1400px plus
+  C10->>C7: publishAudio MP3 plus metadata via rss port
+  C7-->>C7: emitRss feed
+  C10->>C9: uploadVideo MP4 plus captions via video port
+  note over C7,C9: RSS to Spotify and Apple, plus YouTube hosts the video

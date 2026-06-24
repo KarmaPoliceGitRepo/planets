@@ -1,0 +1,18 @@
+flowchart LR
+  HOST([Host]):::a
+  GUEST([Guest]):::a
+  AUD([Listener/Viewer]):::a
+  PLAT([Platform]):::a
+  subgraph SYS["PodcastSystem"]
+    U1(("UC-P1 Plan"))
+    U2(("UC-P2 Capture"))
+    U3(("UC-P3 Produce & Publish"))
+    U4(("UC-P4 Consume"))
+    U5(("UC-P5 Engage & Grow"))
+  end
+  HOST --- U1 & U2 & U3 & U5
+  GUEST --- U2
+  AUD --- U4
+  U3 --- PLAT
+  U2 -. "«include» backup" .-> U3
+  classDef a fill:#eef;

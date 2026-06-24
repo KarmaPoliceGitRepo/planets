@@ -81,4 +81,12 @@
 This matrix is the single source of truth — update it whenever a need,
 requirement, function, or tool changes.
 
+> **Two complementary spines.** This file is the **cross-pillar** RTM
+> (need→requirement→function→component→verify, *across* pillars at a level). The
+> **like-to-like** threads that run *down the layers within one pillar*
+> (requirement→requirement, structure→structure, behaviour→behaviour,
+> parametric→parametric), with decomposition, recursion, and the configuration join to
+> the ReelCut sub-model, are in
+> [`10-cross-layer-traceability.md`](10-cross-layer-traceability.md) (DECISIONS ADR-013).
+
 ➡️ Build it for real: [`../02-implementation/`](../02-implementation/).

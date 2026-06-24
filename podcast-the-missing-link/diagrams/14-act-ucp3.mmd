@@ -1,0 +1,17 @@
+flowchart TB
+  start([Start: footage ingested + backed up]) --> F4["F4 Edit: cut, arrange, add intro/outro music (C2 Audacity)"]
+  F4 --> F4b["F4b Clean audio: high-pass, FFT denoise, de-click, de-ess, compress (C4b)"]
+  F4b --> F4c["F4c Segment + select: split into tagged segments, keep chosen parts (C5b)"]
+  F4c -->|roughMaster WAV| F5["F5 Master: loudness normalise toward -16 LUFS (C4 FFmpeg)"]
+  F5 --> CHK{"Loudness PASS? -16 LUFS, peak <= -1 dBTP"}
+  CHK -->|FAIL: re-edit| F4
+  CHK -->|"PASS: clean master"| F6["F6 Export: episode.mp3 + episode.mp4 (C4 FFmpeg)"]
+  F5 -->|clean master| F7["F7 Transcribe: episode.txt + episode.srt (C5 Whisper)"]
+  F4c -->|episode metadata| F8["F8 Package: show notes, chapters, CTA, cover art 1400x1400 (C6 Canva)"]
+  F6 -->|deliverables MP3 + MP4| NET{"Internet available?"}
+  F7 -->|captions| NET
+  F8 -->|metadata + art| NET
+  NET -->|No: field / offline| DEFER[/"Defer publish: queue and sync later (N-15)"/]
+  NET -->|Yes| F9["F9 Publish: audio to RSS host -> Spotify/Apple; MP4 + .srt to YouTube"]
+  DEFER -.->|internet restored| F9
+  F9 --> done([End: episode live across platforms])
