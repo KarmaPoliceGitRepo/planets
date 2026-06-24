@@ -22,14 +22,18 @@ flowchart TB
 ## Interconnections (ibd — item flows over interface blocks)
 ```mermaid
 flowchart LR
+  LSh -- "upload (mediaFile)" --> LSi
   LSh -- editDecision --> LSe
   LSi -- "A/V tracks" --> LSe
+  LSi -- "A/V tracks" --> LSs
   LSs -- "segments/tags" --> LSe
   LSe -- "render plan (ordered clips + transitions)" --> LSr
+  LSe -- "track levels / duck" --> LSa
   LSa -- "mixed audio" --> LSr
   LSr -- "edit + timing map" --> LSc
   LSr -- "edit" --> LSm
   LSc -- srt --> LSh
+  LSc -- srt --> LSm
   LSm -- "mp4/mp3" --> LSh
 ```
 

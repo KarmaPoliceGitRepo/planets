@@ -156,6 +156,54 @@ flowchart TB
   APPLY -. F-17 undo/redo CB-6 .-> ITER
 ```
 
+## UC-6 Export — Activity Decomposition (act Render → Caption → Master)
+
+SysML activity diagram decomposing UC-6 "Export" (status Built; refines SN-1) into its internal
+sub-activities with control + object flow. Sub-actions are real ReelCut functions: F-8 Render
+(two-stage — cut+normalise each kept clip to its own file, then join with transitions; behaviour
+B-RN.*), F-9 Caption (re-time the caption cues onto the new output order; B-CP.*), and F-10 Master
+(two-pass loudnorm to -16 LUFS, then export MP3+MP4; B-MS.*). Object flow on edges: editPlan -> clips
+-> joined edit -> timingMap -> re-timed srt -> mastered Delivery. Behaviour completeness:
+NOMINAL render->caption->master->export; ALTERNATE single-clip edit skips the join stage (B-RN.2);
+EXCEPTION a clip/join render failure routes through CB-3 retry-once-or-abort (B-RN.3), and a loudness
+FAIL re-enters mastering until PASS (B-MS.2); EDGE audio-only project exports MP3 only (B-MS.3).
+
+```mermaid
+flowchart TB
+  start(["UC-6 Export start: edit plan ready (kept order + transitions)"])
+  plan["build render plan from EditDecision (F-8)"]
+  single{"single kept clip? (B-RN.2 alt)"}
+  cut["cut + normalise each clip to its own file (stage 1)"]
+  join["join clips with xfade + acrossfade (stage 2)"]
+  rok{"render ok? (B-RN.3 exception)"}
+  retry["CB-3 retry once or abort"]
+  fail(["export failed: no delivery"])
+  cap["F-9 re-time captions onto new order"]
+  master["F-10 two-pass loudnorm to -16 LUFS"]
+  pass{"loudness PASS? -17..-15 LUFS (B-MS.2)"}
+  kind{"audio-only project? (B-MS.3 edge)"}
+  mp3only["export MP3 only"]
+  both["export MP3 + MP4"]
+  done(["delivery: mp3/mp4/srt at -16 LUFS"])
+
+  start -->|editPlan| plan
+  plan --> single
+  single -->|yes| cap
+  single -->|no| cut
+  cut -->|clips| join
+  join --> rok
+  rok -->|no| retry
+  retry -->|retry once| join
+  retry -->|abort| fail
+  rok -->|yes: joined edit| cap
+  cap -->|timingMap to srt| master
+  master --> pass
+  pass -->|no: re-master| master
+  pass -->|yes: mastered audio| kind
+  kind -->|yes| mp3only --> done
+  kind -->|no| both --> done
+```
+
 ## UC-7 — Replace audio
 
 SysML activity diagram decomposing use case UC-7 "Replace audio" (refines SN-5; act Replace Audio) into its internal sub-activities, control flow, and object flow. The realizing function is F-11 "Replace audio (+ invalidate captions)" allocated to LS-EditModel/LS-Caption and satisfying SR-2.3, with format validation delegated to F-15 "Validate input (CB-1)". The original task brief cited F-25, but in the verified model F-25 is "Reframe / letterbox to aspect preset" (tied to UC-6); the correct realizing function for UC-7 is F-11, so this diagram uses F-11. Object flow is carried on edges: the new audio file enters at replaceAudio, the new-audio-versus-video length comparison drives the apad/shortest fit, and the old-audio-derived captions plus segments are the objects invalidated by CB-4. Behaviour completeness is enumerated from behaviour-catalogue B-RA.*: nominal = B-RA.1 replace whole-edit audio (valid format, equal length); alternate = B-RA.3 shorter audio padded (apad/hold) and B-RA.4 longer audio trimmed (shortest/extend last clip); exception = B-RA.5 unsupported format rejected 422 via CB-1; consequence = B-RA.2 invalidate captions plus segments and offer re-transcribe via CB-4; edge = no speech-derived captions or segments exist yet, so invalidation is skipped. Two end nodes capture the rejected versus replaced outcomes. 14 nodes, ASCII-only text, balanced quotes; renders clean under mermaid-cli.

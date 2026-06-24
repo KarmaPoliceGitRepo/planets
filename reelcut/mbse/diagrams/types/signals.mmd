@@ -11,6 +11,13 @@ classDiagram
   class ProjectDoc { <<signal>> +SemVer version; +Track[] tracks; +Clip[] clips; +MediaHandle[] mediaHandles }
   class SegmentModel { <<signal>> +Segment[] segments }
   class Segment { <<valueType>> +Duration start; +Duration end; +TagLabel tag; +SubSection[] subs }
+  class SubSection { <<valueType>> +Duration start; +Duration end; +KeepFlag keep; +Permutation order; +CaptionText text }
+  class Track { <<valueType>> +TagLabel kind; +TrackLevel level; +MuteState mute }
+  class Clip { <<valueType>> +MediaHandle source; +Duration start; +Duration end; +TransitionKind inTransition }
+  class File { <<valueType>> +Path path; +ContainerFormat container }
+  Segment *-- SubSection
+  ProjectDoc *-- Track
+  ProjectDoc *-- Clip
   MediaFile <|-- ImageFile
   MediaFile <|-- AudioFile
   TimedText *-- Cue

@@ -155,8 +155,8 @@ sequenceDiagram
 
 This sequence is the **interaction counterpart of the Logical-Subsystems IBD**
 (`3-logical-subsystems.md`): it drives every logical subsystem `LS-*` over the same
-interface ports/connectors the IBD declares (`I_AVTracks`, `I_Segments`, `I_RenderPlan`,
-`I_Edit`, `I_TimingMap`, `I_Captions`, `I_Media`, `I_HMI`), so no port is unexercised.
+interface ports/connectors the IBD declares (`I_HMI`, `I_AVTracks`, `I_Segments`, `I_RenderPlan`,
+`I_Audio`, `I_Edit`, `I_TimingMap`, `I_Captions`, `I_Media`), so no port is unexercised.
 
 ```mermaid
 sequenceDiagram

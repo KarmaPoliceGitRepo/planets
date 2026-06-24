@@ -162,7 +162,7 @@ sequenceDiagram
   note over C7,C9: RSS to Spotify and Apple, plus YouTube hosts the video
 ```
 
-> Together, §12.4 (M2: guest, mic), §12.4a (M1: mic, cam, archive) and §12.4b (M4: rss, video)
+> Together, §12.4 (M2: guest), §12.4a (M1: mic, cam, archive) and §12.4b (M4: rss, video)
 > exercise **every port of the PodcastSystem context IBD** (`11` §11.7) — no connector is left
 > un-interacted.
 
