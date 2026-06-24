@@ -63,6 +63,10 @@ communication channels, in order of precedence:
 > comment on its PR**. That is the protocol.
 
 ### Current state (MBSE / ReelCut session)
+- **This session's chat id:** `session_01CgqkNNojqUQEdzRwzTKbKM`
+  (link: https://claude.ai/code/session_01CgqkNNojqUQEdzRwzTKbKM). Its work is findable by:
+  branch `claude/nepal-village-tourism-podcast-dp29gf`; **PR #7** (merged) + **PR #8** (this handoff);
+  and the `Claude-Session:` footer on every commit it authored.
 - **PR #7 MERGED → `main` (`75c28fc`):** formal SysML completeness for both models (ADR-013/014/015),
   ReelCut defect review fully resolved (0 open, 12/12 tests), 75 diagrams render, durable memory +
   reports. This is the current `main`.
