@@ -12,6 +12,7 @@ upload → choose segments → choose & reorder sub-sections → transitions →
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import sys
 import threading
@@ -26,6 +27,22 @@ ROOT = APP.parent                       # reelcut/
 STATIC = APP / "static"
 PROJECTS = ROOT / "projects"
 HOST, PORT = "127.0.0.1", 8770
+
+# Reject foreign Host headers so a DNS-rebinding page cannot drive this
+# localhost-bound server (CR-H4).
+ALLOWED_HOSTS = {f"127.0.0.1:{PORT}", f"localhost:{PORT}", f"[::1]:{PORT}"}
+MAX_UPLOAD = 8 * 1024 ** 3              # 8 GiB hard cap on a single upload (CR-M8)
+
+
+def _confine(workdir: str, p: str) -> str:
+    """Resolve ``p`` and require it to live inside ``workdir`` (the project dir),
+    rejecting absolute paths or ``..`` that escape it (CR-H1/H3). Returns the
+    resolved absolute path."""
+    base = Path(workdir).resolve()
+    cand = (Path(p) if os.path.isabs(p) else base / p).resolve()
+    if cand != base and base not in cand.parents:
+        raise ValueError("path escapes project directory")
+    return str(cand)
 
 sys.path.insert(0, str(APP))
 import model as M                                    # noqa: E402
@@ -154,14 +171,20 @@ class H(BaseHTTPRequestHandler):
         except json.JSONDecodeError:
             return {}
 
+    def _host_ok(self) -> bool:
+        return self.headers.get("Host", "") in ALLOWED_HOSTS
+
     # ---------------- GET ----------------
     def do_GET(self):
+        if not self._host_ok():
+            return self._send(403, b"forbidden host", "text/plain")
         u = urlparse(self.path); q = parse_qs(u.query)
         if u.path in ("/", "/index.html"):
             return self._send(200, (STATIC / "index.html").read_bytes(), "text/html; charset=utf-8")
         if u.path.startswith("/static/"):
             f = (STATIC / u.path[len("/static/"):]).resolve()
-            if STATIC.resolve() in f.parents and f.exists():
+            sroot = STATIC.resolve()
+            if (f == sroot or sroot in f.parents) and f.is_file() and not f.is_symlink():
                 ct = ("text/css" if f.suffix == ".css" else
                       "application/javascript" if f.suffix == ".js" else "text/plain")
                 return self._send(200, f.read_bytes(), ct)
@@ -216,19 +239,28 @@ class H(BaseHTTPRequestHandler):
 
     # ---------------- POST ----------------
     def do_POST(self):
+        if not self._host_ok():
+            return self._send(403, b"forbidden host", "text/plain")
         u = urlparse(self.path)
         if u.path == "/api/upload":
             return self._upload()
         data = self._body()
         try:
             if u.path == "/api/segment":
-                if _job["running"]:
-                    return self._json({"error": "busy"}, 409)
+                with _job_lock:
+                    if _job["running"]:
+                        return self._json({"error": "busy"}, 409)
                 _run_segment(data["id"], data.get("model", "base"), data.get("language") or None)
                 return self._json({"ok": True})
             if u.path == "/api/save":
-                _proj_file(data["id"]).write_text(
-                    json.dumps(data["project"], ensure_ascii=False, indent=2), encoding="utf-8")
+                project = data["project"]
+                if not isinstance(project, dict):
+                    return self._json({"error": "project must be an object"}, 400)
+                pf = _proj_file(data["id"])
+                src = project.get("source")
+                if src:  # a source path must stay inside this project's directory (CR-H3)
+                    _confine(str(pf.parent), src)
+                pf.write_text(json.dumps(project, ensure_ascii=False, indent=2), encoding="utf-8")
                 return self._json({"ok": True})
             if u.path == "/api/reorder":
                 return self._reorder(data)
@@ -241,18 +273,23 @@ class H(BaseHTTPRequestHandler):
                 M.set_transition(pj, data["to"], data["type"], data.get("duration", 0.5))
                 M.save(pj, str(pf)); return self._json({"ok": True})
             if u.path == "/api/render":
-                if _job["running"]:
-                    return self._json({"error": "busy"}, 409)
+                with _job_lock:
+                    if _job["running"]:
+                        return self._json({"error": "busy"}, 409)
                 _run_render(data["id"]); return self._json({"ok": True})
             if u.path in ("/api/replace-audio", "/api/add-audio", "/api/add-image"):
                 workdir = str(_proj_file(data["id"]).parent)
+                # All media paths must resolve inside the project dir (CR-H1).
                 if u.path == "/api/replace-audio":
-                    out = API.replace_audio(workdir, data["video"], data["audio"])
+                    out = API.replace_audio(workdir, _confine(workdir, data["video"]),
+                                            _confine(workdir, data["audio"]))
                 elif u.path == "/api/add-audio":
-                    out = API.add_audio(workdir, data["video"], data["audio"],
+                    out = API.add_audio(workdir, _confine(workdir, data["video"]),
+                                        _confine(workdir, data["audio"]),
                                         float(data.get("level_db", 0.0)), bool(data.get("duck", False)))
                 else:
-                    out = API.add_image(workdir, data["image"], float(data.get("duration", 4.0)))
+                    out = API.add_image(workdir, _confine(workdir, data["image"]),
+                                        float(data.get("duration", 4.0)))
                 return self._json({"ok": True, "out": out})
             return self._json({"error": "not found"}, 404)
         except (KeyError, ValueError) as exc:
@@ -280,6 +317,8 @@ class H(BaseHTTPRequestHandler):
         n = int(self.headers.get("Content-Length", 0))
         if n <= 0:
             return self._json({"error": "empty upload"}, 400)
+        if n > MAX_UPLOAD:
+            return self._json({"error": "upload too large"}, 413)
         pid = uuid.uuid4().hex[:16]
         d = PROJECTS / pid
         (d / "raw").mkdir(parents=True, exist_ok=True)
@@ -296,6 +335,7 @@ class H(BaseHTTPRequestHandler):
                    "width": info["width"], "height": info["height"], "fps": info["fps"],
                    "duration": info["duration"], "has_video": info["has_video"],
                    "segments": [], "transitions": {}}
+        M.baseline_source(project)      # record integrity baseline so SR-4.1 guard works (CR-H6)
         M.save(project, str(d / "project.json"))
         return self._json({"ok": True, "id": pid, "info": info})
 

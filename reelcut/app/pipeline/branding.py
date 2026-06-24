@@ -11,6 +11,18 @@ import os
 import subprocess
 
 
+def _esc_drawtext(s: str) -> str:
+    """Escape a string for use inside an FFmpeg ``drawtext`` value (CR-H12).
+
+    Newlines are flattened and every filtergraph-significant character is
+    backslash-escaped so a name containing ``:`` ``'`` ``,`` ``[`` etc. cannot
+    break the ``-vf`` graph or inject filter options."""
+    s = s.replace("\n", " ").replace("\r", " ")
+    for ch in ("\\", ":", "'", "[", "]", ",", ";", "%", "="):
+        s = s.replace(ch, "\\" + ch)
+    return s
+
+
 def add_logo(video: str, logo: str, out_path: str, margin: int = 10) -> str:
     """Overlay a logo/watermark in the top-right corner (SR-4.10)."""
     subprocess.run(["ffmpeg", "-y", "-i", video, "-i", logo,
@@ -45,8 +57,8 @@ def concat_clips(clips: list, out_path: str, width: int = 1280, height: int = 72
 
 def lower_third(video: str, text: str, out_path: str, fontfile: str = "") -> str:
     """Draw a lower-third name strip (SR-4.10). Requires a usable font."""
-    font = f":fontfile='{fontfile}'" if fontfile else ""
-    vf = (f"drawtext=text='{text}'{font}:fontcolor=white:fontsize=28:"
+    font = f":fontfile='{_esc_drawtext(fontfile)}'" if fontfile else ""
+    vf = (f"drawtext=text='{_esc_drawtext(text)}'{font}:fontcolor=white:fontsize=28:"
           f"box=1:boxcolor=black@0.5:x=40:y=h-80")
     subprocess.run(["ffmpeg", "-y", "-i", video, "-vf", vf, "-c:a", "copy", out_path],
                    capture_output=True, check=True)
