@@ -52,6 +52,11 @@ MAP="
 7-properties-and-types.md|2|types/soi-block
 5-traceability.md|0|traceability/mission-thread
 5-traceability.md|1|traceability/vertical-thread
+8-cross-layer-traceability.md|0|traceability/xlayer-requirements
+8-cross-layer-traceability.md|1|traceability/xlayer-structure
+8-cross-layer-traceability.md|2|traceability/xlayer-behaviour
+8-cross-layer-traceability.md|3|traceability/xlayer-parametric
+8-cross-layer-traceability.md|4|traceability/xlayer-configuration
 "
 
 python3 - "$MBSE" "$MAP" <<'PY'

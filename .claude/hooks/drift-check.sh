@@ -78,8 +78,26 @@ if [ -f "$pod_needs" ]; then
   fi
 fi
 
+# 5) Cross-layer traceability completeness: the four like-to-like pillar threads
+#    (R/S/B/P) and the configuration join must all be present in the cross-layer
+#    spine. Catches a pillar being dropped when the file is edited.
+xlayer="$MBSE/8-cross-layer-traceability.md"
+if [ -f "$xlayer" ]; then
+  for marker in \
+    "Thread R — Requirement" \
+    "Thread S — Structure" \
+    "Thread B — Behaviour" \
+    "Thread P — Parametric" \
+    "Configuration model — the inter-layer join"; do
+    grep -qF "$marker" "$xlayer" || issues+=("xlayer: missing section '$marker' in 8-cross-layer-traceability.md")
+  done
+  for cfg in "CFG-Desktop" "CFG-Mobile"; do
+    grep -qF "$cfg" "$xlayer" || issues+=("xlayer: configuration variant $cfg not defined")
+  done
+fi
+
 if (( ${#issues[@]} == 0 )); then
-  echo "drift-check: OK (podcast needs resolve; reelcut SN/F traceability resolves; fences balanced)"
+  echo "drift-check: OK (podcast needs resolve; reelcut SN/F traceability resolves; 4-pillar cross-layer threads + config join present; fences balanced)"
   exit 0
 fi
 

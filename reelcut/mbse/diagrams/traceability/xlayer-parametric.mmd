@@ -1,0 +1,19 @@
+flowchart TB
+  subgraph L1[MoE — constraint blocks]
+    MOE9["MOE-9 Audio clarity (parent constraint)"]
+    MOE9 --> MOE9a["loudness conformance"]
+    MOE9 --> MOE9b["true-peak headroom"]
+  end
+  subgraph L3[MoP — refined constraints]
+    MOE9a ==>|refine ⇒| MOP1["MOP-1 loudness = −16 ±1 LUFS"]
+    MOE9b ==>|refine ⇒| MOP1b["MOP-1b truePeak ≤ −1 dBTP"]
+  end
+  subgraph L_cfg[Configuration value properties]
+    MOP1 -->|bind| V1["ReelCut.loudness : LUFS"]
+    MOP1b -->|bind| V2["ReelCut.truePeak : dBTP"]
+  end
+  subgraph L4[Measured / asserted]
+    V1 -->|verify ⇒| T7["master.py pass-gate −17..−15"]
+    V2 --> T7b["truePeak assert ≤ −1"]
+  end
+  MOE2["MOE-2 Privacy"] ==>|refine ⇒| MOP8["MOP-8 egressBytes = 0"] -->|bind| V3["ReelCut.egressBytes = 0"] -->|verify ⇒| Tnet["no-socket egress test"]

@@ -1,0 +1,18 @@
+flowchart TB
+  subgraph L1[Conceptual needs]
+    SN5["SN-5 add/replace media (parent)"]
+    SN5 --> SN51["SN-5.1 add image"]
+    SN5 --> SN52["SN-5.2 add audio"]
+    SN5 --> SN53["SN-5.3 replace audio"]
+  end
+  subgraph L2[Logical system reqs]
+    SR2x["SR-2.x media set (parent)"]
+    SR2x --> SR23["SR-2.3 replace audio"]
+    SR2x --> SR24["SR-2.4 add audio"]
+    SR2x --> SR25["SR-2.5 add image"]
+    SR21["SR-2.1 demux"] -.->|prerequisite ▽| SR22["SR-2.2 portable doc"]
+    SR22 -.->|prerequisite ▽| SR23
+  end
+  SN51 ==>|deriveReqt ⇒ via CFG-Edit| SR25
+  SN52 ==>|deriveReqt ⇒ via CFG-Edit| SR24
+  SN53 ==>|deriveReqt ⇒ via CFG-Edit| SR23

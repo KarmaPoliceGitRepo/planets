@@ -55,3 +55,26 @@ part def ReelCut {
 > Item flows on the ports are typed by **signals**; ports are typed by **interface
 > blocks** that *contain* those flow properties — so the context IBD (black-box `3`)
 > and this configuration are consistent.
+
+---
+
+## Configuration as the inter-layer join (see `8-cross-layer-traceability.md` §8.6)
+
+The block above is the **root configuration item `CFG-ReelCut`**. In the cross-layer
+traceability model it plays a second role: it is the **intermediate join** that carries the
+four like-to-like pillar threads across each abstraction hop. Each configuration item binds a
+4-tuple `⟨R, S, B, P⟩` — the requirements it satisfies, the structure variant it selects, the
+behaviour it allocates, and the parameter values that meet the MoP — and **decomposes
+recursively** into child configuration items (`CFG-Edit`, `CFG-Render`, `CFG-Media`, `CFG-HMI`)
+that mirror the structure tree (§8.2).
+
+Two **configuration variants** specialise the root after the trade-study selection:
+
+- **`CFG-Desktop`** (Built) — `C-Server` + `C-UI` + bundled `C-FFmpeg` (ADR-009); full function
+  set; `egressBytes = 0`, `loudness = −16 LUFS`.
+- **`CFG-Mobile`** (Planned, best-effort — HC-1, SR-2.7, WV-001/WV-002) — React-Native shell +
+  `ffmpeg-kit` (ADR-010); render subset on-device; `egressBytes = 0` preserved.
+
+They share `CFG-Edit`/`CFG-Render`/`CFG-Media` and differ only at `CFG-HMI` + engine — exactly
+what the structure decomposition predicts. This closes the "no post-selection configuration
+variants" gap (DECISIONS.md ADR-013).

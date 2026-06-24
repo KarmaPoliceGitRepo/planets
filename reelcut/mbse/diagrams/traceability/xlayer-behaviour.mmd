@@ -1,0 +1,20 @@
+flowchart TB
+  MV3["L0 MV-3 'cut to highlight reel'"]
+  MV3 ==>|refine ⇒| UC2["L1 UC-2 Auto-segment"]
+  subgraph L2[Functions — decomposition ▽]
+    UC2 ==>|refine ⇒| F4["F-4 segment media (parent)"]
+    F4 --> F4a["F-4.1 detect silences"]
+    F4 --> F4b["F-4.2 group into sub-sections"]
+    F4 --> F4c["F-4.3 tag keep/drop default"]
+    CB1["CB-1 Validate-and-Reject"] -.->|reused by| F4
+  end
+  subgraph L3[Component operations]
+    F4a -->|allocate ⇒| Odetect["C-Segment.detect_silences()"]
+    F4b --> Ogroup["C-Segment.group()"]
+    F4c --> Otag["C-Model.set_keep()"]
+  end
+  subgraph L4[Script functions]
+    Odetect -->|realize ⇒| Sdetect["tighten.detect_silences()"]
+    Ogroup --> Sgroup["segment.build_segments()"]
+    Otag --> Stag["model.set_keep()"]
+  end
