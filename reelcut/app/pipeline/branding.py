@@ -50,8 +50,15 @@ def concat_clips(clips: list, out_path: str, width: int = 1280, height: int = 72
     with open(listf, "w", encoding="utf-8") as f:
         for n in norm:
             f.write(f"file '{os.path.abspath(n)}'\n")
-    subprocess.run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", listf,
-                    "-c", "copy", out_path], capture_output=True, check=True)
+    try:
+        subprocess.run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", listf,
+                        "-c", "copy", out_path], capture_output=True, check=True)
+    finally:
+        for tmp in norm + [listf]:        # don't leave intermediates beside the deliverable (CR-L7)
+            try:
+                os.remove(tmp)
+            except OSError:
+                pass
     return out_path
 
 

@@ -41,8 +41,13 @@ def burn_captions(video: str, srt: str, out_path: str) -> str:
 
 
 def highlight_clip(src: str, start: float, end: float, out_path: str) -> str:
-    """Export a sub-range as a standalone highlight clip (SR-4.6)."""
-    subprocess.run(["ffmpeg", "-y", "-ss", f"{start}", "-to", f"{end}", "-i", src,
+    """Export a sub-range as a standalone highlight clip (SR-4.6).
+
+    Uses input ``-ss`` for a fast seek plus output ``-t`` for an accurate duration
+    (``end-start``); ``-to`` before ``-i`` would be measured from the post-seek
+    origin and could yield the wrong length (CR-M1)."""
+    dur = max(0.0, end - start)
+    subprocess.run(["ffmpeg", "-y", "-ss", f"{start}", "-i", src, "-t", f"{dur}",
                     "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
                     "-c:a", "aac", "-b:a", "192k", out_path],
                    capture_output=True, check=True)

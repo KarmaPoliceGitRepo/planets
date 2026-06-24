@@ -28,7 +28,7 @@ def _ts(seconds: float) -> str:
 
 def _write_srt(cues: List[dict], path: Path) -> None:
     lines = []
-    for i, c in enumerate(sorted(cues, key=lambda x: x["start"]), 1):
+    for i, c in enumerate(sorted(cues, key=lambda x: (x["start"], x["end"])), 1):
         lines += [str(i), f"{_ts(c['start'])} --> {_ts(c['end'])}", c["text"].strip(), ""]
     path.write_text("\n".join(lines), encoding="utf-8")
 
@@ -51,11 +51,15 @@ def remap(project: dict, timing_map: List[dict], out_srt: str,
     for clip in timing_map:
         s0, e0, ns = clip["src_start"], clip["src_end"], clip["new_start"]
         delta = ns - s0
-        inside = [w for w in wlines if w["start"] >= s0 - 0.05 and w["end"] <= e0 + 0.05]
-        if inside:
-            for w in inside:
-                cues.append({"start": w["start"] + delta, "end": w["end"] + delta,
-                             "text": w["text"]})
+        # Any cue that OVERLAPS the clip is kept and clamped to the clip window, so a
+        # caption straddling a cut boundary is neither dropped nor allowed to spill into
+        # the next clip's captions (CR-M5).
+        overlap = [w for w in wlines if w["end"] > s0 and w["start"] < e0]
+        if overlap:
+            for w in overlap:
+                cs = max(w["start"], s0)
+                ce = min(w["end"], e0)
+                cues.append({"start": cs + delta, "end": ce + delta, "text": w["text"]})
         else:
             cues.append({"start": ns, "end": ns + (e0 - s0),
                          "text": sub_text.get(clip["id"], "")})

@@ -34,15 +34,15 @@
 
 | ID | Status | File:line | Problem | Fix |
 |----|--------|-----------|---------|-----|
-| CR-M1 | Open | render.py:155 / video_ops.py:45 | Input-side `-ss`/`-to` before `-i` with re-encode can snap cuts to keyframes → clip start/length off vs requested (breaks frame-accuracy SR-4.4). | Use output seeking (`-i … -ss -t`) or add `-accurate_seek`. |
-| CR-M2 | Open | render.py:213 / master.py:53,61 | Final mux / pass-2 encodes run `check=False` and never inspect return code → returns `ok:True` with a missing/corrupt output. | Check return codes (or `os.path.exists` on outputs); set `ok:false` on failure. |
-| CR-M3 | Open | master.py:64 | Loudness PASS/FAIL re-measures the 128 kbps **MP3**, not the MP4 deliverable; lossy encode can push true-peak over target. | Measure the actual deliverable(s); report each. |
-| CR-M4 | Open | master.py:25,42 | Only `input_i` is checked before pass-2; missing/`inf` `tp/lra/thresh/offset` → `KeyError` or invalid filter (silently, via check=False). | Guard all five keys + non-finite values; fall back to single-pass. |
-| CR-M5 | Open | captions.py:54–57 | Cues spanning a cut boundary are dropped, and re-timed cues aren't clamped to the clip window → lost transcript text + overlap at seams. | Include overlapping cues, clamp start/end to the clip's output window. |
-| CR-M6 | Open | export.py:41 | Chapter times re-sum source durations assuming no gaps/re-timing → drift from the actual render. | Derive chapter times from the render timing map (same source as captions). |
+| CR-M1 | Fixed | render.py:155 / video_ops.py:45 | Input-side `-ss`/`-to` before `-i` with re-encode can snap cuts to keyframes → clip start/length off vs requested (breaks frame-accuracy SR-4.4). | Use output seeking (`-i … -ss -t`) or add `-accurate_seek`. |
+| CR-M2 | Fixed | render.py:213 / master.py:53,61 | Final mux / pass-2 encodes run `check=False` and never inspect return code → returns `ok:True` with a missing/corrupt output. | Check return codes (or `os.path.exists` on outputs); set `ok:false` on failure. |
+| CR-M3 | Fixed | master.py:64 | Loudness PASS/FAIL re-measures the 128 kbps **MP3**, not the MP4 deliverable; lossy encode can push true-peak over target. | Measure the actual deliverable(s); report each. |
+| CR-M4 | Fixed | master.py:25,42 | Only `input_i` is checked before pass-2; missing/`inf` `tp/lra/thresh/offset` → `KeyError` or invalid filter (silently, via check=False). | Guard all five keys + non-finite values; fall back to single-pass. |
+| CR-M5 | Fixed | captions.py:54–57 | Cues spanning a cut boundary are dropped, and re-timed cues aren't clamped to the clip window → lost transcript text + overlap at seams. | Include overlapping cues, clamp start/end to the clip's output window. |
+| CR-M6 | Fixed | export.py:41 | Chapter times re-sum source durations assuming no gaps/re-timing → drift from the actual render. | Derive chapter times from the render timing map (same source as captions). |
 | CR-M7 | Fixed | audio_mix.py:18 | `replace_audio -shortest` truncates video to a shorter audio track, dropping the video tail. | Pad/loop audio or handle durations explicitly. |
 | CR-M8 | Fixed | server.py:225,244,279 | `_job["running"]` read outside `_job_lock` (two jobs can start); upload writes bytes with no size cap / format check. | Gate under the lock; cap Content-Length + `validate_import` before writing. |
-| CR-M9 | Open | render.py:116 | `was_adjacent` uses a 0.20 s time-proximity heuristic → reordered non-adjacent clips wrongly treated as hard cuts. | Use original-index adjacency only. |
+| CR-M9 | Fixed | render.py:116 | `was_adjacent` uses a 0.20 s time-proximity heuristic → reordered non-adjacent clips wrongly treated as hard cuts. | Use original-index adjacency only. |
 | CR-M10 | Fixed | validate.py:28–36 | `validate_import` checks extension only, never bytes/existence → renamed file passes; SR-3.1 "format validated" is not real. | Sniff content (ffprobe/magic) + `os.path.isfile`. |
 | CR-M11 | Fixed | model.py:247 | `apply_preset` does `project.update(style)` with no key whitelist → a preset can overwrite `segments`/`source` (data-loss). | Restrict to `_STYLE_KEYS`. |
 | CR-M12 | Fixed | tighten.py:19 | `detect_silences` overwrites a pending `start` on duplicate `silence_start`; accepts `silence_end` with no duration. | Strict start/end state machine (shared with CR-H11). |
@@ -53,13 +53,13 @@
 - CR-L2 — `probe.py:32` rounds fps to int (23.976→24) → long-clip A/V drift; keep rational rate.
 - CR-L3 — **Fixed.** Single shared parser `app/pipeline/silences.py`; both callers refactored.
 - CR-L4 — Inconsistent subprocess error handling (`check=True` vs manual) loses ffmpeg stderr; standardise.
-- CR-L5 — `captions.py:31` sorts cues by start only; sort by `(start,end)` + de-overlap.
-- CR-L6 — `metadata.py:19` `-map_metadata 1` drops source metadata; use `-map_metadata 0 -map_chapters 1`.
-- CR-L7 — `branding.py:42` leaves `_norm_*.mp4`/`_concat.txt` temp files beside the deliverable; use a tempdir.
+- CR-L5 — **Fixed.** Cues now sorted by `(start, end)`.
+- CR-L6 — **Fixed.** `-map_metadata 0 -map_chapters 1` keeps source metadata, imports only chapters.
+- CR-L7 — **Fixed.** `concat_clips` removes its intermediates in a `finally`.
 - CR-L8 — **Fixed.** `kept_subs` now sorts missing `order` with `+inf` + start tie-break.
 - CR-L9 — `api.py:12` dual-context try/except import (TD-1) swallows real ImportErrors; detect context explicitly.
-- CR-L10 — `render.py:60` `Clip.dur` clamps inverted ranges to 0 silently → empty `-t 0` clip; validate `end>start`.
-- CR-L11 — `desktop/shell.py:27` fixed `sleep(0.4)` race + no port-in-use handling; poll socket readiness.
+- CR-L10 — **Fixed.** `build_plan` raises on `end <= start`.
+- CR-L11 — **Fixed.** `_wait_ready` polls the server socket instead of a fixed sleep.
 
 ---
 
@@ -83,10 +83,19 @@ all 5 HIGH-security (CR-H1..H5), 4 HIGH-correctness (CR-H6, CR-H7, CR-H8, CR-H12
 `sidechaincompress` compresses its *first* input keyed by its *second*, so `[music][speech]…`
 ducks the **music** under speech, then `amix` adds untouched speech — the intended behaviour.
 
-**Still Open — lower-risk batch (DECISIONS.md I-7):** CR-M1 (seek accuracy), CR-M2 (return-code
-checks), CR-M3/M4 (master measurement), CR-M5/M6 (caption/chapter timing), CR-M9 (adjacency),
-CR-L2, L4–L7, L9–L11. Total live HIGH findings remaining: **0** (all fixed or verified-correct).
+**Fourth pass — MED/LOW batch** (`tests/test_batch.py`, 5 tests): fixed CR-M1 (accurate `-ss/-t`
+trim), CR-M2 (return-code + output-exists checks in render & master), CR-M3 (loudness measured on
+the actual MP4 deliverable), CR-M4 (all five loudnorm keys + finiteness guarded; else single-pass),
+CR-M5 (boundary-spanning cues clamped, not dropped), CR-M6 (chapter times from the render timing
+map), CR-M9 (adjacency by original index only), CR-L5/L6/L7/L10/L11.
+
+**Still Open — 3 LOW only (DECISIONS.md I-7):** CR-L2 (probe rounds fps to int — needs the rational
+rate threaded through `Plan`/render), CR-L4 (standardise subprocess error handling / stderr capture),
+CR-L9 (dual-context import swallows real `ImportError` — TD-1). All low-risk, no behavioural defect.
+
+**Scorecard:** HIGH 10 fixed / 2 verified-correct / **0 open** · MED 12 fixed / 0 open ·
+LOW 8 fixed / 3 open.
 
 *Method: 4 parallel reviewers, full-file reads. ~50 raw findings deduplicated. The review modified
-no code; the second/third passes applied fixes with `unittest` regression + golden tests
-(full suite 11/11 green).*
+no code; passes 2–4 applied fixes with `unittest` regression + golden tests (full suite 12/12 green,
+39 new test cases across test_fixes/test_golden/test_batch).*

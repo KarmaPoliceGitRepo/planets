@@ -21,7 +21,9 @@ def embed_metadata(in_media: str, out_path: str, title: Optional[str] = None,
 
     cmd = ["ffmpeg", "-y", "-i", in_media]
     if chapters_file:
-        cmd += ["-i", chapters_file, "-map_metadata", "1"]
+        # Keep the source's own global metadata and import ONLY chapters from the
+        # FFMETADATA file, rather than replacing all metadata with it (CR-L6).
+        cmd += ["-i", chapters_file, "-map_metadata", "0", "-map_chapters", "1"]
     if title is not None:
         cmd += ["-metadata", f"title={_clean(title)}"]
     if description is not None:
