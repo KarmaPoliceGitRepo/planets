@@ -26,8 +26,8 @@
 | CR-H7 | Fixed | model.py:214–226 | Autosave writes the sidecar **non-atomically**; a crash mid-write corrupts the `.autosave` that `restore` then fails to parse — defeating the crash-recovery feature. | Write to a temp file then `os.replace()` (atomic swap). |
 | CR-H8 | Fixed | jobs.py:17–30 | `CancelToken._cancelled` is a bare bool shared across threads with no sync → cancellation can be missed/delayed (cross-thread render abort, SR-3.4). | Use `threading.Event`. |
 | CR-H9 | Won't-fix | audio_mix.py:31–33 | Ducking is **inverted**: speech is compressed under the music instead of music ducked under speech. | Compress the music keyed by speech, then `amix` ducked-music with untouched speech. |
-| CR-H10 | Open | render.py:139,184–200 | Crossfade overlap uses cumulative `running` instead of the previous clip's tail → for the 2nd clip onward, video `xfade` offset and audio `acrossfade` drift **out of A/V sync** across transitions. | Derive both `xfade` offset and `acrossfade` duration from one shared overlap-adjusted running total. |
-| CR-H11 | Open | render.py:81–86 / segment.py:81 / tighten.py:19–27 | Silence parsing `zip(starts, ends+[duration])` mispairs when audio ends in silence (unequal start/end counts) → final speech range dropped / wrong cursor. | One shared strict state-machine `parse_silences()`; only append trailing `[cursor,duration]` when a silence is genuinely open. |
+| CR-H10 | Won't-fix | render.py:139,184–200 | Crossfade overlap uses cumulative `running` instead of the previous clip's tail → for the 2nd clip onward, video `xfade` offset and audio `acrossfade` drift **out of A/V sync** across transitions. | Derive both `xfade` offset and `acrossfade` duration from one shared overlap-adjusted running total. |
+| CR-H11 | Fixed | render.py:81–86 / segment.py:81 / tighten.py:19–27 | Silence parsing `zip(starts, ends+[duration])` mispairs when audio ends in silence (unequal start/end counts) → final speech range dropped / wrong cursor. | One shared strict state-machine `parse_silences()`; only append trailing `[cursor,duration]` when a silence is genuinely open. |
 | CR-H12 | Fixed | branding.py:49 / metadata.py:21 | `drawtext`/`-metadata` interpolate user text (names/title) with no escaping → broken filtergraph or metadata injection on `'`,`:`,`\`,`%`,newline. | Escape drawtext specials or use `textfile=`; strip newlines from metadata values. |
 
 ## MED (likely bugs)
@@ -45,13 +45,13 @@
 | CR-M9 | Open | render.py:116 | `was_adjacent` uses a 0.20 s time-proximity heuristic → reordered non-adjacent clips wrongly treated as hard cuts. | Use original-index adjacency only. |
 | CR-M10 | Fixed | validate.py:28–36 | `validate_import` checks extension only, never bytes/existence → renamed file passes; SR-3.1 "format validated" is not real. | Sniff content (ffprobe/magic) + `os.path.isfile`. |
 | CR-M11 | Fixed | model.py:247 | `apply_preset` does `project.update(style)` with no key whitelist → a preset can overwrite `segments`/`source` (data-loss). | Restrict to `_STYLE_KEYS`. |
-| CR-M12 | Open | tighten.py:19 | `detect_silences` overwrites a pending `start` on duplicate `silence_start`; accepts `silence_end` with no duration. | Strict start/end state machine (shared with CR-H11). |
+| CR-M12 | Fixed | tighten.py:19 | `detect_silences` overwrites a pending `start` on duplicate `silence_start`; accepts `silence_end` with no duration. | Strict start/end state machine (shared with CR-H11). |
 
 ## LOW (quality / tech-debt — see also TD-1..3 in DECISIONS.md)
 
 - CR-L1 — **Fixed.** `model.py` imports `hashlib`/`os`/`copy` moved to the top.
 - CR-L2 — `probe.py:32` rounds fps to int (23.976→24) → long-clip A/V drift; keep rational rate.
-- CR-L3 — `tighten.py`/`segment.py` duplicate a subtly-buggy silence parser; extract one helper (folds into CR-H11).
+- CR-L3 — **Fixed.** Single shared parser `app/pipeline/silences.py`; both callers refactored.
 - CR-L4 — Inconsistent subprocess error handling (`check=True` vs manual) loses ffmpeg stderr; standardise.
 - CR-L5 — `captions.py:31` sorts cues by start only; sort by `(start,end)` + de-overlap.
 - CR-L6 — `metadata.py:19` `-map_metadata 1` drops source metadata; use `-map_metadata 0 -map_chapters 1`.
@@ -63,22 +63,30 @@
 
 ---
 
-## Fix status (2026-06-24, second pass)
+## Fix status (2026-06-24)
 
-**Fixed + regression-tested** (`tests/test_fixes.py`, 14 tests; full suite 10/10 green):
+**Second pass — fixed + regression-tested** (`tests/test_fixes.py`, 14 tests):
 all 5 HIGH-security (CR-H1..H5), 4 HIGH-correctness (CR-H6, CR-H7, CR-H8, CR-H12),
 4 MED (CR-M7, CR-M8, CR-M10, CR-M11), 2 LOW (CR-L1, CR-L8).
 
-**Won't-fix — disputed on re-review:** CR-H9. On close reading the filtergraph is
-**correct**: `sidechaincompress` compresses its *first* input keyed by its *second*, so
-`[music][speech]sidechaincompress` ducks the **music** under speech, then `amix` adds
-untouched speech — which is the intended behaviour. Settling it definitively would need an
-empirical loudness A/B test; logged but not changed (changing it would invert a correct graph).
+**Third pass — golden-test harness for the render-math items** (`tests/test_golden.py`, 6 tests):
+- **CR-H11 / CR-M12 / CR-L3 — Fixed.** The two divergent silence parsers were the real defect;
+  replaced by one strict state machine `app/pipeline/silences.py` (both callers refactored), with
+  edge-case tests (audio ends in silence, ends in speech, no silence, duplicate `silence_start`,
+  short-gap suppression).
+- **CR-H10 — Won't-fix (verified correct).** A 3-clip / 2-crossfade render is probed per stream and
+  the **video and audio durations match within 0.25 s** — `timing_map` and `_build_join` already
+  share the same overlap `t` and accumulator, so there is no A/V drift. The original finding
+  misread `running` as the raw timeline; it is the overlap-adjusted accumulator.
 
-**Deferred (still Open) — riskier, need golden-output tests before touching render math:**
-CR-H10 (A/V crossfade desync), CR-H11/CR-M12 (silence-parse state machine), CR-M1 (seek
-accuracy), CR-M2 (return-code checks), CR-M3/M4 (master measurement), CR-M5/M6 (caption/chapter
-timing), CR-M9 (adjacency heuristic), and LOW CR-L2..L7, L9..L11. Tracked as DECISIONS.md I-7.
+**Won't-fix — CR-H9 (disputed).** On close reading the filtergraph is **correct**:
+`sidechaincompress` compresses its *first* input keyed by its *second*, so `[music][speech]…`
+ducks the **music** under speech, then `amix` adds untouched speech — the intended behaviour.
 
-*Method: 4 parallel reviewers, full-file reads. ~50 raw findings deduplicated to the above.
-The review itself modified no code; the second pass applied the fixes above with tests.*
+**Still Open — lower-risk batch (DECISIONS.md I-7):** CR-M1 (seek accuracy), CR-M2 (return-code
+checks), CR-M3/M4 (master measurement), CR-M5/M6 (caption/chapter timing), CR-M9 (adjacency),
+CR-L2, L4–L7, L9–L11. Total live HIGH findings remaining: **0** (all fixed or verified-correct).
+
+*Method: 4 parallel reviewers, full-file reads. ~50 raw findings deduplicated. The review modified
+no code; the second/third passes applied fixes with `unittest` regression + golden tests
+(full suite 11/11 green).*
