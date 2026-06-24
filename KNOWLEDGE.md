@@ -45,6 +45,19 @@ beginner-friendly **podcast production & distribution system** ("The Missing Lin
   (macOS/Windows PyInstaller) and best-effort mobile binary builds.
 
 ## Decisions
+- 2026-06-24 — **SysML model completed to the HARD-rule standard + completeness report (ADR-014).**
+  Audited both models (every element must have named+described structural & behavioural features and
+  ≥1 relationship; all diagrams render). **ReelCut** verified compliant (37 diagrams; every element
+  described in its defining table — the `6-element-dictionary.md` is only a partial index). **Podcast
+  SoI** was prose/RTM, not formal SysML, so added three files: `11-formal-structure.md` (component +
+  SoI blocks with ports/operations/value-properties, interface blocks I-Mic…I-Backup, function I/O
+  flows, value-type catalogue, component BDD + context IBD), `12-formal-behaviour.md` (use-case,
+  activity, state-machine with modes M1–M5 as states, sequence; behaviours enumerated
+  nominal/alt/exception/edge), `13-parametrics-and-requirements.md` (MoE as constraint blocks +
+  parametric & requirements diagrams; orphans K1–K6/modes/CFG linked; N-28 numbering gap documented).
+  18 podcast diagrams render (`render.sh` refactored). Both models now compliant; **55 SVGs total, 0
+  failures.** Findings written to `MBSE-COMPLETENESS-REPORT.md` at the repo root. Pipeline followed:
+  plan → review plan → execute → review → complete.
 - 2026-06-24 — **Durable Decision Log + RAID register created and persisted (`DECISIONS.md`).** New
   root file = Decision Log (ADRs), accepted concessions/waivers/deviations, and the RAID register
   (Risks/Assumptions/Issues/Dependencies) + tech-debt register. Made persistent like the
