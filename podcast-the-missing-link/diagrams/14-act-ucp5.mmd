@@ -1,0 +1,16 @@
+flowchart TB
+  start([start]) --> EP["Episode live (F9 output)"]
+  EP -->|"published episode, RSS/YouTube link"| RA["Review analytics (C7/C9)"]
+  RA --> AVL{"analytics available?"}
+  AVL -->|"no: platform lag (N-24)"| DEFER[/"Defer + retry measurement later"/]
+  DEFER -.->|"retry next day"| RA
+  AVL -->|"yes: metrics ready"| MET["Record metrics + MoE check"]
+  MET -->|"metrics recorded"| CMT{"comments present?"}
+  CMT -->|"no comments yet"| CLIP["Cut social clips (C6 Canva)"]
+  CMT -->|"yes: healthy"| RPLY["Reply to comments"]
+  CMT -->|"abusive/unsafe (N-23/N-31)"| MOD[/"Moderate or escalate (Trust and Safety)"/]
+  MOD -->|"comment removed"| CLIP
+  RPLY -->|"replies posted"| CLIP
+  CLIP -->|"clips + embeds (N-32)"| IDEA["Feed next-topic ideas to Plan"]
+  IDEA -->|"metrics + idea backlog (F10 to F1)"| PLAN([To F1 Plan])
+  IDEA --> done([end])

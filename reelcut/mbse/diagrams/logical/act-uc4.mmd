@@ -1,0 +1,23 @@
+---
+title: "UC-4 Re-order -- decomposition of activity Sequence (function F-6, allocated to LS-EditModel)"
+---
+flowchart TB
+  start(["UC-4 Re-order : act Sequence start"]) --> recv["receive reorder intent<br>drag / swap / renumber-permutation"]
+  recv -->|"obj: permutation P over kept sub-sections"| guard{"CB-2 precondition:<br>kept count >= 1 ?"}
+  guard -->|"no (B-CU.4 keep-none)"| blocked["block reorder, surface reason"]
+  blocked --> stop1(["end: blocked / no-op"])
+  guard -->|"yes"| count{"B-SQ.4 edge:<br>kept count >= 2 ?"}
+  count -->|"no (single kept clip)"| noop["ordering is a no-op"]
+  noop --> stop1
+  count -->|"yes"| valid{"exception:<br>P a valid permutation ?"}
+  valid -->|"no (bad / duplicate index)"| reject["reject permutation,<br>keep prior order"]
+  reject --> recv
+  valid -->|"yes (B-SQ.1 nominal)"| apply["F-6 apply move / swap / permute<br>to EditModel order"]
+  apply -->|"obj: new clip order"| revert{"B-SQ.2 alternate:<br>revert to original ?"}
+  revert -->|"yes (CB-6 undo)"| restore["F-17 pop command stack,<br>restore prior order"]
+  restore --> done
+  revert -->|"no (keep new order)"| jump{"detect reorder-jump:<br>jarring boundary ?"}
+  jump -->|"yes (B-SQ.3)"| flag["flag jarring boundary,<br>hand off to F-7 set transition"]
+  jump -->|"no"| settle["commit new order to EditModel"]
+  flag -->|"obj: flagged boundary list"| settle
+  settle -->|"obj: ordered timeline"| done(["end: re-ordered"])

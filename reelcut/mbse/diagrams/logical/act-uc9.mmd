@@ -1,0 +1,15 @@
+flowchart TB
+  S(["Start: Creator adds image clip (UC-9)"])
+  S -->|"image file"| ACC["Accept image (F-2 import: still has no intrinsic audio)"]
+  ACC -->|"imported still"| VAL{"F-15 valid image format? (CB-1)"}
+  VAL -->|"no (B-IM.4 exception)"| REJ["Reject with reason; log (F-15 / CB-1)"]
+  REJ --> E2(["End: rejected"])
+  VAL -->|"yes: accepted still"| DUR["Set duration = 4 s default (F-13, B-IM.1)"]
+  DUR -->|"edit dur or toggle Ken-Burns (B-IM.2 alternate)"| DUR
+  DUR -->|"sized still"| SYN["F-13 synthesise still clip (plays over independent audio, B-IM.3)"]
+  SYN -->|"image clip"| PLACE{"Place as own clip or into a gap? (B-IM.5 edge)"}
+  PLACE -->|"own clip"| ORD["Place as orderable item in EditModel (F-6 sequence)"]
+  PLACE -->|"into existing gap"| ORD
+  ORD -->|"updated edit model"| AUTO["F-16 autosave project doc (CB-7); F-17 undo available (CB-6)"]
+  AUTO --> E(["End: image clip added"])
+  ORD -.->|"remove image clip via undo (B-IM.6, F-17 / CB-6)"| AUTO

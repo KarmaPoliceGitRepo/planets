@@ -43,6 +43,7 @@ render_src "$SE/10-cross-layer-traceability.md" 10-xlayer-requirements 10-xlayer
 render_src "$SE/11-formal-structure.md"         11-component-bdd 11-context-ibd
 render_src "$SE/12-formal-behaviour.md"         12-use-cases 12-activity 12-state-machine 12-sequence-remote 12-sequence-solo 12-sequence-produce
 render_src "$SE/13-parametrics-and-requirements.md" 13-parametric 13-parametric-full 13-requirements-diagram
+render_src "$SE/14-use-case-activities.md"      14-act-ucp1 14-act-ucp2 14-act-ucp3 14-act-ucp4 14-act-ucp5
 
 rm -f .pptr.json
 echo "Done: $ok ok, $fail failed."

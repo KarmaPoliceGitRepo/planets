@@ -1,0 +1,18 @@
+flowchart TB
+  start([start]) --> MODE{"capture mode? (M1 / M2 / M3)"}
+  MODE -->|"M1 solo"| REC["F2 record A/V local (C1 OBS record)"]
+  MODE -->|"M2 remote"| CALL["F2 connect guest + record per-speaker tracks (C3 Caller, IR-4)"]
+  MODE -->|"M3 field"| TONE["F2 capture 10 s room tone + close-mic A/V (C1, PR-2)"]
+  CALL --> REC
+  TONE --> REC
+  REC -->|"rawAudio, rawVideo"| GATE{"recording usable? (PR-2 noise floor)"}
+  GATE -->|"no: corrupted / too noisy"| MODE
+  GATE -->|"M2 link dropped"| DENDER["keep local double-ender backup + reconnect (N-15)"]
+  DENDER --> GUEST{"guest returned?"}
+  GUEST -->|"no: no-show"| SOLO["fall back to M1 solo monologue"]
+  GUEST -->|"yes"| REC
+  SOLO --> STOP
+  GATE -->|"yes"| STOP["F2 stopAndSave; align tracks by clap (C1 stopAndSave)"]
+  STOP -->|"rawAudio, rawVideo, roomTone, guestTrack"| INGEST["F3 ingest into NN-episode folder (C0)"]
+  INGEST -->|"episodeFolder, rawFiles"| BACKUP["F3 off-device backup same day (C8 sync, FR-11)"]
+  BACKUP -->|"offDeviceCopy : FileSet"| done([end])

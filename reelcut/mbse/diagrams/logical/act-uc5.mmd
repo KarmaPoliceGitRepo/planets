@@ -1,0 +1,21 @@
+flowchart TB
+  S([Start: UC-5 Set transitions])
+  S --> LOAD["Load ordered edit + flagged boundaries (from F-6 / B-SQ.3)"]
+  LOAD --> ITER{More boundaries to set?}
+  ITER -- no --> COMMIT["Write per-boundary transition spec to EditModel (F-7)"]
+  ITER -- yes --> DET["Detect gap vs adjacency at boundary"]
+  DET --> GAP{Gap or jarring jump?}
+  GAP -- no, clips adjacent --> CUT["Suggest default: straight cut, no transition (B-TR.2)"]
+  GAP -- yes --> SUG["Suggest default: crossfade (B-TR.1)"]
+  SUG --> EDGE{First or last boundary?}
+  EDGE -- yes --> FADE["Offer fade-in / fade-out option (B-TR.4)"]
+  EDGE -- no --> SET["Set per-boundary transition + duration"]
+  FADE --> SET
+  SET --> CLAMP{Duration > shorter clip?}
+  CLAMP -- yes --> CLMP["Clamp duration to shorter clip (B-TR.3)"]
+  CLAMP -- no --> APPLY["Apply boundary transition to edit model"]
+  CLMP --> APPLY
+  CUT --> APPLY
+  APPLY --> ITER
+  COMMIT --> E([End: transitions set])
+  APPLY -. F-17 undo/redo CB-6 .-> ITER

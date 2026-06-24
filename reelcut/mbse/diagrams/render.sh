@@ -41,6 +41,15 @@ MAP="
 1-problem-domain/black-box/3-system-context.md|0|conceptual/system-context-ibd
 1-problem-domain/white-box/1-system-requirements.md|0|logical/requirements-diagram
 1-problem-domain/white-box/2-functional-analysis.md|0|logical/functional-analysis-activity
+1-problem-domain/white-box/2a-use-case-activities.md|0|logical/act-uc1
+1-problem-domain/white-box/2a-use-case-activities.md|1|logical/act-uc2
+1-problem-domain/white-box/2a-use-case-activities.md|2|logical/act-uc3
+1-problem-domain/white-box/2a-use-case-activities.md|3|logical/act-uc4
+1-problem-domain/white-box/2a-use-case-activities.md|4|logical/act-uc5
+1-problem-domain/white-box/2a-use-case-activities.md|5|logical/act-uc7
+1-problem-domain/white-box/2a-use-case-activities.md|6|logical/act-uc8
+1-problem-domain/white-box/2a-use-case-activities.md|7|logical/act-uc9
+1-problem-domain/white-box/2a-use-case-activities.md|8|logical/act-uc10
 1-problem-domain/white-box/3-logical-subsystems.md|0|logical/logical-subsystems-bdd
 1-problem-domain/white-box/3-logical-subsystems.md|1|logical/logical-subsystems-ibd
 1-problem-domain/black-box/4-measures-of-effectiveness.md|0|conceptual/moe-value-tree
