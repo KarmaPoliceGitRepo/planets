@@ -1,0 +1,14 @@
+flowchart TB
+  subgraph MoE4["«constraintBlock» MoE-4 Quality"]
+    EXPR["loudness=-16±1 ∧ TP≤-1 ∧ noise≤-50"]
+  end
+  PR1["PR-1 −16 LUFS / −1 dBTP"] -->|bind loudness, truePeak| EXPR
+  PR2["PR-2 noise ≤ −50 dBFS"] -->|bind noiseFloor| EXPR
+  C4["C4 FFmpeg.targetLUFS=-16"] -->|provides value| PR1
+  EXPR -->|verify| T["process_episode.sh PASS gate"]
+  subgraph MoE2["«constraintBlock» MoE-2 Accessibility"]
+    EXPR2["accuracy≥90 ∧ bitrate≥128 ∧ size≤40"]
+  end
+  PR5["PR-5 ≥90% transcript"] -->|bind accuracy| EXPR2
+  PR3["PR-3 MP3 ≥128 kbps"] -->|bind bitrate| EXPR2
+  C5["C5 Whisper.accuracy"] -->|provides value| PR5

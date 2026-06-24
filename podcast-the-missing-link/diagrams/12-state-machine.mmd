@@ -1,0 +1,24 @@
+stateDiagram-v2
+  [*] --> Planning : M5→M1 new episode
+  Planning : M1/M5 do F1 Plan
+  Capturing : M1/M2/M3 do F2,F3
+  Producing : M4 do F4..F9
+  Growing : M5 do F10
+
+  Planning --> Capturing : script ready
+  Capturing --> Producing : footage ingested+backed up
+  Producing --> Growing : episode live
+  Growing --> Planning : next topic chosen
+
+  state Capturing {
+    [*] --> Recording
+    Recording --> CallDropped : M2 guest link lost
+    CallDropped --> Recording : resume (double-ender local backup, N-15)
+    Recording --> [*] : stop & save
+  }
+  state Producing {
+    [*] --> Mastering
+    Mastering --> Mastering : loudness FAIL → re-edit
+    Mastering --> Publishing : PASS −16 LUFS
+    Publishing --> [*]
+  }

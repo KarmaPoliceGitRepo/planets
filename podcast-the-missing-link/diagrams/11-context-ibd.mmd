@@ -1,0 +1,15 @@
+flowchart LR
+  MIC([🎤 Microphone]) -- "audioIn : AudioSignal" --> P1["mic : I-Mic"]
+  CAM([📷 Camera]) -- "videoIn : VideoSignal" --> P2["cam : I-Camera"]
+  GUEST([🧑 Remote guest]) -- "guestTrack : AudioSignal" --> P3["guest : I-Guest"]
+  subgraph SOI["PodcastSystem (SoI)"]
+    P1 --> CORE{{"capture → produce"}}
+    P2 --> CORE
+    P3 --> CORE
+    CORE --> P4["rss : ~I-RSS"]
+    CORE --> P5["video : ~I-Video"]
+    CORE --> P6["archive : ~I-Backup"]
+  end
+  P4 -- "feed : RSSFeed" --> HOST([Spotify/Apple via RSS])
+  P5 -- "videoOut : MP4 + Captions" --> YT([YouTube])
+  P6 -- "archive : FileSet" --> CLOUD([Cloud backup])

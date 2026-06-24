@@ -1,0 +1,15 @@
+flowchart LR
+  CNG2["CN-G2 listeners"]:::n -->|contains| N01["N-01 clear audio"]:::n
+  N01 -->|deriveReqt| FR1["FR-1 capture audio"]:::r
+  N01 -->|deriveReqt| PR1["PR-1 -16 LUFS"]:::r
+  F5["F5 Master"]:::f -.->|refine| PR1
+  C4["C4 FFmpeg"]:::c -.->|satisfy| PR1
+  PR1 -.->|verify| TST["loudness PASS gate"]:::t
+  N21["N-21 captions"]:::n -->|deriveReqt| FR6["FR-6 transcript+captions"]:::r
+  F7["F7 Transcribe"]:::f -.->|refine| FR6
+  C5["C5 Whisper"]:::c -.->|satisfy| FR6
+  classDef n fill:#eef
+  classDef r fill:#eff
+  classDef f fill:#efe
+  classDef c fill:#ffe
+  classDef t fill:#fee
