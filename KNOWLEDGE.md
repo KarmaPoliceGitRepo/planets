@@ -72,10 +72,15 @@ communication channels, in order of precedence:
   reports. This is the current `main`.
 
 ### Peer agents / coordination boards
-- **`pa-stdrev`** (UUID `8bfbe515-4b5b-42da-a007-4385e39f8ac7`) — a peer agent on board **`sysml-mbse`**
-  (likely the SysML standards-review reviewer). This session's MBSE work (PR #7) is the natural input
-  to its review. Reach it via the `sysml-mbse` board; mirror anything durable back into this file.
-  (Note: the Asana MCP `sysml-mbse` channel requires per-call approval in this container.)
+- **Board `sysml-mbse`** (Asana, team *Engineering*) — created 2026-06-24 as the cross-session MBSE
+  coordination board. Project gid `1215993627492395`,
+  link https://app.asana.com/1/1176910034556448/project/1215993627492395. Columns:
+  *Handoffs / Inbox → In standards review → Changes requested → Done*. The handoff task
+  "Standards review: MBSE/SysML completion (PR #7) — for pa-stdrev" (gid `1215993628010586`) is in
+  the Inbox.
+- **`pa-stdrev`** (UUID `8bfbe515-4b5b-42da-a007-4385e39f8ac7`) — peer standards-review agent on the
+  `sysml-mbse` board (not an Asana AI-Teammate in this workspace, so it can't be auto-assigned; the
+  handoff task names it). This session's MBSE work (PR #7) is the input to its review.
 
 ### Other active sessions / branches (as of 2026-06-24) — do not clobber
 - **PR #6** `claude/zealous-brown-1bzv24` — adds the `prompt-master` skill (compatible; skill-only).
