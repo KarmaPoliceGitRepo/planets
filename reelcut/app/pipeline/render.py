@@ -74,7 +74,7 @@ class Plan:
     boundaries: List[Boundary]
     width: int = 1280
     height: int = 720
-    fps: int = 30
+    fps: float = 30.0          # may be fractional (e.g. 23.976) — CR-L2
     timing_map: List[dict] = field(default_factory=list)
 
 
@@ -126,7 +126,7 @@ def build_plan(project: dict) -> Plan:
             auto_gap=not was_adjacent))
     return Plan(project["source"], clips, boundaries,
                 int(project.get("width", 1280)), int(project.get("height", 720)),
-                int(project.get("fps", 30)))
+                float(project.get("fps", 30)))
 
 
 def timing_map(plan: Plan) -> List[dict]:

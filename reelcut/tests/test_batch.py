@@ -95,5 +95,24 @@ class TestHighlightDuration(unittest.TestCase):
             self.assertAlmostEqual(_stream_dur(out, "v:0"), 2.0, delta=0.3)
 
 
+class TestFfHelper(unittest.TestCase):
+    """CR-L4: a failed ffmpeg call raises with its stderr, not a bare error."""
+    def test_failure_includes_stderr(self):
+        from app.pipeline import _ff
+        with self.assertRaises(_ff.FFmpegError) as cm:
+            _ff.run(["ffmpeg", "-y", "-i", "/no/such/input.mp4", "/tmp/never.mp4"])
+        self.assertIn("ffmpeg failed", str(cm.exception))
+
+
+class TestExplicitImports(unittest.TestCase):
+    """CR-L9/TD-1: context detection is explicit, not a swallowing try/except."""
+    def test_no_import_error_swallow(self):
+        import inspect
+        from app import api
+        src = inspect.getsource(api)
+        self.assertIn("if __package__", src)
+        self.assertNotIn("except ImportError", src)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

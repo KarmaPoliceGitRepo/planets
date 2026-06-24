@@ -29,9 +29,11 @@ def probe(path: str) -> dict:
             r = s.get("avg_frame_rate") or s.get("r_frame_rate") or "30/1"
             try:
                 n, d = r.split("/")
-                info["fps"] = max(1, round(float(n) / float(d))) if float(d) else 30
+                # Keep the true (possibly fractional) rate, e.g. 23.976, so long
+                # clips don't drift from an int-rounded 24 fps (CR-L2).
+                info["fps"] = round(float(n) / float(d), 3) if float(d) else 30.0
             except Exception:
-                info["fps"] = 30
+                info["fps"] = 30.0
         elif s.get("codec_type") == "audio":
             info["has_audio"] = True
     return info

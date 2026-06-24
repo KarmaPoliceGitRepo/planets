@@ -9,10 +9,7 @@ from __future__ import annotations
 import subprocess
 from typing import List, Tuple
 
-try:  # package context (tests: `from app.pipeline import tighten`)
-    from app.pipeline.silences import silent_spans
-except ImportError:  # server context (pipeline/ importable directly)
-    from silences import silent_spans
+from .silences import silent_spans   # sibling in the same package — works as app.pipeline or pipeline (CR-L9)
 
 
 def detect_silences(src: str, noise: str = "-30dB", min_d: float = 0.3) -> List[Tuple[float, float]]:

@@ -7,8 +7,12 @@ embedded metadata. ``chapters_file`` is an FFMETADATA file (see
 """
 from __future__ import annotations
 
-import subprocess
 from typing import Optional
+
+if __package__:  # 'app' in package context; '' when run flat by the server (CR-L9 / TD-1)
+    from app.pipeline import _ff
+else:
+    from pipeline import _ff
 
 
 def embed_metadata(in_media: str, out_path: str, title: Optional[str] = None,
@@ -30,5 +34,5 @@ def embed_metadata(in_media: str, out_path: str, title: Optional[str] = None,
         d = _clean(description)
         cmd += ["-metadata", f"description={d}", "-metadata", f"comment={d}"]
     cmd += ["-c", "copy", out_path]
-    subprocess.run(cmd, capture_output=True, check=True)
+    _ff.run(cmd)
     return out_path

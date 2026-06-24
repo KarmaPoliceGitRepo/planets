@@ -74,10 +74,7 @@ def _silence_lines(src: Path, duration: float) -> List[dict]:
          "-af", "silencedetect=noise=-30dB:d=0.4", "-f", "null", "-"],
         capture_output=True, text=True).stderr
     # Speech = complement of the detected silences (shared robust parser).
-    try:  # package context
-        from app.pipeline.silences import speech_ranges
-    except ImportError:  # server context
-        from silences import speech_ranges
+    from .silences import speech_ranges   # sibling import works in both contexts (CR-L9)
     speech = speech_ranges(out, duration, min_gap=0.4)
     if not speech:
         speech = [[0.0, duration]]

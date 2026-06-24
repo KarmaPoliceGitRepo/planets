@@ -50,14 +50,14 @@
 ## LOW (quality / tech-debt — see also TD-1..3 in DECISIONS.md)
 
 - CR-L1 — **Fixed.** `model.py` imports `hashlib`/`os`/`copy` moved to the top.
-- CR-L2 — `probe.py:32` rounds fps to int (23.976→24) → long-clip A/V drift; keep rational rate.
+- CR-L2 — **Fixed.** `probe` keeps the fractional rate; `Plan.fps` is now `float`.
 - CR-L3 — **Fixed.** Single shared parser `app/pipeline/silences.py`; both callers refactored.
-- CR-L4 — Inconsistent subprocess error handling (`check=True` vs manual) loses ffmpeg stderr; standardise.
+- CR-L4 — **Fixed.** Shared `app/pipeline/_ff.run` captures stderr and raises `FFmpegError`; all pipeline passes adopt it.
 - CR-L5 — **Fixed.** Cues now sorted by `(start, end)`.
 - CR-L6 — **Fixed.** `-map_metadata 0 -map_chapters 1` keeps source metadata, imports only chapters.
 - CR-L7 — **Fixed.** `concat_clips` removes its intermediates in a `finally`.
 - CR-L8 — **Fixed.** `kept_subs` now sorts missing `order` with `+inf` + start tie-break.
-- CR-L9 — `api.py:12` dual-context try/except import (TD-1) swallows real ImportErrors; detect context explicitly.
+- CR-L9 — **Fixed.** Context detected via `__package__` (api/metadata) and relative imports (tighten/segment); no `except ImportError` swallow.
 - CR-L10 — **Fixed.** `build_plan` raises on `end <= start`.
 - CR-L11 — **Fixed.** `_wait_ready` polls the server socket instead of a fixed sleep.
 
@@ -89,12 +89,12 @@ the actual MP4 deliverable), CR-M4 (all five loudnorm keys + finiteness guarded;
 CR-M5 (boundary-spanning cues clamped, not dropped), CR-M6 (chapter times from the render timing
 map), CR-M9 (adjacency by original index only), CR-L5/L6/L7/L10/L11.
 
-**Still Open — 3 LOW only (DECISIONS.md I-7):** CR-L2 (probe rounds fps to int — needs the rational
-rate threaded through `Plan`/render), CR-L4 (standardise subprocess error handling / stderr capture),
-CR-L9 (dual-context import swallows real `ImportError` — TD-1). All low-risk, no behavioural defect.
+**Fifth pass — final 3 LOW (`tests/test_batch.py` +2):** CR-L2 (rational fps through `probe`/`Plan`),
+CR-L4 (shared `_ff.run` standardises ffmpeg error handling), CR-L9/TD-1 (explicit `__package__` /
+relative imports, no swallowed `ImportError`). **Entire backlog now Fixed or verified-correct; 0 open.**
 
 **Scorecard:** HIGH 10 fixed / 2 verified-correct / **0 open** · MED 12 fixed / 0 open ·
-LOW 8 fixed / 3 open.
+LOW 11 fixed / 0 open.
 
 *Method: 4 parallel reviewers, full-file reads. ~50 raw findings deduplicated. The review modified
 no code; passes 2–4 applied fixes with `unittest` regression + golden tests (full suite 12/12 green,

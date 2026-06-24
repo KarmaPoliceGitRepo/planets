@@ -4,7 +4,7 @@ captions (SR-4.9). Both are single FFmpeg passes.
 """
 from __future__ import annotations
 
-import subprocess
+from . import _ff
 
 # aspect -> (w, h) ratio
 ASPECTS = {"16:9": (16, 9), "9:16": (9, 16), "1:1": (1, 1)}
@@ -23,20 +23,18 @@ def reframe(src: str, out_path: str, aspect: str = "9:16", height: int = 1280) -
     w, h = target_size(aspect, height)
     vf = (f"scale={w}:{h}:force_original_aspect_ratio=decrease,"
           f"pad={w}:{h}:(ow-iw)/2:(oh-ih)/2,setsar=1")
-    subprocess.run(["ffmpeg", "-y", "-i", src, "-vf", vf, "-pix_fmt", "yuv420p",
+    _ff.run(["ffmpeg", "-y", "-i", src, "-vf", vf, "-pix_fmt", "yuv420p",
                     "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
-                    "-c:a", "aac", "-b:a", "192k", out_path],
-                   capture_output=True, check=True)
+                    "-c:a", "aac", "-b:a", "192k", out_path])
     return out_path
 
 
 def burn_captions(video: str, srt: str, out_path: str) -> str:
     """Burn an .srt into the video as open captions for sound-off playback (SR-4.9)."""
     safe = srt.replace("\\", "/").replace(":", "\\:").replace("'", "\\'")
-    subprocess.run(["ffmpeg", "-y", "-i", video, "-vf", f"subtitles='{safe}'",
+    _ff.run(["ffmpeg", "-y", "-i", video, "-vf", f"subtitles='{safe}'",
                     "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
-                    "-c:a", "copy", out_path],
-                   capture_output=True, check=True)
+                    "-c:a", "copy", out_path])
     return out_path
 
 
@@ -47,15 +45,13 @@ def highlight_clip(src: str, start: float, end: float, out_path: str) -> str:
     (``end-start``); ``-to`` before ``-i`` would be measured from the post-seek
     origin and could yield the wrong length (CR-M1)."""
     dur = max(0.0, end - start)
-    subprocess.run(["ffmpeg", "-y", "-ss", f"{start}", "-i", src, "-t", f"{dur}",
+    _ff.run(["ffmpeg", "-y", "-ss", f"{start}", "-i", src, "-t", f"{dur}",
                     "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
-                    "-c:a", "aac", "-b:a", "192k", out_path],
-                   capture_output=True, check=True)
+                    "-c:a", "aac", "-b:a", "192k", out_path])
     return out_path
 
 
 def cover_frame(src: str, t: float, out_png: str) -> str:
     """Grab a single frame at time ``t`` as the cover image (SR-4.6)."""
-    subprocess.run(["ffmpeg", "-y", "-ss", f"{t}", "-i", src, "-frames:v", "1", out_png],
-                   capture_output=True, check=True)
+    _ff.run(["ffmpeg", "-y", "-ss", f"{t}", "-i", src, "-frames:v", "1", out_png])
     return out_png

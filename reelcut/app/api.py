@@ -9,10 +9,10 @@ from __future__ import annotations
 
 import os
 
-try:  # package context (tests: `from app import api`)
+if __package__:  # 'app' in package context (tests); '' when server runs it flat
     from app import validate
     from app.pipeline import audio_mix
-except ImportError:  # server context (APP dir on sys.path)
+else:  # server context (APP dir on sys.path) — detect explicitly, never swallow a real ImportError (CR-L9/TD-1)
     import validate
     from pipeline import audio_mix
 

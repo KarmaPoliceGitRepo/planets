@@ -81,7 +81,7 @@ condition under which it should be revisited.
 | I-3 | Closed | **Defect-level code-review of the finished ReelCut modules** — now done (2026-06-24). Full prioritised backlog in [`reelcut/CODE-REVIEW-2026-06-24.md`](reelcut/CODE-REVIEW-2026-06-24.md): 12 HIGH (5 security, 7 correctness), 12 MED, 11 LOW. | Fixes tracked there + as I-5..I-7 below. |
 | I-5 | Closed | **Security (HIGH):** all 5 fixed 2026-06-24 — path confinement (CR-H1/H3), `level_db` validation (CR-H2), Host-header guard (CR-H4), static resolve+symlink guard (CR-H5). Regression tests in `reelcut/tests/test_fixes.py`. | Done. |
 | I-6 | Closed | **Correctness (HIGH): all resolved.** Fixed — source-digest baseline (CR-H6), atomic autosave (CR-H7), Event CancelToken (CR-H8), escaped drawtext/metadata (CR-H12), and shared strict silence parser `app/pipeline/silences.py` (CR-H11/M12/L3). Verified-correct via golden tests (`tests/test_golden.py`) — A/V crossfade sync (CR-H10) and audio ducking (CR-H9) were false positives; Won't-fix. **0 live HIGH findings remain.** | Done. |
-| I-7 | Mitigated | **Quality/debt: all 12 MED fixed + 8 of 11 LOW fixed** (2026-06-24, `tests/test_batch.py`). Remaining = 3 LOW only: CR-L2 (probe fps→int rounding; needs rational rate threaded through `Plan`), CR-L4 (standardise subprocess stderr handling), CR-L9 (dual-context import swallows real ImportError — see TD-1). No behavioural defect; low priority. | Address with the TD-1 import cleanup; thread rational fps if 23.976 sources matter. |
+| I-7 | Closed | **Quality/debt: entire MED+LOW backlog resolved** (2026-06-24). All 12 MED + 11 LOW fixed; CR-L2 (rational fps), CR-L4 (shared `_ff.run` error handling), CR-L9/TD-1 (explicit-context imports) closed in the final pass. Full review backlog now Fixed or verified-correct — **0 open findings.** | Done. |
 | I-4 | Closed | Earlier "find gaps/errors" findings (Jun 17–19) were narrated **in chat only** and lost when the session compacted (transcript now starts at the 2026-06-23 01:03 summary). | The durable record of those gaps survives: the **requirement-conformance gaps** are in [`reelcut/mbse/4-implementation-domain.md`](reelcut/mbse/4-implementation-domain.md) (SR→module→test→status) and phase commits `310bafc`…`4e57a4c` (37/37 SRs closed). Root cause = no auto-log existed; fixed by this file + SessionStart/UserPromptSubmit hooks. |
 
 ### Dependencies (external things we rely on)
@@ -97,7 +97,7 @@ condition under which it should be revisited.
 
 | ID | Status | Debt | Why it exists | Pay-back |
 |----|--------|------|---------------|----------|
-| TD-1 | Open | `app/api.py` uses **dual-context `try/except` imports** (`from app import …` / `import …`). | Module must run both as a package and as a flat script (server vs tests). | Pick one import strategy; add a package entry-point. |
+| TD-1 | Closed | `app/api.py` used **dual-context `try/except` imports** that swallowed real `ImportError`s. | Module must run both as a package and as a flat script (server vs tests). | **Done (2026-06-24):** context detected explicitly via `__package__` (api/metadata) and relative sibling imports (tighten/segment); no error swallowed. |
 | TD-2 | Open | Mobile **type safety relaxed** (WV-005). | Untyped libs blocked CI. | Add type stubs; re-enable strict checks. |
 | TD-3 | Open | `drift-check.sh` validates **fence parity + ID resolution only**, not diagram render. | Keep the Stop hook fast and dependency-free. | Move render verification to CI (R-3 / WV-004). |
 
