@@ -44,6 +44,62 @@ beginner-friendly **podcast production & distribution system** ("The Missing Lin
 - **CI**: `.github/workflows/build.yml` — unittest suite on Ubuntu+FFmpeg, plus desktop
   (macOS/Windows PyInstaller) and best-effort mobile binary builds.
 
+## Coordination & cross-session handoff (multi-chat protocol)
+
+This repository is worked on by **multiple Claude Code sessions ("chats") in parallel**. Sessions do
+**not** share a live channel — they coordinate **only through durable, committed artifacts**. The
+communication channels, in order of precedence:
+
+1. **`KNOWLEDGE.md`** (this file) — shared facts/architecture, auto-loaded at SessionStart; the primary
+   cross-session memory (the graphify / "cavemem" channel). Read it first; append durable facts here.
+2. **`DECISIONS.md`** — Decision Log (ADRs), accepted concessions/waivers, RAID register; also
+   auto-loaded. Record every durable decision / concession / problem here in the **same commit**.
+3. **Git history + commit messages** — the record of what changed and why.
+4. **GitHub PRs + PR comments** — cross-session review and hand-off; comment on a sibling session's PR
+   to flag a conflict or coordinate a merge.
+5. **`.claude/hooks/drift-check.sh`** — the shared consistency gate; keep it green before committing.
+
+> A session cannot message another live chat; if you need to reach another session, **write it here or
+> comment on its PR**. That is the protocol.
+
+### Current state (MBSE / ReelCut session)
+- **This session's chat id:** `session_01CgqkNNojqUQEdzRwzTKbKM`
+  (link: https://claude.ai/code/session_01CgqkNNojqUQEdzRwzTKbKM). Its work is findable by:
+  branch `claude/nepal-village-tourism-podcast-dp29gf`; **PR #7** (merged) + **PR #8** (this handoff);
+  and the `Claude-Session:` footer on every commit it authored.
+- **PR #7 MERGED → `main` (`75c28fc`):** formal SysML completeness for both models (ADR-013/014/015),
+  ReelCut defect review fully resolved (0 open, 12/12 tests), 75 diagrams render, durable memory +
+  reports. This is the current `main`.
+
+### Peer agents / coordination boards
+- **Board `sysml-mbse`** (Asana, team *Engineering*) — created 2026-06-24 as the cross-session MBSE
+  coordination board. Project gid `1215993627492395`,
+  link https://app.asana.com/1/1176910034556448/project/1215993627492395. Columns:
+  *Handoffs / Inbox → In standards review → Changes requested → Done*. The handoff task
+  "Standards review: MBSE/SysML completion (PR #7) — for pa-stdrev" (gid `1215993628010586`) is in
+  the Inbox.
+- **`pa-stdrev`** (UUID `8bfbe515-4b5b-42da-a007-4385e39f8ac7`) — peer standards-review agent on the
+  `sysml-mbse` board (not an Asana AI-Teammate in this workspace, so it can't be auto-assigned; the
+  handoff task names it). This session's MBSE work (PR #7) is the input to its review.
+
+### Other active sessions / branches (as of 2026-06-24) — do not clobber
+- **PR #6** `claude/zealous-brown-1bzv24` — adds the `prompt-master` skill (compatible; skill-only).
+- **PR #4** `claude/uml-java-programmers-eqyyq1` — UML-for-Java case study; **edits `KNOWLEDGE.md`**.
+- **PR #3** `claude/folder-branch-books-learning-10r2i4` — 400+ literature notes (large).
+- ⚠ **`KNOWLEDGE.md` divergence:** PR #3 and PR #4 branch from the **old `main`** (before PR #7) and
+  edit `KNOWLEDGE.md`, which PR #7 **restructured**. Before merging either, **rebase onto current
+  `main`** and **re-apply** their `KNOWLEDGE.md` additions onto the new structure — do **not**
+  force-replace the file, or this session's restructure is lost.
+
+### Open items (any session may pick up)
+- Delete merged branch `claude/nepal-village-tourism-podcast-dp29gf` (blocked in the container: proxy
+  403 on ref-delete, no MCP delete-branch tool — do it via the GitHub Branches UI or
+  `git push origin --delete`).
+- RAID **I-9**: each `diagrams/render.sh` uses a cwd-local `.pptr.json`; do not run one model's
+  renderer twice concurrently.
+- Waivers **WV-001/002** (mobile): `ffmpeg-kit` retired; generate native `ios/`/`android/` on a Mac.
+- **N-28** unused podcast need ID (documented numbering gap, RAID I-8).
+
 ## Decisions
 - 2026-06-24 — **Deep SysML completeness — four-question pass via agent pipeline (ADR-015).** Drove
   both models to YES on: (Q1) an **activity-decomposition diagram per use case** (ReelCut UC-1..10 in
